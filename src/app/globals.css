@@ -300,3 +300,17 @@ nav img {
   height: 100%;
   object-fit: cover;
 }
+
+
+.advert-tabs {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: unset;
+}
+
+@media (max-width: 1024px) {
+  .advert-tabs {
+    display: flex;
+    overflow-x: scroll;
+  }  
+}

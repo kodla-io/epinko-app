@@ -6,24 +6,34 @@ const Advert = () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
   const tabs = [
-    { id: "tab1", label: "Rise Online", items: Array(10).fill("") },
-    { id: "tab2", label: "Pubg Mobile", items: Array(7).fill("") },
-    { id: "tab3", label: "Valorant", items: Array(5).fill("") },
-  ];
+    { id: "tab1", label: "Rise Online", items: Array(12).fill("") },
+    { id: "tab2", label: "Pubg Mobile", items: Array(10).fill("") },
+    { id: "tab3", label: "Valorant", items: Array(8).fill("") },
+    { id: "tab4", label: "TFT", items: Array(1).fill("") },
+    { id: "tab5", label: "Pubg Mobile", items: Array(2).fill("") },
+    { id: "tab6", label: "LOL", items: Array(3).fill("") },
+    { id: "tab7", label: "Zula", items: Array(4).fill("") },
+    { id: "tab8", label: "Roblox", items: Array(5).fill("") },
+  ]
 
   return (
     <div className="container mx-auto px-4">
-      <div className="flex justify-center space-x-4 mb-4">
+      <div className="flex items-center space-x-4">
+        <h2 className="text-white text-[30px] py-2 font-bold">VİTRİN İLANLAR</h2>
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
+      </div>
+      <div className="advert-tabs space-x-4 mb-4">
         {tabs.map((tab) => (
-          <button
+          <div
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`px-4 py-2 ${
-              activeTab === tab.id ? "text-blue-500 font-bold" : "text-gray-500"
+              activeTab === tab.id ? "text-blue-500 font-bold border-b-3 border-orange-500 flex items-center" : "text-gray-500 flex items-center"
             }`}
           >
+            <img className="w-[30px] h-[30px] mr-2" src="https://placehold.co/50" />
             {tab.label}
-          </button>
+          </div>
         ))}
       </div>
 
