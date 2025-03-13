@@ -1,0 +1,75 @@
+import React, { useEffect, useRef } from "react";
+
+const MegaMenu = ({ items, isImage }) => {
+  const menuItemsRef = useRef([]);
+
+  useEffect(() => {
+    menuItemsRef.current.forEach((c, index) => {
+      const handleMouseMove = (e) => {
+        const card = c.querySelector(".card");
+        const rect = card.getBoundingClientRect();
+        const xOffset = e.clientX - rect.left;
+        const yOffset = e.clientY - rect.top;
+        const cardHeight = card.clientHeight;
+        const cardWidth = card.clientWidth;
+        const heightCenter = Math.round(cardHeight / 2);
+        const widthCenter = Math.round(cardWidth / 2);
+        const rotateBaseValue = 20;
+        const rotateXValue =
+          ((yOffset - heightCenter) / heightCenter) * rotateBaseValue;
+        const rotateYValue =
+          ((widthCenter - xOffset) / widthCenter) * rotateBaseValue;
+        card.style.transform = `scale(1.2) rotateX(${rotateXValue}deg) rotateY(${rotateYValue}deg)`;
+      };
+
+      const handleMouseOut = () => {
+        const card = c.querySelector(".card");
+        card.style.transform = "";
+      };
+
+      c.addEventListener("mousemove", handleMouseMove);
+      c.addEventListener("mouseout", handleMouseOut);
+
+      return () => {
+        c.removeEventListener("mousemove", handleMouseMove);
+        c.removeEventListener("mouseout", handleMouseOut);
+      };
+    });
+  }, []);
+
+  return (
+    <div className="absolute w-full shadow-lg z-10 megaMenu">
+      <div className="container mx-auto p-4 grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              ref={(el) => (menuItemsRef.current[index] = el)}
+              className="megaMenuItem"
+            >
+              {isImage ? (
+                <img src={item} alt={`Item ${index + 1}`} className="w-full" />
+              ) : (
+                <a
+                  href={item.link}
+                  key={index}
+                  style={{ backgroundColor: item.bgColor }}
+                  className="flex items-center p-2 bg-opacity-90 rounded shadow card"
+                >
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="w-10 h-10 mr-4 rounded-sm"
+                  />
+                  <span className="text-sm">{item.title}</span>
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MegaMenu;

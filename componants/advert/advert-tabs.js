@@ -14,12 +14,17 @@ const Advert = () => {
     { id: "tab6", label: "LOL", items: Array(3).fill("") },
     { id: "tab7", label: "Zula", items: Array(4).fill("") },
     { id: "tab8", label: "Roblox", items: Array(5).fill("") },
-  ]
+  ];
 
   return (
     <div className="container mx-auto px-4">
       <div className="flex items-center space-x-4">
-        <h2 className="text-white text-[30px] py-2 font-bold">VİTRİN İLANLAR</h2>
+        <h2
+          style={{ color: "var(--foreground)" }}
+          className="text-white text-[30px] py-2 font-bold"
+        >
+          VİTRİN İLANLAR
+        </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
       <div className="advert-tabs space-x-4 mb-4">
@@ -28,10 +33,15 @@ const Advert = () => {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`px-4 py-2 ${
-              activeTab === tab.id ? "text-blue-500 font-bold border-b-3 border-orange-500 flex items-center" : "text-gray-500 flex items-center"
+              activeTab === tab.id
+                ? "text-blue-500 font-bold border-b-3 border-orange-500 flex items-center"
+                : "text-gray-500 flex items-center"
             }`}
           >
-            <img className="w-[30px] h-[30px] mr-2" src="https://placehold.co/50" />
+            <img
+              className="w-[30px] h-[30px] mr-2 rounded-md"
+              src="https://placehold.co/50"
+            />
             {tab.label}
           </div>
         ))}
@@ -64,7 +74,7 @@ const Advert = () => {
                         <img
                           src="https://placehold.co/50x50"
                           alt="Seller"
-                          className="w-10 h-10 rounded-full"
+                          className="w-8 h-8 rounded-full"
                         />
                         <div className="ml-2">
                           <p className="text-[8px] font-bold">LoremIpsum</p>
@@ -74,7 +84,7 @@ const Advert = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="text-xl font-bold text-yellow-400">
+                      <div className="text-md font-bold text-yellow-400">
                         199.90₺
                       </div>
                     </div>
@@ -83,6 +93,11 @@ const Advert = () => {
               </div>
             </div>
           ))}
+      </div>
+      <div className="flex justify-center items-center py-4">
+        <button className="px-6 py-2 text-white rounded-full border border-orange-500 shadow-lg hover:bg-orange-800 transition duration-300">
+          Tümünü Görüntüle
+        </button>
       </div>
     </div>
   );

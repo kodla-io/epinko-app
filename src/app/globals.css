@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #181e20;
     --foreground: #ededed;
   }
+} */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --megaMenu-bg: #101828;
 }
 
 [data-theme="dark"] {
   --background: #181e20;
   --foreground: #ededed;
+  --megaMenu-bg: #101828;
 }
 
 * {
@@ -221,6 +223,39 @@ nav img {
 
 /* GLOW ANIMATION */
 
+.poplar-game-card {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.poplar-game-card img {
+  z-index: 2;
+}
+
+.popular-card-content {
+  z-index: 3;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.poplar-game-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background-color: #9d5523;
+}
+
+.poplar-game-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background-color: #9d5523;
+  filter: blur(20px);
+  opacity: 0.75;
+}
+
 .glow {
   position: relative;
 }
@@ -257,7 +292,7 @@ nav img {
     #f0f,
     #0ff
   );
-  filter: blur(15px);
+  filter: blur(10px);
   opacity: 0.75;
 }
 
@@ -301,7 +336,6 @@ nav img {
   object-fit: cover;
 }
 
-
 .advert-tabs {
   display: flex;
   justify-content: space-between;
@@ -312,5 +346,10 @@ nav img {
   .advert-tabs {
     display: flex;
     overflow-x: scroll;
-  }  
+  }
+}
+
+.megaMenu {
+  background-color: var(--megaMenu-bg);
+  color: var(--foreground);
 }
