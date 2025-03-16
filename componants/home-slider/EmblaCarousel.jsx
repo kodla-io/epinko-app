@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./EmblaCarouselThumbsButton";
+import Link from "next/link";
 
 const EmblaCarousel = () => {
   const options = {};
@@ -78,20 +79,24 @@ const EmblaCarousel = () => {
 
         {/* Sağ Kısım - İki Banner */}
         <div className="sm:pt-4 col-span-12 md:col-span-4 p-4 flex flex-col space-y-4">
-          <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
-            <img
-              src="https://placehold.co/200x150"
-              alt="Banner 1"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
-            <img
-              src="https://placehold.co/200x150"
-              alt="Banner 2"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <Link href="/all-games">
+            <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
+              <img
+                src="https://placehold.co/200x150"
+                alt="Banner 1"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </Link>
+          <Link href="/all-games">
+            <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
+              <img
+                src="https://placehold.co/200x150"
+                alt="Banner 2"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

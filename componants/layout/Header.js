@@ -5,6 +5,7 @@ import { FaShoppingCart, FaGlobe } from "react-icons/fa";
 import { useTheme } from "./Theme";
 import SearchInput from "./Search";
 import MegaMenu from "./MegaMenu";
+import Link from "next/link";
 
 const items = [
   {
@@ -253,7 +254,7 @@ const Header = () => {
                 />
               </button>
             </div>
-            <a href="#">
+            <Link href="#">
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
@@ -267,8 +268,8 @@ const Header = () => {
                 </div>
                 <span className="text-lg">Favoriler</span>
               </button>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href="#">
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
@@ -282,14 +283,14 @@ const Header = () => {
                 </div>
                 <span className="text-lg">Steam Oyunlar</span>
               </button>
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="hover:text-green-400 flex items-center space-x-1"
             >
               <img src="/media/icons/steam.png" />
               <span>İletişim</span>
-            </a>
+            </Link>
           </nav>
         </div>
       </div>

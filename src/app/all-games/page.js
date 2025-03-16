@@ -1,4 +1,4 @@
-export default function About() {
+export default function AllGames() {
   return (
     <div>
       <h1>Hakkımızda</h1>

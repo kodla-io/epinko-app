@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 const MegaMenu = ({ items, isImage }) => {
   return (
@@ -10,7 +11,7 @@ const MegaMenu = ({ items, isImage }) => {
               {isImage ? (
                 <img src={item} alt={`Item ${index + 1}`} className="w-full" />
               ) : (
-                <a
+                <Link
                   href={item.link}
                   key={index}
                   style={{ backgroundColor: item.bgColor }}
@@ -22,7 +23,7 @@ const MegaMenu = ({ items, isImage }) => {
                     className="w-10 h-10 mr-4 rounded-sm"
                   />
                   <span className="text-sm">{item.title}</span>
-                </a>
+                </Link>
               )}
             </div>
           ))}

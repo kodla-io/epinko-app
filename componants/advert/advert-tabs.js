@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 const Advert = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -51,46 +52,50 @@ const Advert = () => {
         {tabs
           .find((tab) => tab.id === activeTab)
           .items.map((_, index) => (
-            <div key={index} className="p-2 md:p-4">
-              <div className="p-1 glow">
-                <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
-                  <img
-                    src="https://placehold.co/200x300"
-                    alt={`Card ${index}`}
-                    className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
-                  />
-                  <div
-                    className="text-white absolute bottom-0 p-2 w-full"
-                    style={{
-                      background:
-                        "linear-gradient(to top, rgba(0, 0, 0, 0.7) 70%, transparent)",
-                    }}
-                  >
-                    <h3 className="text-md font-bold">
-                      LOREM IPSUM LOREM IPSUM
-                    </h3>
-                    <div className="flex justify-between items-center mt-2">
-                      <div className="flex items-center">
-                        <img
-                          src="https://placehold.co/50x50"
-                          alt="Seller"
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <div className="ml-2">
-                          <p className="text-[8px] font-bold">LoremIpsum</p>
-                          <p className="text-[8px] text-gray-400">GÜVENİLİR</p>
-                          <p className="text-[8px] text-yellow-500">
-                            2 BAŞARILI
-                          </p>
+            <div key={index} className="p-2 md:p-2">
+              <Link href="#">
+                <div className="p-1 glow">
+                  <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
+                    <img
+                      src="https://placehold.co/200x300"
+                      alt={`Card ${index}`}
+                      className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
+                    />
+                    <div
+                      className="text-white absolute bottom-0 p-2 w-full"
+                      style={{
+                        background:
+                          "linear-gradient(to top, rgba(0, 0, 0, 0.7) 70%, transparent)",
+                      }}
+                    >
+                      <h3 className="text-md font-bold">
+                        LOREM IPSUM LOREM IPSUM
+                      </h3>
+                      <div className="flex justify-between items-center mt-2">
+                        <div className="flex items-center">
+                          <img
+                            src="https://placehold.co/50x50"
+                            alt="Seller"
+                            className="w-8 h-8 rounded-full"
+                          />
+                          <div className="ml-2">
+                            <p className="text-[8px] font-bold">LoremIpsum</p>
+                            <p className="text-[8px] text-gray-400">
+                              GÜVENİLİR
+                            </p>
+                            <p className="text-[8px] text-yellow-500">
+                              2 BAŞARILI
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="text-md font-bold text-yellow-400">
-                        199.90₺
+                        <div className="text-md font-bold text-yellow-400">
+                          199.90₺
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
       </div>

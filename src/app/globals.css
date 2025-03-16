@@ -16,12 +16,16 @@
 
 :root {
   --background: #ffffff;
+  --background-secondary: #d4d4d4;
+  --bg-soft: #1d1f20;
   --foreground: #171717;
   --megaMenu-bg: #101828;
 }
 
 [data-theme="dark"] {
-  --background: #181e20;
+  --background: #191d20;
+  --background-secondary: #14191b;
+  --bg-soft: #1d1f20;
   --foreground: #ededed;
   --megaMenu-bg: #101828;
 }
@@ -48,6 +52,10 @@ body {
   --detail-high-contrast: rgb(101, 101, 101);
   --detail-medium-contrast: rgb(25, 25, 25);
   --text-high-contrast-rgb-value: 230, 230, 230;
+}
+
+a {
+  cursor: pointer;
 }
 
 .embla {
@@ -202,23 +210,34 @@ nav img {
 
 /* Scroll Stick */
 
-/* Tüm tarayıcılar için temel ayar */
+/* global.css veya uygun bir CSS dosyanıza ekleyin */
 ::-webkit-scrollbar {
-  height: 8px; /* Scroll çubuğu yüksekliği */
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track rengi */
-  border-radius: 10px;
+  width: 8px; /* İstediğiniz genişliğe göre ayarlayın */
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Thumb rengi */
+  background-color: #888; /* Kaydırma çubuğu renk */
+  border-radius: 10px; /* Köşeleri yuvarlama */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Üzerine gelindiğinde renk değişimi */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Arka plan rengi */
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Hover durumu için thumb rengi */
+}
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
 }
 
 /* GLOW ANIMATION */
@@ -352,4 +371,56 @@ nav img {
 .megaMenu {
   background-color: var(--megaMenu-bg);
   color: var(--foreground);
+}
+
+/* OFFER SLIDER */
+
+.offer {
+  width: 100%; /* veya istediğin bir genişlik */
+  height: auto; /* içeriklerin toplam yüksekliğine göre */
+  overflow: hidden; /* taşan içeriği gizler */
+}
+
+.offer .embla {
+  overflow: hidden;
+}
+
+.offer .embla__container {
+  display: flex;
+  align-items: center; /* dikey merkezleme */
+  justify-content: center; /* içerikleri yatayda ayırır */
+}
+
+.offer .embla__slide {
+  position: relative;
+  flex: 0 0 25%; /* Her slaytın genişliği */
+  margin: 0 5px;
+  transition: transform 0.3s ease;
+}
+
+.offer .embla__slide__img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.offer .slide__content {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.offer .tag,
+.offer .price,
+.offer .description {
+  margin: 5px 0;
+}
+
+/* Orta kart için vurgulama */
+.offer .embla__slide--active {
+  transform: scale(1.1);
+  z-index: 1;
 }
