@@ -20,6 +20,7 @@
   --bg-soft: #1d1f20;
   --foreground: #171717;
   --megaMenu-bg: #101828;
+  --news-card-bg: #0000000a;
 }
 
 [data-theme="dark"] {
@@ -28,6 +29,7 @@
   --bg-soft: #1d1f20;
   --foreground: #ededed;
   --megaMenu-bg: #101828;
+  --news-card-bg: #ffffff0d;
 }
 
 * {

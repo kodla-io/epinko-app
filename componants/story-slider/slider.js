@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 const StorySlider = () => {
   return (
@@ -48,12 +48,11 @@ const StorySlider = () => {
               pagination={{
                 clickable: true,
               }}
-              modules={[Autoplay, Navigation]}
+              modules={[Autoplay]}
               autoplay={{
                 delay: 2000, // Otomatik kaydırma süresi (ms)
                 disableOnInteraction: false, // Kullanıcı etkileşimi sonrasında durmaması için
               }}
-              navigation // Elle kaydırma için
               className="mySwiper"
             >
               <SwiperSlide>

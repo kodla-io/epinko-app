@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import { FaUserCheck } from "react-icons/fa";
+import { TbCandy } from "react-icons/tb";
+import { RiDiscountPercentLine } from "react-icons/ri";
 
 const SingleAdvert = () => {
   const items = Array(10).fill("");
@@ -12,6 +15,17 @@ const SingleAdvert = () => {
           <div key={index} className="p-2 md:p-2">
             <a href="#">
               <div className="relative min-h-[300px] max-h-[300px] overflow-hidden rounded-lg">
+                <div className="absolute top-2 left-2 flex space-x-1 p-1">
+                  <div className="bg-orange-500 text-white text-xs flex items-center justify-center w-6 h-6 rounded-full">
+                    <FaUserCheck />
+                  </div>
+                  <div className="bg-purple-500 text-white text-xs flex items-center justify-center w-6 h-6 rounded-full">
+                    <TbCandy />
+                  </div>
+                  <div className="bg-red-500 text-white text-xs flex items-center justify-center w-6 h-6 rounded-full">
+                    <RiDiscountPercentLine />
+                  </div>
+                </div>
                 <img
                   src="https://placehold.co/200x300"
                   alt={`Card ${index}`}
