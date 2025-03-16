@@ -1,5 +1,6 @@
 import React from "react";
 import SingleAdvert from "./single-tab-advert";
+import Link from "next/link";
 
 const items = [
   {
@@ -107,55 +108,61 @@ const NewAdver = () => {
               <input
                 type="text"
                 placeholder="Kategori Ara"
-                className="w-full p-2 rounded border border-gray-600 text-sm"
+                className="w-full p-2 rounded border border-gray-700 text-sm"
               />
             </div>
-            <div className="border border-gray-500 rounded-lg p-2">
+            <div className="border border-gray-800 rounded-lg p-2">
               <ul className="overflow-y-scroll overflow-x-hidden min-h-[576px] max-h-[576px]">
                 {items.map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-start mb-4 p-2 bg-gray-800 rounded-lg shadow-lg"
+                    style={{
+                      backgroundColor: "var(--news-card-bg)",
+                      color: "var(--foreground)",
+                    }}
+                    className="flex items-start mb-4 rounded-lg shadow-lg"
                   >
-                    <div className="flex w-full">
-                      <img
-                        src={item.imageUrl}
-                        alt={item.title}
-                        className="flex-grow w-18 h-18 mr-2 rounded"
-                        style={{ flex: "2" }}
-                      />
-                      <div
-                        className="text-white text-sm flex flex-col justify-between"
-                        style={{ flex: "6" }}
-                      >
-                        <div>
-                          <div className="font-bold">{item.title}</div>
-                        </div>
-
-                        <div className="flex flex-col space-y-2 text-[9px]">
-                          <div className="flex space-x-4">
-                            <div className="flex items-center space-x-1 text-gray-400">
-                              <span>🔰</span>
-                              <span>100+ Başarılı İşlem</span>
-                            </div>
-                            <div className="flex items-center space-x-1 text-gray-400">
-                              <span>🛡️</span>
-                              <span>100+ Güvenilir Satıcı</span>
-                            </div>
+                    <Link href="#">
+                      <div className="flex w-full">
+                        <img
+                          src={item.imageUrl}
+                          alt={item.title}
+                          className="flex-grow w-18 h-18 mr-2 rounded"
+                          style={{ flex: "2" }}
+                        />
+                        <div
+                          className="text-white text-sm flex flex-col justify-between"
+                          style={{ flex: "6" }}
+                        >
+                          <div>
+                            <div className="font-bold">{item.title}</div>
                           </div>
-                          <div className="flex space-x-4">
-                            <div className="flex items-center space-x-1 text-gray-400">
-                              <span>🔰</span>
-                              <span>100+ Başarılı İşlem</span>
+
+                          <div className="flex flex-col space-y-2 text-[9px]">
+                            <div className="flex space-x-4">
+                              <div className="flex items-center space-x-1 text-gray-400">
+                                <span>🔰</span>
+                                <span>100+ Başarılı İşlem</span>
+                              </div>
+                              <div className="flex items-center space-x-1 text-gray-400">
+                                <span>🛡️</span>
+                                <span>100+ Güvenilir Satıcı</span>
+                              </div>
                             </div>
-                            <div className="flex items-center space-x-1 text-gray-400">
-                              <span>🛡️</span>
-                              <span>100+ Güvenilir Satıcı</span>
+                            <div className="flex space-x-4">
+                              <div className="flex items-center space-x-1 text-gray-400">
+                                <span>🔰</span>
+                                <span>100+ Başarılı İşlem</span>
+                              </div>
+                              <div className="flex items-center space-x-1 text-gray-400">
+                                <span>🛡️</span>
+                                <span>100+ Güvenilir Satıcı</span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -167,7 +174,6 @@ const NewAdver = () => {
             style={{ backgroundColor: "var(--bg-soft)" }}
             className="flex-auto lg:basis-12/16 p-1 rounded-lg md:p-4"
           >
-            {/* Buraya başka bir bileşen import edebilirsiniz */}
             <SingleAdvert />
           </div>
         </div>

@@ -80,20 +80,20 @@ const EmblaCarousel = () => {
         {/* Sağ Kısım - İki Banner */}
         <div className="sm:pt-4 col-span-12 md:col-span-4 p-4 flex flex-col space-y-4">
           <Link href="/all-games">
-            <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
+            <div className="h-32 md:h-32 lg:h-40 xl:h-56">
               <img
                 src="https://placehold.co/200x150"
                 alt="Banner 1"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl"
               />
             </div>
           </Link>
           <Link href="/all-games">
-            <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
+            <div className="h-32 md:h-32 lg:h-40 xl:h-56">
               <img
                 src="https://placehold.co/200x150"
                 alt="Banner 2"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl"
               />
             </div>
           </Link>

@@ -84,8 +84,8 @@ const NewsSlider = () => {
                           typesetting industry. Lorem Ipsum has been the
                           industry's standard dummy text ever since the 1500s...
                         </p>
-                        <div className="flex flex-center">
-                          <button className="bg-orange- text-white text-sm font-semibold py-2 px-4 rounded">
+                        <div className="flex justify-center">
+                          <button className="bg-orange-500 text-white text-sm font-semibold py-2 px-4 rounded">
                             Devamını Oku
                           </button>
                         </div>
