@@ -4,7 +4,8 @@ import StorySlider from "../../componants/story-slider/slider";
 import Advert from "../../componants/advert/advert-tabs";
 import PopularGames from "../../componants/popular-games/popular-games";
 import NewAdver from "../../componants/new-advert/new-adverts";
-import OfferSlider from "../../componants/offer/offer";
+import UpSlider from "../../componants/new-games-slider/upSlider";
+import DownSlider from "../../componants/new-games-slider/downSlider";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
       <Advert />
       <PopularGames />
       <NewAdver />
-      <OfferSlider />
+      <UpSlider />
+      <DownSlider />
     </div>
   );
 }

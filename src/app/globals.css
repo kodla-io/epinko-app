@@ -375,52 +375,7 @@ nav img {
 
 /* OFFER SLIDER */
 
-.offer {
-  width: 100%; /* veya istediğin bir genişlik */
-  height: auto; /* içeriklerin toplam yüksekliğine göre */
-  overflow: hidden; /* taşan içeriği gizler */
-}
+/* NEW GAMES SLIDER */
 
-.offer .embla {
-  overflow: hidden;
-}
-
-.offer .embla__container {
-  display: flex;
-  align-items: center; /* dikey merkezleme */
-  justify-content: center; /* içerikleri yatayda ayırır */
-}
-
-.offer .embla__slide {
-  position: relative;
-  flex: 0 0 25%; /* Her slaytın genişliği */
-  margin: 0 5px;
-  transition: transform 0.3s ease;
-}
-
-.offer .embla__slide__img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.offer .slide__content {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.offer .tag,
-.offer .price,
-.offer .description {
-  margin: 5px 0;
-}
-
-/* Orta kart için vurgulama */
-.offer .embla__slide--active {
-  transform: scale(1.1);
-  z-index: 1;
+.new-games {
 }
