@@ -5,7 +5,7 @@ const TextBanner = () => {
   return (
     <section className="relative py-40 relative">
       <div className="container mx-auto px-4">
-        <div className="absolute top-[-50px] right-0 w-1/2 max-w-[500px] max-h-[500px]">
+        <div className="hidden xl:block absolute top-[20px] 2xl:top-[-50px] right-0 w-1/2 2xl:max-w-[500px] 2xl:max-h-[500px] xl:max-w-[400px] xl:max-h-[400px]">
           <img
             src="https://placehold.co/450x450"
             alt="Character"
@@ -13,7 +13,7 @@ const TextBanner = () => {
           />
         </div>
         <div className="bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg p-8">
-          <div className="relative z-10 text-white w-4/5">
+          <div className="relative z-10 text-white lg:w-5/5 xl:w-3/5 xl:w-4/5">
             <h2 className="text-3xl font-bold mb-4">LOREM IPSUM LOREM IPSUM</h2>
             <p>
               Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do
