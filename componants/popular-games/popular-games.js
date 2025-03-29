@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 
 const PopularGames = () => {
@@ -44,15 +45,15 @@ const PopularGames = () => {
           style={{ color: "var(--foreground)" }}
           className="text-white text-[30px] py-2 font-bold"
         >
-          Popüler Oyunlar
+          POPÜLER OYUNLAR
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
-      <div className="grid grid-cols-14 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-14 gap-4 p-4">
         {/* 1. Kutu: Oran 3 */}
         <div
           ref={cardRef}
-          className="col-span-3 rounded-lg flex flex-col justify-center items-center relative min-h-[420px] max-h-[420px] poplar-game-card"
+          className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center relative min-h-[420px] max-h-[420px] popular-game-card"
         >
           <img
             src="https://placehold.co/200x300"
@@ -73,74 +74,96 @@ const PopularGames = () => {
         </div>
 
         {/* 2. Kutu: Oran 6 */}
-        <div className="col-span-6 flex flex-col justify-between min-h-[420px] max-h-[420px]">
+        <div className="col-span-1 md:col-span-1 lg:col-span-6 flex flex-col justify-between min-h-[420px] max-h-[420px]">
           <div className="flex gap-4 flex-1 min-h-[200px] max-h-[200px]">
             <div className="rounded-lg flex-1">
-              <a href="#">
+              <Link href="#">
                 <img
                   src="https://placehold.co/150x150"
                   alt="Roblox"
                   className="object-cover w-full h-full rounded-lg"
                 />
-              </a>
+              </Link>
             </div>
             <div className="rounded-lg flex-2">
-              <img
-                src="https://placehold.co/150x150"
-                alt="Rise Online"
-                className="object-cover w-full h-full rounded-lg"
-              />
+              <Link href="#">
+                <img
+                  src="https://placehold.co/150x150"
+                  alt="Rise Online"
+                  className="object-cover w-full h-full rounded-lg"
+                />
+              </Link>
             </div>
           </div>
           <div className="flex gap-4 flex-1 min-h-[200px] max-h-[200px]">
             <div className="rounded-lg flex-2">
-              <img
-                src="https://placehold.co/150x150"
-                alt="Valorant"
-                className="object-cover w-full h-full rounded-lg"
-              />
+              <Link href="#">
+                <img
+                  src="https://placehold.co/150x150"
+                  alt="Valorant"
+                  className="object-cover w-full h-full rounded-lg"
+                />
+              </Link>
             </div>
             <div className="rounded-lg flex-1">
-              <img
-                src="https://placehold.co/150x150"
-                alt="Metin 2"
-                className="object-cover w-full h-full rounded-lg"
-              />
+              <Link href="#">
+                <img
+                  src="https://placehold.co/150x150"
+                  alt="Metin 2"
+                  className="object-cover w-full h-full rounded-lg"
+                />
+              </Link>
             </div>
           </div>
         </div>
 
         {/* 3. Kutu: Oran 3 */}
-        <div className="col-span-3 rounded-lg flex flex-col justify-center items-center min-h-[420px] max-h-[420px]">
+        <Link
+          href="#"
+          className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center min-h-[420px] max-h-[420px]"
+        >
           <img
             src="https://placehold.co/200x300"
             alt="League of Legends"
             className="object-cover w-full h-full rounded-lg"
           />
-        </div>
+        </Link>
 
         {/* 4. Kutu: Oran 2 */}
-        <div className="col-span-2 flex flex-col justify-between">
+        <div className="col-span-1 md:col-span-1 lg:col-span-2 flex flex-col justify-between">
           <div className="rounded-lg min-h-[200px] max-h-[200px]">
-            <img
-              src="https://placehold.co/150x150"
-              alt="PUBG"
-              className="object-cover w-full h-full rounded-lg"
-            />
+            <Link href="#">
+              <img
+                src="https://placehold.co/150x150"
+                alt="PUBG"
+                className="object-cover w-full h-full rounded-lg"
+              />
+            </Link>
           </div>
           <div className="rounded-lg mt-4 min-h-[200px] max-h-[200px]">
-            <img
-              src="https://placehold.co/150x150"
-              alt="Metin 2"
-              className="object-cover w-full h-full rounded-lg"
-            />
+            <Link href="#">
+              <img
+                src="https://placehold.co/150x150"
+                alt="Metin 2"
+                className="object-cover w-full h-full rounded-lg"
+              />
+            </Link>
           </div>
         </div>
       </div>
+
       <div className="flex justify-center items-center py-4">
-        <button className="px-6 py-2 text-white rounded-full border border-orange-500 shadow-lg hover:bg-orange-800 transition duration-300">
-          Tümünü Görüntüle
-        </button>
+        <Link href="/all-games">
+          <button
+            style={{
+              backgroundColor: "var(--btn-bg)",
+              color: "var(--btn-color)",
+            }}
+            className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 glow-on-hover"
+          >
+            Tümünü Görüntüle
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -37,7 +37,8 @@ const SearchInput = () => {
   return (
     <input
       type="text"
-      className="pl-3 pr-10 py-2 w-128 border border-gray-300 rounded-md focus:outline-none"
+      style={{backgroundColor: "#ffffff14", padding: "15px"}}
+      className="pl-3 pr-10 py-2 px-4 w-128 rounded-md focus:outline-none"
       placeholder={displayText}
     />
   );

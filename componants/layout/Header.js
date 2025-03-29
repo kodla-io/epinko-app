@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { FaShoppingCart, FaGlobe } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import { useTheme } from "./Theme";
 import SearchInput from "./Search";
 import MegaMenu from "./MegaMenu";
+import Link from "next/link";
+import { CiCirclePlus } from "react-icons/ci";
 
 const items = [
   {
@@ -136,63 +138,133 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleTheme = useTheme();
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    setIsDark(savedTheme === "dark");
+  }, []);
+
+  const handleToggle = () => {
+    setIsDark(!isDark);
+    toggleTheme();
+  };
+
+  const toggleSwitch = () => {
+    setIsDark(!isDark);
+  };
 
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [menuItems, setMenuItems] = useState([]);
 
-  const toggleMenu = (items) => {
+  const toggleMenu = (items, event) => {
+    const button = event.currentTarget;
+    const megaMenu = document.querySelector(".megaMenu");
+
+    if (isMegaMenuOpen && button.classList.contains("active-mega-menu-tab")) {
+      button.classList.remove("active-mega-menu-tab");
+
+      megaMenu.classList.remove("open");
+
+      // Animasyon süresine göre bir timeout kullanabilirsiniz.
+      setTimeout(() => {
+        setIsMegaMenuOpen(false);
+      }, 500); // 0.5s, CSS'deki transition süresiyle eşleşiyor
+    } else {
+      document
+        .querySelectorAll(".mage-menu-button")
+        .forEach((btn) => btn.classList.remove("active-mega-menu-tab"));
+      button.classList.add("active-mega-menu-tab");
+
+      megaMenu.classList.add("open");
+      setIsMegaMenuOpen(true);
+    }
+
     setMenuItems(items);
-    setIsMegaMenuOpen((prev) => !prev);
   };
+
   return (
-    <header className="w-full bg-gray-900 text-white">
+    <header className="w-full text-white">
       {/* Üst Kısım */}
-      <div className="flex justify-between items-center px-4 container py-1 m-auto text-xsm border-gray-700">
-        <div className="flex space-x-4">
-          <a href="#" className="hover:text-green-400">
-            <p>Hakkımızda</p>
-          </a>
-          <a href="#" className="hover:text-green-400">
-            <p>Haberler</p>
-          </a>
-          <a href="#" className="hover:text-green-400">
-            <p>Yardım</p>
-          </a>
-          <a href="#" className="hover:text-green-400">
-            <p>İletişim</p>
-          </a>
-        </div>
-        <div className="flex items-center space-x-2">
-          <FaGlobe onClick={toggleTheme} className="text-gray-400" />
-          <span>TR</span>
+      <div className="header-top w-full">
+        <div className="flex justify-between items-center px-4 container py-1 m-auto text-xsm">
+          <div className="flex space-x-4">
+            <a href="#" className="hover:text-green-400">
+              <p>Hakkımızda</p>
+            </a>
+            <a href="#" className="hover:text-green-400">
+              <p>Haberler</p>
+            </a>
+            <a href="#" className="hover:text-green-400">
+              <p>Yardım</p>
+            </a>
+            <a href="#" className="hover:text-green-400">
+              <p>İletişim</p>
+            </a>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span>TR</span>
+          </div>
         </div>
       </div>
 
       {/* Ana Menü */}
-      <div className="bg-gray-800">
+      <div className="header-middle">
         <div className="container m-auto flex justify-between items-center px-6 py-3">
           {/* Logo */}
           <div className="text-2xl font-bold text-green-500">
-            epin<span className="text-white">KO</span>
+            {/* epin<span className="text-white">KO</span> */}
+            <Link href="/">
+              <img className="max-w-[130px]" src="/media/logo.png" />
+            </Link>
           </div>
 
           {/* Menü */}
           <nav className="hidden md:flex items-center space-x-6 text-sm uppercase">
             {/* Arama Çubuğu */}
-            <div className="relative">
+            <div className="relative flex">
               <SearchInput />
-              <button className="absolute right-0 top-0 mt-2 mr-3 text-gray-600">
-                🔍
+              <button
+                style={{
+                  backgroundColor: "#41c85f",
+                  color: "white",
+                }}
+                className="flex items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button"
+              >
+                <span className="mr-2 text-[25px]">
+                  <CiCirclePlus />
+                </span>
+                İlan Ekle
               </button>
             </div>
           </nav>
 
           {/* Sağ Kısım */}
           <div className="flex items-center space-x-4">
-            <button className="bg-green-500 px-4 py-2 text-white rounded-md hover:bg-green-600 transition">
+            <div className="d-l-mode">
+              <div className="middle">
+                <div
+                  className={`switch ${isDark ? "dark" : ""}`}
+                  onClick={handleToggle}
+                >
+                  <span className="sun"></span>
+                  <span className="moon"></span>
+
+                  <span className="sun--bubble--left"></span>
+                  <span className="sun--bubble--right"></span>
+
+                  <span className="moon--bubble--left"></span>
+                  <span className="moon--bubble--middle"></span>
+                  <span className="moon--bubble--right"></span>
+                  <span className="moon--star--left"></span>
+                  <span className="moon--star--right"></span>
+                </div>
+              </div>
+            </div>
+            <button className="px-4 py-2 text-white rounded-md transition border-glow">
               Giriş Yap
             </button>
-            <FaShoppingCart className="text-xl cursor-pointer" />
+            {/* <FaShoppingCart className="text-xl cursor-pointer" /> */}
           </div>
 
           {/* Mobil Menü Butonu */}
@@ -205,14 +277,54 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="bg-gray-800">
+      {/* Alt Menü */}
+      <div className="header-bottom">
         <div className="container m-auto flex justify-between items-center px-6 py-3">
-          {/* Alt Menü */}
           <nav className="hidden md:flex space-x-6 text-sm uppercase">
+            {/* <div className="flex">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                  <filter id="gooey">
+                    <feGaussianBlur
+                      in="SourceGraphic"
+                      stdDeviation="5"
+                      result="blur"
+                    />
+                    <feColorMatrix
+                      in="blur"
+                      type="matrix"
+                      values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                      result="highContrastGraphic"
+                    />
+                    <feComposite
+                      in="SourceGraphic"
+                      in2="highContrastGraphic"
+                      operator="atop"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+
+              <button id="gooey-button">
+                F*** Awesome
+                <span class="bubbles">
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                  <span class="bubble"></span>
+                </span>
+              </button>
+            </div> */}
             <div className="relative">
               <button
-                onClick={() => toggleMenu(items)}
-                className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded"
+                onClick={(event) => toggleMenu(items, event)}
+                className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
               >
                 <div
                   style={{ backgroundColor: "rgba(88, 243, 249, 0.3)" }}
@@ -233,8 +345,8 @@ const Header = () => {
             </div>
             <div className="relative">
               <button
-                onClick={() => toggleMenu(items2)}
-                className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded"
+                onClick={(event) => toggleMenu(items2, event)}
+                className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
               >
                 <div
                   style={{ backgroundColor: "rgba(88, 249, 115, 0.3)" }}
@@ -253,7 +365,7 @@ const Header = () => {
                 />
               </button>
             </div>
-            <a href="#">
+            <Link href="#">
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
@@ -267,8 +379,8 @@ const Header = () => {
                 </div>
                 <span className="text-lg">Favoriler</span>
               </button>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href="#">
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
@@ -282,18 +394,20 @@ const Header = () => {
                 </div>
                 <span className="text-lg">Steam Oyunlar</span>
               </button>
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="hover:text-green-400 flex items-center space-x-1"
             >
               <img src="/media/icons/steam.png" />
               <span>İletişim</span>
-            </a>
+            </Link>
           </nav>
         </div>
       </div>
-      {isMegaMenuOpen && <MegaMenu items={menuItems} isImage={false} />}
+      <div className="absolute w-full shadow-lg z-10 megaMenu">
+        {isMegaMenuOpen && <MegaMenu items={menuItems} isImage={false} />}
+      </div>
 
       {/* Mobil Menü */}
       {isMenuOpen && (

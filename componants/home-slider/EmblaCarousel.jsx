@@ -3,11 +3,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./EmblaCarouselThumbsButton";
+import Link from "next/link";
 
 const EmblaCarousel = () => {
   const options = {};
-  const SLIDE_COUNT = 10;
+  const SLIDE_COUNT = 4;
   const slides = Array.from(Array(SLIDE_COUNT).keys());
+  const containerClass = slides.length <= 6 ? 'flex justify-center embla-thumbs__container' : 'embla-thumbs__container';
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options);
@@ -38,7 +40,7 @@ const EmblaCarousel = () => {
   }, [emblaMainApi, onSelect]);
 
   return (
-    <div className="container mx-auto sm:lb-2 xl:my-8">
+    <div className="container mx-auto sm:lb-2 xl:mb-6 pb-8">
       <div className="grid grid-cols-12 gap-4">
         {/* Sol Kısım - Slider */}
         <div className="col-span-12 md:col-span-8 p-4">
@@ -60,7 +62,7 @@ const EmblaCarousel = () => {
 
               <div className="embla-thumbs relative sm-top-custom md-top-custom lg-top-custom xl-top-custom xxl-top-custom">
                 <div className="embla-thumbs__viewport" ref={emblaThumbsRef}>
-                  <div className="embla-thumbs__container">
+                  <div className={containerClass}>
                     {slides.map((index) => (
                       <Thumb
                         key={index}
@@ -78,20 +80,24 @@ const EmblaCarousel = () => {
 
         {/* Sağ Kısım - İki Banner */}
         <div className="sm:pt-4 col-span-12 md:col-span-4 p-4 flex flex-col space-y-4">
-          <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
-            <img
-              src="https://placehold.co/200x150"
-              alt="Banner 1"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="h-32 md:h-32 lg:h-40 xl:h-56 bg-gray-300">
-            <img
-              src="https://placehold.co/200x150"
-              alt="Banner 2"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <Link href="/all-games">
+            <div className="h-32 md:h-32 lg:h-40 xl:h-56">
+              <img
+                src="https://placehold.co/200x150"
+                alt="Banner 1"
+                className="w-full h-full object-cover rounded-xl"
+              />
+            </div>
+          </Link>
+          <Link href="/all-games">
+            <div className="h-32 md:h-32 lg:h-40 xl:h-56">
+              <img
+                src="https://placehold.co/200x150"
+                alt="Banner 2"
+                className="w-full h-full object-cover rounded-xl"
+              />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

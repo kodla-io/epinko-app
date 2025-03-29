@@ -1,0 +1,23 @@
+23.03.2025
+(+++)logo değişecek.
+(+++)Header butonlara hover animasyonu gelecek renkleri değişecek.
+(-)mega menüler için açık kapalı efekti değişecek.
+(+++)mega menüler yumuşak açılacak.
+(+++)tema rengi değişince yavaş değişecek.
+(-)slider eklenecek
+
+22.03.2025
+(+++) Renkler değişmeli
+(+++) Font değişmeli
+(+++) Arama kutusu yenilenecek
+(+++) Dark light ikonu değişecek.
+(+++) Butonlar hover efektli olacak
+(+++) Arama kutusu yanında İlan Ekle butonu isteniyor
+(+++) Butonlara tıklama mouse ikonu gelmiyor.
+(+++) Header kısmında açık olanı algılayabilmemiz gerekiyor.
+(+++) Slider seçeneği 4 adet olsun, ortalanmış olsun.
+(+++) Mouse ile vitrin seçenekleri üstüne gelince mouse tıklama ikonu olmuyor.
+(+++) Vitrin kısmında değişim anlık olmasın yumuşak geçiş olsun.
+(+++) Yeni ilanlar kısmı revize edilecek.
+(+++) taglara efekt eklenecek.
+(+++) Footer alanı güncellenecek (imza adı ve yıl)

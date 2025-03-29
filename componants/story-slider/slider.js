@@ -1,21 +1,20 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 const StorySlider = () => {
   return (
     <div className="py-2">
       <div className="container mx-auto px-4">
-        <div className="py-8 space-x-4">
+        <div className="py-4 space-x-4">
           <>
             <Swiper
               slidesPerView={12}
@@ -49,132 +48,165 @@ const StorySlider = () => {
               pagination={{
                 clickable: true,
               }}
-              modules={[Autoplay, Navigation]}
+              modules={[Autoplay]}
               autoplay={{
                 delay: 2000, // Otomatik kaydırma süresi (ms)
                 disableOnInteraction: false, // Kullanıcı etkileşimi sonrasında durmaması için
               }}
-              navigation // Elle kaydırma için
               className="mySwiper"
             >
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  src="https://placehold.co/100"
-                  alt="Item 5"
-                  className="rounded-full w-full h-full object-cover"
-                />
+                <Link href="/">
+                  <img
+                    src="https://placehold.co/100"
+                    alt="Item 5"
+                    className="rounded-full w-full h-full object-cover"
+                  />
+                </Link>
               </SwiperSlide>
             </Swiper>
           </>

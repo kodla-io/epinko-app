@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { AiOutlineSafety } from "react-icons/ai";
 
 const Advert = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -47,57 +49,91 @@ const Advert = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-        {tabs
-          .find((tab) => tab.id === activeTab)
-          .items.map((_, index) => (
-            <div key={index} className="p-2 md:p-4">
-              <div className="p-1 glow">
-                <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
-                  <img
-                    src="https://placehold.co/200x300"
-                    alt={`Card ${index}`}
-                    className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
-                  />
-                  <div
-                    className="text-white absolute bottom-0 p-2 w-full"
-                    style={{
-                      background:
-                        "linear-gradient(to top, rgba(0, 0, 0, 0.7) 70%, transparent)",
-                    }}
-                  >
-                    <h3 className="text-md font-bold">
-                      LOREM IPSUM LOREM IPSUM
-                    </h3>
-                    <div className="flex justify-between items-center mt-2">
-                      <div className="flex items-center">
-                        <img
-                          src="https://placehold.co/50x50"
-                          alt="Seller"
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <div className="ml-2">
-                          <p className="text-[8px] font-bold">LoremIpsum</p>
-                          <p className="text-[8px] text-gray-400">GÜVENİLİR</p>
-                          <p className="text-[8px] text-yellow-500">
-                            2 BAŞARILI
-                          </p>
+      {tabs.map((tab) => (
+        <div
+          key={tab.id}
+          className={`tab-content ${activeTab === tab.id ? "active" : ""}`}
+        >
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+            {tab.items.map((_, index) => (
+              <div key={index} className="p-2 md:p-2">
+                <Link href="#">
+                  <div className="p-1 glow">
+                    <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
+                      <div className="absolute top-0 left-0 flex flex-col space-y-1 p-2">
+                        <div className="bg-orange-500 text-white text-[7px] px-1 p-1 px-2 rounded-[10px]">
+                          <span className="p-0 m-0">LOREM IPSUM</span>
+                        </div>
+                        <div className="bg-blue-700 text-white text-[7px] px-1 p-1 px-2 rounded-[10px]">
+                          <span className="p-0 m-0">LOREM IPSUM</span>
+                        </div>
+                        <div className="bg-red-700 text-white text-[7px] px-1 p-1 px-2 rounded-[10px]">
+                          <span className="p-0 m-0">LOREM IPSUM</span>
                         </div>
                       </div>
-                      <div className="text-md font-bold text-yellow-400">
-                        199.90₺
+                      <div className="absolute top-2 right-2">
+                        <AiOutlineSafety className="w-8 h-8" />
+                      </div>
+                      <img
+                        src="https://placehold.co/200x300"
+                        alt={`Card ${index}`}
+                        className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
+                      />
+                      <div
+                        className="text-white absolute bottom-0 p-2 w-full"
+                        style={{
+                          background:
+                            "linear-gradient(to top, rgba(0, 0, 0, 0.7) 70%, transparent)",
+                        }}
+                      >
+                        <h3 className="text-md font-bold">
+                          LOREM IPSUM LOREM IPSUM
+                        </h3>
+                        <div className="flex justify-between items-center mt-2">
+                          <div className="flex items-center">
+                            <img
+                              src="https://placehold.co/50x50"
+                              alt="Seller"
+                              className="w-8 h-8 rounded-full"
+                            />
+                            <div className="ml-2">
+                              <p className="text-[8px] font-bold">
+                                Lorem Ipsum
+                              </p>
+                              <p className="text-[8px] text-gray-400">
+                                GÜVENİLİR SATICI
+                              </p>
+                              <p className="text-[8px] text-yellow-500">
+                                2 BAŞARILI İŞLEM
+                              </p>
+                            </div>
+                          </div>
+                          <div className="text-md font-bold text-yellow-400">
+                            199.90₺
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
-            </div>
-          ))}
-      </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
       <div className="flex justify-center items-center py-4">
-        <button className="px-6 py-2 text-white rounded-full border border-orange-500 shadow-lg hover:bg-orange-800 transition duration-300">
-          Tümünü Görüntüle
-        </button>
+        <Link href="/all-games">
+          <button
+            style={{
+              backgroundColor: "var(--btn-bg)",
+              color: "var(--btn-color)",
+            }}
+            className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 glow-on-hover"
+          >
+            Tümünü Görüntüle
+          </button>
+        </Link>
       </div>
     </div>
   );
