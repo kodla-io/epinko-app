@@ -30,6 +30,7 @@
   --bg-header: #070707;
   --bg-footer: #070707;
   --bg-soft: #1d1f20;
+  --bg-soft2: #1d1f20;
   --foreground: #212121;
   --megaMenu-bg: #101828;
   --news-card-bg: #0000000a;
@@ -62,6 +63,7 @@
   --bg-header: #070707;
   --bg-footer: #070707;
   --bg-soft: #ffffff17;
+  --bg-soft2: #000000bd;
   --foreground: #ededed;
   --megaMenu-bg: #101828;
   --news-card-bg: #ffffff0d;
@@ -901,7 +903,7 @@ nav img {
 .border-glow::before {
   position: absolute;
   z-index: -1;
-  inset: -1em;
+  inset: -1.7em;
   border: solid 1.25em;
   border-image: conic-gradient(
       from var(--b),
@@ -921,6 +923,11 @@ nav img {
   filter: blur(0.75em);
   animation: b 7s linear infinite;
   content: "";
+  transition: inset .2s ease-in-out;
+}
+
+.border-glow:hover::before {
+  inset: -1em;
 }
 
 @keyframes b {
