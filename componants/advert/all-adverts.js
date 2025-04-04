@@ -11,7 +11,7 @@ const AllAdverts = () => {
   const toggleModal = () => setModalOpen(!isModalOpen);
 
   return (
-    <section style={{ backgroundColor: "var(--background)" }} className="p-4">
+    <section style={{ backgroundColor: "var(--background)" }} className="p-2 md:p-4">
       <div className="container mx-auto">
         <div className="flex items-center space-x-4">
           <h2

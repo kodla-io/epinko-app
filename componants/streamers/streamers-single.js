@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTwitch } from "react-icons/fa";
+import Link from "next/link";
 
 const cards = [
   {
@@ -39,17 +40,33 @@ const StreamerSingle = () => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {cards.map((card, index) => (
-          <div style={{border: "2px solid var(--label4)"}} key={index} className="bg-gray-900 rounded-lg overflow-hidden">
-            <div className="relative">
-              <img src={card.image} alt={card.name} className="w-full h-auto" />
-              <div style={{backgroundColor: "var(--label4)"}} className="absolute top-2 left-2 rounded-full p-1">
-                <FaTwitch className="text-white" />
+          <Link href="/">
+            <div
+              style={{ border: "2px solid var(--label4)" }}
+              key={index}
+              className="bg-gray-900 rounded-lg overflow-hidden"
+            >
+              <div className="relative">
+                <img
+                  src={card.image}
+                  alt={card.name}
+                  className="w-full h-auto"
+                />
+                <div
+                  style={{ backgroundColor: "var(--label4)" }}
+                  className="absolute top-2 left-2 rounded-full p-1"
+                >
+                  <FaTwitch className="text-white" />
+                </div>
+              </div>
+              <div
+                style={{ backgroundColor: "var(--label4)" }}
+                className="text-center text-white py-2"
+              >
+                {card.name}
               </div>
             </div>
-            <div style={{backgroundColor: "var(--label4)"}} className="text-center text-white py-2">
-              {card.name}
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -6,6 +6,9 @@ import { AiOutlineSafety } from "react-icons/ai";
 import StreamerSingle from "../streamers/streamers-single";
 import Comments from "../comments/comments";
 import ImageTextScrollComponent from "../comments/explanation";
+import HowToCreateAd from "../advert/how-to-create-an-ad"
+import HowToBuyAd from "../advert/how-to-buy"
+import WhatIsReliableSeller from "../advert/What-is-a-reliable-seller"
 
 const AllAdvertsList = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -59,7 +62,7 @@ const AllAdvertsList = () => {
               onClick={() => handleTabClick(index)}
             >
               <h2
-                className={`w-full p-3 rounded-md cursor-pointer ${
+                className={`w-full min-w-[200px] p-3 rounded-md cursor-pointer ${
                   activeTab === index ? "font-bold" : "font-normal"
                 }`}
               >
@@ -69,7 +72,7 @@ const AllAdvertsList = () => {
           ))}
           <div className="text-center w-full p-2 rounded-sm">
             <Link href="/">
-              <h2 className="w-full p-3 rounded-md cursor-pointer font-normal">
+              <h2 className="w-full min-w-[200px] p-3 rounded-md cursor-pointer font-normal">
                 İlan Oluştur
               </h2>
             </Link>
@@ -173,11 +176,7 @@ const AllAdvertsList = () => {
               </div>
               <Comments />
             </div>
-
             <div
-              // style={{
-              //   backgroundColor: "var(--advert-list-bg)",
-              // }}
               className="p-2 md:py-8"
             >
               <ImageTextScrollComponent />
@@ -186,23 +185,17 @@ const AllAdvertsList = () => {
         )}
         {activeTab === 1 && (
           <div>
-            {/* İkinci sekme içeriği */}
-            <h3>İlan Nasıl Oluşturulur?</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl...</p>
+            <HowToCreateAd />
           </div>
         )}
         {activeTab === 2 && (
           <div>
-            {/* Üçüncü sekme içeriği */}
-            <h3>Nasıl Satın Alınır?</h3>
-            <p>Aenean lacinia bibendum nulla sed consectetur...</p>
+            <HowToBuyAd />
           </div>
         )}
         {activeTab === 3 && (
           <div>
-            {/* Üçüncü sekme içeriği */}
-            <h3>Güvenilir Satıcı Nedir?</h3>
-            <p>Aenean lacinia bibendum nulla sed consectetur...</p>
+            <WhatIsReliableSeller />
           </div>
         )}
       </div>
