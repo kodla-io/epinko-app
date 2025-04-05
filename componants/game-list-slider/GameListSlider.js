@@ -140,7 +140,7 @@ const GameListSlider = () => {
                       />
 
                       <div className="hover-category-img">
-                        <img src="https://placehold.co/150x250/000000/FFFFFF/png" />
+                        <img src="/media/jett.png" />
                       </div>
 
                       <style jsx>{`
