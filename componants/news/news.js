@@ -102,10 +102,10 @@ const NewsSlider = () => {
         <Link href="/all-games">
           <button
             style={{
-              backgroundColor: "var(--btn-bg)",
+              // backgroundColor: "var(--btn-bg)",
               color: "var(--btn-color)",
             }}
-            className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 glow-on-hover"
+            className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
           >
             Tümünü Görüntüle
           </button>

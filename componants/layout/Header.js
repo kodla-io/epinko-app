@@ -261,7 +261,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <button className="px-4 py-2 text-white rounded-md transition border-glow">
+            <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
               Giriş Yap
             </button>
             {/* <FaShoppingCart className="text-xl cursor-pointer" /> */}
