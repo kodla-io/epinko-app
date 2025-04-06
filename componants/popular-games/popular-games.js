@@ -56,7 +56,7 @@ const PopularGames = () => {
           className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center relative min-h-[420px] max-h-[420px] popular-game-card"
         >
           <img
-            src="https://placehold.co/200x300"
+            src="/media/knight-online.jpg"
             alt="Knight Online"
             className="object-cover w-full h-full rounded-lg"
           />
@@ -79,7 +79,7 @@ const PopularGames = () => {
             <div className="rounded-lg flex-1">
               <Link href="#">
                 <img
-                  src="https://placehold.co/150x150"
+                  src="../media/roblox.jpg"
                   alt="Roblox"
                   className="object-cover w-full h-full rounded-lg"
                 />
@@ -88,7 +88,7 @@ const PopularGames = () => {
             <div className="rounded-lg flex-2">
               <Link href="#">
                 <img
-                  src="https://placehold.co/150x150"
+                  src="../media/valorant.png"
                   alt="Rise Online"
                   className="object-cover w-full h-full rounded-lg"
                 />
@@ -99,7 +99,7 @@ const PopularGames = () => {
             <div className="rounded-lg flex-2">
               <Link href="#">
                 <img
-                  src="https://placehold.co/150x150"
+                  src="../media/pubg.jpeg"
                   alt="Valorant"
                   className="object-cover w-full h-full rounded-lg"
                 />
@@ -108,7 +108,7 @@ const PopularGames = () => {
             <div className="rounded-lg flex-1">
               <Link href="#">
                 <img
-                  src="https://placehold.co/150x150"
+                  src="../media/rise-online.jpg"
                   alt="Metin 2"
                   className="object-cover w-full h-full rounded-lg"
                 />
@@ -123,7 +123,7 @@ const PopularGames = () => {
           className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center min-h-[420px] max-h-[420px]"
         >
           <img
-            src="https://placehold.co/200x300"
+            src="../media/rust.png"
             alt="League of Legends"
             className="object-cover w-full h-full rounded-lg"
           />
@@ -134,7 +134,7 @@ const PopularGames = () => {
           <div className="rounded-lg min-h-[200px] max-h-[200px]">
             <Link href="#">
               <img
-                src="https://placehold.co/150x150"
+                src="../media/metin-2.png"
                 alt="PUBG"
                 className="object-cover w-full h-full rounded-lg"
               />
@@ -143,7 +143,7 @@ const PopularGames = () => {
           <div className="rounded-lg mt-4 min-h-[200px] max-h-[200px]">
             <Link href="#">
               <img
-                src="https://placehold.co/150x150"
+                src="../media/lol.jpg"
                 alt="Metin 2"
                 className="object-cover w-full h-full rounded-lg"
               />

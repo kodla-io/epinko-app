@@ -70,13 +70,6 @@ const AllAdvertsList = () => {
               </h2>
             </div>
           ))}
-          <div className="text-center w-full p-2 rounded-sm">
-            <Link href="/">
-              <h2 className="w-full min-w-[200px] p-3 rounded-md cursor-pointer font-normal">
-                İlan Oluştur
-              </h2>
-            </Link>
-          </div>
         </div>
       </div>
 
@@ -126,9 +119,6 @@ const AllAdvertsList = () => {
                               <div className="ml-2">
                                 <p className="text-[8px] text-gray-400">
                                   GÜVENİLİR SATICI
-                                </p>
-                                <p className="text-[8px] text-yellow-500">
-                                  2 BAŞARILI İŞLEM
                                 </p>
                               </div>
                             </div>

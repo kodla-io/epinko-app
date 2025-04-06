@@ -60,7 +60,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -69,7 +69,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -78,7 +78,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -87,7 +87,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -96,7 +96,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -105,7 +105,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -114,7 +114,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -123,7 +123,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -132,7 +132,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -141,7 +141,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -150,7 +150,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -159,7 +159,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -168,7 +168,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -177,7 +177,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -186,7 +186,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -195,7 +195,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>
@@ -204,7 +204,7 @@ const StorySlider = () => {
                   <img
                     src="https://placehold.co/100"
                     alt="Item 5"
-                    className="rounded-full w-full h-full object-cover"
+                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
                   />
                 </Link>
               </SwiperSlide>

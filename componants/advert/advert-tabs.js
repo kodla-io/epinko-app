@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { AiOutlineSafety } from "react-icons/ai";
+// import { AiOutlineSafety } from "react-icons/ai";
 
 const Advert = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -60,20 +60,23 @@ const Advert = () => {
                 <Link href="#">
                   <div className="p-1 glow">
                     <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
-                      <div className="absolute top-0 left-0 flex flex-col space-y-1 p-2">
-                        <div className="bg-orange-500 text-white text-[7px] px-1 p-1 px-2 rounded-[10px]">
-                          <span className="p-0 m-0">LOREM IPSUM</span>
+                      <div className="absolute top-0 left-0 grid grid-cols-3 w-full space-y-1 p-2">
+                        <div className="px-1">
+                          <span className="bg-orange-500 text-white text-[7px] p-2 rounded-[10px]">LOREM IPSUM</span>
                         </div>
-                        <div className="bg-blue-700 text-white text-[7px] px-1 p-1 px-2 rounded-[10px]">
-                          <span className="p-0 m-0">LOREM IPSUM</span>
+                        <div className="px-1">
+                          <span className="bg-blue-700 text-white text-[7px] p-2 rounded-[10px]">LOREM IPSUM</span>
                         </div>
-                        <div className="bg-red-700 text-white text-[7px] px-1 p-1 px-2 rounded-[10px]">
-                          <span className="p-0 m-0">LOREM IPSUM</span>
+                        <div className="px-1">
+                          <span className="bg-red-700 text-white text-[7px] p-2 rounded-[10px]">LOREM IPSUM</span>
+                        </div>
+                        <div className="px-1">
+                          <span className="bg-pink-700 text-white text-[7px] p-2 rounded-[10px]">LOREM IPSUM</span>
                         </div>
                       </div>
-                      <div className="absolute top-2 right-2">
+                      {/* <div className="absolute top-2 right-2">
                         <AiOutlineSafety className="w-8 h-8" />
-                      </div>
+                      </div> */}
                       <img
                         src="https://placehold.co/200x300"
                         alt={`Card ${index}`}
@@ -97,14 +100,8 @@ const Advert = () => {
                               className="w-8 h-8 rounded-full"
                             />
                             <div className="ml-2">
-                              <p className="text-[8px] font-bold">
+                              <p className="text-[10px] font-bold">
                                 Lorem Ipsum
-                              </p>
-                              <p className="text-[8px] text-gray-400">
-                                GÜVENİLİR SATICI
-                              </p>
-                              <p className="text-[8px] text-yellow-500">
-                                2 BAŞARILI İŞLEM
                               </p>
                             </div>
                           </div>

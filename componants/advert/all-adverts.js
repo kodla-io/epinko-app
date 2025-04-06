@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import SearchSidebar from "../search-sidebar/search";
-import AllAdvertsList from "../advert/all-adverts-list"
+import AllAdvertsList from "../advert/all-adverts-list";
 import { FaFilter, FaTimes } from "react-icons/fa";
+import Link from "next/link";
 
 const AllAdverts = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -11,17 +12,42 @@ const AllAdverts = () => {
   const toggleModal = () => setModalOpen(!isModalOpen);
 
   return (
-    <section style={{ backgroundColor: "var(--background)" }} className="p-2 md:p-4">
-      <div className="container mx-auto">
-        <div className="flex items-center space-x-4">
+    <section style={{ backgroundColor: "var(--background)" }} className="">
+      <div className="full-size-bg-img">
+        <div className="container m-auto relative h-[190px]">
+          <h2
+            style={{ color: "var(--foreground)" }}
+            className="text-white text-[30px] py-2 ml-8 font-bold"
+          >
+            İLANLAR
+          </h2>
+          <div className="absolute bottom-[10px] right-10 flex">
+            <Link href="/" className="text-center">
+              <h2 className="w-full min-w-[200px] p-3 rounded-md cursor-pointer font-normal bg-gradient-to-r from-green-300 to-green-500 hover:from-green-400 hover:to-green-600 transition-colors duration-200">
+                <b>İlan Oluştur</b>
+              </h2>
+            </Link>
+            <select style={{backgroundColor: "var(--label5)"}} class="block min-w-[100px] ml-2 appearance-none w-full bg-black text-white px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+              <option>Çok Satanlar</option>
+              <option>Fiyat Artan</option>
+              <option>Fiyat Azalan</option>
+              <option>Yeniden Eskiye</option>
+              <option>Eskiden Yeniye</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div className="container mx-auto p-2 md:p-4">
+        {/* <div className="flex items-center space-x-4">
           <h2
             style={{ color: "var(--foreground)" }}
             className="text-white text-[30px] py-2 font-bold"
           >
             İLANLAR
           </h2>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
-        </div>
+          <div clas
+          sName="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
+        </div> */}
         <div className="flex flex-col lg:flex-row min-h-screen">
           {/* Sol Kutu */}
           <div className="text-white p-4 lg:w-1/5">
@@ -78,7 +104,6 @@ const AllAdverts = () => {
                 <div className="max-h-[600px] overflow-y-scroll overflow-hidden">
                   <SearchSidebar />
                 </div>
-                
               </div>
             </div>
           )}

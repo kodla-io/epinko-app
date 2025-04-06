@@ -6,6 +6,7 @@ import NewAdver from "../../componants/new-advert/new-adverts";
 import UpSlider from "../../componants/new-games-slider/upSlider";
 import DownSlider from "../../componants/new-games-slider/downSlider";
 import NewsSlider from "../../componants/news/news";
+import GameSlider from "../../componants/game-list-slider/GameListSlider"
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <EmblaCarousel />
       <Advert />
       <PopularGames />
+      <GameSlider />
       <NewAdver />
       <UpSlider />
       <DownSlider />

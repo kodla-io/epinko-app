@@ -4,11 +4,17 @@ const SearchSidebar = () => {
   return (
     <div
       style={{
-        backgroundColor: "var(--advert-list-bg)",
+        backgroundColor: "#262626",
         color: "var(--foreground)",
       }}
-      className="text-white p-4 rounded-lg"
+      className="text-white p-4 rounded-lg md:relative md:mt-[-100px]"
     >
+      <h2
+        style={{ color: "var(--foreground)" }}
+        className="text-white text-[20px] mb-2 font-bold"
+      >
+        KATEGORİLER
+      </h2>
       {/* Kategori Arama */}
       <div className="mb-4">
         <input
@@ -33,7 +39,10 @@ const SearchSidebar = () => {
           "Pasha Fencer",
           "Mobile Legends",
         ].map((game, index) => (
-          <div key={index} className="flex items-center space-x-2 border-b border-gray-500 pb-2">
+          <div
+            key={index}
+            className="flex items-center space-x-2 border-b border-gray-500 pb-2"
+          >
             <div className="w-8 h-8">
               <img className="rounded-sm" src="https://placehold.co/200" />
             </div>
@@ -51,16 +60,16 @@ const SearchSidebar = () => {
             placeholder="Min. Fiyat"
             className="w-1/2 p-2 rounded text-white"
             style={{
-            backgroundColor: "var(--advert-list-bg)",
-          }}
+              backgroundColor: "var(--advert-list-bg)",
+            }}
           />
           <input
             type="text"
             placeholder="Max. Fiyat"
             className="w-1/2 p-2 rounded text-white"
             style={{
-            backgroundColor: "var(--advert-list-bg)",
-          }}
+              backgroundColor: "var(--advert-list-bg)",
+            }}
           />
         </div>
       </div>

@@ -53,7 +53,7 @@ const EmblaCarousel = () => {
                     <div className="embla__slide" key={index}>
                       <div className="embla__slide__number">
                         {/* {index + 1} */}
-                        <img src="https://placehold.co/2000x1000" />
+                        <img className="object-cover w-full" src="https://placehold.co/2000x1000" />
                       </div>
                     </div>
                   ))}
