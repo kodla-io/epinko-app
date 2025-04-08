@@ -7,15 +7,16 @@ import Link from "next/link";
 const Advert = () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
-  const tabs = [
+  const leftTabs = [
     { id: "tab1", label: "Rise Online", items: Array(12).fill("") },
     { id: "tab2", label: "Pubg Mobile", items: Array(10).fill("") },
     { id: "tab3", label: "Valorant", items: Array(8).fill("") },
-    { id: "tab4", label: "TFT", items: Array(1).fill("") },
-    { id: "tab5", label: "Pubg Mobile", items: Array(2).fill("") },
-    { id: "tab6", label: "LOL", items: Array(3).fill("") },
-    { id: "tab7", label: "Zula", items: Array(4).fill("") },
-    { id: "tab8", label: "Roblox", items: Array(5).fill("") },
+  ];
+
+  const rightTabs = [
+    { id: "tab4", label: "Rise Online", items: Array(6).fill("") },
+    { id: "tab5", label: "Pubg Mobile", items: Array(5).fill("") },
+    { id: "tab6", label: "Valorant", items: Array(4).fill("") },
   ];
 
   return (
@@ -29,30 +30,52 @@ const Advert = () => {
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
-      <div className="advert-tabs space-x-4 mb-4">
-        {tabs.map((tab) => (
-          <div
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 ${
-              activeTab === tab.id
-                ? "text-blue-500 font-bold border-b-3 border-orange-500 flex items-center"
-                : "text-gray-500 flex items-center"
-            }`}
-          >
-            <img
-              className="w-[30px] h-[30px] mr-2 rounded-md"
-              src="https://placehold.co/50"
-            />
-            {tab.label}
-          </div>
-        ))}
+      <div className="advert-tabs p-2 space-x-4 mb-4 flex justify-between">
+        <div className="left-tabs flex space-x-4">
+          {leftTabs.map((tab) => (
+            <div
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-2 py-1 ${
+                activeTab === tab.id
+                  ? "advert-tab-active font-bold flex items-center"
+                  : "advert-tab flex items-center"
+              }`}
+            >
+              <img
+                className="w-[40px] h-[40px] mr-2 rounded-md"
+                src="https://placehold.co/100"
+              />
+              {tab.label}
+            </div>
+          ))}
+        </div>
+        <div className="right-tabs flex ">
+          {rightTabs.map((tab) => (
+            <div
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-2 py-1 ${
+                activeTab === tab.id
+                  ? "advert-tab-active font-bold flex items-center mr-2"
+                  : "advert-tab flex items-center  mr-2"
+              }`}
+            >
+              <img
+                className="w-[60px] h-[60px] rounded-md onject-cover"
+                src="https://placehold.co/100"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {tabs.map((tab) => (
+      {leftTabs.concat(rightTabs).map((tab) => (
         <div
           key={tab.id}
-          className={`tab-content ${activeTab === tab.id ? "active" : ""}`}
+          className={`tab-content ${
+            activeTab === tab.id ? "active" : "hidden"
+          }`}
         >
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {tab.items.map((_, index) => (
@@ -62,13 +85,19 @@ const Advert = () => {
                     <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
                       <div className="absolute top-0 left-0 grid flex-cols md:grid-cols-3 w-full space-y-1 p-1">
                         <div className="px-1">
-                          <span className="bg-orange-500 text-white text-[7px] p-2 rounded-[10px]">LOREM IPSUM</span>
+                          <span className="bg-orange-500 text-white text-[7px] p-2 rounded-[10px]">
+                            LOREM IPSUM
+                          </span>
                         </div>
                         <div className="px-1">
-                          <span className="bg-blue-700 text-white text-[7px] p-2 rounded-[10px]">LOREM IPSUM</span>
+                          <span className="bg-blue-700 text-white text-[7px] p-2 rounded-[10px]">
+                            LOREM IPSUM
+                          </span>
                         </div>
                         <div className="px-1">
-                          <span className="bg-red-700 text-white text-[7px] p-2 rounded-[10px]">LOREM IPSUM</span>
+                          <span className="bg-red-700 text-white text-[7px] p-2 rounded-[10px]">
+                            LOREM IPSUM
+                          </span>
                         </div>
                       </div>
                       {/* <div className="absolute top-2 right-2">

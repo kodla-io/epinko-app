@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 const GameDetailAdvert = () => {
-  const items = Array(6).fill("");
+  const items = Array(12).fill("");
 
   return (
     <div className="container mx-auto px-1 md:px-4">
