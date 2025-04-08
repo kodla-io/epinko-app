@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CiCoins1 } from "react-icons/ci";
-import Comments from "../comments//comments";
+import Comments from "../texts/comments";
 
 const products = [
   { name: "PUBG Mobile 840 UC", price: "444,33 TL" },

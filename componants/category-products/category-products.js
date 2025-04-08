@@ -42,7 +42,7 @@ const productList = [
   },
 ];
 
-const CategoryProducts = () => {
+const CategoryProducts = ({ title }) => {
   const [counts, setCounts] = useState(
     productList.reduce((acc, product) => {
       acc[product.id] = 1;
@@ -67,15 +67,17 @@ const CategoryProducts = () => {
   return (
     <div className="p-4">
       <div className="container m-auto">
-        <div className="flex items-center space-x-4">
-          <h2
-            style={{ color: "var(--foreground)" }}
-            className="text-white text-[30px] py-2 font-bold"
-          >
-            ÜRÜNLER
-          </h2>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
-        </div>
+        {title && (
+          <div className="flex items-center space-x-4">
+            <h2
+              style={{ color: "var(--foreground)" }}
+              className="text-white text-[30px] py-2 font-bold"
+            >
+              ÜRÜNLER
+            </h2>
+            <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
+          </div>
+        )}
         {productList.map((product) => (
           <div
             style={{

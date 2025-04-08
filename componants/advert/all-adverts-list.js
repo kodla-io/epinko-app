@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineSafety } from "react-icons/ai";
 import StreamerSingle from "../streamers/streamers-single";
-import Comments from "../comments/comments";
-import ImageTextScrollComponent from "../comments/explanation";
+import Comments from "../texts/comments";
+import ImageTextScrollComponent from "../texts/explanation";
 import HowToCreateAd from "../advert/how-to-create-an-ad"
 import HowToBuyAd from "../advert/how-to-buy"
 import WhatIsReliableSeller from "../advert/What-is-a-reliable-seller"

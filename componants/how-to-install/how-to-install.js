@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Comments from "../../componants/comments/comments";
+import Comments from "../texts/comments";
 
 const steps = [
   {
