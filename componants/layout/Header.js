@@ -210,12 +210,12 @@ const Header = () => {
 
       {/* Ana Menü */}
       <div className="header-middle">
-        <div className="container m-auto flex justify-between items-center px-6 py-3">
+        <div className="container m-auto flex justify-between items-center px-2 md:px-6 py-3">
           {/* Logo */}
           <div className="text-2xl font-bold text-green-500">
             {/* epin<span className="text-white">KO</span> */}
             <Link href="/">
-              <img className="max-w-[130px]" src="/media/logo.png" />
+              <img className="max-w-[90px] md:max-w-[130px]" src="/media/logo.png" />
             </Link>
           </div>
 
@@ -261,9 +261,16 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
-              Giriş Yap
-            </button>
+            <Link href="/">
+              <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
+                Giriş Yap
+              </button>
+            </Link>
+            <Link href="/">
+              <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
+                Kayıt Ol
+              </button>
+            </Link>
             {/* <FaShoppingCart className="text-xl cursor-pointer" /> */}
           </div>
 
@@ -328,7 +335,7 @@ const Header = () => {
               >
                 <div
                   style={{ backgroundColor: "rgba(88, 243, 249, 0.3)" }}
-                  className="rounded-md p-1 mr-2"
+                  className="rounded-md p-2 mr-2"
                 >
                   <img
                     src="/media/icons/gamepad.png"
@@ -336,7 +343,7 @@ const Header = () => {
                     className="max-w-[25px] min-w-[25px]"
                   />
                 </div>
-                <span className="text-lg">Tüm Oyunlar</span>
+                <span className="text-lg font-bold">Tüm Oyunlar</span>
                 <img
                   src="/media/icons/down.png"
                   className="max-w-[25px] min-w-[25px]"
@@ -350,7 +357,7 @@ const Header = () => {
               >
                 <div
                   style={{ backgroundColor: "rgba(88, 249, 115, 0.3)" }}
-                  className="rounded-md p-1 mr-2"
+                  className="rounded-md p-2 mr-2"
                 >
                   <img
                     src="/media/icons/advert.png"
@@ -358,7 +365,7 @@ const Header = () => {
                     className="max-w-[25px] min-w-[25px]"
                   />
                 </div>
-                <span className="text-lg">Tüm İlanlar</span>
+                <span className="text-lg font-bold">Tüm İlanlar</span>
                 <img
                   src="/media/icons/down.png"
                   className="max-w-[25px] min-w-[25px]"
@@ -369,7 +376,7 @@ const Header = () => {
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
-                  className="rounded-md p-1 mr-2"
+                  className="rounded-md p-2 mr-2"
                 >
                   <img
                     src="/media/icons/fav.png"
@@ -377,14 +384,14 @@ const Header = () => {
                     className="max-w-[25px] min-w-[25px]"
                   />
                 </div>
-                <span className="text-lg">Favoriler</span>
+                <span className="text-lg font-bold">Favoriler</span>
               </button>
             </Link>
             <Link href="#">
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-                  className="rounded-md p-1 mr-2"
+                  className="rounded-md p-2 mr-2"
                 >
                   <img
                     src="/media/icons/steam2.png"
@@ -392,16 +399,16 @@ const Header = () => {
                     className="max-w-[25px] min-w-[25px]"
                   />
                 </div>
-                <span className="text-lg">Steam Oyunlar</span>
+                <span className="text-lg font-bold">Steam Oyunlar</span>
               </button>
             </Link>
-            <Link
+            {/* <Link
               href="#"
               className="hover:text-green-400 flex items-center space-x-1"
             >
               <img src="/media/icons/steam.png" />
               <span>İletişim</span>
-            </Link>
+            </Link> */}
           </nav>
         </div>
       </div>

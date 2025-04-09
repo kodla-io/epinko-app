@@ -43,22 +43,22 @@ const GameDetailTop = () => {
         <div className="flex flex-col flex-7 flex-column space-y-4 md:space-y-0">
           <div className="flex flex-col flex-7 md:flex-row justify-between space-y-4 md:space-y-0">
             <div className="flex-3 p-2">
-              <div className="h-auto max-h-auto md:max-h-[425px] min-h-auto md:min-h-[425px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
+              <div className="h-auto max-h-auto md:max-h-[494px] min-h-auto md:min-h-[494px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
                 <img
                   src="https://placehold.co/200x70/000000/FFFFFF"
                   className="absolute bottom-[20px] left-1/2 transform -translate-x-1/2"
                 />
                 <img
-                  src="https://placehold.co/350x350"
+                  src="https://placehold.co/350x450"
                   alt="Game Picture"
-                  className="rounded-lg w-full h-full object-cover max-h-auto md:max-h-[394px]"
+                  className="rounded-lg w-full h-full object-cover min-h-auto max-h-auto md:min-h-[464px] md:max-h-[464px]"
                 />
               </div>
             </div>
 
             {/* İkinci Kutu: Görsel */}
             <div className="flex-5 p-2">
-              <div className="h-auto max-h-auto md:max-h-[425px] min-h-auto md:min-h-[425px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
+              <div className="h-auto max-h-auto md:max-h-[494px] min-h-auto md:min-h-[494px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
                 <div className="w-full rounded-lg text-white">
                   <div className="flex bg-[var(--advert-list-bg)] items-center mb-4 p-3 rounded-lg">
                     <img
@@ -75,22 +75,22 @@ const GameDetailTop = () => {
                   <p className="text-gray-400 mb-4">Oyuncu ID’nize yüklenir.</p>
 
                   <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] px-2 py-1 rounded-xl">
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
                       <span>Satıcı: Hesap.com.tr</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] px-2 py-1 rounded-xl">
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
                       <span>Bölge: Türkiye</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] px-2 py-1 rounded-xl">
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
                       <span>Platform: Apple</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] px-2 py-1 rounded-xl">
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
                       <span>Platform: Android</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] px-2 py-1 rounded-xl">
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
                       <span>Ürün Tipi: Top-Up</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] px-2 py-1 rounded-xl">
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
                       <span>Yükleme Süresi: 0-60 sn</span>
                     </div>
                   </div>

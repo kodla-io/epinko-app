@@ -36,6 +36,7 @@
   --megaMenu-bg: #101828;
   --news-card-bg: #0000000a;
   --advert-list-bg: #0000001e;
+  --input-bg: #0000001e;
   --btn-bg: #1a2543;
   --btn-color: white;
   transition: all 1s ease;
@@ -70,6 +71,7 @@
   --megaMenu-bg: #101828;
   --news-card-bg: #ffffff0d;
   --advert-list-bg: #ffffff0d;
+  --input-bg: #ffffff0d;
   --btn-bg: #1a2543;
   --btn-color: white;
 }
@@ -101,6 +103,12 @@ body {
   --detail-medium-contrast: rgb(25, 25, 25);
   --text-high-contrast-rgb-value: 230, 230, 230;
 }
+
+.container {
+  @media (width >= 96rem) {
+      max-width: 90rem !important;
+  }
+} 
 
 .header-bottom {
   background-color: var(--bg-header);
@@ -933,6 +941,12 @@ nav img {
   inset: -1em;
 }
 
+@media (max-width: 768px) {
+  .border-glow-header {
+    width: 94px;
+  }
+}
+
 @property --b {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -1434,4 +1448,15 @@ nav img {
   .products-detail-top-banner {
     height: 200px;
   }
+}
+
+/* .bg-cicrle-blue {
+  background-image: url("/media/bg/circle-orange-bg.png");
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+} */
+
+#login input, #register input {
+  background-color: var(--input-bg);
 }

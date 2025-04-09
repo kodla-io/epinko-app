@@ -1,20 +1,16 @@
-ANASAYFA REVİZELERİ
 
-(+++)  Bu bölüm https://prnt.sc/pDWQ28CLdrHV direk böyle olacak https://prnt.sc/QBOimdFEm-yW (tablar)
-
-()  https://prnt.sc/JGKycmJmHfE2 Bu bölüm  https://prnt.sc/FL0lgrX8q4Mo %80 buraya benzeyecek
+(+++)  https://prnt.sc/JGKycmJmHfE2 Bu bölüm  https://prnt.sc/FL0lgrX8q4Mo %80 buraya benzeyecek
 
 
+(+++)  Tüm site genişliği
 
-()  https://epinko-app.vercel.app/category-detail REVİZELER
+.container {
+    @media (width >= 96rem) {
+        max-width: 90rem;
+    }
+} 
 
-()  Burasi çok karışık görünüyor çok kötü bu hali ya direk %90 https://hesap.com.tr/urunler/pubg-mobile-uc-satin-al böyle yada böyle  https://www.itemsatis.com/urunler/firefly-live.html çevrilmesi lazim
-
-
-
-(+++)  https://epinko-app.vercel.app/game-detail Bu bölüm
-
-(+++)  https://hesap.com.tr/urun/pubg-mobile-10-uc-satin-al %90 buna benzesin direk su anki hali karman çorman
+olsun
  
 
 23.03.2025
