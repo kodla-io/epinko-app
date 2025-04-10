@@ -70,8 +70,8 @@ const Register = () => {
             </div>
           </div>
 
-          <button className="w-full bg-blue-600 hover:bg-blue-700 transition-colors py-3 rounded-lg text-white font-semibold">
-            Giriş Yap
+          <button className="w-full bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+            Üye Ol
           </button>
         </div>
       </div>

@@ -1457,6 +1457,6 @@ nav img {
   background-repeat: no-repeat;
 } */
 
-#login input, #register input {
+#login input, #register input, #yayinci-basvuru input, #bayilik-basvuru input, #bayilik-basvuru select {
   background-color: var(--input-bg);
 }
