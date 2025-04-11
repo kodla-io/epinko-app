@@ -10,9 +10,6 @@ import {
 } from "react-icons/fa";
 
 const SSS = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [openQuestions, setOpenQuestions] = useState({});
-
   const tabsData = [
     { name: "Lorem Ipsum", icon: <FaQuestion /> },
     { name: "Diğer Konu", icon: <FaRegListAlt /> },
@@ -69,11 +66,19 @@ const SSS = () => {
       },
     ],
   };
+  const [openQuestions, setOpenQuestions] = useState({});
+  const [activeTab, setActiveTab] = useState(tabsData[0].name);
+
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleQuestion = (index) => {
+    setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
 
   return (
     <div className="my-16">
       <div className="container m-auto">
-        <div className="flex">
+        <div className="flex flex-wrap md:flex-nowrap">
           {/* Sol kısım: Tablar */}
           <div className="bg-[var(--advert-list-bg)] p-4 min-w-[100%] mb-3 md:min-w-[200px]">
             <h2 className="text-xl mb-4 text-[var(--success)]">
@@ -101,20 +106,23 @@ const SSS = () => {
             {(contentData[activeTab] || []).map((content, index) => (
               <div
                 key={index}
-                className="mb-4 border border-gray-600 rounded-lg"
+                className="mb-4 rounded-lg overflow-hidden transition-all duration-300 bg-[var(--advert-list-bg)]"
               >
                 <div
-                  className="flex justify-between p-4 cursor-pointer"
+                  className="flex justify-between items-center p-4 cursor-pointer border-b border-gray-300"
                   onClick={() => toggleQuestion(index)}
                 >
                   <h2 className="font-semibold">{content.question}</h2>
-                  <span>{openQuestions[index] ? <FaMinus /> : <FaPlus />}</span>
+                  <span>{openIndex === index ? <FaMinus /> : <FaPlus />}</span>
                 </div>
-                {openQuestions[index] && (
-                  <div className="px-4 pb-4">
-                    <p>{content.answer}</p>
-                  </div>
-                )}
+
+                <div
+                  className={`px-4 overflow-hidden transition-all duration-500 ${
+                    openIndex === index ? "max-h-96 py-4" : "max-h-0"
+                  }`}
+                >
+                  <p className="text-sm">{content.answer}</p>
+                </div>
               </div>
             ))}
           </div>

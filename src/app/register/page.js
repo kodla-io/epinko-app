@@ -34,26 +34,26 @@ const Register = () => {
             />
           </div>
 
-          <div class="flex space-x-4 mb-6 md:mb-12">
-            <div class="flex-1">
-              <label class="block text-lg mb-3">
+          <div className="flex space-x-4 mb-6 md:mb-12">
+            <div className="flex-1">
+              <label className="block text-lg mb-3">
                 Kullanıcı adı
               </label>
               <input
                 type="text"
                 placeholder="Kullanıcı adı"
-                class="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
+                className="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
               />
             </div>
 
-            <div class="flex-1">
-              <label class="block text-lg mb-3">
+            <div className="flex-1">
+              <label className="block text-lg mb-3">
                 Telefon numarası
               </label>
               <input
                 type="text"
                 placeholder="Telefon numarası"
-                class="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
+                className="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
               />
             </div>
           </div>
