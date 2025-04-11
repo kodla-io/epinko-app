@@ -1,16 +1,6 @@
 
-(+++)  https://prnt.sc/JGKycmJmHfE2 Bu bölüm  https://prnt.sc/FL0lgrX8q4Mo %80 buraya benzeyecek
 
-
-(+++)  Tüm site genişliği
-
-.container {
-    @media (width >= 96rem) {
-        max-width: 90rem;
-    }
-} 
-
-olsun
+game-detail sayfasında benzer ürünler link olarka eklenecek
  
 
 23.03.2025

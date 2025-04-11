@@ -189,16 +189,16 @@ const Header = () => {
       <div className="header-top w-full">
         <div className="flex justify-between items-center px-4 container py-1 m-auto text-xsm">
           <div className="flex space-x-4">
-            <a href="#" className="hover:text-green-400">
+            <a href="#" className="text-[13px] hover:text-green-400">
               <p>Hakkımızda</p>
             </a>
-            <a href="#" className="hover:text-green-400">
+            <a href="#" className="text-[13px] hover:text-green-400">
               <p>Haberler</p>
             </a>
-            <a href="#" className="hover:text-green-400">
+            <a href="#" className="text-[13px] hover:text-green-400">
               <p>Yardım</p>
             </a>
-            <a href="#" className="hover:text-green-400">
+            <a href="#" className="text-[13px] hover:text-green-400">
               <p>İletişim</p>
             </a>
           </div>
@@ -220,7 +220,7 @@ const Header = () => {
           </div>
 
           {/* Menü */}
-          <nav className="hidden md:flex items-center space-x-6 text-sm uppercase">
+          <nav className="hidden lg:flex items-center space-x-6 text-sm uppercase">
             {/* Arama Çubuğu */}
             <div className="relative flex">
               <SearchInput />
@@ -286,7 +286,7 @@ const Header = () => {
 
       {/* Alt Menü */}
       <div className="header-bottom">
-        <div className="container m-auto flex justify-between items-center px-6 py-3">
+        <div className="container m-auto flex justify-between items-center px-6 py-1">
           <nav className="hidden md:flex space-x-6 text-sm uppercase">
             {/* <div className="flex">
               <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -335,18 +335,18 @@ const Header = () => {
               >
                 <div
                   style={{ backgroundColor: "rgba(88, 243, 249, 0.3)" }}
-                  className="rounded-md p-2 mr-2"
+                  className="rounded-md p-[6px] mr-2"
                 >
                   <img
                     src="/media/icons/gamepad.png"
                     alt="Mega Menu Icon"
-                    className="max-w-[25px] min-w-[25px]"
+                    className="max-w-[22px] min-w-[22px]"
                   />
                 </div>
                 <span className="text-lg font-bold">Tüm Oyunlar</span>
                 <img
                   src="/media/icons/down.png"
-                  className="max-w-[25px] min-w-[25px]"
+                  className="max-w-[22px] min-w-[22px]"
                 />
               </button>
             </div>
@@ -357,18 +357,18 @@ const Header = () => {
               >
                 <div
                   style={{ backgroundColor: "rgba(88, 249, 115, 0.3)" }}
-                  className="rounded-md p-2 mr-2"
+                  className="rounded-md p-[6px] mr-2"
                 >
                   <img
                     src="/media/icons/advert.png"
                     alt="Mega Menu Icon"
-                    className="max-w-[25px] min-w-[25px]"
+                    className="max-w-[22px] min-w-[22px]"
                   />
                 </div>
                 <span className="text-lg font-bold">Tüm İlanlar</span>
                 <img
                   src="/media/icons/down.png"
-                  className="max-w-[25px] min-w-[25px]"
+                  className="max-w-[22px] min-w-[22px]"
                 />
               </button>
             </div>
@@ -376,12 +376,12 @@ const Header = () => {
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
-                  className="rounded-md p-2 mr-2"
+                  className="rounded-md p-[6px] mr-2"
                 >
                   <img
                     src="/media/icons/fav.png"
                     alt="Mega Menu Icon"
-                    className="max-w-[25px] min-w-[25px]"
+                    className="max-w-[22px] min-w-[22px]"
                   />
                 </div>
                 <span className="text-lg font-bold">Favoriler</span>
@@ -391,12 +391,12 @@ const Header = () => {
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-                  className="rounded-md p-2 mr-2"
+                  className="rounded-md p-[6px] mr-2"
                 >
                   <img
                     src="/media/icons/steam2.png"
                     alt="Mega Menu Icon"
-                    className="max-w-[25px] min-w-[25px]"
+                    className="max-w-[22px] min-w-[22px]"
                   />
                 </div>
                 <span className="text-lg font-bold">Steam Oyunlar</span>

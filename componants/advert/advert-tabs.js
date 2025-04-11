@@ -50,7 +50,7 @@ const Advert = () => {
             </div>
           ))}
         </div>
-        <div className="right-tabs flex ">
+        <div className="right-tabs hidden md:flex ">
           {rightTabs.map((tab) => (
             <div
               key={tab.id}
@@ -84,17 +84,17 @@ const Advert = () => {
                   <div className="p-1 glow">
                     <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
                       <div className="absolute top-0 left-0 grid flex-cols md:grid-cols-3 w-full space-y-1 p-1">
-                        <div className="px-1">
+                        <div className="">
                           <span className="bg-orange-500 text-white text-[7px] p-2 rounded-[10px]">
                             LOREM IPSUM
                           </span>
                         </div>
-                        <div className="px-1">
+                        <div className="">
                           <span className="bg-blue-700 text-white text-[7px] p-2 rounded-[10px]">
                             LOREM IPSUM
                           </span>
                         </div>
-                        <div className="px-1">
+                        <div className="">
                           <span className="bg-red-700 text-white text-[7px] p-2 rounded-[10px]">
                             LOREM IPSUM
                           </span>

@@ -22,7 +22,13 @@ const GameDetailAdvert = () => {
           <div key={index} className="p-2 md:p-2">
             <Link href="#">
               <div className="relative min-h-[300px] max-h-[300px] overflow-hidden rounded-lg">
-                <div className="absolute top-0 left-0 flex flex-col space-y-1 p-2">
+                <span
+                  className="absolute top-[75px] left-[-21px] text-white py-[2px] px-[30px] text-xs font-bold transform -rotate-45 origin-top-left"
+                  style={{ backgroundColor: "var(--label6)" }}
+                >
+                  VİTRİN İLANI
+                </span>
+                <div className="absolute top-0 right-0 flex flex-col space-y-1 p-2">
                   <div className="bg-orange-500 text-white text-[7px] px-1 p-1 px-2 rounded-[10px]">
                     <span className="p-0 m-0">LOREM IPSUM</span>
                   </div>

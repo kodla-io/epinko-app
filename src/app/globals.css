@@ -106,9 +106,9 @@ body {
 
 .container {
   @media (width >= 96rem) {
-      max-width: 90rem !important;
+    max-width: 90rem !important;
   }
-} 
+}
 
 .header-bottom {
   background-color: var(--bg-header);
@@ -1444,19 +1444,38 @@ nav img {
   background-repeat: no-repeat;
 }
 
+.mobil-top-title {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .advert-tab {
+    min-width: 160px;
+  }
+
+  .advert-tab-active {
+    min-width: 160px;
+  }
+}
+
 @media (max-width: 1024px) {
   .products-detail-top-banner {
     height: 200px;
   }
+  .mobil-top-title {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: var(--primary);
+    padding: 0px 6px;
+    border-radius: 6px;
+  }
 }
 
-/* .bg-cicrle-blue {
-  background-image: url("/media/bg/circle-orange-bg.png");
-  background-position: center;
-  background-size: 50%;
-  background-repeat: no-repeat;
-} */
-
-#login input, #register input, #yayinci-basvuru input, #bayilik-basvuru input, #bayilik-basvuru select {
+#login input,
+#register input,
+#yayinci-basvuru input,
+#bayilik-basvuru input,
+#bayilik-basvuru select {
   background-color: var(--input-bg);
 }

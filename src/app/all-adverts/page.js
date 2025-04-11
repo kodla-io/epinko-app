@@ -1,6 +1,6 @@
 import AllAdverts from "../../../componants/advert/all-adverts"
 
-export default function AllGames() {
+export default function AllAdverts() {
   return (
     <>
       <AllAdverts />

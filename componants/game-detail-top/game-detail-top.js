@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { CiCoins1 } from "react-icons/ci";
 import Comments from "../texts/comments";
+import Link from "next/link";
 
 const products = [
   { name: "PUBG Mobile 840 UC", price: "444,33 TL" },
@@ -75,23 +76,29 @@ const GameDetailTop = () => {
                   <p className="text-gray-400 mb-4">Oyuncu ID’nize yüklenir.</p>
 
                   <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
-                      <span>Satıcı: Hesap.com.tr</span>
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
+                      <span className="mobil-top-title">Satıcı:</span>
+                      <span className="mt-2 md:mt-0">Hesap.com.tr</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
-                      <span>Bölge: Türkiye</span>
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
+                      <span className="mobil-top-title">Bölge:</span>
+                      <span className="mt-2 md:mt-0">Türkiye</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
-                      <span>Platform: Apple</span>
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
+                      <span className="mobil-top-title">Platform:</span>
+                      <span className="mt-2 md:mt-0">Apple</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
-                      <span>Platform: Android</span>
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
+                      <span className="mobil-top-title">Platform:</span>
+                      <span className="mt-2 md:mt-0"> Android</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
-                      <span>Ürün Tipi: Top-Up</span>
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
+                      <span className="mobil-top-title">Ürün Tipi:</span>
+                      <span className="mt-2 md:mt-0">Top-Up</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded">
-                      <span>Yükleme Süresi: 0-60 sn</span>
+                    <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
+                      <span className="mobil-top-title">Yükleme Süresi:</span>
+                      <span className="mt-2 md:mt-0"> 0-60 sn</span>
                     </div>
                   </div>
 
@@ -194,7 +201,7 @@ const GameDetailTop = () => {
           </div>
         </div>
 
-        {/* Üçüncü Kutu: Satın Alma Bilgileri */}
+        {/* Üçüncü Kutu: Benzer Ürünler */}
         <div className="flex-2 p-2">
           <div className="h-auto max-h-auto bg-[var(--advert-list-bg)] text-[var(--foreground)] p-2 relative rounded-lg">
             <div className="max-w-sm p-2 rounded-lg">
@@ -203,21 +210,23 @@ const GameDetailTop = () => {
               </h2>
               <div className="space-y-4">
                 {products.map((product, index) => (
-                  <div key={index} className="flex items-center space-x-4">
-                    <img
-                      src="https://placehold.co/100"
-                      alt={product.name}
-                      className="max-w-[70px] max-h-[70px] rounded-md"
-                    />
-                    <div>
-                      <div className="text-white font-semibold">
-                        {product.name}
-                      </div>
-                      <div className="text-gray-400 text-sm">
-                        {product.price}
+                  <Link key={index} href="/all-adverts">
+                    <div className="flex items-center space-x-4 mb-3">
+                      <img
+                        src="https://placehold.co/100"
+                        alt={product.name}
+                        className="max-w-[70px] max-h-[70px] rounded-md"
+                      />
+                      <div>
+                        <div className="text-white font-semibold">
+                          {product.name}
+                        </div>
+                        <div className="text-gray-400 text-sm">
+                          {product.price}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
