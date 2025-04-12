@@ -31,14 +31,16 @@
   --bg-footer: #070707;
   --bg-soft: #1d1f20;
   --bg-soft2: #1d1f20;
+  --bg-info-box: #2e2930;
   --foreground: #212121;
-  --ray-text: #99a1af;
+  --gray-text: #99a1af;
   --megaMenu-bg: #101828;
   --news-card-bg: #0000000a;
-  --advert-list-bg: #0000001e;
+  --advert-list-bg: #333333;
   --input-bg: #0000001e;
   --btn-bg: #1a2543;
   --btn-color: white;
+  --list-box: #a1a1a1;
   transition: all 1s ease;
 }
 
@@ -66,6 +68,7 @@
   --bg-footer: #070707;
   --bg-soft: #ffffff17;
   --bg-soft2: #000000bd;
+  --bg-info-box: #2e2930;
   --foreground: #ededed;
   --gray-text: #99a1af;
   --megaMenu-bg: #101828;
@@ -74,6 +77,7 @@
   --input-bg: #ffffff0d;
   --btn-bg: #1a2543;
   --btn-color: white;
+  --list-box: #050505;
 }
 
 * {
@@ -504,12 +508,12 @@ nav img {
   cursor: pointer;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .advert-tabs {
     display: flex;
     overflow-x: scroll;
   }
-}
+} */
 
 .megaMenu {
   background-color: var(--megaMenu-bg);
@@ -1039,11 +1043,11 @@ nav img {
 
 /* MEGA MENU BUTTON EFFECT */
 
-.header-bottom svg {
+/* .header-bottom svg {
   position: absolute;
   top: -4000px;
   left: -4000px;
-}
+} */
 
 #gooey-button {
   padding: 0 15px;
@@ -1447,16 +1451,16 @@ nav img {
 .mobil-top-title {
   display: block;
 }
-
+/* 
 @media (max-width: 768px) {
   .advert-tab {
-    min-width: 160px;
+    max-width: auto;
   }
 
   .advert-tab-active {
-    min-width: 160px;
+    max-width: 100px;
   }
-}
+} */
 
 @media (max-width: 1024px) {
   .products-detail-top-banner {

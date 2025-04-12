@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaShoppingCart } from "react-icons/fa";
 import { useTheme } from "./Theme";
 import SearchInput from "./Search";
 import MegaMenu from "./MegaMenu";
 import Link from "next/link";
 import { CiCirclePlus } from "react-icons/ci";
+import { MdOutlineFavorite } from "react-icons/md";
+import { FaSteamSquare } from "react-icons/fa";
+import { GiConsoleController } from "react-icons/gi";
+import { HiSpeakerphone } from "react-icons/hi";
 
 const items = [
   {
@@ -215,7 +218,10 @@ const Header = () => {
           <div className="text-2xl font-bold text-green-500">
             {/* epin<span className="text-white">KO</span> */}
             <Link href="/">
-              <img className="max-w-[90px] md:max-w-[130px]" src="/media/logo.png" />
+              <img
+                className="max-w-[90px] md:max-w-[130px]"
+                src="/media/logo.png"
+              />
             </Link>
           </div>
 
@@ -288,46 +294,6 @@ const Header = () => {
       <div className="header-bottom">
         <div className="container m-auto flex justify-between items-center px-6 py-1">
           <nav className="hidden md:flex space-x-6 text-sm uppercase">
-            {/* <div className="flex">
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                  <filter id="gooey">
-                    <feGaussianBlur
-                      in="SourceGraphic"
-                      stdDeviation="5"
-                      result="blur"
-                    />
-                    <feColorMatrix
-                      in="blur"
-                      type="matrix"
-                      values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                      result="highContrastGraphic"
-                    />
-                    <feComposite
-                      in="SourceGraphic"
-                      in2="highContrastGraphic"
-                      operator="atop"
-                    />
-                  </filter>
-                </defs>
-              </svg>
-
-              <button id="gooey-button">
-                F*** Awesome
-                <span className="bubbles">
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                  <span className="bubble"></span>
-                </span>
-              </button>
-            </div> */}
             <div className="relative">
               <button
                 onClick={(event) => toggleMenu(items, event)}
@@ -337,11 +303,7 @@ const Header = () => {
                   style={{ backgroundColor: "rgba(88, 243, 249, 0.3)" }}
                   className="rounded-md p-[6px] mr-2"
                 >
-                  <img
-                    src="/media/icons/gamepad.png"
-                    alt="Mega Menu Icon"
-                    className="max-w-[22px] min-w-[22px]"
-                  />
+                  <GiConsoleController className="w-6 h-6" />
                 </div>
                 <span className="text-lg font-bold">Tüm Oyunlar</span>
                 <img
@@ -359,11 +321,7 @@ const Header = () => {
                   style={{ backgroundColor: "rgba(88, 249, 115, 0.3)" }}
                   className="rounded-md p-[6px] mr-2"
                 >
-                  <img
-                    src="/media/icons/advert.png"
-                    alt="Mega Menu Icon"
-                    className="max-w-[22px] min-w-[22px]"
-                  />
+                  <HiSpeakerphone className="w-6 h-6" />
                 </div>
                 <span className="text-lg font-bold">Tüm İlanlar</span>
                 <img
@@ -372,43 +330,28 @@ const Header = () => {
                 />
               </button>
             </div>
-            <Link href="#">
+            <Link href="/">
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
                   className="rounded-md p-[6px] mr-2"
                 >
-                  <img
-                    src="/media/icons/fav.png"
-                    alt="Mega Menu Icon"
-                    className="max-w-[22px] min-w-[22px]"
-                  />
+                  <MdOutlineFavorite className="w-6 h-6" />
                 </div>
                 <span className="text-lg font-bold">Favoriler</span>
               </button>
             </Link>
-            <Link href="#">
+            <Link href="/">
               <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                 <div
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
                   className="rounded-md p-[6px] mr-2"
                 >
-                  <img
-                    src="/media/icons/steam2.png"
-                    alt="Mega Menu Icon"
-                    className="max-w-[22px] min-w-[22px]"
-                  />
+                  <FaSteamSquare className="w-6 h-6 text-[#112752]" />
                 </div>
                 <span className="text-lg font-bold">Steam Oyunlar</span>
               </button>
             </Link>
-            {/* <Link
-              href="#"
-              className="hover:text-green-400 flex items-center space-x-1"
-            >
-              <img src="/media/icons/steam.png" />
-              <span>İletişim</span>
-            </Link> */}
           </nav>
         </div>
       </div>

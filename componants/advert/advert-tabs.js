@@ -31,12 +31,12 @@ const Advert = () => {
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
       <div className="advert-tabs p-2 space-x-4 mb-4 flex justify-between">
-        <div className="left-tabs flex space-x-4">
+        <div className="left-tabs flex space-x-1 md:space-x-4">
           {leftTabs.map((tab) => (
             <div
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-2 py-1 ${
+              className={`md:px-2 px-1 py-1 ${
                 activeTab === tab.id
                   ? "advert-tab-active font-bold flex items-center"
                   : "advert-tab flex items-center"
@@ -46,7 +46,7 @@ const Advert = () => {
                 className="w-[40px] h-[40px] mr-2 rounded-md"
                 src="https://placehold.co/100"
               />
-              {tab.label}
+              <span className="md:w-full w-[70px] text-sm md:text-md">{tab.label}</span>
             </div>
           ))}
         </div>

@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaQuestion, FaRegListAlt, FaMoneyCheckAlt } from "react-icons/fa";
+import {
+  FaQuestion,
+  FaRegListAlt,
+  FaMoneyCheckAlt,
+  FaEnvelope,
+  FaPhone,
+  FaWhatsapp,
+} from "react-icons/fa";
+import Link from "next/link";
 
 const Contact = () => {
   const [activeTab, setActiveTab] = useState("Contact");
@@ -12,7 +20,7 @@ const Contact = () => {
         <div className="flex flex-wrap md:flex-nowrap p-4">
           {/* Sol Kısım: Manuel Tablar */}
           <div className="min-w-[100%] mb-3 md:min-w-[250px]">
-            <div className="bg-[var(--advert-list-bg)] p-4 roulded-lg">
+            <div className="bg-[var(--advert-list-bg)] p-4 roulded-lg mt-3">
               <ul>
                 <li
                   className={`flex items-center p-2 my-2 cursor-pointer rounded ${
@@ -55,10 +63,27 @@ const Contact = () => {
                 </li>
               </ul>
             </div>
+
+            <div className="text-white flex flex-col items-center py-3 space-y-2">
+              <button className="bg-[var(--alert)] flex items-center justify-center w-full p-3 rounded shadow-lg">
+                <FaEnvelope className="mr-2" />
+                Mail Gönder
+              </button>
+
+              <button className="bg-[var(--label2)] flex items-center justify-center w-full p-3 rounded shadow-lg">
+                <FaPhone className="mr-2" />
+                Sabit Telefondan Ara
+              </button>
+
+              <button className="bg-[var(--success)] flex items-center justify-center w-full p-3 rounded shadow-lg">
+                <FaWhatsapp className="mr-2" />
+                Whatsapp Destek Hattı
+              </button>
+            </div>
           </div>
 
           {/* Sağ Kısım: Manuel İçerikler */}
-          <div className="flex-1 px-0 md:px-4 mt-3 md:mt-0">
+          <div className="flex-1 px-0 md:px-4 mt-3 md:mt-0 w-full">
             {activeTab === "Contact" && (
               <div className="p-4 bg-[var(--advert-list-bg)] roulded-lg">
                 <h2 className="text-center text-3xl mb-3">İletişim</h2>
@@ -100,6 +125,35 @@ const Contact = () => {
                   congue. Tortor dignissim convallis aenean et tortor at risus.
                   Tortor vitae purus faucibus ornare suspendisse sed.
                 </p>
+                <div className="text-white flex flex-wrap md:flex-nowrap justify-center p-4">
+                  <Link className="border border-[var(--alert)] p-4 m-2 rounded shadow-lg w-full" href="/">
+                    <div className="flex flex-col items-center">
+                      <FaEnvelope className="text-2xl mb-2" />
+                      <h3 className="text-lg font-bold">Mail Gönder</h3>
+                      <p className="text-sm">epinko@epinko.com.tr</p>
+                    </div>
+                  </Link>
+
+                  <Link className="border border-[var(--label2)] p-4 m-2 rounded shadow-lg w-full" href="/">
+                    <div className="flex flex-col items-center">
+                      <FaPhone className="text-2xl mb-2" />
+                      <h3 className="text-lg font-bold">
+                        Sabit Telefondan Ara
+                      </h3>
+                      <p className="text-sm">+90 555 555 55 55</p>
+                    </div>
+                  </Link>
+
+                  <Link className="border border-[var(--success)] p-4 m-2 rounded shadow-lg w-full" href="/">
+                    <div className="flex flex-col items-center">
+                      <FaWhatsapp className="text-2xl mb-2" />
+                      <h3 className="text-lg font-bold">
+                        Whatsapp Destek Hattı
+                      </h3>
+                      <p className="text-sm">+90 555 555 55 55</p>
+                    </div>
+                  </Link>
+                </div>
               </div>
             )}
 
@@ -195,9 +249,9 @@ const Contact = () => {
         {activeTab === "Contact" && (
           <div
             id="contact"
-            className="w-full flex items-center justify-center p-8 order-1 md:order-2 bg-[var(--advert-list-bg)] rounded-lg"
+            className="w-full flex items-center justify-center p-4 order-1 md:order-2  rounded-lg"
           >
-            <div className="w-full">
+            <div className="w-full bg-[var(--advert-list-bg)] p-4">
               <div className="flex justify-between mb-1 md:mb-8">
                 <div>
                   <h1 className="text-3xl font-bold mb-6">İletişim Formu</h1>

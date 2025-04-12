@@ -105,7 +105,7 @@ const NewAdver = () => {
           {/* Sol Bölüm (Yan Menü) */}
           <div
             style={{
-              backgroundColor: "var(--news-card-bg)",
+              backgroundColor: "var(--list-box)",
               color: "var(--foreground)",
             }}
             className="flex-auto lg:basis-4/16 p-4 rounded-lg min-h-[664px] max-h-[664px]"
@@ -118,7 +118,7 @@ const NewAdver = () => {
                 className="w-full p-2 rounded border-2 border-[#ffffff17] focus:border-blue-500 text-sm"
               />
             </div>
-            <div className="border-2 border-[#ffffff17] rounded-lg p-2">
+            <div className="rounded-lg p-2">
               <ul className="overflow-y-scroll overflow-x-hidden min-h-[553px] max-h-[553px] pr-2">
                 {items.map((item, index) => (
                   <li
@@ -169,7 +169,7 @@ const NewAdver = () => {
           {/* Sağ Bölüm (Ana İçerik) */}
           <div
             style={{
-              backgroundColor: "var(--news-card-bg)",
+              backgroundColor: "var(--list-box)",
               color: "var(--foreground)",
             }}
             className="flex-auto lg:basis-12/16 p-1 rounded-lg md:p-4"
