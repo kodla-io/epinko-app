@@ -3,7 +3,7 @@ import React from "react";
 
 const TextBanner = () => {
   return (
-    <section className="relative py-40 relative">
+    <section className="relative py-10 md:py-40 relative">
       <div className="container mx-auto px-4">
         <div className="hidden xl:block absolute top-[20px] 2xl:top-[-50px] right-0 w-1/2 2xl:max-w-[500px] 2xl:max-h-[500px] xl:max-w-[400px] xl:max-h-[400px]">
           <img

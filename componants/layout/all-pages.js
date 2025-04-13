@@ -15,6 +15,7 @@ const FloatingSidebar = () => {
     { name: 'Yayıncı Başvuru', href: '/yayinci-basvuru' },
     { name: 'Kategori Detay', href: '/category-detail' },
     { name: 'Oyun Detay', href: '/game-detail' },
+    { name: 'Yayıncılar', href: '/streamers' },
     { name: 'Login', href: '/login' },
     { name: 'Register', href: '/register' },
     { name: 'SSS', href: '/sss' },
