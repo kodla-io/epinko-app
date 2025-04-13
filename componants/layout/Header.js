@@ -10,6 +10,7 @@ import { MdOutlineFavorite } from "react-icons/md";
 import { FaSteamSquare } from "react-icons/fa";
 import { GiConsoleController } from "react-icons/gi";
 import { HiSpeakerphone } from "react-icons/hi";
+import FloatingSidebar from "./all-pages";
 
 const items = [
   {
@@ -187,199 +188,202 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full text-white">
-      {/* Üst Kısım */}
-      <div className="header-top w-full">
-        <div className="flex justify-between items-center px-4 container py-1 m-auto text-xsm">
-          <div className="flex space-x-4">
-            <a href="#" className="text-[13px] hover:text-green-400">
-              <p>Hakkımızda</p>
-            </a>
-            <a href="#" className="text-[13px] hover:text-green-400">
-              <p>Haberler</p>
-            </a>
-            <a href="#" className="text-[13px] hover:text-green-400">
-              <p>Yardım</p>
-            </a>
-            <a href="#" className="text-[13px] hover:text-green-400">
-              <p>İletişim</p>
-            </a>
-          </div>
-          <div className="flex items-center space-x-2">
-            <span>TR</span>
+    <>
+      <header className="w-full text-white">
+        {/* Üst Kısım */}
+        <div className="header-top w-full">
+          <div className="flex justify-between items-center px-4 container py-1 m-auto text-xsm">
+            <div className="flex space-x-4">
+              <a href="#" className="text-[13px] hover:text-green-400">
+                <p>Hakkımızda</p>
+              </a>
+              <a href="#" className="text-[13px] hover:text-green-400">
+                <p>Haberler</p>
+              </a>
+              <a href="#" className="text-[13px] hover:text-green-400">
+                <p>Yardım</p>
+              </a>
+              <a href="#" className="text-[13px] hover:text-green-400">
+                <p>İletişim</p>
+              </a>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span>TR</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Ana Menü */}
-      <div className="header-middle">
-        <div className="container m-auto flex justify-between items-center px-2 md:px-6 py-3">
-          {/* Logo */}
-          <div className="text-2xl font-bold text-green-500">
-            {/* epin<span className="text-white">KO</span> */}
-            <Link href="/">
-              <img
-                className="max-w-[90px] md:max-w-[130px]"
-                src="/media/logo.png"
-              />
-            </Link>
-          </div>
-
-          {/* Menü */}
-          <nav className="hidden lg:flex items-center space-x-6 text-sm uppercase">
-            {/* Arama Çubuğu */}
-            <div className="relative flex">
-              <SearchInput />
-              <button
-                style={{
-                  backgroundColor: "#41c85f",
-                  color: "white",
-                }}
-                className="flex items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button"
-              >
-                <span className="mr-2 text-[25px]">
-                  <CiCirclePlus />
-                </span>
-                İlan Ekle
-              </button>
+        {/* Ana Menü */}
+        <div className="header-middle">
+          <div className="container m-auto flex justify-between items-center px-2 md:px-6 py-3">
+            {/* Logo */}
+            <div className="text-2xl font-bold text-green-500">
+              {/* epin<span className="text-white">KO</span> */}
+              <Link href="/">
+                <img
+                  className="max-w-[90px] md:max-w-[130px]"
+                  src="/media/logo.png"
+                />
+              </Link>
             </div>
-          </nav>
 
-          {/* Sağ Kısım */}
-          <div className="flex items-center space-x-4">
-            <div className="d-l-mode">
-              <div className="middle">
-                <div
-                  className={`switch ${isDark ? "dark" : ""}`}
-                  onClick={handleToggle}
+            {/* Menü */}
+            <nav className="hidden lg:flex items-center space-x-6 text-sm uppercase">
+              {/* Arama Çubuğu */}
+              <div className="relative flex">
+                <SearchInput />
+                <button
+                  style={{
+                    backgroundColor: "#41c85f",
+                    color: "white",
+                  }}
+                  className="flex items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button"
                 >
-                  <span className="sun"></span>
-                  <span className="moon"></span>
+                  <span className="mr-2 text-[25px]">
+                    <CiCirclePlus />
+                  </span>
+                  İlan Ekle
+                </button>
+              </div>
+            </nav>
 
-                  <span className="sun--bubble--left"></span>
-                  <span className="sun--bubble--right"></span>
+            {/* Sağ Kısım */}
+            <div className="flex items-center space-x-4">
+              <div className="d-l-mode">
+                <div className="middle">
+                  <div
+                    className={`switch ${isDark ? "dark" : ""}`}
+                    onClick={handleToggle}
+                  >
+                    <span className="sun"></span>
+                    <span className="moon"></span>
 
-                  <span className="moon--bubble--left"></span>
-                  <span className="moon--bubble--middle"></span>
-                  <span className="moon--bubble--right"></span>
-                  <span className="moon--star--left"></span>
-                  <span className="moon--star--right"></span>
+                    <span className="sun--bubble--left"></span>
+                    <span className="sun--bubble--right"></span>
+
+                    <span className="moon--bubble--left"></span>
+                    <span className="moon--bubble--middle"></span>
+                    <span className="moon--bubble--right"></span>
+                    <span className="moon--star--left"></span>
+                    <span className="moon--star--right"></span>
+                  </div>
                 </div>
               </div>
+              <Link href="/">
+                <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
+                  Giriş Yap
+                </button>
+              </Link>
+              <Link href="/">
+                <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
+                  Kayıt Ol
+                </button>
+              </Link>
+              {/* <FaShoppingCart className="text-xl cursor-pointer" /> */}
             </div>
-            <Link href="/">
-              <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
-                Giriş Yap
-              </button>
-            </Link>
-            <Link href="/">
-              <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
-                Kayıt Ol
-              </button>
-            </Link>
-            {/* <FaShoppingCart className="text-xl cursor-pointer" /> */}
+
+            {/* Mobil Menü Butonu */}
+            <button
+              className="md:hidden text-white focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              ☰
+            </button>
           </div>
-
-          {/* Mobil Menü Butonu */}
-          <button
-            className="md:hidden text-white focus:outline-none"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            ☰
-          </button>
         </div>
-      </div>
 
-      {/* Alt Menü */}
-      <div className="header-bottom">
-        <div className="container m-auto flex justify-between items-center px-6 py-1">
-          <nav className="hidden md:flex space-x-6 text-sm uppercase">
-            <div className="relative">
-              <button
-                onClick={(event) => toggleMenu(items, event)}
-                className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
-              >
-                <div
-                  style={{ backgroundColor: "rgba(88, 243, 249, 0.3)" }}
-                  className="rounded-md p-[6px] mr-2"
+        {/* Alt Menü */}
+        <div className="header-bottom">
+          <div className="container m-auto flex justify-between items-center px-6 py-1">
+            <nav className="hidden md:flex space-x-6 text-sm uppercase">
+              <div className="relative">
+                <button
+                  onClick={(event) => toggleMenu(items, event)}
+                  className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
                 >
-                  <GiConsoleController className="w-6 h-6" />
-                </div>
-                <span className="text-lg font-bold">Tüm Oyunlar</span>
-                <img
-                  src="/media/icons/down.png"
-                  className="max-w-[22px] min-w-[22px]"
-                />
-              </button>
-            </div>
-            <div className="relative">
-              <button
-                onClick={(event) => toggleMenu(items2, event)}
-                className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
-              >
-                <div
-                  style={{ backgroundColor: "rgba(88, 249, 115, 0.3)" }}
-                  className="rounded-md p-[6px] mr-2"
+                  <div
+                    style={{ backgroundColor: "rgba(88, 243, 249, 0.3)" }}
+                    className="rounded-md p-[6px] mr-2"
+                  >
+                    <GiConsoleController className="w-6 h-6" />
+                  </div>
+                  <span className="text-lg font-bold">Tüm Oyunlar</span>
+                  <img
+                    src="/media/icons/down.png"
+                    className="max-w-[22px] min-w-[22px]"
+                  />
+                </button>
+              </div>
+              <div className="relative">
+                <button
+                  onClick={(event) => toggleMenu(items2, event)}
+                  className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
                 >
-                  <HiSpeakerphone className="w-6 h-6" />
-                </div>
-                <span className="text-lg font-bold">Tüm İlanlar</span>
-                <img
-                  src="/media/icons/down.png"
-                  className="max-w-[22px] min-w-[22px]"
-                />
-              </button>
-            </div>
-            <Link href="/">
-              <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
-                <div
-                  style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
-                  className="rounded-md p-[6px] mr-2"
-                >
-                  <MdOutlineFavorite className="w-6 h-6" />
-                </div>
-                <span className="text-lg font-bold">Favoriler</span>
-              </button>
-            </Link>
-            <Link href="/">
-              <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
-                <div
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-                  className="rounded-md p-[6px] mr-2"
-                >
-                  <FaSteamSquare className="w-6 h-6 text-[#112752]" />
-                </div>
-                <span className="text-lg font-bold">Steam Oyunlar</span>
-              </button>
-            </Link>
-          </nav>
+                  <div
+                    style={{ backgroundColor: "rgba(88, 249, 115, 0.3)" }}
+                    className="rounded-md p-[6px] mr-2"
+                  >
+                    <HiSpeakerphone className="w-6 h-6" />
+                  </div>
+                  <span className="text-lg font-bold">Tüm İlanlar</span>
+                  <img
+                    src="/media/icons/down.png"
+                    className="max-w-[22px] min-w-[22px]"
+                  />
+                </button>
+              </div>
+              <Link href="/">
+                <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
+                  <div
+                    style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
+                    className="rounded-md p-[6px] mr-2"
+                  >
+                    <MdOutlineFavorite className="w-6 h-6" />
+                  </div>
+                  <span className="text-lg font-bold">Favoriler</span>
+                </button>
+              </Link>
+              <Link href="/">
+                <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
+                  <div
+                    style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+                    className="rounded-md p-[6px] mr-2"
+                  >
+                    <FaSteamSquare className="w-6 h-6 text-[#112752]" />
+                  </div>
+                  <span className="text-lg font-bold">Steam Oyunlar</span>
+                </button>
+              </Link>
+            </nav>
+          </div>
         </div>
-      </div>
-      <div className="absolute w-full shadow-lg z-10 megaMenu">
-        {isMegaMenuOpen && <MegaMenu items={menuItems} isImage={false} />}
-      </div>
+        <div className="absolute w-full shadow-lg z-10 megaMenu">
+          {isMegaMenuOpen && <MegaMenu items={menuItems} isImage={false} />}
+        </div>
 
-      {/* Mobil Menü */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 py-4 px-6 space-y-4 text-sm uppercase">
-          <a href="#" className="block text-white hover:text-green-400">
-            🏠 Anasayfa
-          </a>
-          <a href="#" className="block text-white hover:text-green-400">
-            🎮 Tüm Oyunlar
-          </a>
-          <a href="#" className="block text-white hover:text-green-400">
-            🟢 Steam Oyunlar
-          </a>
-          <a href="#" className="block text-white hover:text-green-400">
-            📢 İlanlar
-          </a>
-          <a href="#" className="block text-white hover:text-green-400">
-            📩 İletişim
-          </a>
-        </div>
-      )}
-    </header>
+        {/* Mobil Menü */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-gray-800 py-4 px-6 space-y-4 text-sm uppercase">
+            <a href="#" className="block text-white hover:text-green-400">
+              🏠 Anasayfa
+            </a>
+            <a href="#" className="block text-white hover:text-green-400">
+              🎮 Tüm Oyunlar
+            </a>
+            <a href="#" className="block text-white hover:text-green-400">
+              🟢 Steam Oyunlar
+            </a>
+            <a href="#" className="block text-white hover:text-green-400">
+              📢 İlanlar
+            </a>
+            <a href="#" className="block text-white hover:text-green-400">
+              📩 İletişim
+            </a>
+          </div>
+        )}
+      </header>
+      <FloatingSidebar />
+    </>
   );
 };
 

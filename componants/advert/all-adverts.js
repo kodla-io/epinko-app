@@ -27,7 +27,7 @@ const AllAdverts = () => {
                 <b>İlan Oluştur</b>
               </h2>
             </Link>
-            <select style={{backgroundColor: "var(--label5)"}} className="block min-w-[100px] ml-2 appearance-none w-full bg-black text-white px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+            <select style={{backgroundColor: "var(--label5)"}} className="cursor-pointer block min-w-[100px] ml-2 appearance-none w-full bg-black text-white px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
               <option>Çok Satanlar</option>
               <option>Fiyat Artan</option>
               <option>Fiyat Azalan</option>
