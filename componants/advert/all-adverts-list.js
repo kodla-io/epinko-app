@@ -147,7 +147,7 @@ const AllAdvertsList = () => {
               </Link>
             </div>
             <div className="py-8">
-              <StreamerSingle />
+              <StreamerSingle title="YAYINCILARIMIZ" />
             </div>
             <div
               style={{

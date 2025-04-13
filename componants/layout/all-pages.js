@@ -7,7 +7,6 @@ const FloatingSidebar = () => {
 
   const pages = [
     { name: 'Anasayfa', href: '/' },
-    { name: 'İletişim', href: '/contact' },
     { name: 'Tüm Oyunlar', href: '/all-games' },
     { name: 'Steam Oyunlar', href: '/steam-games' },
     { name: 'Tüm İlanlar', href: '/all-adverts' },
@@ -16,6 +15,8 @@ const FloatingSidebar = () => {
     { name: 'Kategori Detay', href: '/category-detail' },
     { name: 'Oyun Detay', href: '/game-detail' },
     { name: 'Yayıncılar', href: '/streamers' },
+    { name: 'Yayıncı Detay', href: '/streamer-detail' },
+    { name: 'İletişim', href: '/contact' },
     { name: 'Login', href: '/login' },
     { name: 'Register', href: '/register' },
     { name: 'SSS', href: '/sss' },

@@ -1482,6 +1482,7 @@ nav img {
 #bayilik-basvuru input,
 #bayilik-basvuru select,
 #contact input,
-#contact textarea {
+#contact textarea,
+#streamer-detail input, #streamer-detail textarea {
   background-color: var(--input-bg);
 }

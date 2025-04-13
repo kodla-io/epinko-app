@@ -29,12 +29,12 @@ const cards = [
   },
 ];
 
-const StreamerSingle = () => {
+const StreamerSingle = ({ title }) => {
   return (
     <div className="p-4">
       <div className="flex items-center space-x-4">
         <h2 className="text-white text-[30px] py-2 font-bold">
-          YAYINCILARIMIZ
+        { title }
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>

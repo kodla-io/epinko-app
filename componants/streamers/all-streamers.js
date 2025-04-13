@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { FaSearch, FaTwitch } from "react-icons/fa";
 import Link from "next/link";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-import TextBanner from "../text-banner/TextBanner";
 
 const popularStreamers = [
   {
@@ -361,9 +360,6 @@ const AllStreamersList = () => {
             </div>
           </>
         )}
-      </div>
-      <div className="mt-0 md:mt-20">
-        <TextBanner />
       </div>
     </div>
   );
