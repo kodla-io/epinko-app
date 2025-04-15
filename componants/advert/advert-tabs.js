@@ -115,7 +115,7 @@ const Advert = () => {
                             "linear-gradient(to top, rgba(0, 0, 0, 0.7) 70%, transparent)",
                         }}
                       >
-                        <h3 className="text-md font-bold">
+                        <h3 className="text-md font-bold clamp-2 max-h-[48px] min-h-[48px]">
                           LOREM IPSUM LOREM IPSUM
                         </h3>
                         <div className="flex justify-between items-center mt-2">

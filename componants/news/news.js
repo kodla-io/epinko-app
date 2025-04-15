@@ -79,13 +79,17 @@ const NewsSlider = () => {
                         <h3 className="text-lg font-bold mb-2">
                           Haber Haber Haber Haber
                         </h3>
-                        <p className="text-sm mb-4">
+                        <p className="text-sm mb-4 clamp-4 max-h-[80px] min-h-[80px]">
                           Lorem Ipsum is simply dummy text of the printing and
                           typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s...
+                          industry's standard Lorem Ipsum has been th dummy text
+                          ever since the 1500s...
                         </p>
                         <div className="flex justify-center">
-                          <button style={{backgroundColor: "var(--idle)"}} className="text-white text-sm font-semibold py-2 px-4 rounded">
+                          <button
+                            style={{ backgroundColor: "var(--idle)" }}
+                            className="text-white text-sm font-semibold py-2 px-4 rounded"
+                          >
                             Devamını Oku
                           </button>
                         </div>

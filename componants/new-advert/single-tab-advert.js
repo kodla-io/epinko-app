@@ -42,7 +42,7 @@ const SingleAdvert = () => {
                   <button className="bg-orange-500 text-black text-[10px] mb-2 font-bold py-1 px-2 rounded shimmer-effect">
                     Pubg Kategori
                   </button>
-                  <p className="text-[11px]">
+                  <p className="text-[11px] clamp-2 max-h-[33px] min-h-[33px]">
                     Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
                   </p>
                   <div className="flex justify-between items-center mt-2">
