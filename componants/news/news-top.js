@@ -1,4 +1,6 @@
 import React from "react";
+import { FaEye } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
 
 const NewsTop = () => {
   return (
@@ -18,8 +20,12 @@ const NewsTop = () => {
               Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit,
             </h2>
             <div className="text-gray-300 flex gap-4 mt-1">
-              <span>🗓 25-10-2022</span>
-              <span>👁 157 Görüntüleme</span>
+              <span className="flex items-center">
+                <SlCalender className="mr-2" /> 25-10-2022
+              </span>
+              <span className="flex items-center">
+                <FaEye className="mr-2" /> 157 Görüntüleme
+              </span>
             </div>
           </div>
         </div>
@@ -38,8 +44,12 @@ const NewsTop = () => {
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit,
               </h2>
               <div className="text-gray-300 flex gap-4 mt-1">
-                <span>🗓 25-10-2022</span>
-                <span>👁 157 Görüntüleme</span>
+                <span className="flex items-center">
+                  <SlCalender className="mr-2" /> 25-10-2022
+                </span>
+                <span className="flex items-center">
+                  <FaEye className="mr-2" /> 157 Görüntüleme
+                </span>
               </div>
             </div>
           </div>
@@ -57,8 +67,14 @@ const NewsTop = () => {
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit,
               </h2>
               <div className="text-gray-300 flex gap-4 mt-1">
-                <span>🗓 25-10-2022</span>
-                <span>👁 157 Görüntüleme</span>
+                <div className="text-gray-300 flex gap-4 mt-1">
+                  <span className="flex items-center">
+                    <SlCalender className="mr-2" /> 25-10-2022
+                  </span>
+                  <span className="flex items-center">
+                    <FaEye className="mr-2" /> 157 Görüntüleme
+                  </span>
+                </div>
               </div>
             </div>
           </div>

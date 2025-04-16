@@ -1,0 +1,2 @@
+new page added (/news-detail)
+news page and news-detail page icos changed

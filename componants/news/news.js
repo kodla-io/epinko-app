@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
+import { FaEye } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -73,8 +75,13 @@ const NewsSlider = () => {
                       />
                       <div className="p-4 text-left">
                         <div className="flex justify-between text-[10px] mb-2">
-                          <span>17 Eylül 2022</span>
-                          <span>27 Görüntüleme</span>
+                          <span className="flex items-center">
+                            <SlCalender className="mr-2" />
+                            17 Eylül 2022
+                          </span>
+                          <span className="flex items-center">
+                            <FaEye className="mr-2" /> 27 Görüntüleme
+                          </span>
                         </div>
                         <h3 className="text-lg font-bold mb-2">
                           Haber Haber Haber Haber

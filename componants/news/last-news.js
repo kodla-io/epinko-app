@@ -2,20 +2,24 @@
 
 import React from "react";
 import Link from "next/link";
+import { FaEye } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
 
 const LastNews = () => {
   const newsItems = [
     {
       img: "https://placehold.co/150x100",
       title: "Haber 1",
-      content: "Lorem Ipsum is simply dummy text of the printing industry Lorem Ipsum is simply dummy text of the printing industry...",
+      content:
+        "Lorem Ipsum is simply dummy text of the printing industry Lorem Ipsum is simply dummy text of the printing industry...",
       date: "17 Eylül 2022",
       views: "27 Görüntüleme",
     },
     {
       img: "https://placehold.co/150x100",
       title: "Haber 2",
-      content: "Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing industry ...",
+      content:
+        "Lorem Ipsum has been the industry's standard dummy text Lorem Ipsum is simply dummy text of the printing industry ...",
       date: "18 Eylül 2022",
       views: "30 Görüntüleme",
     },
@@ -29,7 +33,8 @@ const LastNews = () => {
     {
       img: "https://placehold.co/150x100",
       title: "Haber 4",
-      content: "Standard dummy text ever since the dummy text ever since 1500s...",
+      content:
+        "Standard dummy text ever since the dummy text ever since 1500s...",
       date: "20 Eylül 2022",
       views: "35 Görüntüleme",
     },
@@ -64,11 +69,17 @@ const LastNews = () => {
                 />
                 <div className="p-4 text-left">
                   <div className="flex justify-between text-[10px] mb-2">
-                    <span>{item.date}</span>
-                    <span>{item.views}</span>
+                    <span className="flex items-center">
+                      <SlCalender className="mr-2" /> {item.date}
+                    </span>
+                    <span className="flex items-center">
+                      <FaEye className="mr-2" /> {item.views}
+                    </span>
                   </div>
                   <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm mb-4 clamp-2 max-h-[40px] min-h-[40px]">{item.content}</p>
+                  <p className="text-sm mb-4 clamp-2 max-h-[40px] min-h-[40px]">
+                    {item.content}
+                  </p>
                   <div className="flex justify-center">
                     <button
                       style={{ backgroundColor: "var(--idle)" }}

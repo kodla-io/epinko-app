@@ -2,6 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
+import { FaEye } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
 
 const Announcements = () => {
   const announcements1 = [
@@ -98,8 +100,13 @@ const Announcements = () => {
                     {announcements[0].title}
                   </h3>
                   <div className="text-gray-300 flex gap-4 mt-1 text-sm">
-                    <span>🗓 {announcements[0].date}</span>
-                    <span>👁 {announcements[0].views}</span>
+                    <span className="flex items-center">
+                      <SlCalender className="mr-2" />
+                      {announcements[0].date}
+                    </span>
+                    <span className="flex items-center">
+                      <FaEye className="mr-2" /> {announcements[0].views}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -123,8 +130,13 @@ const Announcements = () => {
                     </div>
                     <h3 className="text-md font-bold mt-2">{item.title}</h3>
                     <div className="text-gray-300 flex gap-4 mt-1 text-sm">
-                      <span>🗓 {item.date}</span>
-                      <span>👁 {item.views}</span>
+                      <span className="flex items-center">
+                        <SlCalender className="mr-2" />
+                        {item.date}
+                      </span>
+                      <span className="flex items-center">
+                        <FaEye className="mr-2" /> {item.views}
+                      </span>
                     </div>
                   </div>
                 </div>

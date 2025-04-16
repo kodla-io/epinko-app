@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
 
 const AllNews = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -106,11 +108,18 @@ const AllNews = () => {
                 />
                 <div className="p-4 text-left">
                   <div className="flex justify-between text-[10px] mb-2">
-                    <span>{item.date}</span>
-                    <span>{item.views}</span>
+                    <span className="flex items-center">
+                      <SlCalender className="mr-2" />
+                      {item.date}
+                    </span>
+                    <span className="flex items-center">
+                      <FaEye className="mr-2" /> {item.views}
+                    </span>
                   </div>
                   <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm mb-4 clamp-2 max-h-[40px] min-h-[40px]">{item.content}</p>
+                  <p className="text-sm mb-4 clamp-2 max-h-[40px] min-h-[40px]">
+                    {item.content}
+                  </p>
                   <div className="flex justify-center">
                     <button
                       style={{ backgroundColor: "var(--idle)" }}
