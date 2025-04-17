@@ -1,2 +1,5 @@
-new page added (/news-detail)
-news page and news-detail page icos changed
+Header Fixlenecek
+Tüm ilanlar tab kısmı Fixlenecek
+Mobil menü değişecek
+header ve footerdaki linkler gover eklenecek
+default template modu dark mod olacak
