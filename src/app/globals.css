@@ -508,12 +508,12 @@ nav img {
   cursor: pointer;
 }
 
-/* @media (max-width: 1024px) {
-  .advert-tabs {
+@media (max-width: 1024px) {
+  #all-adverts .advert-tabs {
     display: flex;
     overflow-x: scroll;
   }
-} */
+}
 
 .megaMenu {
   background-color: var(--megaMenu-bg);
@@ -1421,7 +1421,7 @@ nav img {
 }
 
 .advert-tabs {
-  padding-bottom: 8px;
+  /* padding-bottom: 8px; */
   background-color: var(--bg-soft);
   border-radius: 12px;
 }
@@ -1473,6 +1473,7 @@ nav img {
     background: var(--primary);
     padding: 0px 6px;
     border-radius: 6px;
+    font-size: 14px;
   }
 }
 
@@ -1504,6 +1505,13 @@ nav img {
 .clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

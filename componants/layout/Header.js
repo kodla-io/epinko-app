@@ -11,6 +11,7 @@ import { FaSteamSquare } from "react-icons/fa";
 import { GiConsoleController } from "react-icons/gi";
 import { HiSpeakerphone } from "react-icons/hi";
 import FloatingSidebar from "./all-pages";
+import MobileNav from "./mobile-nav"
 
 const items = [
   {
@@ -249,7 +250,7 @@ const Header = () => {
 
             {/* Sağ Kısım */}
             <div className="flex items-center space-x-4">
-              <div className="d-l-mode">
+              <div className="md:block hidden d-l-mode">
                 <div className="middle">
                   <div
                     className={`switch ${isDark ? "dark" : ""}`}
@@ -283,12 +284,7 @@ const Header = () => {
             </div>
 
             {/* Mobil Menü Butonu */}
-            <button
-              className="md:hidden text-white focus:outline-none"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              ☰
-            </button>
+            <MobileNav />
           </div>
         </div>
 

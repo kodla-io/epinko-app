@@ -1,5 +1,6 @@
 import BasketInside from "../../../componants/basket/basket";
 import GameSlider from "../../../componants/game-list-slider/GameListSlider";
+import NewAdvertSlider from "../../../componants/advert/new-adver-slider";
 
 export default function Basket() {
   return (
@@ -17,6 +18,7 @@ export default function Basket() {
         </div>
       </div>
       <GameSlider />
+      <NewAdvertSlider />
     </>
   );
 }

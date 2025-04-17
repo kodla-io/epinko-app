@@ -1,5 +1,13 @@
-Header Fixlenecek
-Tüm ilanlar tab kısmı Fixlenecek
-Mobil menü değişecek
-header ve footerdaki linkler gover eklenecek
-default template modu dark mod olacak
+(+++) Header Fixlenecek
+(+++) Tüm ilanlar tab kısmı Fixlenecek
+(+++) Mobil menü değişecek
+(+++) header ve footerdaki linkler hover eklenecek
+(+++) default template modu dark mod olacak
+
+"/basket" page finished,
+Header fixed,
+"/all-adverts" tabs fixed in mobile view,
+Mobile menu changed,
+"/game-detail" page mobile view fixed
+Defalult Temaplate mode set as dark,
+Hover animation added to footer items.

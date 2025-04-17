@@ -21,7 +21,7 @@ const AllAdverts = () => {
           >
             İLANLAR
           </h2>
-          <div className="absolute bottom-[10px] right-10 flex">
+          <div className="absolute bottom-[10px] md:right-10 md:left-[unset] left-[15px] right-[15px] flex">
             <Link href="/" className="text-center">
               <h2 className="w-full min-w-[200px] p-3 rounded-md cursor-pointer font-normal bg-gradient-to-r from-green-300 to-green-500 hover:from-green-400 hover:to-green-600 transition-colors duration-200">
                 <b>İlan Oluştur</b>

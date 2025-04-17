@@ -50,7 +50,7 @@ const AllAdvertsList = () => {
     { title: "The Witcher 3", isVitrin: true, vitrinColor: "var(--label7)" },
   ];
   return (
-    <div className="container mx-auto">
+    <div id="all-adverts" className="container mx-auto">
       <div className="advert-tabs space-x-4">
         <div className="flex justify-between items-center w-full">
           {tabs.map((tab, index) => (
@@ -108,7 +108,7 @@ const AllAdvertsList = () => {
                             src="https://placehold.co/200x70/000000/FFFFFF"
                             className="relative bottom-[5px] left-1/2 transform -translate-x-1/2 w-[70%] md:w-[80%]"
                           />
-                          <h3 className="text-md font-bold">{game.title}</h3>
+                          <h3 className="text-md font-bold clamp-1">{game.title}</h3>
                           <div className="flex justify-between items-center mt-2">
                             <div className="flex items-center">
                               <img
