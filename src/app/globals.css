@@ -1484,7 +1484,9 @@ nav img {
 #bayilik-basvuru select,
 #contact input,
 #contact textarea,
-#streamer-detail input, #streamer-detail textarea {
+#streamer-detail input,
+#streamer-detail textarea,
+#buy-sell input {
   background-color: var(--input-bg);
 }
 
@@ -1514,4 +1516,22 @@ nav img {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #111;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #111;
 }
