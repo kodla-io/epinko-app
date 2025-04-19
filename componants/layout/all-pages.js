@@ -19,6 +19,9 @@ const FloatingSidebar = () => {
     
     { name: 'Sepet', href: '/basket' },
 
+    { name: 'Bize Al/Sat', href: '/buy-sell-to-us' },
+    { name: 'Bize Sat', href: '/sell-to-us' },
+
     { name: 'Yayıncılar', href: '/streamers' },
     { name: 'Yayıncı Detay', href: '/streamer-detail' },
     { name: 'Yayıncı Başvuru', href: '/yayinci-basvuru' },

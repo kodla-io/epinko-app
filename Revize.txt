@@ -1,2 +1,4 @@
-New page added "/buy-sell-to-us"
-Tabs added; Comments and Buy-Sell.
+"buy-sell-to-us" page finished;
+    buy/sell section added,
+    most sells double slider added.
+"sell-to-us" page added.
