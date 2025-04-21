@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-const BuySellProducts = () => {
+const KasaCategory = () => {
   const products = Array.from({ length: 8 }, (_, i) => ({
     title: `Rise Online Goldbar`,
-    img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100",
+    price: `15₺`,
+    img: "/media/kasa.png",
   }));
 
   return (
@@ -14,11 +15,11 @@ const BuySellProducts = () => {
           style={{ color: "var(--foreground)" }}
           className="text-white text-[30px] py-2 font-bold"
         >
-          OYUN PARASI
+          KASA SİSTEMİ
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
         {products.map((product, index) => (
           <Link
             href="/"
@@ -28,10 +29,11 @@ const BuySellProducts = () => {
             <img
               src={product.img}
               alt={product.title}
-              className="w-full object-cover"
+              className="w-full object-cover md:min-h-[180px] md:max-h-[180px] lg:min-h-[226px] lg:max-h-[226px]"
             />
-            <div className="p-2 text-white font-semibold text-center text-lg clamp-1 absolute bottom-0 w-full backdrop-blur-lg rounded-t-full">
-              {product.title}
+            <div className="p-2 text-center text-md absolute bottom-0 w-full backdrop-blur-lg">
+              <p className="text-white clamp-1">{product.price}</p>
+              <p className="text-[var(--success)] clamp-1">{product.title}</p>
             </div>
           </Link>
         ))}
@@ -40,4 +42,4 @@ const BuySellProducts = () => {
   );
 };
 
-export default BuySellProducts;
+export default KasaCategory;

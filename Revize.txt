@@ -1,4 +1,2 @@
-"buy-sell-to-us" page finished;
-    buy/sell section added,
-    most sells double slider added.
-"sell-to-us" page added.
+"/kasa-kategori" page added,
+"/kasa-detail" page added

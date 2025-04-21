@@ -12,6 +12,9 @@ const FloatingSidebar = () => {
     { name: 'Oyun Detay', href: '/game-detail' },
     { name: 'Steam Oyunlar', href: '/steam-games' },
 
+    { name: 'Kasa Kategori', href: '/kasa-kategori' },
+    { name: 'Kasa Detay', href: '/kasa-detail' },
+
     { name: 'Tüm İlanlar', href: '/all-adverts' },
     { name: 'Bayilik Başvuru', href: '/bayilik-basvuru' },
     
