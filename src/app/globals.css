@@ -1535,3 +1535,26 @@ nav img {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #111;
 }
+
+/* GAME CARD */
+
+.game-card-top-price {
+  position: relative;
+}
+
+.game-card-top-price::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -14px;
+  width: 67px;
+  height: 41px;
+  background-color: var(--success);
+  border-radius: 15px;
+  transform: rotate(-10deg);
+  z-index: 1;
+}
+
+/* tr td {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+} */

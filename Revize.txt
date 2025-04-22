@@ -1,2 +1,2 @@
-"/kasa-kategori" page added,
-"/kasa-detail" page added
+"game-tabs" componant added,
+Comletelly responsive and multi function table componant developed and added to "/game-tabs" page,
