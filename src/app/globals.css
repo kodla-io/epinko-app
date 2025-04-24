@@ -1420,6 +1420,24 @@ nav img {
   background-repeat: no-repeat;
 }
 
+.full-size-bg-img-profile {
+  width: 100%;
+  max-height: 200px;
+  min-height: 200px;
+  background-image: url("../../public/media/profile.bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.full-size-bg-img-profile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--background), transparent);
+}
+
 .advert-tabs {
   /* padding-bottom: 8px; */
   background-color: var(--bg-soft);
@@ -1486,7 +1504,8 @@ nav img {
 #contact textarea,
 #streamer-detail input,
 #streamer-detail textarea,
-#buy-sell input {
+#buy-sell input,
+#store-comments textarea {
   background-color: var(--input-bg);
 }
 

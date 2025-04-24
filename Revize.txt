@@ -1,2 +1,38 @@
-"game-tabs" componant added,
-Comletelly responsive and multi function table componant developed and added to "/game-tabs" page,
+Yapılan - Yapılmayan Sayfalar
+
+    Biten Sayfalar
+    - Anasayfa (/)
+    - Tüm oyunlar (/all-games)
+    - Kategori Detay (/category-detail)
+    - Oyun Detay (/game-detail)
+    - Steam Oyunlar /(steam-games)
+    - İlanlar - İlan nasıl oluşturulur? - İlan nasıl satı alınır? - güvenilir satıcı nedir? (/all-adverts)
+    - Haberler (/news)
+    - Haber Detay (/news-detail)
+    - Yayıncılar (/streamers)
+    - Yayıncı Detay (/streamer-detail)
+    - Sepet (/basket)
+    - KVKK - İletişim - Hakkımızda (/contact)
+    - Bize sat ürün detay - Bize sat ürün kategori (/buy-sel-to-us)
+    - Bize sat ürünler (/sell-to-us)
+    - Giriş Yap (/login)
+    - Kayıt Ol (/register)
+    - SSS (/sss)
+    - Yayıncı Başvuru (/yayinci-basvuru)
+    - Bayilik Başvuru (/bayilik-basvuru)
+    - Kasa Kategori (/kasa-kategori)
+    - Kasa Detay(/kasa-detail)
+
+
+    Yapılan Sayfalar
+    - Kasa Detay (/kasa-detail)
+
+
+    Yapılacak Sayfalar
+    - Çekilişler
+    - Çekiliş Detay- Oyuncu profil aktif ilan - 0yuncu profil satılmış ilan - Oyuncu profil yorum
+    - Günün Fırsatları
+    - İlan Kategori Detay
+    - İlan Oluştur
+    - İlan Detay
+    - Üye Profil

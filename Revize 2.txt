@@ -1,0 +1,2 @@
+Kasa Detail page finished (/kasa-detail),
+/player-profile-adverts page added with 3tabs

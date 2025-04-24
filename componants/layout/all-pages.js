@@ -20,6 +20,8 @@ const FloatingSidebar = () => {
     
     { name: 'Kategori Detay', href: '/category-detail' },
     
+    { name: 'Oyuncu İlanları', href: '/player-profile-adverts' },
+    
     { name: 'Sepet', href: '/basket' },
 
     { name: 'Bize Al/Sat', href: '/buy-sell-to-us' },
