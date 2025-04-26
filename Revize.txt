@@ -22,17 +22,17 @@ Yapılan - Yapılmayan Sayfalar
     - Bayilik Başvuru (/bayilik-basvuru)
     - Kasa Kategori (/kasa-kategori)
     - Kasa Detay(/kasa-detail)
-
+    - Oyuncu profil aktif ilan - 0yuncu profil satılmış ilan - Oyuncu profil yorum
+    - İlan Kategori Detay
+    - Günün Fırsatları
 
     Yapılan Sayfalar
-    - Kasa Detay (/kasa-detail)
+    
+    - İlan Oluştur
 
 
     Yapılacak Sayfalar
     - Çekilişler
-    - Çekiliş Detay- Oyuncu profil aktif ilan - 0yuncu profil satılmış ilan - Oyuncu profil yorum
-    - Günün Fırsatları
-    - İlan Kategori Detay
-    - İlan Oluştur
+    - Çekiliş Detay
     - İlan Detay
     - Üye Profil

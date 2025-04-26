@@ -1,2 +1,3 @@
-Kasa Detail page finished (/kasa-detail),
-/player-profile-adverts page added with 3tabs
+"/advert-category-detail" page added and finished,
+"/deail-of-the-day" page added and finished,
+"/create-advert" page added

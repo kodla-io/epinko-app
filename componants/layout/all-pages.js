@@ -16,13 +16,17 @@ const FloatingSidebar = () => {
     { name: 'Kasa Detay', href: '/kasa-detail' },
 
     { name: 'Tüm İlanlar', href: '/all-adverts' },
-    { name: 'Bayilik Başvuru', href: '/bayilik-basvuru' },
+    { name: 'İlan Kategori Detay', href: '/advert-category-detail' },
+    { name: 'Oyuncu İlanları', href: '/player-profile-adverts' },
+    { name: 'İlan Oluştur', href: '/create-advert' },
     
     { name: 'Kategori Detay', href: '/category-detail' },
-    
-    { name: 'Oyuncu İlanları', href: '/player-profile-adverts' },
+
+    { name: 'Günün Fırsatları', href: '/deal-of-the-day' },
     
     { name: 'Sepet', href: '/basket' },
+
+    { name: 'Bayilik Başvuru', href: '/bayilik-basvuru' },
 
     { name: 'Bize Al/Sat', href: '/buy-sell-to-us' },
     { name: 'Bize Sat', href: '/sell-to-us' },
