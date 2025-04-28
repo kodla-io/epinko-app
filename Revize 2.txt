@@ -1,3 +1,62 @@
-"/advert-category-detail" page added and finished,
-"/deail-of-the-day" page added and finished,
-"/create-advert" page added
+"/create-advert" page finished,
+"/giveaways" page added adn finished,
+"/giveaway-detail" page added and finished
+
+
+Yapılan - Yapılmayan Sayfalar
+
+NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK
+
+    Biten Sayfalar
+    - Anasayfa (/) Burda all gamesde ki renklendirmeyi buraya story modundaki yere de verelim https://prnt.sc/ouV3qFXe7kOr
+ https://prnt.sc/zmqUCKNI5EcY burdaki boşluk ve 300x200 olan bölümler kalkacak 
+ https://prnt.sc/oJD8Au4dWD7X bu bölüm kategori detayi olacak örnek olarak https://prnt.sc/oRc55KcN38RY https://www.bursagb.com/
+ https://prnt.sc/PZWVLkI1CMuh Burasi kalkacak
+ 
+
+
+    - Tüm oyunlar (/all-games) En alta seo uyumlu yazi yazilacak böyle bir alan https://prnt.sc/0-_mapS2GrJH
+
+    - Kategori Detay (/category-detail)  https://prnt.sc/5rvH4O744tJq sadece burasi kalkacak
+
+
+    - Oyun Detay (/game-detail)Bu alana https://prnt.sc/msK6OabRmQyW https://prnt.sc/i8bg_Cq78yv_ Burdaki gibi renkli logolar ekleyerek farklılık
+katmamız lazım %100 benzer olacak yoksa örnek site https://www.itemsatis.com/urunler/valorant/battle-pass.html
+
+    - Steam Oyunlar /(steam-games)
+
+    - İlanlar -------------REVİZE https://hesap.com.tr/ilan-pazari Direk buradaki gibi menü sistemi özellikleri vs direk %90 benzer olmalı
+https://prnt.sc/oWeH3uJXtXw2 sadece bu bölüm ve stoklu stoksuz vitrin gibi termiler bize özgün diğer kart görünümü oraya benzemeli sade net
+
+    - Haberler (/news)  
+
+    - Haber Detay (/news-detail)
+    - Yayıncılar (/streamers) 
+    - Yayıncı Detay (/streamer-detail)
+    - Sepet (/basket)
+    - KVKK - İletişim - Hakkımızda (/contact)
+    - Bize sat ürün detay - Bize sat ürün kategori (/buy-sel-to-us)
+    - Bize sat ürünler (/sell-to-us)
+    - Giriş Yap (/login) https://prnt.sc/wb1FXeKYIFEz SOSYAL LOGİN GOOGLE VE TWİTCH LOGİN BUTONLARİ EKLENMESİ GEREKİYOR
+    - Kayıt Ol (/register) TWİTCH VE GOOGLE KAYİT BUTONLARİ EKLENMESİ GEREKİYOR
+    - SSS (/sss)
+    - Yayıncı Başvuru (/yayinci-basvuru)
+    - Bayilik Başvuru (/bayilik-basvuru)
+    - Kasa Kategori (/kasa-kategori)
+
+
+    Yapılan Sayfalar
+    - Kasa Detay (/kasa-detail)
+
+
+    Yapılacak Sayfalar
+    - Çekilişler
+    - Çekiliş Detay
+    - Oyuncu profil aktif ilan 
+    - 0yuncu profil satılmış ilan 
+    - Oyuncu profil yorum
+    - Günün Fırsatları
+    - İlan Kategori Detay
+    - İlan Oluştur
+    - İlan Detay
+    - Üye Profil

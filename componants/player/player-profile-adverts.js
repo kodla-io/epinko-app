@@ -56,7 +56,7 @@ const ProfileTabs = () => {
                     <img
                       src="https://placehold.co/100"
                       alt="User Avatar"
-                      className="rounded-full"
+                      className="rounded-full w-24 h-24"
                     />
                   </div>
                 </div>

@@ -19,6 +19,9 @@ const FloatingSidebar = () => {
     { name: 'İlan Kategori Detay', href: '/advert-category-detail' },
     { name: 'Oyuncu İlanları', href: '/player-profile-adverts' },
     { name: 'İlan Oluştur', href: '/create-advert' },
+
+    { name: 'Çekilişler', href: '/giveaways' },
+    { name: 'Çekiliş Detay', href: '/giveaway-detail' },
     
     { name: 'Kategori Detay', href: '/category-detail' },
 

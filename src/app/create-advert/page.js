@@ -2,7 +2,7 @@
 
 import Create from "../../../componants/advert/create-advert";
 
-export default function DealOfTheDay() {
+export default function CreateAdvert() {
   return (
     <>
       <Create />

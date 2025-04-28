@@ -25,14 +25,16 @@ Yapılan - Yapılmayan Sayfalar
     - Oyuncu profil aktif ilan - 0yuncu profil satılmış ilan - Oyuncu profil yorum
     - İlan Kategori Detay
     - Günün Fırsatları
+    - İlan Oluştur
+    - Çekilişler
+    - Çekiliş Detay
+
 
     Yapılan Sayfalar
     
-    - İlan Oluştur
+    - İlan Detay
 
 
     Yapılacak Sayfalar
-    - Çekilişler
-    - Çekiliş Detay
-    - İlan Detay
+    
     - Üye Profil
