@@ -1,6 +1,4 @@
-"/create-advert" page finished,
-"/giveaways" page added adn finished,
-"/giveaway-detail" page added and finished
+
 
 
 Yapılan - Yapılmayan Sayfalar
