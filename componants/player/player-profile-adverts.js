@@ -249,7 +249,7 @@ const ProfileTabs = () => {
                                   <img
                                     src="https://placehold.co/50x50"
                                     alt="Seller"
-                                    className="w-8 h-8 rounded-full"
+                                    className="!w-10 !h-10 rounded-full"
                                   />
                                   <div className="ml-2">
                                     <p className="text-[8px] text-gray-400">

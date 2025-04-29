@@ -1,12 +1,33 @@
-import React from "react";
-import { MdOutlineErrorOutline } from "react-icons/md";
+import React, { useState } from "react";
 
-import { FaPeopleLine } from "react-icons/fa6";
-import { GiCoins } from "react-icons/gi";
+import { FcAdvertising } from "react-icons/fc";
+import { FaBoxesStacked, FaCircle } from "react-icons/fa6";
+import {
+  FaIdCard,
+  FaPhoneAlt,
+  FaEye,
+  FaCalendarAlt,
+  FaPaperPlane,
+} from "react-icons/fa";
+import { AiFillSafetyCertificate } from "react-icons/ai";
+import { GiCrown, GiTwoCoins } from "react-icons/gi";
+import { IoMdMail } from "react-icons/io";
+import { LuMessageSquareMore } from "react-icons/lu";
+import Link from "next/link";
 
 const GiveawayDetail = () => {
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    if (count < 100) setCount(count + 1);
+  };
+
+  const decrease = () => {
+    if (count > 0) setCount(count - 1);
+  };
+
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto text-[var(--foreground)]">
       <div className="flex items-center space-x-4">
         <h2
           style={{ color: "var(--foreground)" }}
@@ -35,7 +56,7 @@ const GiveawayDetail = () => {
 
               {/* SAĞ (CHAT) */}
               <div className="w-full md:flex-1 bg-[var(--advert-list-bg)] rounded-xl p-4">
-                <div className="mx-auto rounded-lg space-y-4">
+                <div className="mx-auto rounded-lg space-y-4 flex flex-wrap content-around h-full">
                   {/* Başlık */}
                   <div className="">
                     <h2 className="text-md font-bold uppercase text-[#f4f4f5]">
@@ -51,27 +72,33 @@ const GiveawayDetail = () => {
 
                   {/* Bilgi Kutuları */}
                   <div className="grid grid-cols-2 gap-3 text-sm w-full">
-                    <div className="bg-[#26263d] rounded-md p-3 flex flex-col items-center border border-green-500">
-                      <span className="text-lg">📢</span>
-                      <span className="mt-1">İlan Numarası</span>
-                      <span className="font-semibold text-white">#TS457F</span>
+                    <div className="rounded-md p-3 flex items-center border border-green-500">
+                      <FcAdvertising className="w-10 h-10 mr-2" />
+                      <div className="flex flex-wrap items-start">
+                        <span className="mt-1 w-full">İlan Numarası</span>
+                        <span className="font-semibold w-full">#TS457F</span>
+                      </div>
                     </div>
-                    <div className="bg-[#26263d] rounded-md p-3 flex flex-col items-center border border-green-500">
-                      <span className="text-lg">👁️</span>
-                      <span className="mt-1">Görüntülenme</span>
-                      <span className="font-semibold text-white">57</span>
+                    <div className="rounded-md p-3 flex items-center border border-green-500">
+                      <FaEye className="w-10 h-10 mr-2" />
+                      <div className="flex flex-wrap items-start">
+                        <span className="mt-1 w-full">Görüntülenme</span>
+                        <span className="font-semibold w-full">57</span>
+                      </div>
                     </div>
-                    <div className="bg-[#26263d] rounded-md p-3 flex flex-col items-center border border-green-500">
-                      <span className="text-lg">📅</span>
-                      <span className="mt-1">
-                        Teslimat Süresi
-                      </span>
-                      <span className="font-semibold text-white">1 Saat</span>
+                    <div className="rounded-md p-3 flex items-center border border-green-500">
+                      <FaCalendarAlt className="w-10 h-10 mr-2" />
+                      <div className="flex flex-wrap items-start">
+                        <span className="mt-1 w-full">Teslimat Süresi</span>
+                        <span className="font-semibold w-full">1 Saat</span>
+                      </div>
                     </div>
-                    <div className="bg-[#26263d] rounded-md p-3 flex flex-col items-center border border-green-500">
-                      <span className="text-lg">📦</span>
-                      <span className="mt-1">Toplam Stok</span>
-                      <span className="font-semibold text-white">37 Adet</span>
+                    <div className="rounded-md p-3 flex items-center border border-green-500">
+                      <FaBoxesStacked className="w-10 h-10 mr-2" />
+                      <div className="flex flex-wrap items-start">
+                        <span className="mt-1 w-full">Toplam Stok</span>
+                        <span className="font-semibold w-full">37 Adet</span>
+                      </div>
                     </div>
                   </div>
 
@@ -83,15 +110,25 @@ const GiveawayDetail = () => {
 
                   {/* Miktar ve Buton */}
                   <div className="flex items-center justify-between gap-3 w-full">
-                    <div className="flex items-center bg-[#26263d] px-2 py-1 rounded-md">
-                      <button className="text-white text-xl px-2">−</button>
+                    <div className="flex items-center px-2 py-1 rounded-md bg-[var(--advert-list-bg)]">
+                      <button
+                        onClick={decrease}
+                        className="text-white text-xl px-2 bg-[var(--list-box)] rounded-md"
+                      >
+                        −
+                      </button>
                       <input
                         type="text"
-                        value="120"
-                        className="w-12 text-center bg-transparent text-white outline-none"
+                        value={count}
                         readOnly
+                        className="w-12 text-center bg-transparent text-white outline-none"
                       />
-                      <button className="text-white text-xl px-2">+</button>
+                      <button
+                        onClick={increase}
+                        className="text-white text-xl px-2 bg-[var(--list-box)] rounded-md"
+                      >
+                        +
+                      </button>
                     </div>
                     <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md font-semibold transition">
                       Siparişi Tamamla
@@ -105,8 +142,8 @@ const GiveawayDetail = () => {
           {/* SAĞ TARAF */}
           <div className="flex-1 bg-[var(--bg-info-box)] rounded-xl">
             <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl  p-[2px] rounded-xl">
-              <div className="flex flex-col items-center bg-[var(--bg-info-box)] rounded-xl">
-                <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px] relative top-[-50px]">
+              <div className="flex flex-col items-center bg-[var(--bg-info-box)] rounded-xl relative">
+                <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px] absolute top-[-50px]">
                   <div className="p-4 bg-[var(--bg-info-box)] rounded-full">
                     <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
                       <img
@@ -118,48 +155,89 @@ const GiveawayDetail = () => {
                   </div>
                 </div>
 
-                <div className="relative top-[-45px] text-center p-4">
+                <div className="text-center mt-[70px]">
                   <h2 className="mt-2 font-bold text-xl">User Name K.</h2>
-                  <div className="flex gap-2 items-center text-sm">
-                    <p className="">
-                      Convallis tellus 27.01.2023 | 21:45 velit aliquet sagittis
-                      id consectetur.
-                    </p>
+                  <div className="flex gap-2 items-center text-sm text-[var(--alert)]">
+                    <FaCircle />
+                    <p className="">Çevrimdışı (4 gün önce)</p>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 my-3 relative top-[-20px] p-4">
-                  <button className="bg-[var(--primary)] py-1 justify-center rounded w-full flex gap-2 items-center">
-                    <FaPeopleLine className="w-8 h-8" />
-                    Toplam katılımcı sayısı: 351
-                  </button>
-                  <button className="bg-[var(--success)] py-1 justify-center rounded w-full flex gap-2 items-center">
-                    <GiCoins className="w-8 h-8 text-[var(--label9)]" />
-                    Çekiliş tutarı: 1.047,30₺
-                  </button>
-                </div>
-                <div className="rounded-lg p-4 flex flex-col items-center gap-4 w-full">
-                  <h2 className="text-white text-lg font-semibold">
-                    Çekiliş Bitiş Zamanı
-                  </h2>
-                  <div className="flex gap-2">
-                    <div className="bg-[#1e1e2d] rounded-md p-3 flex flex-col items-center min-w-[60px]">
-                      <span className="text-white text-xl font-bold">16</span>
-                      <span className="text-gray-400 text-xs">gün</span>
-                    </div>
-                    <div className="bg-[#1e1e2d] rounded-md p-3 flex flex-col items-center min-w-[60px]">
-                      <span className="text-white text-xl font-bold">6</span>
-                      <span className="text-gray-400 text-xs">saat</span>
-                    </div>
-                    <div className="bg-[#1e1e2d] rounded-md p-3 flex flex-col items-center min-w-[60px]">
-                      <span className="text-white text-xl font-bold">12</span>
-                      <span className="text-gray-400 text-xs">dakika</span>
-                    </div>
-                    <div className="bg-[#1e1e2d] rounded-md p-3 flex flex-col items-center min-w-[60px]">
-                      <span className="text-white text-xl font-bold">09</span>
-                      <span className="text-gray-400 text-xs">saniye</span>
-                    </div>
+
+                <p className="text-[var(--label9)] flex items-center justify-between gap-6 py-1 ">
+                  <Link href="#">
+                    <IoMdMail className="w-7 h-7" />
+                  </Link>
+                  <Link href="#">
+                    <FaIdCard className="w-7 h-7" />
+                  </Link>
+                  <Link href="#">
+                    <FaPhoneAlt className="w-7 h-7" />
+                  </Link>
+                </p>
+
+                <div className="my-1 space-y-2 px-4 py-2 w-full">
+                  <div className="flex gap-2 justify-center">
+                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
+                      <LuMessageSquareMore />
+                      <span className="ml-1 text-xs py-2">Mesaj Gönder</span>
+                    </button>
+                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
+                      <FaPaperPlane />
+                      <span className="ml-1 text-xs py-2">SMS Gönder</span>
+                    </button>
+                  </div>
+                  <div className="flex gap-2 justify-center">
+                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
+                      <LuMessageSquareMore />
+                      <span className="ml-1 text-xs py-2">100 Başarılı Satış</span>
+                    </button>
+                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
+                      <FaPaperPlane />
+                      <span className="ml-1 text-xs py-2">100 Başarısız Satış</span>
+                    </button>
                   </div>
                 </div>
+
+                <ul className="text-left text-sm px-4 py-2 w-full ">
+                  <li className="flex flex-col gap-3 py-1">
+                    <div className="flex items-start gap-3">
+                      <AiFillSafetyCertificate className="w-12 h-12" />
+                      <div>
+                        <strong className="">Güvenilir Satıcı</strong>
+                        <p className="text-xs">
+                          Vitae turpis massa sed egestas sed.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent" />
+                  </li>
+
+                  <li className="flex flex-col gap-3 py-1">
+                    <div className="flex items-start gap-3">
+                      <GiCrown className="w-12 h-12" />
+                      <div>
+                        <strong className="">Uzman Satıcı</strong>
+                        <p className="text-xs">
+                          Vitae turpis massa sed egestas sed.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent" />
+                  </li>
+
+                  <li className="flex flex-col gap-3 py-1">
+                    <div className="flex items-start gap-3">
+                      <GiTwoCoins className="w-12 h-12" />
+                      <div>
+                        <strong className="">Lorem Ipsum</strong>
+                        <p className="text-xs">
+                          Vitae turpis massa sed egestas sed.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent" />
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
