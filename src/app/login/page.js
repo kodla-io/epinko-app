@@ -1,4 +1,7 @@
 import React from "react";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
+import { IoLogoTwitch } from "react-icons/io5";
 
 const Login = () => {
   return (
@@ -46,9 +49,27 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="w-full bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+          <button className="w-full mb-2 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
             Giriş Yap
           </button>
+
+          <div className="flex w-full flex-wrap md:flex-nowrap gap-2">
+            {/* Google Login */}
+            <Link href="#" className="w-full md:w-1/2">
+              <button className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition text-black font-semibold flex items-center gap-2 justify-center">
+                <FcGoogle className="w-8 h-8" />
+                <span>Google ile Giriş Yap</span>
+              </button>
+            </Link>
+
+            {/* Twitch Login */}
+            <Link href="#" className="w-full md:w-1/2">
+              <button className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition text-white font-semibold flex items-center gap-2 justify-center">
+                <IoLogoTwitch className="w-8 h-8" />
+                <span>Twitch ile Giriş Yap</span>
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 

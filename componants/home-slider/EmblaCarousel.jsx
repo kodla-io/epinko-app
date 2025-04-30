@@ -40,11 +40,10 @@ const EmblaCarousel = () => {
   }, [emblaMainApi, onSelect]);
 
   return (
-    <div className="container mx-auto sm:lb-2 xl:mb-6 pb-8">
-      <div className="grid grid-cols-12 gap-4">
+    <div className="container mx-auto">
+      <div className="grid grid-cols-12 gap-0 md:gap-4 p-0 md:p-4">
         {/* Sol Kısım - Slider */}
-        <div className="col-span-12 md:col-span-8 p-4">
-          {/* Slider burada yer alacak, içeriği sizin eklemeniz gerekiyor */}
+        <div className="col-span-12 md:col-span-8 py-0 px-4 md:px-0 md:p-0">
           <div className="xl:h-64 lg:h-48 md:h-32 flex items-center justify-center">
             <div className="embla">
               <div className="embla__viewport" ref={emblaMainRef}>
@@ -53,14 +52,14 @@ const EmblaCarousel = () => {
                     <div className="embla__slide" key={index}>
                       <div className="embla__slide__number">
                         {/* {index + 1} */}
-                        <img className="object-cover w-full" src="https://placehold.co/2000x1000" />
+                        <img className="object-cover rounded-xl w-full" src="https://placehold.co/2000x1000" />
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="embla-thumbs relative sm-top-custom md-top-custom lg-top-custom xl-top-custom xxl-top-custom">
+              {/* <div className="embla-thumbs relative sm-top-custom md-top-custom lg-top-custom xl-top-custom xxl-top-custom">
                 <div className="embla-thumbs__viewport" ref={emblaThumbsRef}>
                   <div className={containerClass}>
                     {slides.map((index) => (
@@ -73,13 +72,13 @@ const EmblaCarousel = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
 
         {/* Sağ Kısım - İki Banner */}
-        <div className="sm:pt-4 col-span-12 md:col-span-4 p-4 flex flex-col space-y-4">
+        <div className="sm:pt-4 col-span-12 md:col-span-4 p-4 md:p-0 flex flex-col space-y-4">
           <Link href="/all-games">
             <div className="h-32 md:h-32 lg:h-40 xl:h-56">
               <img

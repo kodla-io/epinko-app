@@ -54,10 +54,6 @@ const CategoryDetails = () => {
               className="relative p-4 lg:absolute top-[0] lg:top-[-150px]"
             >
               <img
-                src="https://placehold.co/200x70/000000/FFFFFF"
-                className="absolute top-[-20px] left-1/2 transform -translate-x-1/2"
-              />
-              <img
                 src="https://placehold.co/400x400"
                 alt="League of Legends"
                 className="rounded-lg mb-4"

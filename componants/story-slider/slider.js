@@ -10,6 +10,29 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay } from "swiper/modules";
 
+const items = [
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+  "https://placehold.co/100",
+];
+
 const StorySlider = () => {
   return (
     <div className="py-2">
@@ -50,164 +73,22 @@ const StorySlider = () => {
               }}
               modules={[Autoplay]}
               autoplay={{
-                delay: 2000, // Otomatik kaydırma süresi (ms)
+                delay: 20000, // Otomatik kaydırma süresi (ms)
                 disableOnInteraction: false, // Kullanıcı etkileşimi sonrasında durmaması için
               }}
-              className="mySwiper"
+              className="mySwiper !py-4"
             >
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Link href="/">
-                  <img
-                    src="https://placehold.co/100"
-                    alt="Item 5"
-                    className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
-                  />
-                </Link>
-              </SwiperSlide>
+              {items.map((src, index) => (
+                <SwiperSlide key={index} className="glow-on-hover-circle">
+                  <Link href="/">
+                    <img
+                      src={src}
+                      alt={`Item ${index + 1}`}
+                      className="bg-gradient-to-b from-blue-300 to-transparent p-1 rounded-full w-full h-full object-cover"
+                    />
+                  </Link>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </>
         </div>

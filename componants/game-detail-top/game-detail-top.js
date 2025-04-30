@@ -2,6 +2,13 @@
 
 import React, { useState } from "react";
 import { CiCoins1 } from "react-icons/ci";
+import { TbBrandValorant } from "react-icons/tb";
+import { FaFlag } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
+import { DiAndroid } from "react-icons/di";
+import { BsPatchQuestionFill } from "react-icons/bs";
+import { IoIosTime } from "react-icons/io";
+
 import Comments from "../texts/comments";
 import Link from "next/link";
 
@@ -44,61 +51,63 @@ const GameDetailTop = () => {
         <div className="flex flex-col flex-7 flex-column space-y-4 md:space-y-0">
           <div className="flex flex-col flex-7 md:flex-row justify-between space-y-4 md:space-y-0">
             <div className="flex-3 p-2">
-              <div className="h-auto max-h-auto md:max-h-[494px] min-h-auto md:min-h-[494px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
-                <img
-                  src="https://placehold.co/200x70/000000/FFFFFF"
-                  className="absolute bottom-[20px] left-1/2 transform -translate-x-1/2"
-                />
+              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
                 <img
                   src="https://placehold.co/350x450"
                   alt="Game Picture"
-                  className="rounded-lg w-full h-full object-cover min-h-auto max-h-auto md:min-h-[464px] md:max-h-[464px]"
+                  className="rounded-lg w-full h-full object-cover min-h-auto max-h-auto md:min-h-[420px] md:max-h-[420px]"
                 />
               </div>
             </div>
 
             {/* İkinci Kutu: Görsel */}
             <div className="flex-5 p-2">
-              <div className="h-auto max-h-auto md:max-h-[494px] min-h-auto md:min-h-[494px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
+              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
                 <div className="w-full rounded-lg text-white">
-                  <div className="flex bg-[var(--advert-list-bg)] items-center mb-4 p-3 rounded-lg">
-                    <img
-                      src="https://placehold.co/100"
-                      alt="Product Logo"
-                      className="w-[80px] h-[80px] mr-4 rounded-lg"
-                    />
-                    <div>
-                      <h2 className="text-lg font-bold">PUBG Mobile 10 UC</h2>
-                      <p className="text-gray-400">Tencent Games</p>
-                    </div>
-                  </div>
-
                   <p className="text-gray-400 mb-4">Oyuncu ID’nize yüklenir.</p>
 
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
-                      <span className="mobil-top-title">Satıcı:</span>
-                      <span className="mt-2 md:mt-0">Hesap.com.tr</span>
+                      <TbBrandValorant className="w-8 h-8 mr-2" />
+                      <div>
+                        <span className="mobil-top-title">Satıcı:</span>
+                        <span className="mt-2 md:mt-0">epinko</span>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
-                      <span className="mobil-top-title">Bölge:</span>
-                      <span className="mt-2 md:mt-0">Türkiye</span>
+                      <FaFlag className="w-8 h-8 mr-2" />
+                      <div>
+                        <span className="mobil-top-title">Bölge:</span>
+                        <span className="mt-2 md:mt-0">Türkiye</span>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
-                      <span className="mobil-top-title">Platform:</span>
-                      <span className="mt-2 md:mt-0">Apple</span>
+                      <FaApple className="w-8 h-8 mr-2" />
+                      <div>
+                        <span className="mobil-top-title">Platform:</span>
+                        <span className="mt-2 md:mt-0">Apple</span>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
-                      <span className="mobil-top-title">Platform:</span>
-                      <span className="mt-2 md:mt-0"> Android</span>
+                      <DiAndroid className="w-8 h-8 mr-2" />
+                      <div>
+                        <span className="mobil-top-title">Platform:</span>
+                        <span className="mt-2 md:mt-0"> Android</span>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
-                      <span className="mobil-top-title">Ürün Tipi:</span>
-                      <span className="mt-2 md:mt-0">Top-Up</span>
+                      <BsPatchQuestionFill className="w-8 h-8 mr-2" />
+                      <div>
+                        <span className="mobil-top-title">Ürün Tipi:</span>
+                        <span className="mt-2 md:mt-0">Top-Up</span>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
-                      <span className="mobil-top-title">Yükleme Süresi:</span>
-                      <span className="mt-2 md:mt-0"> 0-60 sn</span>
+                      <IoIosTime className="w-8 h-8 mr-2" />
+                      <div>
+                        <span className="mobil-top-title">Yükleme Süresi:</span>
+                        <span className="mt-2 md:mt-0"> 0-60 sn</span>
+                      </div>
                     </div>
                   </div>
 
@@ -118,9 +127,9 @@ const GameDetailTop = () => {
 
           <div className="w-full mt-2">
             <div className="bg-[var(--advert-list-bg)] p-4 rounded-lg text-white">
-              <div className="flex border-b border-gray-700 mb-4">
+              <div className="flex border-b border-gray-700 mb-4 overflow-x-auto pb-2 md:pb-0">
                 <button
-                  className={`px-4 py-2 ${
+                  className={`px-4 py-2 min-w-[170px] ${
                     activeTab === "aciklama"
                       ? "text-blue-500 border-b-2 border-blue-500"
                       : "text-gray-400"
@@ -130,7 +139,7 @@ const GameDetailTop = () => {
                   Açıklama
                 </button>
                 <button
-                  className={`px-4 py-2 ${
+                  className={`px-4 py-2 min-w-[170px] ${
                     activeTab === "degerlendirmeler"
                       ? "text-blue-500 border-b-2 border-blue-500"
                       : "text-gray-400"
@@ -140,7 +149,7 @@ const GameDetailTop = () => {
                   Değerlendirmeler
                 </button>
                 <button
-                  className={`px-4 py-2 ${
+                  className={`px-4 py-2 min-w-[170px] ${
                     activeTab === "nasil"
                       ? "text-blue-500 border-b-2 border-blue-500"
                       : "text-gray-400"
