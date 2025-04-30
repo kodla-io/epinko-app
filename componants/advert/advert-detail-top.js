@@ -14,6 +14,7 @@ import { GiCrown, GiTwoCoins } from "react-icons/gi";
 import { IoMdMail } from "react-icons/io";
 import { LuMessageSquareMore } from "react-icons/lu";
 import Link from "next/link";
+import AdvertProductImageSlider from "./advert-detail-image-slider";
 
 const GiveawayDetail = () => {
   const [count, setCount] = useState(0);
@@ -27,7 +28,7 @@ const GiveawayDetail = () => {
   };
 
   return (
-    <div className="container mx-auto text-[var(--foreground)]">
+    <div id="advert-detail" className="container mx-auto text-[var(--foreground)]">
       <div className="flex items-center space-x-4">
         <h2
           style={{ color: "var(--foreground)" }}
@@ -41,20 +42,16 @@ const GiveawayDetail = () => {
         {/* ÜST KISIM */}
         <div className="flex flex-col-reverse lg:flex-row gap-4">
           {/* SOL TARAF */}
-          <div className="flex flex-col flex-[3] gap-4">
+          <div className="flex flex-col flex-[3] w-full gap-4">
             {/* ÜST 2 KUTU */}
             <div className="flex gap-4 flex-wrap md:flex-nowrap">
               {/* SOL (RESİM) */}
               <div className="w-full md:flex-1 bg-[var(--advert-list-bg)] rounded-xl p-4 flex items-center justify-center">
                 {/* Buraya resmi koy */}
-                <img
-                  src="https://placehold.co/500"
-                  alt="Main"
-                  className="w-full h-full object-cover rounded-lg "
-                />
+                <AdvertProductImageSlider />
               </div>
 
-              {/* SAĞ (CHAT) */}
+              {/* SAĞ */}
               <div className="w-full md:flex-1 bg-[var(--advert-list-bg)] rounded-xl p-4">
                 <div className="mx-auto rounded-lg space-y-4 flex flex-wrap content-around h-full">
                   {/* Başlık */}
@@ -189,11 +186,15 @@ const GiveawayDetail = () => {
                   <div className="flex gap-2 justify-center">
                     <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
                       <LuMessageSquareMore />
-                      <span className="ml-1 text-xs py-2">100 Başarılı Satış</span>
+                      <span className="ml-1 text-xs py-2">
+                        100 Başarılı Satış
+                      </span>
                     </button>
                     <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
                       <FaPaperPlane />
-                      <span className="ml-1 text-xs py-2">100 Başarısız Satış</span>
+                      <span className="ml-1 text-xs py-2">
+                        100 Başarısız Satış
+                      </span>
                     </button>
                   </div>
                 </div>

@@ -1,4 +1,6 @@
-"/advert-detail" page finished
+"/advert-detail"
+    - cahnged image with slider
+    - removed button from similar items slider 
 
 
 Yapılan - Yapılmayan Sayfalar
