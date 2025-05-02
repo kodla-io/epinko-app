@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-// import { AiOutlineSafety } from "react-icons/ai";
+import { FaRegEye } from "react-icons/fa6";
 
 const Advert = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -46,7 +46,9 @@ const Advert = () => {
                 className="w-[40px] h-[40px] mr-2 rounded-md"
                 src="https://placehold.co/100"
               />
-              <span className="md:w-full w-[70px] text-sm md:text-md">{tab.label}</span>
+              <span className="md:w-full w-[70px] text-sm md:text-md">
+                {tab.label}
+              </span>
             </div>
           ))}
         </div>
@@ -81,60 +83,68 @@ const Advert = () => {
             {tab.items.map((_, index) => (
               <div key={index} className="p-2 md:p-2">
                 <Link href="#">
-                  <div className="p-1 glow">
-                    <div className="relative min-h-[300px] max-h-[300px] overflow-hidden glow-inside">
-                      <div className="absolute top-0 left-0 grid flex-cols md:grid-cols-3 w-full space-y-1 p-1">
-                        <div className="">
-                          <span className="bg-orange-500 text-white text-[7px] p-2 rounded-[10px]">
-                            LOREM IPSUM
-                          </span>
+                  <div
+                    className="p-2 rounded-t-md"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, var(--success) 0%, var(--success) 20%, #28282A 40% , var(--advert-card-bg) 100%)",
+                    }}
+                  >
+                    <div className="flex gap-[2px] w-full flex justify-center mb-2">
+                      {"ÇOK SATAN".split("").map((char, index) => (
+                        <span
+                          key={index}
+                          className="text-white font-bold text-sm animate-fade-in-up"
+                          style={{
+                            animationDelay: `${index * 100}ms`,
+                            animationFillMode: "both",
+                          }}
+                        >
+                          {char}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="overflow-hidden">
+                      <div className="relative">
+                        <img
+                          src="https://placehold.co/300x300"
+                          alt={`Card ${index}`}
+                          className="w-full h-full object-cover min-h-[220px] max-h-[220px] bg-gradient-to-tl rounded-md"
+                        />
+                        <div className="flex items-center py-1 px-2 absolute bottom-0 left-0 w-full bg-[#0000007a]">
+                          <img
+                            src="https://placehold.co/50x50"
+                            alt="Seller"
+                            className="w-6 h-6 rounded-md"
+                          />
+                          <div className="ml-2">
+                            <p className="text-sm font-bold">Lorem Ipsum</p>
+                          </div>
                         </div>
-                        <div className="">
-                          <span className="bg-blue-700 text-white text-[7px] p-2 rounded-[10px]">
-                            LOREM IPSUM
-                          </span>
-                        </div>
-                        <div className="">
-                          <span className="bg-red-700 text-white text-[7px] p-2 rounded-[10px]">
-                            LOREM IPSUM
-                          </span>
+                        <div className="absolute bottom-0 right-0 p-2">
+                          <img
+                            src="https://placehold.co/50x50/000000/FFFFFF?text=Category"
+                            alt="Category"
+                            className="w-10 h-10 rounded-md"
+                          />
                         </div>
                       </div>
-                      {/* <div className="absolute top-2 right-2">
-                        <AiOutlineSafety className="w-8 h-8" />
-                      </div> */}
-                      <img
-                        src="https://placehold.co/200x300"
-                        alt={`Card ${index}`}
-                        className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
-                      />
-                      <div
-                        className="text-white absolute bottom-0 p-2 w-full"
-                        style={{
-                          background:
-                            "linear-gradient(to top, rgba(0, 0, 0, 0.7) 70%, transparent)",
-                        }}
-                      >
-                        <h3 className="text-md font-bold clamp-2 max-h-[48px] min-h-[48px]">
+                      <div className="text-white p-2 w-full">
+                        <h3 className="text-sm font-bold clamp-2 max-h-[40px] min-h-[40px]">
                           LOREM IPSUM LOREM IPSUM
                         </h3>
-                        <div className="flex justify-between items-center mt-2">
-                          <div className="flex items-center">
-                            <img
-                              src="https://placehold.co/50x50"
-                              alt="Seller"
-                              className="w-8 h-8 rounded-full"
-                            />
-                            <div className="ml-2">
-                              <p className="text-[10px] font-bold">
-                                Lorem Ipsum
-                              </p>
-                            </div>
-                          </div>
-                          <div className="text-md font-bold text-yellow-400">
-                            199.90₺
-                          </div>
-                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md">
+                    <div className="text-md font-bold text-white p-2">
+                      199.90₺
+                    </div>
+                    <div className="p-2">
+                      <div className="flex items-center rounded-full bg-[#20c65c33] text-[var(--success)] p-1">
+                        <FaRegEye className="w-4 h-4 mr-1" />
+                        <span className="text-[11px]">150</span>
                       </div>
                     </div>
                   </div>

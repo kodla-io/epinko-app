@@ -33,10 +33,4 @@
 
     () NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
 
-
-    Home page fixed,
-    All Games page fixed,
-    Category Detail page fixed,
-    Game Detail page fixed,
-    Login page 2 more option added,
-    Register page 2 more option added,
+Home page advert tabs card views changed. animated text added

@@ -42,6 +42,8 @@
   --btn-color: white;
   --list-box: #a1a1a1;
   transition: all 1s ease;
+  --advert-card-bg: #28282a;
+  --advert-card-border: #37373b;
 }
 
 [data-theme="dark"] {
@@ -78,6 +80,8 @@
   --btn-bg: #1a2543;
   --btn-color: white;
   --list-box: #050505;
+  --advert-card-bg: #28282a;
+  --advert-card-border: #37373b;
 }
 
 * {
@@ -1505,6 +1509,24 @@ nav img {
   background: linear-gradient(to top, var(--background), transparent);
 }
 
+.full-size-bg-img-user {
+  width: 100%;
+  max-height: 300px;
+  min-height: 300px;
+  background-image: url("../../public/media/profile.bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.full-size-bg-img-user::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--background), transparent);
+}
+
 .advert-tabs {
   /* padding-bottom: 8px; */
   background-color: var(--bg-soft);
@@ -1572,7 +1594,8 @@ nav img {
 #streamer-detail input,
 #streamer-detail textarea,
 #buy-sell input,
-#store-comments textarea {
+#store-comments textarea,
+#my-account input {
   background-color: var(--input-bg);
 }
 
@@ -1708,4 +1731,21 @@ nav img {
 #advert-detail .swiper-pagination-bullet-active {
   color: #fff;
   background: var(--label11);
+}
+
+/* TEXT ANİMATİON */
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out infinite;
 }

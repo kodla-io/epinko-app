@@ -28,13 +28,10 @@ Yapılan - Yapılmayan Sayfalar
     - İlan Oluştur
     - Çekilişler
     - Çekiliş Detay
+    - İlan Detay
 
 
     Yapılan Sayfalar
     
-    - İlan Detay
-
-
-    Yapılacak Sayfalar
-    
     - Üye Profil
+
