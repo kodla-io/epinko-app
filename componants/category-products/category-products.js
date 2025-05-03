@@ -1,44 +1,68 @@
 "use client";
 import React, { useState } from "react";
+import { FaStar } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
 const productList = [
   {
     id: 1,
     title: "Lorem Ipsum Dolar Sit Amet",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: 52.3,
     originalPrice: 58.8,
     stockAvailable: true,
     image: "https://placehold.co/100",
+    isPopular: false,
   },
   {
     id: 2,
     title: "Lorem Ipsum Dolar Sit Amet",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Lorem ipsum dolor sit amet..",
     price: 52.3,
     originalPrice: 58.8,
     stockAvailable: false,
     image: "https://placehold.co/100",
+    isPopular: true,
   },
   {
     id: 3,
     title: "Lorem Ipsum Dolar Sit Amet",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     price: 52.3,
     originalPrice: 58.8,
     stockAvailable: true,
     image: "https://placehold.co/100",
+    isPopular: false,
   },
   {
     id: 4,
     title: "Lorem Ipsum Dolar Sit Amet",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Lorem ipsum dolor sit amet.",
     price: 52.3,
     originalPrice: 58.8,
     stockAvailable: false,
     image: "https://placehold.co/100",
+    isPopular: false,
+  },
+  {
+    id: 5,
+    title: "Lorem Ipsum Dolar Sit Amet",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    price: 52.3,
+    originalPrice: 58.8,
+    stockAvailable: true,
+    image: "https://placehold.co/100",
+    isPopular: true,
+  },
+  {
+    id: 6,
+    title: "Lorem Ipsum Dolar Sit Amet",
+    description: "Lorem ipsum dolor sit amet.",
+    price: 52.3,
+    originalPrice: 58.8,
+    stockAvailable: false,
+    image: "https://placehold.co/100",
+    isPopular: false,
   },
 ];
 
@@ -80,96 +104,93 @@ const CategoryProducts = ({ title }) => {
         )}
         {productList.map((product) => (
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-              color: "var(--color)",
-            }}
             key={product.id}
-            className="grid grid-cols-1 md:grid-cols-11 gap-2 p-4 mb-4 rounded-lg"
+            className={`grid grid-cols-1 md:grid-cols-11 gap-2 p-4 mb-4 rounded-lg relative ${
+              product.isPopular
+                ? "bg-gradient-to-r from-[var(--success)] to-transparent border border-green-500"
+                : "bg-[var(--advert-list-bg)] text-[var(--color)]"
+            }`}
           >
-            <div className="md:col-span-4 flex items-start">
+            {product.isPopular && (
+              <div className="absolute top-[-5px] left-1/2 translate-x-[-50%] bg-[var(--success)] text-black rounded-lg px-4 py-1 text-xs font-bold flex items-center justify-center gap-2">
+                <FaStar />
+                <span>Çok Satan Ürün</span>
+              </div>
+            )}
+            <div className="md:col-span-8 flex items-start">
               <img
-                className="w-25 h-25 rounded-lg"
+                className="w-20 h-20 rounded-lg"
                 src={product.image}
                 alt={product.title}
               />
               <div className="ml-4">
-                <h2 className="text-lg">{product.title}</h2>
-                <p className="text-sm">{product.description}</p>
-              </div>
-            </div>
-            <div className="md:col-span-2 flex items-center justify-between lg:justify- flex-nowrap md:flex-wrap">
-              <button className="bg-orange-600 text-white px-3 py-1 mx-1 rounded text-xs w-full">
-                %10 İndirim
-              </button>
-              <button className="bg-purple-600 text-white px-3 py-1 mx-1 rounded text-xs w-full">
-                Lorem Ipsum
-              </button>
-              <button className="bg-red-600 text-white px-3 py-1 mx-1 rounded text-xs w-full">
-                Popüler
-              </button>
-            </div>
-            <div className="md:col-span-4 flex items-center md:justify-around justify-between lg:justify- flex-nowrap md:flex-wrap">
-              <div className="md:col-span-2 flex items-center justify-center">
-                <div
-                  style={{
-                    backgroundColor: "var(--background)",
-                  }}
-                  className="flex items-center p-2 rounded-lg"
-                >
-                  <button
-                    style={{
-                      backgroundColor: "var(--advert-list-bg)",
-                    }}
-                    className="py-2 px-4 rounded-l-lg focus:outline-none"
-                    onClick={() => handleDecrement(product.id)}
+                <h2 className="text-lg clamp-1">{product.title}</h2>
+                <p className="text-sm clamp-1">{product.description}</p>
+                <div className="flex items-center gap-1">
+                  <div
+                    className={`text-xl ${
+                      product.isPopular ? "text-white" : "text-[var(--label7)]"
+                    }`}
                   >
-                    –
-                  </button>
-                  <input
-                    type="text"
-                    className="text-center w-12 mx-2 focus:outline-none"
-                    value={counts[product.id]}
-                    readOnly
-                  />
-                  <button
-                    style={{
-                      backgroundColor: "var(--advert-list-bg)",
-                    }}
-                    className="py-2 px-4 rounded-r-lg focus:outline-none"
-                    onClick={() => handleIncrement(product.id)}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <div className="md:col-span-2 flex flex-wrap items-center justify-center text-center space-x-2">
-                <div
-                  style={{ color: "var(--success)" }}
-                  className="w-full text-[30px]"
-                >
-                  {product.price} ₺
-                </div>
-                <div className="w-full line-through">
-                  {product.originalPrice} ₺
+                    {product.price} ₺
+                  </div>
+                  <div className="line-through text-xs">
+                    {product.originalPrice} ₺
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-span-1 flex items-center justify-start">
-              {product.stockAvailable ? (
-                <div className="flex flex-wrap items-center">
-                  <button className="bg-blue-600 text-white px-3 py-1 rounded mb-0 md:mb-2">
-                    Sepete Ekle
-                  </button>
-                  <button className="bg-green-600 text-white px-3 py-1 rounded ml-2 md:ml-0">
-                    Sepete Ekle
-                  </button>
+
+            <div className="col-span-3 md:grid grid-cols-1 md:grid-cols-3 gap-2 flex md:justify-center justify-between md:mt-0 mt-2">
+              <div className="md:col-span-2 flex items-center md:justify-around justify-between lg:justify- flex-nowrap md:flex-wrap">
+                <div className="md:col-span-2 flex items-center justify-center">
+                  <div
+                    style={{
+                      backgroundColor: "var(--background)",
+                    }}
+                    className="flex items-center p-2 rounded-lg"
+                  >
+                    <button
+                      style={{
+                        backgroundColor: "var(--advert-list-bg)",
+                      }}
+                      className="py-2 px-4 rounded-l-lg focus:outline-none"
+                      onClick={() => handleDecrement(product.id)}
+                    >
+                      –
+                    </button>
+                    <input
+                      type="text"
+                      className="text-center w-12 mx-2 focus:outline-none"
+                      value={counts[product.id]}
+                      readOnly
+                    />
+                    <button
+                      style={{
+                        backgroundColor: "var(--advert-list-bg)",
+                      }}
+                      className="py-2 px-4 rounded-r-lg focus:outline-none"
+                      onClick={() => handleIncrement(product.id)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              ) : (
-                <button className="bg-red-600 text-white px-3 py-1 rounded">
-                  Stokta Yok
-                </button>
-              )}
+              </div>
+              <div className="col-span-1 flex items-center justify-start">
+                {product.stockAvailable ? (
+                  <div className="flex flex-wrap items-center">
+                    <button className="bg-[var(--label2)] hover:bg-[var(--primary)] text-white text-sm px-3 md:py-1 py-3 rounded mb-0 md:mb-2 flex flex-wrap items-center justify-center gap-2">
+                      <FaShoppingCart className="w-8 h-8" />
+                      Satın Al
+                    </button>
+                  </div>
+                ) : (
+                  <div className="bg-red-600 text-white px-3 py-3 md:py-1 rounded">
+                    Stokta Yok
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         ))}

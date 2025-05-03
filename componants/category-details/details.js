@@ -46,13 +46,7 @@ const CategoryDetails = () => {
         <div className="container flex flex-col lg:flex-row py-4">
           {/* Sol Kısım */}
           <div className="rounded-lg p-4 rounded-lg flex flex-col w-full lg:w-1/4 mb-2 lg:mb-0 relative">
-            <div
-              style={{
-                backgroundColor: "var(--advert-list-bg)",
-                color: "var(--color)",
-              }}
-              className="relative p-4 lg:absolute top-[0] lg:top-[-150px]"
-            >
+            <div className="relative p-4 lg:absolute top-[0] lg:top-[-150px] bg-[var(--advert-list-bg)] text-[var(--color)] rounded-lg">
               <img
                 src="https://placehold.co/400x400"
                 alt="League of Legends"
@@ -67,6 +61,13 @@ const CategoryDetails = () => {
                 typesetting industry Lorem Ipsum is simply dummy text of the
                 printing and typesetting industry
               </p>
+              <button
+                onClick={() => openModal("html")}
+                style={{ backgroundColor: "var(--idle)" }}
+                className="text-white text-xl p-2 rounded-lg w-full my-2"
+              >
+                Nasıl Yüklenir?
+              </button>
             </div>
           </div>
 
@@ -78,32 +79,14 @@ const CategoryDetails = () => {
             className="flex-1 lg:w-3/4 lg:pl-2 relative "
           >
             <div className="block lg:flex lg:flex-row items-center mb-0 lg:mb-4 w-full p-4 relative lg:absolute top-[0] lg:top-[-150px]">
-              <div
-                style={{
-                  backgroundColor: "var(--advert-list-bg)",
-                }}
-                className="flex-1 lg:flex-4 p-4 rounded-lg lg:mr-4 mb-4 "
-              >
-                <h2 className="text-[25px] xl:text-[30px] font-bold">
+              <div className="flex-1 lg:flex-4 p-4 rounded-lg lg:mr-4 mb-4 ">
+                <h2 className="text-lg xl:text-xl font-bold">
                   LEAGUE OF LEGENDS
                 </h2>
-              </div>
-              <div className="flex space-x-2 mb-4 flex-1 lg:flex-none w-full lg:w-auto justify-evenly">
-                <button
-                  onClick={() => openModal("html")}
-                  style={{ backgroundColor: "var(--idle)" }}
-                  className="text-white text-xl py-2 px-4 rounded-lg w-full sm:w-auto h-[76px]"
-                >
-                  Nasıl Yüklenir?
-                </button>
-
-                <button
-                  onClick={() => openModal("comments")}
-                  style={{ backgroundColor: "var(--success)" }}
-                  className="text-white text-xl py-2 px-4 rounded-lg w-full sm:w-auto h-[76px]"
-                >
-                  Değerlendirmeler
-                </button>
+                <p className="text-sm xl:text-md font-bold">
+                  %30'a varan indirimlerle Global PUBG Mobile UC satın alın ve
+                  kâra geçin.
+                </p>
               </div>
             </div>
             <CategoryProducts title={false} />

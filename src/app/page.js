@@ -4,7 +4,7 @@ import Advert from "../../componants/advert/advert-tabs";
 import PopularGames from "../../componants/popular-games/popular-games";
 import NewAdver from "../../componants/new-advert/new-adverts";
 import NewsSlider from "../../componants/news/news";
-import GameSlider from "../../componants/game-list-slider/GameListSlider"
+import SingleCategoryCards from "../../componants/category/single-category-cards"
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <EmblaCarousel />
       <Advert />
       <PopularGames />
-      <GameSlider />
+      <SingleCategoryCards />
       <NewAdver />
       <NewsSlider />
     </div>

@@ -1,37 +1,7 @@
 
-    - Anasayfa (/) 
-    (+++) Burda all gamesde ki renklendirmeyi buraya story modundaki yere de verelim https://prnt.sc/ouV3qFXe7kOr
-    (+++) https://prnt.sc/zmqUCKNI5EcY burdaki boşluk ve 300x200 olan bölümler kalkacak 
-    () https://prnt.sc/oJD8Au4dWD7X bu bölüm kategori detayi olacak örnek olarak https://prnt.sc/oRc55KcN38RY https://www.bursagb.com/
-    (+++) https://prnt.sc/PZWVLkI1CMuh Burasi kalkacak
- 
+() NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
 
-    - Tüm oyunlar (/all-games)
-    (+++) En alta seo uyumlu yazi yazilacak böyle bir alan https://prnt.sc/0-_mapS2GrJH
-
-
-    - Kategori Detay (/category-detail)
-    (+++) https://prnt.sc/5rvH4O744tJq sadece burasi kalkacak
-
-
-    - Oyun Detay (/game-detail)
-    (+++) Bu alana https://prnt.sc/msK6OabRmQyW https://prnt.sc/i8bg_Cq78yv_ Burdaki gibi renkli logolar ekleyerek farklılık
-        katmamız lazım %100 benzer olacak yoksa örnek site https://www.itemsatis.com/urunler/valorant/battle-pass.html
-
-
-    - İlanlar
-    () https://hesap.com.tr/ilan-pazari Direk buradaki gibi menü sistemi özellikleri vs direk %90 benzer olmalı
-    () https://prnt.sc/oWeH3uJXtXw2 sadece bu bölüm ve stoklu stoksuz vitrin gibi termiler bize özgün diğer kart görünümü oraya benzemeli sade net
-
-
-    - Giriş Yap (/login)
-    (+++) https://prnt.sc/wb1FXeKYIFEz SOSYAL LOGİN GOOGLE VE TWİTCH LOGİN BUTONLARİ EKLENMESİ GEREKİYOR
-
-
-    - Kayıt Ol (/register)
-    (+++) TWİTCH VE GOOGLE KAYİT BUTONLARİ EKLENMESİ GEREKİYOR
-
-    () NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
-
-All advert cards changed,
-advert detail page redesigned
+Home Page game slider changed with category products,
+login register pages updated,
+advert-detail page updated,
+Category detal page updated.

@@ -21,51 +21,68 @@ const Register = () => {
             <div className="text-sm mt-4 flex flex-wrap flex-col justify-start items-end">
               Üye Misin?{" "}
               <span className="text-blue-400 hover:underline cursor-pointer">
-                Giriş Yap
+                <Link href="/login"> Giriş Yap</Link>
               </span>
             </div>
           </div>
 
-          <div className="mb-6 md:mb-12">
-            <label className="block text-lg mb-3">
-              Kullanıcı adınızı veya e-posta adresinizi giriniz
-            </label>
-            <input
-              type="text"
-              placeholder="Kullanıcı adı ya da Eposta adresi"
-              className="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
-            />
+          <div className="flex flex-wrap space-x-2 mb-3 md:mb-8">
+            <div className="w-full md:flex-1">
+              <label className="block text-lg mb-3">Ad</label>
+              <input
+                type="text"
+                placeholder="Adınız"
+                className="w-full px-2 py-4 md:px-4 md:py-6 rounded-lg  text-white border-none focus:outline-none"
+              />
+            </div>
+
+            <div className="w-full md:flex-1">
+              <label className="block text-lg mb-3">Soyad</label>
+              <input
+                type="Soyad"
+                placeholder="Soyadınız"
+                className="w-full px-2 py-4 md:px-4 md:py-6 rounded-lg  text-white border-none focus:outline-none"
+              />
+            </div>
           </div>
 
-          <div className="flex space-x-4 mb-6 md:mb-12">
-            <div className="flex-1">
+          <div className="flex flex-wrap space-x-2 mb-3 md:mb-8">
+            <div className="w-full md:flex-1">
               <label className="block text-lg mb-3">Kullanıcı adı</label>
               <input
                 type="text"
                 placeholder="Kullanıcı adı"
-                className="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
+                className="w-full px-2 py-4 md:px-4 md:py-6 rounded-lg  text-white border-none focus:outline-none"
               />
             </div>
 
-            <div className="flex-1">
-              <label className="block text-lg mb-3">Telefon numarası</label>
+            <div className="w-full md:flex-1">
+              <label className="block text-lg mb-3">Email Adresi</label>
               <input
-                type="text"
-                placeholder="Telefon numarası"
-                className="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
+                type="email"
+                placeholder="Email Adresi"
+                className="w-full px-2 py-4 md:px-4 md:py-6 rounded-lg  text-white border-none focus:outline-none"
               />
             </div>
           </div>
 
-          <div className="mb-6 md:mb-12">
-            <label className="block text-lg mb-3">Şifrenizi Giriniz</label>
-            <input
-              type="password"
-              placeholder="Şifre"
-              className="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none"
-            />
-            <div className="text-right text-sm text-blue-400 mt-1 hover:underline cursor-pointer mt-2">
-              Şifremi Unuttum
+          <div className="mb-3 md:mb-6 flex flex-wrap space-x-2">
+            <div className="w-full md:flex-1">
+              <label className="block text-lg mb-3">Şifre</label>
+              <input
+                type="password"
+                placeholder="Şifre"
+                className="w-full px-2 py-4 md:px-4 md:py-6 rounded-lg  text-white border-none focus:outline-none"
+              />
+            </div>
+
+            <div className="w-full md:flex-1">
+              <label className="block text-lg mb-3">Şifre Tekrar</label>
+              <input
+                type="password"
+                placeholder="Şifre Tekrar"
+                className="w-full px-2 py-4 md:px-4 md:py-6 rounded-lg  text-white border-none focus:outline-none"
+              />
             </div>
           </div>
 

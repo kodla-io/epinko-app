@@ -21,7 +21,7 @@ const Login = () => {
             <div className="text-sm mt-4 flex flex-wrap flex-col justify-start items-end">
               Yeni Misin?{" "}
               <span className="text-blue-400 hover:underline cursor-pointer">
-                Kayıt Ol
+                <Link href="/register">Kayıt Ol</Link>
               </span>
             </div>
           </div>
@@ -37,7 +37,7 @@ const Login = () => {
             />
           </div>
 
-          <div className="mb-6 md:mb-12">
+          <div className="mb-4 md:mb-4">
             <label className="block text-lg mb-3">Şifrenizi Giriniz</label>
             <input
               type="password"
