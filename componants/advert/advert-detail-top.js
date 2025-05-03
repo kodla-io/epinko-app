@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 
 import { FcAdvertising } from "react-icons/fc";
-import { FaBoxesStacked, FaCircle } from "react-icons/fa6";
-import {
-  FaIdCard,
-  FaPhoneAlt,
-  FaEye,
-  FaCalendarAlt,
-  FaPaperPlane,
-} from "react-icons/fa";
-import { AiFillSafetyCertificate } from "react-icons/ai";
-import { GiCrown, GiTwoCoins } from "react-icons/gi";
-import { IoMdMail } from "react-icons/io";
+import { FaBoxesStacked } from "react-icons/fa6";
+import { IoIosMedal } from "react-icons/io";
+import { GiRibbonMedal } from "react-icons/gi";
+
+import { FaEye, FaCalendarAlt, FaPaperPlane, FaShareAlt, FaRegHeart, FaQuestion } from "react-icons/fa";
 import { LuMessageSquareMore } from "react-icons/lu";
 import Link from "next/link";
+import { FaRectangleList } from "react-icons/fa6";
 import AdvertProductImageSlider from "./advert-detail-image-slider";
 
 const GiveawayDetail = () => {
@@ -28,7 +23,10 @@ const GiveawayDetail = () => {
   };
 
   return (
-    <div id="advert-detail" className="container mx-auto text-[var(--foreground)]">
+    <div
+      id="advert-detail"
+      className="container mx-auto text-[var(--foreground)]"
+    >
       <div className="flex items-center space-x-4">
         <h2
           style={{ color: "var(--foreground)" }}
@@ -99,37 +97,31 @@ const GiveawayDetail = () => {
                     </div>
                   </div>
 
-                  {/* Fiyat */}
-                  <div className="w-full">
-                    <p className="text-sm">İlan Fiyatı</p>
-                    <p className="text-2xl font-bold text-yellow-400">52.30₺</p>
-                  </div>
-
                   {/* Miktar ve Buton */}
-                  <div className="flex items-center justify-between gap-3 w-full">
-                    <div className="flex items-center px-2 py-1 rounded-md bg-[var(--advert-list-bg)]">
-                      <button
-                        onClick={decrease}
-                        className="text-white text-xl px-2 bg-[var(--list-box)] rounded-md"
+                  <div className="flex gap-2 items-center justify-between w-full">
+                    <Link
+                      href="/"
+                      className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2"
+                    >
+                      <FaQuestion />
+                      <span className="ml-1 text-xs py-2">Soru Sor</span>
+                    </Link>
+                    <div className="flex gap-2 items-center justify-between w-1/2">
+                      <Link
+                        href="/"
+                        className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2"
                       >
-                        −
-                      </button>
-                      <input
-                        type="text"
-                        value={count}
-                        readOnly
-                        className="w-12 text-center bg-transparent text-white outline-none"
-                      />
-                      <button
-                        onClick={increase}
-                        className="text-white text-xl px-2 bg-[var(--list-box)] rounded-md"
+                        <FaRegHeart  />
+                        <span className="ml-1 text-xs py-2">Favori</span>
+                      </Link>
+                      <Link
+                        href="/"
+                        className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2"
                       >
-                        +
-                      </button>
+                        <FaShareAlt  />
+                        <span className="ml-1 text-xs py-2">Paylaş</span>
+                      </Link>
                     </div>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md font-semibold transition">
-                      Siparişi Tamamla
-                    </button>
                   </div>
                 </div>
               </div>
@@ -138,107 +130,107 @@ const GiveawayDetail = () => {
 
           {/* SAĞ TARAF */}
           <div className="flex-1 bg-[var(--bg-info-box)] rounded-xl">
-            <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl  p-[2px] rounded-xl">
-              <div className="flex flex-col items-center bg-[var(--bg-info-box)] rounded-xl relative">
-                <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px] absolute top-[-50px]">
-                  <div className="p-4 bg-[var(--bg-info-box)] rounded-full">
-                    <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
-                      <img
-                        src="https://placehold.co/100"
-                        alt="User Avatar"
-                        className="rounded-full w-20 h-20"
-                      />
+            <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl h-full p-[2px] rounded-xl">
+              <div className="flex flex-col  bg-[var(--bg-info-box)] rounded-xl relative justify-around h-full">
+                <div className="flex justify-start items-center p-4 gap-2">
+                  <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
+                    <div className="p-2 bg-[var(--bg-info-box)] rounded-full">
+                      <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
+                        <Link href="/">
+                          <img
+                            src="https://placehold.co/100"
+                            alt="User Avatar"
+                            className="rounded-full w-12 h-12"
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-start">
+                    <h2 className="font-bold text-md">User Name K.</h2>
+                    <div className="flex gap-2 items-center text-sm text-[var(--label7)]">
+                      <IoIosMedal className="w-6 h-6" />
+                      <GiRibbonMedal className="w-6 h-6" />
                     </div>
                   </div>
                 </div>
-
-                <div className="text-center mt-[70px]">
-                  <h2 className="mt-2 font-bold text-xl">User Name K.</h2>
-                  <div className="flex gap-2 items-center text-sm text-[var(--alert)]">
-                    <FaCircle />
-                    <p className="">Çevrimdışı (4 gün önce)</p>
-                  </div>
-                </div>
-
-                <p className="text-[var(--label9)] flex items-center justify-between gap-6 py-1 ">
-                  <Link href="#">
-                    <IoMdMail className="w-7 h-7" />
-                  </Link>
-                  <Link href="#">
-                    <FaIdCard className="w-7 h-7" />
-                  </Link>
-                  <Link href="#">
-                    <FaPhoneAlt className="w-7 h-7" />
-                  </Link>
-                </p>
 
                 <div className="my-1 space-y-2 px-4 py-2 w-full">
                   <div className="flex gap-2 justify-center">
-                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
+                    <Link
+                      href="/"
+                      className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-full"
+                    >
                       <LuMessageSquareMore />
-                      <span className="ml-1 text-xs py-2">Mesaj Gönder</span>
-                    </button>
-                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
+                      <span className="ml-1 text-xs py-2">Sohbet Et</span>
+                    </Link>
+                  </div>
+
+                  <div className="flex gap-2 justify-center">
+                    <Link
+                      href="/"
+                      className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2"
+                    >
+                      <FaRectangleList />
+                      <span className="ml-1 text-xs py-2">Tüm İlanlar</span>
+                    </Link>
+                    <Link
+                      href="/"
+                      className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2"
+                    >
                       <FaPaperPlane />
                       <span className="ml-1 text-xs py-2">SMS Gönder</span>
-                    </button>
+                    </Link>
                   </div>
-                  <div className="flex gap-2 justify-center">
-                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
-                      <LuMessageSquareMore />
-                      <span className="ml-1 text-xs py-2">
-                        100 Başarılı Satış
-                      </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-3 w-full p-2 md:p-4">
+                  {/* Fiyat */}
+                  <div className="">
+                    <p className="text-sm">İlan Fiyatı</p>
+                    <p className="text-2xl font-bold text-yellow-400">52.30₺</p>
+                  </div>
+
+                  {/* ADED */}
+                  <div className="flex items-center px-2 py-1 rounded-md bg-[var(--advert-list-bg)]">
+                    <button
+                      onClick={decrease}
+                      className="text-white text-xl px-2 bg-[var(--list-box)] rounded-md"
+                    >
+                      −
                     </button>
-                    <button className="bg-[var(--primary)] justify-center px-3 py-1 rounded flex items-center w-1/2">
-                      <FaPaperPlane />
-                      <span className="ml-1 text-xs py-2">
-                        100 Başarısız Satış
-                      </span>
+                    <input
+                      type="text"
+                      value={count}
+                      readOnly
+                      className="w-12 text-center bg-transparent text-white outline-none"
+                    />
+                    <button
+                      onClick={increase}
+                      className="text-white text-xl px-2 bg-[var(--list-box)] rounded-md"
+                    >
+                      +
                     </button>
                   </div>
                 </div>
 
-                <ul className="text-left text-sm px-4 py-2 w-full ">
-                  <li className="flex flex-col gap-3 py-1">
-                    <div className="flex items-start gap-3">
-                      <AiFillSafetyCertificate className="w-12 h-12" />
-                      <div>
-                        <strong className="">Güvenilir Satıcı</strong>
-                        <p className="text-xs">
-                          Vitae turpis massa sed egestas sed.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent" />
-                  </li>
-
-                  <li className="flex flex-col gap-3 py-1">
-                    <div className="flex items-start gap-3">
-                      <GiCrown className="w-12 h-12" />
-                      <div>
-                        <strong className="">Uzman Satıcı</strong>
-                        <p className="text-xs">
-                          Vitae turpis massa sed egestas sed.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent" />
-                  </li>
-
-                  <li className="flex flex-col gap-3 py-1">
-                    <div className="flex items-start gap-3">
-                      <GiTwoCoins className="w-12 h-12" />
-                      <div>
-                        <strong className="">Lorem Ipsum</strong>
-                        <p className="text-xs">
-                          Vitae turpis massa sed egestas sed.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent" />
-                  </li>
-                </ul>
+                <div className="flex flex-wrap gap-2 justify-center p-2 md:p-4">
+                  <Link
+                    href="/"
+                    className="bg-[var(--success)] justify-center px-3 py-1 rounded flex items-center w-full"
+                  >
+                    <FaRectangleList />
+                    <span className="ml-1 text-xs py-2">Satın Al</span>
+                  </Link>
+                  <Link
+                    href="/"
+                    className="bg-[var(--label7)] justify-center px-3 py-1 rounded flex items-center w-full"
+                  >
+                    <FaPaperPlane />
+                    <span className="ml-1 text-xs py-2">Sepete Ekle</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

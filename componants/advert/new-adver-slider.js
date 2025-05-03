@@ -3,37 +3,163 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
-import { AiOutlineSafety } from "react-icons/ai";
+import AdvertCard from "../advert/advert-card";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
 
 const AllAdverts = [
-  { title: "PUBG Mobile", isVitrin: true, vitrinColor: "var(--label1)" },
-  { title: "Fortnite", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Minecraft", isVitrin: false, vitrinColor: "var(--label2)" },
-  { title: "Call of Duty", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Apex Legends", isVitrin: true, vitrinColor: "var(--label3)" },
-  { title: "Valorant", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Among Us", isVitrin: true, vitrinColor: "var(--label4)" },
-  { title: "Genshin Impact", isVitrin: false, vitrinColor: "var(--label1)" },
   {
-    title: "League of Legends",
-    isVitrin: false,
-    vitrinColor: "var(--label5)",
+    title: "Spotify Aile Planı",
+    price: 29.9,
+    viewCount: 300,
+    isVitrin: true,
+    vitrinText: "POPÜLER",
+    vitrinColor: "var(--label4)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Müzik",
+    sellerName: "TuneMart",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--success)",
   },
-  { title: "Dota 2", isVitrin: false, vitrinColor: "var(--label4)" },
-  { title: "CS:GO", isVitrin: true, vitrinColor: "var(--label6)" },
-  { title: "Rocket League", isVitrin: true, vitrinColor: "var(--label1)" },
-  { title: "Overwatch", isVitrin: false, vitrinColor: "var(--label7)" },
-  { title: "FIFA 21", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Cyberpunk 2077", isVitrin: true, vitrinColor: "var(--label8)" },
-  { title: "Red Dead Online", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Warframe", isVitrin: true, vitrinColor: "var(--label9)" },
-  { title: "Rust", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Fall Guys", isVitrin: true, vitrinColor: "var(--label10)" },
-  { title: "The Witcher 3", isVitrin: true, vitrinColor: "var(--label7)" },
+  {
+    title: "Valorant VP",
+    price: 149.0,
+    viewCount: 110,
+    isVitrin: true,
+    vitrinText: "TAVSİYE",
+    vitrinColor: "var(--label5)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Valorant",
+    sellerName: "ValorStore",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--label5)",
+  },
+  {
+    title: "League of Legends RP",
+    price: 89.0,
+    viewCount: 210,
+    isVitrin: false,
+    vitrinText: "İNDİRİM",
+    vitrinColor: "var(--label1)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=LoL",
+    sellerName: "RiotMart",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--success)",
+  },
+  {
+    title: "Discord Nitro",
+    price: 59.0,
+    viewCount: 190,
+    isVitrin: true,
+    vitrinText: "YENİ ÜRÜN",
+    vitrinColor: "var(--label6)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Nitro",
+    sellerName: "NitroBay",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--success)",
+  },
+  {
+    title: "Xbox Game Pass",
+    price: 79.0,
+    viewCount: 160,
+    isVitrin: false,
+    vitrinText: "Vitrin İlanı",
+    vitrinColor: "var(--label1)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Xbox",
+    sellerName: "BoxStore",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--label5)",
+  },
+  {
+    title: "Epic Games Hediye",
+    price: 60.0,
+    viewCount: 95,
+    isVitrin: true,
+    vitrinText: "HEDİYE",
+    vitrinColor: "var(--label7)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Epic",
+    sellerName: "EpicShop",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--success)",
+  },
+  {
+    title: "Amazon Prime",
+    price: 25.0,
+    viewCount: 250,
+    isVitrin: false,
+    vitrinText: "İNDİRİM",
+    vitrinColor: "var(--label1)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Prime",
+    sellerName: "PrimeZone",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--success)",
+  },
+  {
+    title: "YouTube Premium",
+    price: 39.0,
+    viewCount: 130,
+    isVitrin: true,
+    vitrinText: "RAHAT İZLE",
+    vitrinColor: "var(--label8)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=YT",
+    sellerName: "YTShop",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--success)",
+  },
+  {
+    title: "Mobile Legends Diamonds",
+    price: 109.0,
+    viewCount: 175,
+    isVitrin: true,
+    vitrinText: "EN UCUZ",
+    vitrinColor: "var(--label9)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=MLBB",
+    sellerName: "LegendsPay",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--label5)",
+  },
+  {
+    title: "Google Play Kodu",
+    price: 45.0,
+    viewCount: 140,
+    isVitrin: false,
+    vitrinText: "İNDİRİM",
+    vitrinColor: "var(--label1)",
+    isAnimated: false,
+    animatedText: "ÇOK SATAN",
+    image: "https://placehold.co/300x300",
+    categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Play",
+    sellerName: "PlayZone",
+    sellerImage: "https://placehold.co/50x50",
+    animateBg: "var(--success)",
+  },
 ];
 
 const NewAdvertSlider = () => {
@@ -84,7 +210,7 @@ const NewAdvertSlider = () => {
             >
               {AllAdverts.map((game, index) => (
                 <SwiperSlide key={index}>
-                  <Link href="/">
+                  {/* <Link href="/">
                     <div className="p-1">
                       <div className="relative min-h-[300px] max-h-[300px] overflow-hidden rounded-xl">
                         {game.isVitrin && (
@@ -134,7 +260,8 @@ const NewAdvertSlider = () => {
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </Link> */}
+                  <AdvertCard data={game} />
                 </SwiperSlide>
               ))}
             </Swiper>

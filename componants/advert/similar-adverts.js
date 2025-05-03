@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import AdvertCard from "../advert/advert-card";
+import Link from "next/link";
+import AdvertCard from "./advert-card";
 
-const sampleArray = [
+const AllAdverts = [
   {
     title: "Spotify Aile Planı",
     price: 29.9,
@@ -156,20 +157,41 @@ const sampleArray = [
   },
 ];
 
-const SingleAdvert = () => {
-  const items = sampleArray;
+const SimilarAdverts = () => {
 
   return (
     <div className="container mx-auto px-1 md:px-4">
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
-        {items.map((_, index) => (
+      <div className="flex items-center space-x-4">
+        <h2
+          style={{ color: "var(--foreground)" }}
+          className="text-white text-[30px] py-2 font-bold"
+        >
+          KATEGORİYE AİT İLANLAR
+        </h2>
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6">
+        {AllAdverts.map((item, index) => (
           <div key={index} className="p-2 md:p-2">
-            <AdvertCard data={_} />
+            <AdvertCard data={item} />
           </div>
         ))}
+      </div>
+      <div className="flex justify-center items-center py-4">
+        <Link href="/all-games">
+          <button
+            style={{
+              // backgroundColor: "var(--btn-bg)",
+              color: "var(--btn-color)",
+            }}
+            className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+          >
+            DAHA FAZLA GÖRÜNTÜLE
+          </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default SingleAdvert;
+export default SimilarAdverts;
