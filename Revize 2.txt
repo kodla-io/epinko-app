@@ -1,7 +1,4 @@
 
 () NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
 
-Home Page game slider changed with category products,
-login register pages updated,
-advert-detail page updated,
-Category detal page updated.
+Profile / Messages tab added

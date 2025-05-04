@@ -1,15 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaCircle } from "react-icons/fa6";
 import { HiPaperAirplane } from "react-icons/hi2";
-import { GiWallet } from "react-icons/gi";
+import { GiWallet, GiRibbonMedal } from "react-icons/gi";
 import { AiFillCodeSandboxSquare } from "react-icons/ai";
 import { IoRocket } from "react-icons/io5";
-
+import Link from "next/link";
 import { MdAccountCircle } from "react-icons/md";
+import { FaCircle, FaCamera } from "react-icons/fa";
+import { AiTwotoneSafetyCertificate } from "react-icons/ai";
 
 import MyAccount from "./my-account/tab";
+import Messages from "./messages/tab";
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("hesabim");
@@ -21,24 +23,41 @@ const ProfileTabs = () => {
         {/* SOL KUTU */}
         <div className="w-full lg:max-w-sm relative top-[-70px]">
           <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-            <div className="flex flex-col items-center bg-[var(--bg-info-box)] rounded-xl">
-              <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px] relative top-[-74px]">
-                <div className="p-4 bg-[var(--bg-info-box)] rounded-full">
-                  <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
-                    <img
-                      src="https://placehold.co/100"
-                      alt="User Avatar"
-                      className="rounded-full w-24 h-24"
-                    />
+            <div className="flex flex-col bg-[var(--bg-info-box)] rounded-xl">
+              <div className="flex justify-start items-center p-4 gap-2 w-full">
+                <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
+                  <div className="p-2 bg-[var(--bg-info-box)] rounded-full relative">
+                    <div className="rounded-full relative">
+                      <Link href="/">
+                        <img
+                          src="https://placehold.co/100"
+                          alt="User Avatar"
+                          className="rounded-full w-16 h-16"
+                        />
+                      </Link>
+                      <Link
+                        href="#"
+                        className="absolute bottom-0 bg-gray-500 rounded-full p-1"
+                      >
+                        <FaCamera className="w-3 h-3" />
+                      </Link>
+                    </div>
+                    <div
+                      href="#"
+                      className="absolute top-0 right-0 p-1"
+                    >
+                      <FaCircle className="w-3 h-3 text-[var(--success)]" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="relative top-[-55px] text-center">
-                <h2 className="mt-2 font-bold text-xl">User Name K.</h2>
-                <div className="flex gap-2 items-center text-sm text-[var(--alert)]">
-                  <FaCircle />
-                  <p>Çevrimdışı (4 gün önce)</p>
+                <div className="text-start">
+                  <h2 className="font-bold text-md w-full flex justify-between">
+                    User Name <AiTwotoneSafetyCertificate className="w-6 h-6" />
+                  </h2>
+                  <p className="max-w-[220px] truncate whitespace-nowrap overflow-hidden">
+                    usernameepinko@gmail.com
+                  </p>
                 </div>
               </div>
 
@@ -137,11 +156,9 @@ const ProfileTabs = () => {
           </div>
 
           {/* TAB CONTENTS */}
-          {activeTab === "hesabim" && (
-            <MyAccount />
-          )}
+          {activeTab === "hesabim" && <MyAccount />}
           {activeTab === "mesajlarim" && (
-            <div className="p-4">Mesajlarım burada listelenecek.</div>
+            <div className=""><Messages /></div>
           )}
           {activeTab === "ilanlarim" && (
             <div className="p-4">İlanlarım burada görünecek.</div>

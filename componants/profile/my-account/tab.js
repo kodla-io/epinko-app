@@ -4,6 +4,8 @@ import { FaMedal } from "react-icons/fa";
 import { AiTwotoneSafetyCertificate } from "react-icons/ai";
 import { PiMedalBold } from "react-icons/pi";
 import { AiTwotoneCrown } from "react-icons/ai";
+import { FaCheckSquare } from "react-icons/fa";
+import { IoIosAlert } from "react-icons/io";
 
 export default function MyAccount() {
   return (
@@ -51,7 +53,13 @@ export default function MyAccount() {
           </div>
 
           <div className="flex-1">
-            <label className="block text-lg mb-3">Telefon</label>
+            <div className="flex items-center mb-3 justify-between w-full">
+              <label className="block text-lg ">Telefon</label>
+              <div className="flex items-center text-[var(--success)]">
+                <FaCheckSquare className="w-4 h-4 mr-1" />
+                <span>Doğrulandı</span>
+              </div>
+            </div>
             <input
               type="text"
               placeholder="90555 555 5555"
@@ -62,7 +70,13 @@ export default function MyAccount() {
         </div>
         <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4">
           <div className="flex-1">
-            <label className="block text-lg mb-3">TC Kimlik Numarası</label>
+            <div className="flex items-center mb-3 justify-between w-full">
+              <label className="block text-lg ">TC Kimlik Numarası</label>
+              <div className="flex items-center text-[var(--alert)]">
+                <IoIosAlert className="w-4 h-4 mr-1" />
+                <span>Doğrula</span>
+              </div>
+            </div>
             <input
               type="text"
               placeholder="Kimlik Bilgilerinizi Doğrulayınız"
@@ -71,7 +85,13 @@ export default function MyAccount() {
           </div>
 
           <div className="flex-1">
-            <label className="block text-lg mb-3">E-Mail Adresi</label>
+            <div className="flex items-center mb-3 justify-between w-full">
+              <label className="block text-lg ">E-Mail Adresi</label>
+              <div className="flex items-center text-[var(--success)]">
+                <FaCheckSquare className="w-4 h-4 mr-1" />
+                <span>Doğrulandı</span>
+              </div>
+            </div>
             <input
               type="text"
               placeholder="epinko@epinko.com.tr"
@@ -80,6 +100,10 @@ export default function MyAccount() {
             />
           </div>
         </div>
+        <label className="flex items-center gap-2 cursor-pointer select-none">
+          <input type="checkbox" className="w-4 h-4" />
+          <span className="text-gray-300">Fatura Bilgilerimi Oluştur</span>
+        </label>
       </div>
       <div className="flex items-center space-x-4">
         <h2
