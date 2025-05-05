@@ -2,26 +2,30 @@
 
 import React, { useState } from "react";
 import { HiPaperAirplane } from "react-icons/hi2";
-import { GiWallet, GiRibbonMedal } from "react-icons/gi";
+import { GiWallet } from "react-icons/gi";
 import { AiFillCodeSandboxSquare } from "react-icons/ai";
 import { IoRocket } from "react-icons/io5";
 import Link from "next/link";
 import { MdAccountCircle } from "react-icons/md";
-import { FaCircle, FaCamera } from "react-icons/fa";
+import { FaCircle, FaCamera, FaWallet } from "react-icons/fa";
 import { AiTwotoneSafetyCertificate } from "react-icons/ai";
+import { BsBank } from "react-icons/bs";
 
 import MyAccount from "./my-account/tab";
 import Messages from "./messages/tab";
+import MyAdvertsTable from "./my-adverts/table";
+import WalletHistory from "./wallet-history/table";
+import BankAccounts from "./bank-accounts/table";
 
 const ProfileTabs = () => {
-  const [activeTab, setActiveTab] = useState("hesabim");
+  const [activeTab, setActiveTab] = useState("my-account");
 
   return (
     <div>
       <div className="full-size-bg-img-user"></div>
       <div className="flex flex-col lg:flex-row gap-4 container p-4 mx-auto">
         {/* SOL KUTU */}
-        <div className="w-full lg:max-w-sm relative top-[-70px]">
+        <div className="w-full lg:max-w-sm md:relative top-[-70px]">
           <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
             <div className="flex flex-col bg-[var(--bg-info-box)] rounded-xl">
               <div className="flex justify-start items-center p-4 gap-2 w-full">
@@ -42,10 +46,7 @@ const ProfileTabs = () => {
                         <FaCamera className="w-3 h-3" />
                       </Link>
                     </div>
-                    <div
-                      href="#"
-                      className="absolute top-0 right-0 p-1"
-                    >
+                    <div href="#" className="absolute top-0 right-0 p-1">
                       <FaCircle className="w-3 h-3 text-[var(--success)]" />
                     </div>
                   </div>
@@ -64,24 +65,29 @@ const ProfileTabs = () => {
               <ul className="w-full text-left mt-4 text-white space-y-0 px-4 pb-4">
                 {[
                   {
-                    key: "hesabim",
+                    key: "my-account",
                     icon: <MdAccountCircle className="w-8 h-8" />,
                     label: "Hesabım",
                   },
                   {
-                    key: "mesajlarim",
+                    key: "my-messages",
                     icon: <HiPaperAirplane className="w-8 h-8" />,
                     label: "Mesajlarım",
                   },
                   {
-                    key: "ilanlarim",
+                    key: "my-adverts",
                     icon: <AiFillCodeSandboxSquare className="w-8 h-8" />,
                     label: "İlanlarım",
                   },
                   {
-                    key: "siparislerim",
-                    icon: <IoRocket className="w-8 h-8" />,
-                    label: "Siparişlerim",
+                    key: "wallet-history",
+                    icon: <FaWallet className="w-8 h-8" />,
+                    label: "Bakiye Geçmişim",
+                  },
+                  {
+                    key: "bank-accounts",
+                    icon: <BsBank className="w-8 h-8" />,
+                    label: "Banka Hesaplarım",
                   },
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
@@ -156,15 +162,14 @@ const ProfileTabs = () => {
           </div>
 
           {/* TAB CONTENTS */}
-          {activeTab === "hesabim" && <MyAccount />}
-          {activeTab === "mesajlarim" && (
-            <div className=""><Messages /></div>
+          {activeTab === "my-account" && <MyAccount />}
+          {activeTab === "my-messages" && <Messages />}
+          {activeTab === "my-adverts" && <MyAdvertsTable title={"İLANLARIM"} />}
+          {activeTab === "wallet-history" && (
+            <WalletHistory title={"BAKİYE GEÇMİŞİM"} />
           )}
-          {activeTab === "ilanlarim" && (
-            <div className="p-4">İlanlarım burada görünecek.</div>
-          )}
-          {activeTab === "siparislerim" && (
-            <div className="p-4">Sipariş geçmişi burada olacak.</div>
+          {activeTab === "bank-accounts" && (
+            <BankAccounts title={"BANKA HESAPLARIM"} />
           )}
         </div>
       </div>

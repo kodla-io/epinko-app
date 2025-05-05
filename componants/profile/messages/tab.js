@@ -20,9 +20,9 @@ const users = [
 
 const messages = () => {
   return (
-    <div className="flex gap-4 text-white font-sans my-4">
+    <div className="flex flex-wrap md:flex-nowrap gap-4 text-white font-sans my-4">
       {/* SOL PANEL */}
-      <div className="w-2/7 min-h-[500px] max-h-[500px] flex flex-col">
+      <div className="w-full md:w-2/7 min-h-[100px] md:min-h-[500px] max-h-[500px] flex flex-col">
         {/* Arama */}
         <div className="py-4">
           <input
@@ -33,7 +33,7 @@ const messages = () => {
         </div>
         {/* Kullanıcı Listesi */}
         <div className="flex-1 bg-[var(--advert-list-bg)] border border-1 border-gray-600 rounded-xl p-2">
-          <div className="overflow-y-auto max-h-[410px] min-h-[410px]">
+          <div className="overflow-y-auto max-h-[410px] md:min-h-[410px] min-h-[200px]">
             {users.map((user, index) => (
               <div
                 key={index}
@@ -66,7 +66,7 @@ const messages = () => {
       </div>
 
       {/* SAĞ PANEL */}
-      <div className="w-5/7 flex flex-col bg-[var(--advert-list-bg)] rounded-xl border border-1 border-gray-600">
+      <div className="w-full md:w-5/7 flex flex-col bg-[var(--advert-list-bg)] rounded-xl border border-1 border-gray-600">
         {/* HEADER */}
         <div className="p-3 border-b border-gray-600 flex justify-between items-center">
           <div className="flex items-center gap-2 items-center">
