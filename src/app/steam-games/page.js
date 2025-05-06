@@ -1,4 +1,4 @@
-import CategoryGames from "../../../componants/category-games/category-games";
+import CategoryGames from "../../../componants/category/category-games/category-games";
 import SteamGameList from "../../../componants/steam-games-list/steam-games-list";
 import TextBanner from "../../../componants/text-banner/TextBanner";
 

@@ -5,6 +5,15 @@ import React from "react";
 const Verification = ({ title }) => {
   return (
     <div className="container mx-auto p-4">
+      <div className="flex items-center space-x-4 py-2">
+        <h2
+          style={{ color: "var(--foreground)" }}
+          className="text-[30px] py-2 font-bold"
+        >
+          {title}
+        </h2>
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 hidden md:block to-green-500" />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Email Doğrulama */}
         <div

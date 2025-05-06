@@ -1,4 +1,6 @@
 
 () NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
 
-6 new tabs added to the Profile page
+entry-logs section added to the Profile page,
+advert card design changed,
+tab section and a banner added to the category-detail page,

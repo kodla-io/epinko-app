@@ -1,4 +1,4 @@
-import CategoryDetails from "../../../componants/category-details/details";
+import CategoryDetails from "../../../componants/category/category-details/details";
 import ExplanationTabs from "../../../componants/texts/explanation-tabs";
 import QuestionAnswer from "../../../componants/texts/question-answer";
 

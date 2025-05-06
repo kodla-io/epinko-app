@@ -1,5 +1,5 @@
 import BasketInside from "../../../componants/basket/basket";
-import GameSlider from "../../../componants/game-list-slider/GameListSlider";
+import GameSlider from "../../../componants/game/game-list-slider/GameListSlider";
 import NewAdvertSlider from "../../../componants/advert/new-adver-slider";
 
 export default function Basket() {

@@ -16,6 +16,7 @@ import { IoMdHelpBuoy } from "react-icons/io";
 import { GrTransaction } from "react-icons/gr";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { MdDomainVerification } from "react-icons/md";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 import MyAccount from "./my-account/tab";
 import Messages from "./messages/tab";
@@ -26,6 +27,7 @@ import HelpRequests from "./help-requests/tabs";
 import Transactions from "./transactions/table";
 import PasswordChange from "./password-change/form";
 import Verification from "./verification/cards";
+import EntryLogs from "./entry-logs/table";
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
@@ -117,6 +119,11 @@ const ProfileTabs = () => {
                   {
                     key: "verification",
                     icon: <MdDomainVerification className="w-8 h-8" />,
+                    label: "Profil Deoğulama",
+                  },
+                  {
+                    key: "entry-logs",
+                    icon: <IoDocumentTextOutline  className="w-8 h-8" />,
                     label: "Profil Deoğulama",
                   },
                 ].map((item, index, arr) => (
@@ -211,7 +218,10 @@ const ProfileTabs = () => {
             <PasswordChange title={"ŞİFRE DEĞİŞTİR"} />
           )}
           {activeTab === "verification" && (
-            <Verification title={"ŞİFRE DEĞİŞTİR"} />
+            <Verification title={"PROFİL DOĞRULAMA"} />
+          )}
+          {activeTab === "entry-logs" && (
+            <EntryLogs title={"GİRİŞ HAREKETLERİM"} />
           )}
         </div>
       </div>
