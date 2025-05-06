@@ -1595,8 +1595,28 @@ nav img {
 #streamer-detail textarea,
 #buy-sell input,
 #store-comments textarea,
-#my-account input {
+#my-account input,
+#add-bank-account input,
+#add-bank-account select,
+#help-request-form select,
+#help-request-form textarea,
+#password-change input {
   background-color: var(--input-bg);
+}
+
+.custom-select {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #333;
+  outline: none;
+}
+
+.custom-select option {
+  background-color: #444; /* Çoğu tarayıcı bunu görmezden gelir */
+  color: white;
 }
 
 .clamp-4 {

@@ -1,8 +1,4 @@
 
 () NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
 
-Profile Page,
-    Bank Accounts section added,
-    Wallet History Section Added,
-    My Adverts section Added,
-    Messages section mobile view fixed.
+6 new tabs added to the Profile page

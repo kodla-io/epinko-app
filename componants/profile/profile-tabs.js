@@ -3,19 +3,29 @@
 import React, { useState } from "react";
 import { HiPaperAirplane } from "react-icons/hi2";
 import { GiWallet } from "react-icons/gi";
-import { AiFillCodeSandboxSquare } from "react-icons/ai";
+import {
+  AiFillCodeSandboxSquare,
+  AiTwotoneSafetyCertificate,
+} from "react-icons/ai";
 import { IoRocket } from "react-icons/io5";
 import Link from "next/link";
 import { MdAccountCircle } from "react-icons/md";
 import { FaCircle, FaCamera, FaWallet } from "react-icons/fa";
-import { AiTwotoneSafetyCertificate } from "react-icons/ai";
 import { BsBank } from "react-icons/bs";
+import { IoMdHelpBuoy } from "react-icons/io";
+import { GrTransaction } from "react-icons/gr";
+import { TbPasswordFingerprint } from "react-icons/tb";
+import { MdDomainVerification } from "react-icons/md";
 
 import MyAccount from "./my-account/tab";
 import Messages from "./messages/tab";
 import MyAdvertsTable from "./my-adverts/table";
 import WalletHistory from "./wallet-history/table";
 import BankAccounts from "./bank-accounts/table";
+import HelpRequests from "./help-requests/tabs";
+import Transactions from "./transactions/table";
+import PasswordChange from "./password-change/form";
+import Verification from "./verification/cards";
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
@@ -25,7 +35,7 @@ const ProfileTabs = () => {
       <div className="full-size-bg-img-user"></div>
       <div className="flex flex-col lg:flex-row gap-4 container p-4 mx-auto">
         {/* SOL KUTU */}
-        <div className="w-full lg:max-w-sm md:relative top-[-70px]">
+        <div className="w-full lg:max-w-xs md:relative top-[-70px]">
           <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
             <div className="flex flex-col bg-[var(--bg-info-box)] rounded-xl">
               <div className="flex justify-start items-center p-4 gap-2 w-full">
@@ -56,7 +66,7 @@ const ProfileTabs = () => {
                   <h2 className="font-bold text-md w-full flex justify-between">
                     User Name <AiTwotoneSafetyCertificate className="w-6 h-6" />
                   </h2>
-                  <p className="max-w-[220px] truncate whitespace-nowrap overflow-hidden">
+                  <p className="max-w-[180px] truncate whitespace-nowrap overflow-hidden">
                     usernameepinko@gmail.com
                   </p>
                 </div>
@@ -88,6 +98,26 @@ const ProfileTabs = () => {
                     key: "bank-accounts",
                     icon: <BsBank className="w-8 h-8" />,
                     label: "Banka Hesaplarım",
+                  },
+                  {
+                    key: "help-requests",
+                    icon: <IoMdHelpBuoy className="w-8 h-8" />,
+                    label: "Yardım Taleplerim",
+                  },
+                  {
+                    key: "transactions",
+                    icon: <GrTransaction className="w-8 h-8" />,
+                    label: "İşlemlerim",
+                  },
+                  {
+                    key: "password-change",
+                    icon: <TbPasswordFingerprint className="w-8 h-8" />,
+                    label: "Şİfre Değiştir",
+                  },
+                  {
+                    key: "verification",
+                    icon: <MdDomainVerification className="w-8 h-8" />,
+                    label: "Profil Deoğulama",
                   },
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
@@ -170,6 +200,18 @@ const ProfileTabs = () => {
           )}
           {activeTab === "bank-accounts" && (
             <BankAccounts title={"BANKA HESAPLARIM"} />
+          )}
+          {activeTab === "help-requests" && (
+            <HelpRequests title={"YARDIM TALEPLERİM"} />
+          )}
+          {activeTab === "transactions" && (
+            <Transactions title={"İŞLEMLERİM"} />
+          )}
+          {activeTab === "password-change" && (
+            <PasswordChange title={"ŞİFRE DEĞİŞTİR"} />
+          )}
+          {activeTab === "verification" && (
+            <Verification title={"ŞİFRE DEĞİŞTİR"} />
           )}
         </div>
       </div>
