@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import AdvertCard from "../advert/advert-card";
+import AdvertCard from "../../advert/advert-card";
 
 const AllAdverts = [
   {

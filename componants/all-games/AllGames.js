@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const AllGames = () => {
+const AllGames = ({ activeTab }) => {
   return (
     <div className="py-2">
       <div className="container mx-auto px-4">
@@ -10,43 +10,201 @@ const AllGames = () => {
             style={{ color: "var(--foreground)" }}
             className="text-white text-[30px] py-2 font-bold"
           >
-            TÜM OYUNLAR
+            {activeTab}
           </h2>
           <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
         </div>
-        <div className="py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-            {Array.from({ length: 15 }, (_, index) => (
-              <Link href="/" key={index}>
-                <div
-                  key={index}
-                  className="text-center game-category-card glow-on-hover"
-                >
-                  <img
-                    src="https://placehold.co/300x350"
-                    alt={`Game ${index + 1}`}
-                    className="w-full h-auto rounded-lg"
-                  />
-                  <div className="mt-2 text-lg font-semibold game-category-card-title">
-                    <img src="https://placehold.co/100x50/000000/FFFFFF/png" />
-                  </div>
+        <div className="p-4">
+          {activeTab === "Tümü" && (
+            <>
+              <div className="py-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {Array.from({ length: 15 }, (_, index) => (
+                    <Link href="/" key={index}>
+                      <div
+                        key={index}
+                        className="text-center game-category-card glow-on-hover"
+                      >
+                        <img
+                          src="https://placehold.co/300x350"
+                          alt={`Game ${index + 1}`}
+                          className="w-full h-auto rounded-lg"
+                        />
+                        <div className="mt-2 text-lg font-semibold game-category-card-title">
+                          <img src="https://placehold.co/100x50/000000/FFFFFF/png" />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-        <div className="flex justify-center items-center py-4">
-          <Link href="/all-games">
-            <button
-              style={{
-                // backgroundColor: "var(--btn-bg)",
-                color: "var(--btn-color)",
-              }}
-              className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
-            >
-              DAHA FAZLA GÖRÜNTÜLE
-            </button>
-          </Link>
+              </div>
+              <div className="flex justify-center items-center py-4">
+                <Link href="/all-games">
+                  <button
+                    style={{
+                      // backgroundColor: "var(--btn-bg)",
+                      color: "var(--btn-color)",
+                    }}
+                    className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+                  >
+                    DAHA FAZLA GÖRÜNTÜLE
+                  </button>
+                </Link>
+              </div>
+            </>
+          )}
+          {activeTab === "Oyun" && (
+            <>
+              <div className="py-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {Array.from({ length: 8 }, (_, index) => (
+                    <Link href="/" key={index}>
+                      <div
+                        key={index}
+                        className="text-center game-category-card glow-on-hover"
+                      >
+                        <img
+                          src="https://placehold.co/300x350"
+                          alt={`Game ${index + 1}`}
+                          className="w-full h-auto rounded-lg"
+                        />
+                        <div className="mt-2 text-lg font-semibold game-category-card-title">
+                          <img src="https://placehold.co/100x50/000000/FFFFFF/png" />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center items-center py-4">
+                <Link href="/all-games">
+                  <button
+                    style={{
+                      // backgroundColor: "var(--btn-bg)",
+                      color: "var(--btn-color)",
+                    }}
+                    className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+                  >
+                    DAHA FAZLA GÖRÜNTÜLE
+                  </button>
+                </Link>
+              </div>
+            </>
+          )}
+          {activeTab === "Sosyal Medya" && (
+            <>
+              <div className="py-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {Array.from({ length: 4 }, (_, index) => (
+                    <Link href="/" key={index}>
+                      <div
+                        key={index}
+                        className="text-center game-category-card glow-on-hover"
+                      >
+                        <img
+                          src="https://placehold.co/300x350"
+                          alt={`Game ${index + 1}`}
+                          className="w-full h-auto rounded-lg"
+                        />
+                        <div className="mt-2 text-lg font-semibold game-category-card-title">
+                          <img src="https://placehold.co/100x50/000000/FFFFFF/png" />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center items-center py-4">
+                <Link href="/all-games">
+                  <button
+                    style={{
+                      // backgroundColor: "var(--btn-bg)",
+                      color: "var(--btn-color)",
+                    }}
+                    className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+                  >
+                    DAHA FAZLA GÖRÜNTÜLE
+                  </button>
+                </Link>
+              </div>
+            </>
+          )}
+          {activeTab === "Lisans Hizmetleri" && (
+            <>
+              <div className="py-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {Array.from({ length: 1 }, (_, index) => (
+                    <Link href="/" key={index}>
+                      <div
+                        key={index}
+                        className="text-center game-category-card glow-on-hover"
+                      >
+                        <img
+                          src="https://placehold.co/300x350"
+                          alt={`Game ${index + 1}`}
+                          className="w-full h-auto rounded-lg"
+                        />
+                        <div className="mt-2 text-lg font-semibold game-category-card-title">
+                          <img src="https://placehold.co/100x50/000000/FFFFFF/png" />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center items-center py-4">
+                <Link href="/all-games">
+                  <button
+                    style={{
+                      // backgroundColor: "var(--btn-bg)",
+                      color: "var(--btn-color)",
+                    }}
+                    className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+                  >
+                    DAHA FAZLA GÖRÜNTÜLE
+                  </button>
+                </Link>
+              </div>
+            </>
+          )}
+          {activeTab === "Diğer" && (
+            <>
+              <div className="py-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <Link href="/" key={index}>
+                      <div
+                        key={index}
+                        className="text-center game-category-card glow-on-hover"
+                      >
+                        <img
+                          src="https://placehold.co/300x350"
+                          alt={`Game ${index + 1}`}
+                          className="w-full h-auto rounded-lg"
+                        />
+                        <div className="mt-2 text-lg font-semibold game-category-card-title">
+                          <img src="https://placehold.co/100x50/000000/FFFFFF/png" />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center items-center py-4">
+                <Link href="/all-games">
+                  <button
+                    style={{
+                      // backgroundColor: "var(--btn-bg)",
+                      color: "var(--btn-color)",
+                    }}
+                    className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+                  >
+                    DAHA FAZLA GÖRÜNTÜLE
+                  </button>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

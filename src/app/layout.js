@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "../../componants/layout/Header";
 import Footer from "../../componants/layout/Fotter";
+import BottomText from "../../componants/texts/bottom-text";
 
 import { Inter } from "next/font/google";
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
+        {/* <BottomText /> */}
         <Footer />
       </body>
     </html>

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { AiOutlineSafety } from "react-icons/ai";
-import { FaRegEye } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+
 import Link from "next/link";
 
 const tabData = [
@@ -12,6 +12,7 @@ const tabData = [
     cards: [
       {
         title: "Spotify Aile Planı",
+        priceLast: 20.9,
         price: 29.9,
         viewCount: 300,
         isVitrin: true,
@@ -23,10 +24,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Müzik",
         sellerName: "TuneMart",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/tr-flag.png",
         animateBg: "var(--success)",
       },
       {
         title: "Valorant VP",
+        priceLast: 20.9,
         price: 149.0,
         viewCount: 110,
         isVitrin: true,
@@ -38,10 +41,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Valorant",
         sellerName: "ValorStore",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/tr-flag.png",
         animateBg: "var(--label5)",
       },
       {
         title: "League of Legends RP",
+        priceLast: 20.9,
         price: 89.0,
         viewCount: 210,
         isVitrin: false,
@@ -53,10 +58,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=LoL",
         sellerName: "RiotMart",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/tr-flag.png",
         animateBg: "var(--success)",
       },
       {
         title: "Discord Nitro",
+        priceLast: 20.9,
         price: 59.0,
         viewCount: 190,
         isVitrin: true,
@@ -68,10 +75,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Nitro",
         sellerName: "NitroBay",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/tr-flag.png",
         animateBg: "var(--success)",
       },
       {
         title: "Xbox Game Pass",
+        priceLast: 20.9,
         price: 79.0,
         viewCount: 160,
         isVitrin: false,
@@ -83,10 +92,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Xbox",
         sellerName: "BoxStore",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/tr-flag.png",
         animateBg: "var(--label5)",
       },
       {
         title: "Epic Games Hediye",
+        priceLast: 20.9,
         price: 60.0,
         viewCount: 95,
         isVitrin: true,
@@ -98,6 +109,7 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Epic",
         sellerName: "EpicShop",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/tr-flag.png",
         animateBg: "var(--success)",
       },
     ],
@@ -109,6 +121,7 @@ const tabData = [
     cards: [
       {
         title: "Spotify Aile Planı",
+        priceLast: 20.9,
         price: 29.9,
         viewCount: 300,
         isVitrin: true,
@@ -120,10 +133,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Müzik",
         sellerName: "TuneMart",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/eu-flag.png",
         animateBg: "var(--success)",
       },
       {
         title: "Valorant VP",
+        priceLast: 20.9,
         price: 149.0,
         viewCount: 110,
         isVitrin: true,
@@ -135,10 +150,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Valorant",
         sellerName: "ValorStore",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/eu-flag.png",
         animateBg: "var(--label5)",
       },
       {
         title: "League of Legends RP",
+        priceLast: 20.9,
         price: 89.0,
         viewCount: 210,
         isVitrin: false,
@@ -150,10 +167,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=LoL",
         sellerName: "RiotMart",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/eu-flag.png",
         animateBg: "var(--success)",
       },
       {
         title: "Discord Nitro",
+        priceLast: 20.9,
         price: 59.0,
         viewCount: 190,
         isVitrin: true,
@@ -165,10 +184,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Nitro",
         sellerName: "NitroBay",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/eu-flag.png",
         animateBg: "var(--success)",
       },
       {
         title: "Xbox Game Pass",
+        priceLast: 20.9,
         price: 79.0,
         viewCount: 160,
         isVitrin: false,
@@ -180,10 +201,12 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Xbox",
         sellerName: "BoxStore",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/eu-flag.png",
         animateBg: "var(--label5)",
       },
       {
         title: "Epic Games Hediye",
+        priceLast: 20.9,
         price: 60.0,
         viewCount: 95,
         isVitrin: true,
@@ -195,6 +218,7 @@ const tabData = [
         categoryImage: "https://placehold.co/50x50/000000/FFFFFF?text=Epic",
         sellerName: "EpicShop",
         sellerImage: "https://placehold.co/50x50",
+        iconUrl: "/media/eu-flag.png",
         animateBg: "var(--success)",
       },
     ],
@@ -258,7 +282,10 @@ export default function SingleCategoryCards() {
                           className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gradient-to-tl rounded-md"
                         />
                         <div className="absolute top-2 right-2">
-                          <AiOutlineSafety className="w-8 h-8" />
+                          <img
+                            src={data.iconUrl}
+                            className="w-8 h-8 rounded-full"
+                          />
                         </div>
                       </div>
                       <div className="text-white p-2 w-full">
@@ -268,15 +295,27 @@ export default function SingleCategoryCards() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md">
-                    <div className="text-md font-bold text-white p-2">
-                      {data.price.toFixed(2)}₺
-                    </div>
-                    <div className="p-2">
-                      <div className="flex items-center rounded-full bg-[#20c65c33] text-[var(--success)] p-1">
-                        <FaRegEye className="w-4 h-4 mr-1" />
-                        <span className="text-[11px]">{data.viewCount}</span>
+                  <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md relative">
+                    <div className="text-md font-bold text-white p-2 min-h-[88px] max-h-[88px]">
+                      <div className="flex space-x-1 items-center">
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4 text-white" />
+                        <span> (11) </span>
                       </div>
+
+                      <span className="font-semibold">
+                        {data.price.toFixed(2)}₺
+                      </span>
+                      <br />
+                      <div className="line-through text-gray-500 text-xs">
+                        <span>{data.priceLast.toFixed(2)}₺</span>
+                      </div>
+                    </div>
+                    <div className="p-2 absolute bottom-0 right-0">
+                      <img src="/media/icons/riot.png" className="w-8 h-8" />
                     </div>
                   </div>
                 </Link>

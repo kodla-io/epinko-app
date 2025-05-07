@@ -9,7 +9,7 @@ import { DiAndroid } from "react-icons/di";
 import { BsPatchQuestionFill } from "react-icons/bs";
 import { IoIosTime } from "react-icons/io";
 
-import Comments from "../texts/comments";
+import Comments from "../../texts/comments";
 import Link from "next/link";
 
 const products = [

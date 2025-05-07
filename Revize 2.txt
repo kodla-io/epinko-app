@@ -1,6 +1,7 @@
 
 () NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
 
-entry-logs section added to the Profile page,
-advert card design changed,
-tab section and a banner added to the category-detail page,
+
+imported componant urls fixedi.
+category products componaant cards updated in home page.
+new banner and tabs added to the all-games page
