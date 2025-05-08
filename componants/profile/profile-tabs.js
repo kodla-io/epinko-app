@@ -17,6 +17,8 @@ import { GrTransaction } from "react-icons/gr";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { MdDomainVerification } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { TbReceiptRefund } from "react-icons/tb";
 
 import MyAccount from "./my-account/tab";
 import Messages from "./messages/tab";
@@ -28,6 +30,8 @@ import Transactions from "./transactions/table";
 import PasswordChange from "./password-change/form";
 import Verification from "./verification/cards";
 import EntryLogs from "./entry-logs/table";
+import Earnings from "./earnings/list";
+import Refunds from "./refunds/table";
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
@@ -126,6 +130,16 @@ const ProfileTabs = () => {
                     icon: <IoDocumentTextOutline  className="w-8 h-8" />,
                     label: "Profil Deoğulama",
                   },
+                  {
+                    key: "earnings",
+                    icon: <GiTakeMyMoney  className="w-8 h-8" />,
+                    label: "Kazançlarım",
+                  },
+                  {
+                    key: "refunds",
+                    icon: <TbReceiptRefund  className="w-8 h-8" />,
+                    label: "İade Talebi",
+                  },
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
                     <li
@@ -222,6 +236,12 @@ const ProfileTabs = () => {
           )}
           {activeTab === "entry-logs" && (
             <EntryLogs title={"GİRİŞ HAREKETLERİM"} />
+          )}
+          {activeTab === "earnings" && (
+            <Earnings title={"Kazançlarım"} />
+          )}
+          {activeTab === "refunds" && (
+            <Refunds title={"İade Taleplerim"} />
           )}
         </div>
       </div>

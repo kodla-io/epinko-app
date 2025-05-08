@@ -1610,7 +1610,12 @@ nav img {
 #add-bank-account select,
 #help-request-form select,
 #help-request-form textarea,
-#password-change input {
+#password-change input,
+#earnings input,
+#earnings select,
+#refund-request input,
+#refund-request select, 
+#refund-request textarea {
   background-color: var(--input-bg);
 }
 
