@@ -19,6 +19,11 @@ import { MdDomainVerification } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { TbReceiptRefund } from "react-icons/tb";
+import { RiNotification2Fill } from "react-icons/ri";
+import { VscReferences } from "react-icons/vsc";
+import { FaBorderAll } from "react-icons/fa6";
+import { MdOutlineAccountBalanceWallet } from "react-icons/md";
+import { FaCashRegister } from "react-icons/fa6";
 
 import MyAccount from "./my-account/tab";
 import Messages from "./messages/tab";
@@ -32,6 +37,11 @@ import Verification from "./verification/cards";
 import EntryLogs from "./entry-logs/table";
 import Earnings from "./earnings/list";
 import Refunds from "./refunds/table";
+import NotificationsList from "./notifications/list";
+import ReferenceSystem from "./reference-system/sections";
+import MyOrders from "./my-orders/list";
+import TopUpBalance from "./top-up-balance/section";
+import CheckCash from "./check-cash/list"
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
@@ -127,18 +137,43 @@ const ProfileTabs = () => {
                   },
                   {
                     key: "entry-logs",
-                    icon: <IoDocumentTextOutline  className="w-8 h-8" />,
+                    icon: <IoDocumentTextOutline className="w-8 h-8" />,
                     label: "Profil Deoğulama",
                   },
                   {
                     key: "earnings",
-                    icon: <GiTakeMyMoney  className="w-8 h-8" />,
+                    icon: <GiTakeMyMoney className="w-8 h-8" />,
                     label: "Kazançlarım",
                   },
                   {
                     key: "refunds",
-                    icon: <TbReceiptRefund  className="w-8 h-8" />,
+                    icon: <TbReceiptRefund className="w-8 h-8" />,
                     label: "İade Talebi",
+                  },
+                  {
+                    key: "notifications",
+                    icon: <RiNotification2Fill className="w-8 h-8" />,
+                    label: "Bildirimler",
+                  },
+                  {
+                    key: "reference-system",
+                    icon: <VscReferences className="w-8 h-8" />,
+                    label: "Referans Sistemi",
+                  },
+                  {
+                    key: "my-orders",
+                    icon: <FaBorderAll className="w-8 h-8" />,
+                    label: "Siparişlerim",
+                  },
+                  {
+                    key: "top-up-balance",
+                    icon: <MdOutlineAccountBalanceWallet className="w-8 h-8" />,
+                    label: "Bakiye Yükle",
+                  },
+                  {
+                    key: "check-cash",
+                    icon: <FaCashRegister className="w-8 h-8" />,
+                    label: "Nakit Çek",
                   },
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
@@ -237,12 +272,19 @@ const ProfileTabs = () => {
           {activeTab === "entry-logs" && (
             <EntryLogs title={"GİRİŞ HAREKETLERİM"} />
           )}
-          {activeTab === "earnings" && (
-            <Earnings title={"Kazançlarım"} />
+          {activeTab === "earnings" && <Earnings title={"Kazançlarım"} />}
+          {activeTab === "refunds" && <Refunds title={"İade Taleplerim"} />}
+          {activeTab === "notifications" && (
+            <NotificationsList title={"İade Taleplerim"} />
           )}
-          {activeTab === "refunds" && (
-            <Refunds title={"İade Taleplerim"} />
+          {activeTab === "reference-system" && (
+            <ReferenceSystem title={"Referans Sistemi"} />
           )}
+          {activeTab === "my-orders" && <MyOrders title={"Siparişlerim"} />}
+          {activeTab === "top-up-balance" && (
+            <TopUpBalance title={"Bakiye Yükle"} />
+          )}
+          {activeTab === "check-cash" && <CheckCash title={"Nakit Çek"} />}
         </div>
       </div>
     </div>

@@ -1,1 +1,4 @@
-Earnings and refunds tabs added to yhe profile page
+Profile page
+    my orders tab added,
+    top up balange tab added,
+    check cash tab added.

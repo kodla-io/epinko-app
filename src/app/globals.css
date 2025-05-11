@@ -1511,7 +1511,6 @@ nav img {
   position: relative;
 }
 
-
 .full-size-bg-img-profile::after {
   content: "";
   position: absolute;
@@ -1614,8 +1613,11 @@ nav img {
 #earnings input,
 #earnings select,
 #refund-request input,
-#refund-request select, 
-#refund-request textarea {
+#refund-request select,
+#refund-request textarea,
+#top-up-balance input,
+#check-cash input,
+#check-cash select {
   background-color: var(--input-bg);
 }
 
