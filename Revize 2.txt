@@ -1,7 +1,0 @@
-
-() NOT: TÜM SAYFALARDA EN ALTINDA SEO UYUMLU YAZİ YAZMAK İÇİN TXT ALAN OLMALI YAZİ VARSA GÖRÜNECEK YOKSA BÖLÜM GÖRÜNMEYECEK (Utkuya Sor) <----------------------
-
-
-imported componant urls fixedi.
-category products componaant cards updated in home page.
-new banner and tabs added to the all-games page

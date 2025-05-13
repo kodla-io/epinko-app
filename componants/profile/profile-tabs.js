@@ -24,6 +24,7 @@ import { VscReferences } from "react-icons/vsc";
 import { FaBorderAll } from "react-icons/fa6";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { FaCashRegister } from "react-icons/fa6";
+import { RxBorderAll } from "react-icons/rx";
 
 import MyAccount from "./my-account/tab";
 import Messages from "./messages/tab";
@@ -41,7 +42,8 @@ import NotificationsList from "./notifications/list";
 import ReferenceSystem from "./reference-system/sections";
 import MyOrders from "./my-orders/list";
 import TopUpBalance from "./top-up-balance/section";
-import CheckCash from "./check-cash/list"
+import CheckCash from "./check-cash/list";
+import AdvertOrders from "./advert-orders/section";
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
@@ -175,6 +177,11 @@ const ProfileTabs = () => {
                     icon: <FaCashRegister className="w-8 h-8" />,
                     label: "Nakit Çek",
                   },
+                  {
+                    key: "advert-orders",
+                    icon: <RxBorderAll className="w-8 h-8" />,
+                    label: "İlan Siparişlerim",
+                  },
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
                     <li
@@ -285,6 +292,9 @@ const ProfileTabs = () => {
             <TopUpBalance title={"Bakiye Yükle"} />
           )}
           {activeTab === "check-cash" && <CheckCash title={"Nakit Çek"} />}
+          {activeTab === "advert-orders" && (
+            <AdvertOrders title={"İLAN SİPARİŞLERİM"} />
+          )}
         </div>
       </div>
     </div>
