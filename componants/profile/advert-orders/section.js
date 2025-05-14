@@ -6,6 +6,7 @@ import { IoCheckmarkDone } from "react-icons/io5";
 import Link from "next/link";
 import { FaCircle } from "react-icons/fa";
 import { LuShieldAlert } from "react-icons/lu";
+import { PiUserCircleGearBold } from "react-icons/pi";
 
 import Table from "../table";
 import WarningText from "../../texts/warning";
@@ -82,10 +83,17 @@ export default function orderList({ title }) {
                     </div>
                   </div>
 
-                  <div className="">
-                    <button className="bg-yellow-500 text-white px-3 py-1 rounded hover:opacity-80">
-                      Detaylı İncele
-                    </button>
+                  <div className="border-0 md:border-l-1 border-green-400 p-4 flex flex-wrap justify-center items-center space-y-2">
+                    <span className="w-full text-center text-xl">
+                      Alıcı Adı
+                    </span>
+                    <Link
+                      href="/"
+                      className="bg-green-500 text-white px-3 py-1 rounded hover:opacity-80 flex items-center gap-2"
+                    >
+                      <PiUserCircleGearBold className="w-6 h-6" />
+                      kcanmutlu12
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -94,10 +102,10 @@ export default function orderList({ title }) {
             </>
           ))}
 
-          <div class="space-y-4 bg-[var(--advert-list-bg)] p-4 rounded-md">
-            <div class="flex justify-between items-center text-center text-sm font-semibold mb-6 flex-wrap md:flex-nowrap gap-2">
-              <div class="w-full text-green-500 relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-green-500 after:top-1/2 after:left-full after:-translate-y-1/2">
-                {/* <div class="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-green-500"></div> */}
+          <div className="space-y-4 bg-[var(--advert-list-bg)] p-4 rounded-md">
+            <div className="flex justify-between items-center text-center text-sm font-semibold mb-6 flex-wrap md:flex-nowrap gap-2">
+              <div className="w-full md:w-[190px] cursor-pointer text-green-500 relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-green-500 after:top-1/2 after:left-full after:-translate-y-1/2">
+                {/* <div className="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-green-500"></div> */}
                 <div
                   className="rounded-md"
                   style={{
@@ -111,8 +119,8 @@ export default function orderList({ title }) {
                   </div>
                 </div>
               </div>
-              <div class="w-full text-[var(--alert)] relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-[var(--alert)] after:top-1/2 after:left-full after:-translate-y-1/2">
-                {/* <div class="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-red-500"></div> */}
+              <div className="w-full md:w-[190px] cursor-pointer text-[var(--alert)] relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-[var(--alert)] after:top-1/2 after:left-full after:-translate-y-1/2">
+                {/* <div className="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-red-500"></div> */}
                 <div
                   className="rounded-md"
                   style={{
@@ -126,8 +134,8 @@ export default function orderList({ title }) {
                   </div>
                 </div>
               </div>
-              <div class="w-full text-[var(--alert)] relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-[var(--alert)] after:top-1/2 after:left-full after:-translate-y-1/2">
-                {/* <div class="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-red-500"></div> */}
+              <div className="w-full md:w-[190px] cursor-pointer text-[var(--alert)] relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-[var(--alert)] after:top-1/2 after:left-full after:-translate-y-1/2">
+                {/* <div className="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-red-500"></div> */}
                 <div
                   className="rounded-md"
                   style={{
@@ -141,8 +149,8 @@ export default function orderList({ title }) {
                   </div>
                 </div>
               </div>
-              <div class="w-full text-[var(--alert)] relative">
-                {/* <div class="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-red-500"></div> */}
+              <div className="w-full md:w-[190px] cursor-pointer text-[var(--alert)] relative">
+                {/* <div className="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-red-500"></div> */}
                 <div
                   className="rounded-md"
                   style={{
@@ -158,7 +166,7 @@ export default function orderList({ title }) {
               </div>
             </div>
 
-            <div class="bg-green-600 text-white p-1 rounded-lg flex items-center gap-2">
+            <div className="bg-green-600 text-white p-1 rounded-lg flex items-center gap-2">
               <FaCheckCircle className="w-10 h-10 hidden md:block" />
               <p>
                 <strong>Pubg 35 Level Hesap Yeni Sezon 2000 UC</strong> adlı
@@ -168,8 +176,8 @@ export default function orderList({ title }) {
               </p>
             </div>
 
-            <div class="bg-green-600 text-white p-1 rounded-lg flex items-center justify-between flex-wrap md:flex-nowrap gap-2">
-              <div class="flex items-start gap-2">
+            <div className="bg-green-600 text-white p-1 rounded-lg flex items-center justify-between flex-wrap md:flex-nowrap gap-2">
+              <div className="flex items-start gap-2">
                 <IoChatbubbles className="w-10 h-10 hidden md:block" />
                 <p>
                   Canlı Sohbet üzerinden satıcı ile görüşebilirsiniz.{" "}
@@ -178,12 +186,12 @@ export default function orderList({ title }) {
                   </strong>
                 </p>
               </div>
-              <button class="bg-orange-400 text-black font-semibold px-3 py-1 rounded hover:bg-orange-500 min-w-[180px]">
+              <button className="bg-orange-400 text-black font-semibold px-3 py-1 rounded hover:bg-orange-500 min-w-[180px]">
                 Canlı Sohbete Git
               </button>
             </div>
 
-            <div class="bg-green-600 text-white p-1 rounded-lg flex items-center gap-2">
+            <div className="bg-green-600 text-white p-1 rounded-lg flex items-center gap-2">
               <IoCheckmarkDone className="w-10 h-10 hidden md:block" />
               <p>
                 Siparişinizi teslim aldıktan sonra onay işlemini
