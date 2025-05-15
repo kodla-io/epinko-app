@@ -1617,7 +1617,8 @@ nav img {
 #refund-request textarea,
 #top-up-balance input,
 #check-cash input,
-#check-cash select {
+#check-cash select,
+#my-adverts select {
   background-color: var(--input-bg);
 }
 
@@ -1785,4 +1786,15 @@ nav img {
 
 .animate-fade-in-up {
   animation: fade-in-up 1s ease-out infinite;
+}
+
+.custom-border {
+  border-right: 1px solid rgb(167, 167, 167);
+}
+
+@media (max-width: 1024px) {
+  .custom-border {
+    border-right: 0;
+    border-bottom: 1px solid rgb(167, 167, 167);
+  }
 }
