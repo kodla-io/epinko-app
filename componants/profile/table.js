@@ -45,7 +45,7 @@ export default function AdvertTable({ headers, data }) {
                 <td key={header.key} className="p-4">
                   {header.key === "durum" ? (
                     <div
-                      className={`px-2 py-1 rounded font-semibold min-w-[140px] text-center`}
+                      className={`px-2 py-1 rounded font-semibold text-center`}
                       style={{
                         backgroundColor: item.statusColor,
                         color: item.statusTextColor,
@@ -62,6 +62,22 @@ export default function AdvertTable({ headers, data }) {
                         <FaTrash />
                       </button>
                     </div>
+                  ) : header.key === "button" ? (
+                    item.buttonActive ? (
+                      <div>
+                        <button
+                          className="px-2 py-1 rounded-md"
+                          onClick={() => alert(item.buttonTab)}
+                          style={{
+                            backgroundColor: item.buttonColor,
+                          }}
+                        >
+                          <span>{item.buttonText}</span>
+                        </button>
+                      </div>
+                    ) : (
+                      <span>-------</span>
+                    )
                   ) : (
                     item[header.key]
                   )}
@@ -119,6 +135,22 @@ export default function AdvertTable({ headers, data }) {
                             <FaTrash />
                           </button>
                         </div>
+                      ) : header.key === "button" ? (
+                        item.buttonActive ? (
+                          <div>
+                            <button
+                              className="px-2 py-1 rounded-md"
+                              onClick={() => alert(item.buttonTab)}
+                              style={{
+                                backgroundColor: item.buttonColor,
+                              }}
+                            >
+                              <span>{item.buttonText}</span>
+                            </button>
+                          </div>
+                        ) : (
+                          <span>-------</span>
+                        )
                       ) : (
                         item[header.key]
                       )}

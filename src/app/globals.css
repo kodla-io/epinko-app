@@ -1618,11 +1618,14 @@ nav img {
 #top-up-balance input,
 #check-cash input,
 #check-cash select,
-#my-adverts select {
+#my-adverts select,
+#advertUpdate input,
+#advertUpdate select,
+#advertUpdate textarea {
   background-color: var(--input-bg);
 }
 
-.custom-select {
+.custom-select, #advertUpdate select {
   width: 100%;
   padding: 12px;
   border: none;
@@ -1632,8 +1635,8 @@ nav img {
   outline: none;
 }
 
-.custom-select option {
-  background-color: #444; /* Çoğu tarayıcı bunu görmezden gelir */
+.custom-select option, #advertUpdate select option {
+  background-color: #444;
   color: white;
 }
 

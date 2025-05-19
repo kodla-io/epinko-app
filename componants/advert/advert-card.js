@@ -1,6 +1,5 @@
 // components/ProductCard.jsx
 import { FaRegEye } from "react-icons/fa";
-import AnimatedLabel from "../animations/animated-tabel";
 import Link from "next/link";
 import { AiOutlineSafety } from "react-icons/ai";
 
