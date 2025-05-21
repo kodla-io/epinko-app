@@ -44,6 +44,8 @@ const FloatingSidebar = () => {
     { name: 'Haberler', href: '/news' },
     { name: 'Haber Detay', href: '/news-detail' },
 
+    { name: 'PVP SERVERLAR', href: '/pvp-servers' },
+
     { name: 'İletişim', href: '/contact' },
     { name: 'Login', href: '/login' },
     { name: 'Register', href: '/register' },
@@ -54,7 +56,7 @@ const FloatingSidebar = () => {
     <div className="fixed bottom-6 right-6 z-50 flex items-end">
       {/* Sidebar */}
       {isOpen && (
-        <div className="bg-white shadow-xl rounded-xl max-w-[400px] w-full p-4 mr-4 transition-all duration-300">
+        <div className="bg-white shadow-xl rounded-xl max-w-[400px] w-full p-4 mr-4 transition-all duration-300 max-h-[500px] overflow-y-scroll p-2">
           <ul className="space-y-2">
             {pages.map((page, index) => (
               <li key={index}>

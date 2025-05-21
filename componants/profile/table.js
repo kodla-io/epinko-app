@@ -43,7 +43,30 @@ export default function AdvertTable({ headers, data }) {
             <tr className="hover:bg-[#3A3B51] cursor-pointer">
               {headers.slice(0, visibleCols).map((header) => (
                 <td key={header.key} className="p-4">
-                  {header.key === "durum" ? (
+                  {header.key === "resim" ? (
+                    <>
+                      <div className="flex flex-nowrap items-center gap-2">
+                        <img
+                          src={item.resim}
+                          alt="İlan"
+                          className="w-16 h-16 rounded-sm object-cover"
+                        />
+                        <span>{item.imgText}</span>
+                      </div>
+                    </>
+                  ) : header.key === "icon" ? (
+                    <span className="flex gap-2 items-center">
+                      {item.icon} {item.iconText}
+                    </span>
+                  ) : header.key === "iconSecond" ? (
+                    <span className="flex gap-2 items-center">
+                      {item.iconSecond} {item.iconSecondText}
+                    </span>
+                  ) : header.key === "iconThird" ? (
+                    <span className="flex gap-2 items-center">
+                      {item.iconThird} {item.iconThirdText}
+                    </span>
+                  ) : header.key === "durum" ? (
                     <div
                       className={`px-2 py-1 rounded font-semibold text-center`}
                       style={{
@@ -52,6 +75,17 @@ export default function AdvertTable({ headers, data }) {
                       }}
                     >
                       <span>{item.status}</span>
+                    </div>
+                  ) : header.key === "animation" ? (
+                    <div
+                      className={`px-2 py-1 rounded font-semibold text-center ${
+                        item.scaleAnimation ? "pulse-scale" : ""
+                      }`}
+                      style={{
+                        backgroundColor: item.animationButtonColor,
+                      }}
+                    >
+                      <span>{item.animationText}</span>
                     </div>
                   ) : header.key === "actions" ? (
                     <div className="flex items-center gap-2">
@@ -116,7 +150,28 @@ export default function AdvertTable({ headers, data }) {
                       className="mb-1 px-4 py-3 flex items-center gap-2"
                     >
                       <strong>{header.label}:</strong>{" "}
-                      {header.key === "durum" ? (
+                      {header.key === "resim" ? (
+                        <div className="flex flex-nowrap items-center gap-2">
+                          <img
+                            src={item.resim}
+                            alt="İlan"
+                            className="w-16 h-16 rounded-sm object-cover"
+                          />
+                          <span>{item.imgText}</span>
+                        </div>
+                      ) : header.key === "icon" ? (
+                        <span className="flex gap-2 items-center">
+                          {item.icon} {item.iconText}
+                        </span>
+                      ) : header.key === "iconSecond" ? (
+                        <span className="flex gap-2 items-center">
+                          {item.iconSecond} {item.iconSecondText}
+                        </span>
+                      ) : header.key === "iconThird" ? (
+                        <span className="flex gap-2 items-center">
+                          {item.iconThird} {item.iconThirdText}
+                        </span>
+                      ) : header.key === "durum" ? (
                         <span
                           style={{
                             backgroundColor: item.statusColor,

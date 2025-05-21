@@ -1801,3 +1801,22 @@ nav img {
     border-bottom: 1px solid rgb(167, 167, 167);
   }
 }
+
+
+/* SCALE ANIMATION */
+
+@keyframes pulse-scale {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse-scale {
+  animation: pulse-scale 1s ease-in-out infinite;
+}

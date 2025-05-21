@@ -20,8 +20,8 @@ import { RxStarFilled } from "react-icons/rx";
 import { IoIosAlert } from "react-icons/io";
 
 import Table from "../table";
-import AdvertCard from "../../advert/advert-card"
-import Calendar from "../calendar"
+import AdvertCard from "../../advert/advert-card";
+import Calendar from "../calendar";
 
 const AdvertData = [
   {
@@ -239,7 +239,7 @@ const adCardData = [
     sellerImage: "https://placehold.co/50x50",
     animateBg: "var(--success)",
   },
-]
+];
 
 const MyAdvertsTable = ({ title }) => {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -441,7 +441,10 @@ const MyAdvertsTable = ({ title }) => {
                               ) : header.key === "actions" ? (
                                 <div className="flex items-center gap-2">
                                   <button
-                                    onClick={() => alert(`Düzenle: ${item.no}`)}
+                                    onClick={() => {
+                                      setActiveTab("detail");
+                                      getData([item]);
+                                    }}
                                   >
                                     <FaEdit />
                                   </button>
@@ -1191,9 +1194,9 @@ const MyAdvertsTable = ({ title }) => {
                       {renderCalendar()}
                     </div>
                   </div> */}
-                   <div className="w-full">
+                  <div className="w-full">
                     <Calendar onDateChange={(date) => setChosenDate(date)} />
-                    
+
                     {chosenDate && (
                       <p className="mt-4">
                         Seçilen Tarih: {chosenDate.toLocaleDateString("tr-TR")}

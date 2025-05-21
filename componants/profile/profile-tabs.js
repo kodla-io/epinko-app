@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { HiPaperAirplane } from "react-icons/hi2";
 import { GiWallet } from "react-icons/gi";
 import {
@@ -9,23 +9,7 @@ import {
 } from "react-icons/ai";
 import { IoRocket } from "react-icons/io5";
 import Link from "next/link";
-import { MdAccountCircle } from "react-icons/md";
 import { FaCircle, FaCamera, FaWallet } from "react-icons/fa";
-import { BsBank } from "react-icons/bs";
-import { IoMdHelpBuoy } from "react-icons/io";
-import { GrTransaction } from "react-icons/gr";
-import { TbPasswordFingerprint } from "react-icons/tb";
-import { MdDomainVerification } from "react-icons/md";
-import { IoDocumentTextOutline } from "react-icons/io5";
-import { GiTakeMyMoney } from "react-icons/gi";
-import { TbReceiptRefund } from "react-icons/tb";
-import { RiNotification2Fill } from "react-icons/ri";
-import { VscReferences } from "react-icons/vsc";
-import { FaBorderAll } from "react-icons/fa6";
-import { MdOutlineAccountBalanceWallet } from "react-icons/md";
-import { FaCashRegister } from "react-icons/fa6";
-import { RxBorderAll } from "react-icons/rx";
-import { AiFillProduct } from "react-icons/ai";
 
 import MyAccount from "./my-account/tab";
 import Messages from "./messages/tab";
@@ -47,8 +31,40 @@ import CheckCash from "./check-cash/list";
 import AdvertOrders from "./advert-orders/section";
 import IncomingOrders from "./incoming-orders/list";
 
+import { Player } from "@lordicon/react";
+import user from "../../public/media/icon-scripts/account.json";
+import message from "../../public/media/icon-scripts/message.json";
+import adverts from "../../public/media/icon-scripts/Adverts.json";
+import balanceHistory from "../../public/media/icon-scripts/EarnHistory.json";
+import bank from "../../public/media/icon-scripts/Bank.json";
+import help from "../../public/media/icon-scripts/Help.json";
+import transactions from "../../public/media/icon-scripts/Transactions.json";
+import passwordChange from "../../public/media/icon-scripts/PasswordChange.json";
+import verification from "../../public/media/icon-scripts/Verification.json";
+import logInHistory from "../../public/media/icon-scripts/LogInHistory.json";
+import earnings from "../../public/media/icon-scripts/Earnings.json";
+import refunds from "../../public/media/icon-scripts/Refunds.json";
+import notifications from "../../public/media/icon-scripts/Notifications.json";
+import reference from "../../public/media/icon-scripts/Reference.json";
+import order from "../../public/media/icon-scripts/Order.json";
+import addBalance from "../../public/media/icon-scripts/balanceHistory.json";
+import checkCash from "../../public/media/icon-scripts/CheckCash.json";
+import advertOrders from "../../public/media/icon-scripts/Adverts.json";
+import incomingOrders from "../../public/media/icon-scripts/Adverts.json";
+
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
+
+  // player ref'leri array olarak tutuyoruz
+  const playerRefs = useRef([]);
+
+  const handleMouseEnter = (index) => {
+    playerRefs.current[index]?.playFromBeginning();
+  };
+
+  const handleMouseLeave = (index) => {
+    // playerRefs.current[index]?.goToFirstFrame();
+  };
 
   return (
     <div>
@@ -56,8 +72,8 @@ const ProfileTabs = () => {
       <div className="flex flex-col lg:flex-row gap-4 container p-4 mx-auto">
         {/* SOL KUTU */}
         <div className="w-full lg:max-w-xs md:relative top-[-70px]">
-          <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-            <div className="flex flex-col bg-[var(--bg-info-box)] rounded-xl">
+          <div className="rounded-xl p-[2px]">
+            <div className="flex flex-col rounded-xl">
               <div className="flex justify-start items-center p-4 gap-2 w-full">
                 <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
                   <div className="p-2 bg-[var(--bg-info-box)] rounded-full relative">
@@ -96,112 +112,120 @@ const ProfileTabs = () => {
                 {[
                   {
                     key: "my-account",
-                    icon: <MdAccountCircle className="w-8 h-8" />,
+                    icon: user,
                     label: "Hesabım",
                   },
                   {
                     key: "my-messages",
-                    icon: <HiPaperAirplane className="w-8 h-8" />,
+                    icon: message,
                     label: "Mesajlarım",
                   },
                   {
                     key: "my-adverts",
-                    icon: <AiFillCodeSandboxSquare className="w-8 h-8" />,
+                    icon: adverts,
                     label: "İlanlarım",
                   },
                   {
-                    key: "wallet-history",
-                    icon: <FaWallet className="w-8 h-8" />,
-                    label: "Bakiye Geçmişim",
-                  },
-                  {
-                    key: "bank-accounts",
-                    icon: <BsBank className="w-8 h-8" />,
-                    label: "Banka Hesaplarım",
-                  },
-                  {
-                    key: "help-requests",
-                    icon: <IoMdHelpBuoy className="w-8 h-8" />,
-                    label: "Yardım Taleplerim",
-                  },
-                  {
-                    key: "transactions",
-                    icon: <GrTransaction className="w-8 h-8" />,
-                    label: "İşlemlerim",
-                  },
-                  {
-                    key: "password-change",
-                    icon: <TbPasswordFingerprint className="w-8 h-8" />,
-                    label: "Şİfre Değiştir",
-                  },
-                  {
-                    key: "verification",
-                    icon: <MdDomainVerification className="w-8 h-8" />,
-                    label: "Profil Deoğulama",
-                  },
-                  {
-                    key: "entry-logs",
-                    icon: <IoDocumentTextOutline className="w-8 h-8" />,
-                    label: "Profil Deoğulama",
-                  },
-                  {
-                    key: "earnings",
-                    icon: <GiTakeMyMoney className="w-8 h-8" />,
-                    label: "Kazançlarım",
-                  },
-                  {
-                    key: "refunds",
-                    icon: <TbReceiptRefund className="w-8 h-8" />,
-                    label: "İade Talebi",
-                  },
-                  {
-                    key: "notifications",
-                    icon: <RiNotification2Fill className="w-8 h-8" />,
-                    label: "Bildirimler",
-                  },
-                  {
-                    key: "reference-system",
-                    icon: <VscReferences className="w-8 h-8" />,
-                    label: "Referans Sistemi",
-                  },
-                  {
-                    key: "my-orders",
-                    icon: <FaBorderAll className="w-8 h-8" />,
-                    label: "Siparişlerim",
-                  },
-                  {
-                    key: "top-up-balance",
-                    icon: <MdOutlineAccountBalanceWallet className="w-8 h-8" />,
-                    label: "Bakiye Yükle",
-                  },
-                  {
-                    key: "check-cash",
-                    icon: <FaCashRegister className="w-8 h-8" />,
-                    label: "Nakit Çek",
-                  },
-                  {
                     key: "advert-orders",
-                    icon: <RxBorderAll className="w-8 h-8" />,
+                    icon: advertOrders,
                     label: "İlan Siparişlerim",
                   },
                   {
                     key: "incoming-orders",
-                    icon: <AiFillProduct className="w-8 h-8" />,
+                    icon: incomingOrders   ,
                     label: "Gelen Siparişlerim",
+                  },
+                  {
+                    key: "wallet-history",
+                    icon: balanceHistory,
+                    label: "Bakiye Geçmişim",
+                  },
+                  {
+                    key: "bank-accounts",
+                    icon: bank,
+                    label: "Banka Hesaplarım",
+                  },
+                  {
+                    key: "help-requests",
+                    icon: help,
+                    label: "Yardım Taleplerim",
+                  },
+                  {
+                    key: "transactions",
+                    icon: transactions,
+                    label: "İşlemlerim",
+                  },
+                  {
+                    key: "password-change",
+                    icon: passwordChange,
+                    label: "Şİfre Değiştir",
+                  },
+                  {
+                    key: "verification",
+                    icon: verification,
+                    label: "Profil Deoğulama",
+                  },
+                  {
+                    key: "entry-logs",
+                    icon: logInHistory,
+                    label: "Giriş Hareketlerim",
+                  },
+                  {
+                    key: "earnings",
+                    icon: earnings,
+                    label: "Kazançlarım",
+                  },
+                  {
+                    key: "refunds",
+                    icon: refunds,
+                    label: "İade Talebi",
+                  },
+                  {
+                    key: "notifications",
+                    icon: notifications,
+                    label: "Bildirimler",
+                  },
+                  {
+                    key: "reference-system",
+                    icon: reference,
+                    label: "Referans Sistemi",
+                  },
+                  {
+                    key: "my-orders",
+                    icon: order,
+                    label: "Siparişlerim",
+                  },
+                  {
+                    key: "top-up-balance",
+                    icon: addBalance,
+                    label: "Bakiye Yükle",
+                  },
+                  {
+                    key: "check-cash",
+                    icon: checkCash,
+                    label: "Nakit Çek",
                   },
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
                     <li
                       onClick={() => setActiveTab(item.key)}
+                      onMouseEnter={() => handleMouseEnter(index)}
+                      onMouseLeave={() => handleMouseLeave(index)}
                       className={`relative flex items-center gap-2 cursor-pointer p-2 pl-3 rounded transition-all group
-          ${
-            activeTab === item.key
-              ? "text-[var(--success)] font-semibold"
-              : "hover:bg-[var(--success)]/10"
-          }
-        `}
+                      ${
+                        activeTab === item.key
+                          ? "bg-[var(--success)]/50 font-semibold"
+                          : "hover:bg-[var(--advert-list-bg)]/5"
+                      }
+                    `}
                     >
-                      {item.icon}
+                      <Player
+                        ref={(el) => (playerRefs.current[index] = el)}
+                        icon={item.icon}
+                        size={30}
+                        style={{ cursor: "pointer" }}
+                        trigger="manual" // manual kontrol için önemli
+                      />
                       {item.label}
 
                       {/* Sol gradient çizgisi */}
@@ -217,9 +241,9 @@ const ProfileTabs = () => {
                     </li>
 
                     {/* İki <li> arası çizgi */}
-                    {index < arr.length - 1 && (
+                    {/* {index < arr.length - 1 && (
                       <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent my-1" />
-                    )}
+                    )} */}
                   </React.Fragment>
                 ))}
               </ul>
@@ -230,29 +254,29 @@ const ProfileTabs = () => {
         {/* SAĞ KUTU */}
         <div className="flex-1">
           {/* 4 KUTU */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label2)] p-4 rounded-xl flex items-center gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 gap-[25px]">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label2)] p-2 rounded-xl flex items-center gap-4 justify-center">
               <GiWallet className="text-[var(--label2)] w-12 h-12" />
               <div>
                 <p>Hesap Bakiyesi</p>
                 <h3 className="text-md font-bold">1999,99₺</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--alert)] p-4 rounded-xl flex items-center gap-2">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--alert)] p-2 rounded-xl flex items-center gap-4 justify-center">
               <HiPaperAirplane className="text-[var(--alert)] w-12 h-12" />
               <div>
                 <p>Yeni Mesaj</p>
                 <h3 className="text-md font-bold">2</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label7)] p-4 rounded-xl flex items-center gap-2">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label7)] p-2 rounded-xl flex items-center gap-4 justify-center">
               <AiFillCodeSandboxSquare className="text-[var(--label7)] w-12 h-12" />
               <div>
                 <p>Yeni Sipariş</p>
                 <h3 className="text-md font-bold">7</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label9)] p-4 rounded-xl flex items-center gap-2">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label9)] p-2 rounded-xl flex items-center gap-4 justify-center">
               <IoRocket className="text-[var(--label9)] w-12 h-12" />
               <div>
                 <p>Toplam Kazanç</p>
