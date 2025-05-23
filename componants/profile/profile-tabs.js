@@ -31,7 +31,15 @@ import CheckCash from "./check-cash/list";
 import AdvertOrders from "./advert-orders/section";
 import IncomingOrders from "./incoming-orders/list";
 
-import { Player } from "@lordicon/react";
+import dynamic from "next/dynamic";
+
+const Player = dynamic(
+  () => import("@lordicon/react").then((mod) => mod.Player),
+  {
+    ssr: false,
+  }
+);
+
 import user from "../../src/assets/animations/account.json";
 import message from "../../src/assets/animations/message.json";
 import adverts from "../../src/assets/animations/Adverts.json";
@@ -132,7 +140,7 @@ const ProfileTabs = () => {
                   },
                   {
                     key: "incoming-orders",
-                    icon: adverts   ,
+                    icon: adverts,
                     label: "Gelen Siparişlerim",
                   },
                   {
