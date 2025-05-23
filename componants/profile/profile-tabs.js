@@ -49,8 +49,8 @@ import reference from "../../public/media/icon-scripts/Reference.json";
 import order from "../../public/media/icon-scripts/Order.json";
 import addBalance from "../../public/media/icon-scripts/balanceHistory.json";
 import checkCash from "../../public/media/icon-scripts/CheckCash.json";
-import advertOrders from "../../public/media/icon-scripts/Adverts.json";
-import incomingOrders from "../../public/media/icon-scripts/Adverts.json";
+// import advertOrders from "../../public/media/icon-scripts/Adverts.json";
+// import incomingOrders from "../../public/media/icon-scripts/Adverts.json";
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
@@ -127,12 +127,12 @@ const ProfileTabs = () => {
                   },
                   {
                     key: "advert-orders",
-                    icon: advertOrders,
+                    icon: adverts,
                     label: "İlan Siparişlerim",
                   },
                   {
                     key: "incoming-orders",
-                    icon: incomingOrders   ,
+                    icon: adverts   ,
                     label: "Gelen Siparişlerim",
                   },
                   {
