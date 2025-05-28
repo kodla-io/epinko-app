@@ -1621,11 +1621,15 @@ nav img {
 #my-adverts select,
 #advertUpdate input,
 #advertUpdate select,
-#advertUpdate textarea {
+#advertUpdate textarea,
+#advertCreate input,
+#advertCreate select,
+#advertCreate textarea {
   background-color: var(--input-bg);
 }
 
-.custom-select, #advertUpdate select {
+.custom-select,
+#advertUpdate select {
   width: 100%;
   padding: 12px;
   border: none;
@@ -1635,7 +1639,8 @@ nav img {
   outline: none;
 }
 
-.custom-select option, #advertUpdate select option {
+.custom-select option,
+#advertUpdate select option {
   background-color: #444;
   color: white;
 }
@@ -1802,7 +1807,6 @@ nav img {
   }
 }
 
-
 /* SCALE ANIMATION */
 
 @keyframes pulse-scale {
@@ -1819,4 +1823,19 @@ nav img {
 
 .pulse-scale {
   animation: pulse-scale 1s ease-in-out infinite;
+}
+
+/* Skeleton animasyonu */
+
+@keyframes skeleton {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-skeleton {
+  animation: skeleton 1.2s infinite linear;
 }

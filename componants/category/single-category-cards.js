@@ -3,6 +3,10 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay } from "swiper/modules";
 
 const tabData = [
   {
@@ -265,63 +269,97 @@ export default function SingleCategoryCards() {
             <Link href="/">TÜMÜNÜ GÖR</Link>
           </button>
         </div>
-
-        {/* İçerikler */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
-          {tabData
-            .find((tab) => tab.id === activeTab)
-            ?.cards.map((data, index) => (
-              <div key={index}>
-                <Link href="#">
-                  <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)]">
-                    <div className="overflow-hidden">
-                      <div className="relative">
-                        <img
-                          src={data.image}
-                          alt={`Card ${data.title}`}
-                          className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gradient-to-tl rounded-md"
-                        />
-                        <div className="absolute top-2 right-2">
+        
+        <>
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={10}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              1280: {
+                slidesPerView: 6,
+                spaceBetween: 20,
+              },
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Autoplay]}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            className="mySwiper"
+          >
+            {tabData
+              .find((tab) => tab.id === activeTab)
+              ?.cards.map((data, index) => (
+                <SwiperSlide key={index}>
+                  <Link href="#">
+                    <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)]">
+                      <div className="overflow-hidden">
+                        <div className="relative">
                           <img
-                            src={data.iconUrl}
-                            className="w-8 h-8 rounded-full"
+                            src={data.image}
+                            alt={`Card ${data.title}`}
+                            className="w-full h-full object-cover min-h-[200px] max-h-[200px] md:min-h-[250px] md:max-h-[250px] bg-gradient-to-tl rounded-md"
                           />
+                          <div className="absolute top-2 right-2">
+                            <img
+                              src={data.iconUrl}
+                              className="!w-8 !h-8 rounded-full"
+                            />
+                          </div>
+                        </div>
+                        <div className="text-white p-2 w-full">
+                          <h3 className="text-sm font-bold clamp-2 max-h-[40px] min-h-[40px] text-left">
+                            {data.title}
+                          </h3>
                         </div>
                       </div>
-                      <div className="text-white p-2 w-full">
-                        <h3 className="text-sm font-bold clamp-2 max-h-[40px] min-h-[40px] text-left">
-                          {data.title}
-                        </h3>
-                      </div>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md relative">
-                    <div className="text-md font-bold text-white p-2 min-h-[88px] max-h-[88px]">
-                      <div className="flex space-x-1 items-center">
-                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                        <FaStar className="w-4 h-4 text-white" />
-                        <span> (11) </span>
-                      </div>
+                    <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md relative">
+                      <div className="text-md font-bold text-white p-2 min-h-[88px] max-h-[88px]">
+                        <div className="flex space-x-1 items-center">
+                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                          <FaStar className="w-4 h-4 text-white" />
+                          <span> (11) </span>
+                        </div>
 
-                      <span className="font-semibold">
-                        {data.price.toFixed(2)}₺
-                      </span>
-                      <br />
-                      <div className="line-through text-gray-500 text-xs">
-                        <span>{data.priceLast.toFixed(2)}₺</span>
+                        <span className="font-semibold">
+                          {data.price.toFixed(2)}₺
+                        </span>
+                        <br />
+                        <div className="line-through text-gray-500 text-xs">
+                          <span>{data.priceLast.toFixed(2)}₺</span>
+                        </div>
+                      </div>
+                      <div className="p-2 absolute bottom-0 right-0">
+                        <img
+                          src="/media/icons/riot.png"
+                          className="!w-8 !h-8"
+                        />
                       </div>
                     </div>
-                    <div className="p-2 absolute bottom-0 right-0">
-                      <img src="/media/icons/riot.png" className="w-8 h-8" />
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
-        </div>
+                  </Link>
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </>
       </div>
     </div>
   );
