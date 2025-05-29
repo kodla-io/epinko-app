@@ -225,7 +225,7 @@ const ProfileTabs = () => {
                       className={`relative flex items-center gap-2 cursor-pointer p-2 pl-3 rounded transition-all group
                       ${
                         activeTab === item.key
-                          ? "bg-[var(--success)]/50 font-semibold"
+                          ? "bg-[#36373c]/50 font-semibold"
                           : "hover:bg-[var(--advert-list-bg)]/5"
                       }
                     `}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Warning = () => {
+const Warning = ({ bg }) => {
   return (
     <div className="container m-auto my-4 px-4 md:px-0">
       <div className="flex items-center space-x-4">
@@ -12,7 +12,7 @@ const Warning = () => {
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
-      <div className="bg-[var(--advert-list-bg)] p-4 rounded-md">
+      <div style={{ backgroundColor: bg }} className="p-4 rounded-md">
         <div className="mt-4">
           <div className="flex items-start mb-2">
             <span className="bg-[var(--label12)] text-white min-w-[40px] min-h-[40px] flex justify-center items-center rounded-full mr-2 font-semibold">

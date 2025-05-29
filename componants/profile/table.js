@@ -26,7 +26,7 @@ export default function AdvertTable({ headers, data }) {
   };
 
   return (
-    <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+    <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-sm">
       <thead>
         <tr>
           {headers.slice(0, visibleCols).map((header) => (

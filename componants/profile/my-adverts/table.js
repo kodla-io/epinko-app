@@ -299,7 +299,7 @@ const MyAdvertsTable = ({ title }) => {
             <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
           </div>
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center gap-4 bg-[var(--advert-list-bg)] p-4 rounded-xl text-white">
+            <div className="flex flex-wrap items-center gap-4 bg-[var(--profile-tab-bg)] p-4 rounded-sm text-white">
               {/* Arama Alanı */}
               <div className="flex w-full md:w-auto items-center gap-2 bg-[var(--input-bg)] px-3 py-2 rounded-md">
                 <svg
@@ -326,7 +326,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Statü Alanı */}
               <div className="flex w-full md:w-auto items-center gap-2">
                 <span className="text-sm text-gray-300">Statü:</span>
-                <select className="bg-[#2B2D3C] text-sm px-3 py-2 rounded-md text-white outline-none custom-select">
+                <select className="bg-[#2B2D3C] text-xs !p-0 !px-2 rounded-sm !h-[36px] text-white outline-none custom-select">
                   <option>Onay Bekliyor</option>
                   <option>Aktif</option>
                   <option>Reddedildi</option>
@@ -335,15 +335,15 @@ const MyAdvertsTable = ({ title }) => {
 
               {/* Tür Alanı */}
               <div className="flex w-full md:w-auto items-center gap-2">
-                <span className="text-sm text-gray-300">Tür:</span>
-                <select className="bg-[#2B2D3C] text-sm px-3 py-2 rounded-md text-white outline-none custom-select">
+                <span className="text-xs text-gray-300">Tür:</span>
+                <select className="bg-[#2B2D3C] text-sm !p-0 !px-2 rounded-sm !h-[36px] text-white outline-none custom-select">
                   <option>Stoklu</option>
                   <option>Tekil</option>
                 </select>
               </div>
             </div>
 
-            <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+            <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
               <thead>
                 <tr>
                   {headers.slice(0, visibleCols).map((header) => (
@@ -357,7 +357,7 @@ const MyAdvertsTable = ({ title }) => {
               <tbody>
                 {AdvertData.map((item, index) => (
                   <React.Fragment key={index}>
-                    <tr className="border-b-1 border-[var(--success)] hover:bg-[#3A3B51] cursor-pointer">
+                    <tr className="text-sm hover:bg-[#3A3B51] cursor-pointer">
                       {headers.slice(0, visibleCols).map((header) => (
                         <td key={header.key} className="p-2">
                           {header.key === "resim" ? (
@@ -416,7 +416,7 @@ const MyAdvertsTable = ({ title }) => {
                     >
                       <td
                         colSpan={visibleCols + 1}
-                        className="bg-[var(--advert-list-bg)]"
+                        className="bg-[var(--profile-tab-bg)]"
                       >
                         {expandedRow === index &&
                           headers.slice(visibleCols).map((header) => (
@@ -514,7 +514,7 @@ const MyAdvertsTable = ({ title }) => {
       <div className="p-0 md:py-2 min-h-screen text-white">
         {activeTab === "detail" && (
           <>
-            <div className="rounded-xl p-2 md:p-4 text-white space-y-4">
+            <div className="rounded-sm p-2 md:p-4 text-white space-y-4">
               <div className="flex items-center space-x-4 py-2 flex flex-wrap md:flex-nowrap gap-2">
                 <h2
                   style={{ color: "var(--foreground)" }}
@@ -549,7 +549,7 @@ const MyAdvertsTable = ({ title }) => {
               </div>
 
               {/* Üst Bilgi */}
-              <div className="bg-[var(--advert-list-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
+              <div className="bg-[var(--profile-tab-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
                 <img
                   src="https://placehold.co/300x200"
                   alt="ürün"
@@ -586,11 +586,11 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("PUBG Mobile")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "PUBG Mobile" ? "bg-green-500 text-white" : ""
+                    selected === "PUBG Mobile" ? "bg-[var(--label6)] text-white" : ""
                   }`}
                   style={{
                     backgroundColor:
-                      selected === "PUBG Mobile" ? "" : "var(--advert-list-bg)",
+                      selected === "PUBG Mobile" ? "" : "var(--profile-tab-bg)",
                   }}
                 >
                   <GiCrossedSwords className="w-8 h-8" />
@@ -600,11 +600,11 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("Hesap Satış")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "Hesap Satış" ? "bg-green-500 text-white" : ""
+                    selected === "Hesap Satış" ? "bg-[var(--label4)] text-white" : ""
                   }`}
                   style={{
                     backgroundColor:
-                      selected === "Hesap Satış" ? "" : "var(--advert-list-bg)",
+                      selected === "Hesap Satış" ? "" : "var(--profile-tab-bg)",
                   }}
                 >
                   <GiCheckedShield className="w-8 h-8" />
@@ -615,14 +615,14 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelected("Lorem Ipsum 1")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 1"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
                     backgroundColor:
                       selected === "Lorem Ipsum 1"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--profile-tab-bg)",
                   }}
                 >
                   <GiLegArmor className="w-8 h-8" />
@@ -633,14 +633,14 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelected("Lorem Ipsum 2")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 2"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
                     backgroundColor:
                       selected === "Lorem Ipsum 2"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--profile-tab-bg)",
                   }}
                 >
                   <LiaCoinsSolid className="w-8 h-8" />
@@ -651,7 +651,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Bilgiler */}
               <div className="flex flex-col md:flex-row gap-4 mt-4">
                 {/* Sol kutu (2/3) */}
-                <div className="md:w-2/3 w-full bg-[var(--advert-list-bg)] p-4 rounded-lg">
+                <div className="md:w-2/3 w-full bg-[var(--profile-tab-bg)] p-4 rounded-lg">
                   <div className="flex flex-col md:flex-row">
                     {/* Sol liste */}
                     <ul className="flex-1 space-y-2 px-1 custom-border">
@@ -709,7 +709,7 @@ const MyAdvertsTable = ({ title }) => {
                 </div>
 
                 {/* Sağ kutu (1/3) */}
-                <div className="md:w-1/3 w-full bg-[var(--advert-list-bg)] p-4 rounded-lg flex items-center justify-center">
+                <div className="md:w-1/3 w-full bg-[var(--profile-tab-bg)] p-4 rounded-lg flex items-center justify-center">
                   <div className="flex flex-col items-center gap-2 text-center">
                     <div className="flex items-center justify-center">
                       <div className="bg-green-800 p-2 rounded-full">
@@ -774,7 +774,7 @@ const MyAdvertsTable = ({ title }) => {
             </div>
             <div
               id="advertUpdate"
-              className="space-y-4 md:space-y-6 bg-[var(--advert-list-bg)] p-2 md:p-4 rounded-lg"
+              className="space-y-4 md:space-y-6 bg-[var(--profile-tab-bg)] p-2 md:p-4 rounded-lg"
             >
               {/* Select: Kategori */}
               <div className="flex items-center gap-2">
@@ -795,7 +795,7 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("PUBG Mobile")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "PUBG Mobile" ? "bg-green-500 text-white" : ""
+                    selected === "PUBG Mobile" ? "bg-[var(--label4)] text-white" : ""
                   }`}
                   style={{
                     backgroundColor:
@@ -809,7 +809,7 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("Hesap Satış")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "Hesap Satış" ? "bg-green-500 text-white" : ""
+                    selected === "Hesap Satış" ? "bg-[var(--label4)] text-white" : ""
                   }`}
                   style={{
                     backgroundColor:
@@ -824,7 +824,7 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelected("Lorem Ipsum 1")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 1"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
@@ -842,7 +842,7 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelected("Lorem Ipsum 2")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 2"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
@@ -857,7 +857,7 @@ const MyAdvertsTable = ({ title }) => {
                 </span>
               </div>
 
-              <div className="flex items-center bg-green-600 text-white text-sm rounded-md p-1 gap-2">
+              <div className="flex items-center bg-[var(--label4)] text-white text-sm rounded-md p-1 gap-2">
                 <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
                 <span>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -892,7 +892,7 @@ const MyAdvertsTable = ({ title }) => {
                 </h2>
               </div>
 
-              <div className="flex items-center bg-green-600 text-white text-sm rounded-md p-1 gap-2">
+              <div className="flex items-center bg-[var(--label4)] text-white text-sm rounded-md p-1 gap-2">
                 <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
                 <span>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -906,7 +906,7 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelectedLanguage("language1")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language1"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
@@ -923,7 +923,7 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelectedLanguage("language2")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language2"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
@@ -940,7 +940,7 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelectedLanguage("language3")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language3"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
@@ -957,7 +957,7 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelectedLanguage("language4")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language4"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
@@ -974,7 +974,7 @@ const MyAdvertsTable = ({ title }) => {
                   onClick={() => setSelectedLanguage("language5")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language5"
-                      ? "bg-green-500 text-white"
+                      ? "bg-[var(--label4)] text-white"
                       : ""
                   }`}
                   style={{
@@ -1060,7 +1060,7 @@ const MyAdvertsTable = ({ title }) => {
                     <input
                       type="radio"
                       name="kategori"
-                      className="absolute top-2 left-2 z-10 w-4 h-4"
+                      className="absolute top-2 left-2 z-10 !w-4 !h-4"
                     />
                     <img
                       src="https:/placehold.co/500"
@@ -1074,7 +1074,7 @@ const MyAdvertsTable = ({ title }) => {
                     <input
                       type="radio"
                       name="kategori"
-                      className="absolute top-2 left-2 z-10 w-4 h-4"
+                      className="absolute top-2 left-2 z-10 !w-4 !h-4"
                     />
                     <img
                       src="https:/placehold.co/500"
@@ -1091,7 +1091,7 @@ const MyAdvertsTable = ({ title }) => {
                 <h3 className="font-medium text-sm">İlan Resmi Yükle</h3>
               </div>
 
-              <div className="flex items-center bg-green-600 text-white text-sm rounded-md p-1 gap-2">
+              <div className="flex items-center bg-[var(--label4)] text-white text-sm rounded-md p-1 gap-2">
                 <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
                 <span>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -1107,7 +1107,7 @@ const MyAdvertsTable = ({ title }) => {
               </label>
 
               <div className="w-full flex justify-end">
-                <button className="flex items-center gap-2 bg-[#3B5BFE] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646f2] transition">
+                <button className="flex items-center gap-2 bg-[var(--success)] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646f2] transition">
                   <FaPen className="w-3.5 h-3.5" />
                   <span>İlanı Güncelle</span>
                 </button>
@@ -1134,7 +1134,7 @@ const MyAdvertsTable = ({ title }) => {
             </div>
 
             {/* Üst Bilgi */}
-            <div className="bg-[var(--advert-list-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
+            <div className="bg-[var(--profile-tab-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
               <img
                 src="https://placehold.co/300x200"
                 alt="ürün"
@@ -1178,22 +1178,11 @@ const MyAdvertsTable = ({ title }) => {
               {/* Üst Kısım */}
               <div className="md:col-span-3 flex gap-2 md:gap-4 flex-wrap md:flex-nowrap">
                 {/* Sol Kutu */}
-                <div className="w-full md:w-1/3 bg-[var(--advert-list-bg)] p-4 flex flex-wrap justify-between">
+                <div className="w-full md:w-1/3 bg-[var(--profile-tab-bg)] p-4 flex flex-wrap justify-between">
                   <h2>Öne Çıkarma Süresi</h2>
                   <select className="w-full mt-2 bg-gray-700 p-2">
                     <option>Seçiniz</option>
                   </select>
-                  {/* <div className="mt-4">
-                    <h3>Tarih Seçiniz</h3>
-                    <div className="flex justify-between items-center mt-2">
-                      <button>◄</button>
-                      <span>Aralık</span>
-                      <button>►</button>
-                    </div>
-                    <div className="grid grid-cols-7 mt-2">
-                      {renderCalendar()}
-                    </div>
-                  </div> */}
                   <div className="w-full">
                     <Calendar onDateChange={(date) => setChosenDate(date)} />
 
@@ -1208,33 +1197,33 @@ const MyAdvertsTable = ({ title }) => {
                 {/* Sağ Kutu */}
                 <div className="w-full md:w-2/3 flex gap-2 rounded-lg">
                   {/* İlanınızı Özelleştirin */}
-                  <div className="md:w-2/3 w-full bg-[var(--advert-list-bg)] p-4 flex justify-between flex-wrap">
+                  <div className="md:w-2/3 w-full bg-[var(--profile-tab-bg)] p-4 flex justify-between flex-wrap">
                     <h2>İLANINIZI ÖZELLEŞTİRİN</h2>
                     <div>
                       <div className="space-y-1">
                         <div className="flex items-center">
-                          <input type="checkbox" className="mr-2" />
+                          <input type="checkbox" className="mr-2 !w-4 !h-4" />
                           <label>Lorem ipsum dolor.</label>
                           <span className="ml-auto">0.00₺</span>
                         </div>
                         <div className="flex items-center">
-                          <input type="checkbox" className="mr-2" />
+                          <input type="checkbox" className="mr-2 !w-4 !h-4" />
                           <label>Lorem ipsum dolor.</label>
                           <span className="ml-auto">0.00₺</span>
                         </div>
                         <div className="flex items-center">
-                          <input type="checkbox" className="mr-2" />
+                          <input type="checkbox" className="mr-2 !w-4 !h-4" />
                           <label>Lorem ipsum dolor.</label>
                           <span className="ml-auto">0.00₺</span>
                         </div>
                         <div className="flex items-center">
-                          <input type="checkbox" className="mr-2" />
+                          <input type="checkbox" className="mr-2 !w-4 !h-4" />
                           <label>Lorem ipsum dolor.</label>
                           <span className="ml-auto">0.00₺</span>
                         </div>
                       </div>
-                      <div className="flex items-center bg-[var(--label3)] text-white text-sm rounded-md p-1 gap-2 mt-2">
-                        <IoIosAlert className="!w-10 !h-10 mr-2 hidden md:block text-[var(--primary)]" />
+                      <div className="flex items-center bg-[var(--label4)] text-white text-sm rounded-md p-1 gap-2 mt-2">
+                        <IoIosAlert className="!w-10 !h-10 mr-2 hidden md:block text-[var(--white)]" />
                         <span className="flex-1 text-black">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit, sed do eiusmod tempor incididunt ut labore et
@@ -1264,7 +1253,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Alt Kısım */}
               <div className="md:col-span-3 flex gap-2 md:gap-4 flex-wrap md:flex-nowrap">
                 {/* Siz Ayarlayacağınız Kısım */}
-                <div className="md:w-1/3 w-full bg-[var(--advert-list-bg)] p-4 rounded-lg flex items-center justify-center">
+                <div className="md:w-1/3 w-full bg-[var(--profile-tab-bg)] p-4 rounded-lg flex items-center justify-center">
                   <div className="flex flex-col items-center gap-2 text-center">
                     <div className="flex items-center justify-center">
                       <div className="bg-green-800 p-2 rounded-full">
@@ -1297,13 +1286,13 @@ const MyAdvertsTable = ({ title }) => {
                 {/* Sağ Kutu */}
                 <div className="w-full md:w-2/3 flex gap-2 rounded-lg">
                   {/* Seçilen İlan Özellikleri */}
-                  <div className="w-full md:w-2/3 bg-[var(--advert-list-bg)] p-4 flex justify-between flex-wrap">
+                  <div className="w-full md:w-2/3 bg-[var(--profile-tab-bg)] p-4 flex justify-between flex-wrap">
                     <h2>SEÇİLEN İLAN ÖZELLİKLERİ</h2>
                     <div className="space-y-1 w-full">
                       <div className="flex items-center">
                         <input
                           type="checkbox"
-                          className="mr-2"
+                          className="mr-2 !w-4 !h-4"
                           checked
                           disabled
                         />
@@ -1313,7 +1302,7 @@ const MyAdvertsTable = ({ title }) => {
                       <div className="flex items-center">
                         <input
                           type="checkbox"
-                          className="mr-2"
+                          className="mr-2 !w-4 !h-4"
                           checked
                           disabled
                         />
@@ -1323,7 +1312,7 @@ const MyAdvertsTable = ({ title }) => {
                       <div className="flex items-center">
                         <input
                           type="checkbox"
-                          className="mr-2"
+                          className="mr-2 !w-4 !h-4"
                           checked
                           disabled
                         />
@@ -1333,7 +1322,7 @@ const MyAdvertsTable = ({ title }) => {
                       <div className="flex items-center">
                         <input
                           type="checkbox"
-                          className="mr-2"
+                          className="mr-2 !w-4 !h-4"
                           checked
                           disabled
                         />
