@@ -22,22 +22,22 @@ const messages = () => {
   return (
     <div className="flex flex-wrap md:flex-nowrap gap-4 text-white font-sans my-4">
       {/* SOL PANEL */}
-      <div className="w-full md:w-2/7 min-h-[100px] md:min-h-[500px] max-h-[500px] flex flex-col">
+      <div className="w-full md:w-2/7 min-h-[100px] md:min-h-[500px] max-h-[500px] flex flex-col bg-[#333a48]">
         {/* Arama */}
-        <div className="py-4">
+        <div className="py-4 px-2">
           <input
             type="text"
             placeholder="Kişi Ara"
-            className="w-full px-4 py-2 rounded-full border border-1 border-gray-600 bg-[var(--advert-list-bg)] text-white placeholder-gray-400 outline-none"
+            className="w-full px-4 py-2 rounded-full bg-[var(--advert-list-bg)] text-white placeholder-gray-400 outline-none"
           />
         </div>
         {/* Kullanıcı Listesi */}
-        <div className="flex-1 bg-[var(--advert-list-bg)] border border-1 border-gray-600 rounded-xl p-2">
+        <div className="flex-1 rounded p-2">
           <div className="overflow-y-auto max-h-[410px] md:min-h-[410px] min-h-[200px]">
             {users.map((user, index) => (
               <div
                 key={index}
-                className="flex items-center px-1 py-2 gap-2 hover:bg-[#2a2d41] cursor-pointer border-b border-gray-700 w-[96%]"
+                className="flex items-center px-1 py-2 gap-2 hover:bg-[#2a2d41] cursor-pointer border-b border-gray-600 w-[96%]"
               >
                 <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
                   <div className="p-2 bg-[var(--bg-info-box)] rounded-full relative">
@@ -66,9 +66,9 @@ const messages = () => {
       </div>
 
       {/* SAĞ PANEL */}
-      <div className="w-full md:w-5/7 flex flex-col bg-[var(--advert-list-bg)] rounded-xl border border-1 border-gray-600">
+      <div className="w-full md:w-5/7 flex flex-col bg-[#3a404b] rounded">
         {/* HEADER */}
-        <div className="p-3 border-b border-gray-600 flex justify-between items-center">
+        <div className="p-2 border-b border-gray-600 flex justify-between bg-[#414a59] items-center">
           <div className="flex items-center gap-2 items-center">
             <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
               <div className="p-2 bg-[var(--bg-info-box)] rounded-full relative">
@@ -77,7 +77,7 @@ const messages = () => {
                     <img
                       src="https://placehold.co/100"
                       alt="User Avatar"
-                      className="rounded-full w-12 h-12"
+                      className="rounded-full w-8 h-8"
                     />
                   </Link>
                 </div>
@@ -87,8 +87,8 @@ const messages = () => {
               </div>
             </div>
             <div>
-              <p className="font-semibold">Kamilcan Mutlu</p>
-              <p className="text-sm text-green-400">çevrimiçi</p>
+              <p className="font-semibold text-sm">Kamilcan Mutlu</p>
+              <p className="text-xs text-green-400">çevrimiçi</p>
             </div>
           </div>
           <button className="bg-[var(--alert)] text-white text-sm px-3 py-1 rounded hover:bg-red-500 flex items-center gap-2">

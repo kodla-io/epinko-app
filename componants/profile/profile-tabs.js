@@ -80,8 +80,8 @@ const ProfileTabs = () => {
       <div className="flex flex-col lg:flex-row gap-4 container p-4 mx-auto">
         {/* SOL KUTU */}
         <div className="w-full lg:max-w-xs md:relative top-[-70px]">
-          <div className="rounded-xl p-[2px]">
-            <div className="flex flex-col rounded-xl">
+          <div className="rounded p-[2px]">
+            <div className="flex flex-col rounded">
               <div className="flex justify-start items-center p-4 gap-2 w-full">
                 <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
                   <div className="p-2 bg-[var(--bg-info-box)] rounded-full relative">
@@ -123,6 +123,13 @@ const ProfileTabs = () => {
                     icon: user,
                     label: "Hesabım",
                   },
+                  {
+                    key: "my-orders",
+                    icon: order,
+                    label: "Siparişlerim",
+                  },
+
+                  
                   {
                     key: "my-messages",
                     icon: message,
@@ -198,11 +205,7 @@ const ProfileTabs = () => {
                     icon: reference,
                     label: "Referans Sistemi",
                   },
-                  {
-                    key: "my-orders",
-                    icon: order,
-                    label: "Siparişlerim",
-                  },
+                  
                   {
                     key: "top-up-balance",
                     icon: addBalance,
@@ -263,28 +266,28 @@ const ProfileTabs = () => {
         <div className="flex-1">
           {/* 4 KUTU */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 gap-[25px]">
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label2)] p-2 rounded-xl flex items-center gap-4 justify-center">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label2)] p-2 rounded flex items-center gap-4 justify-center">
               <GiWallet className="text-[var(--label2)] w-12 h-12" />
               <div>
                 <p>Hesap Bakiyesi</p>
                 <h3 className="text-md font-bold">1999,99₺</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--alert)] p-2 rounded-xl flex items-center gap-4 justify-center">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--alert)] p-2 rounded flex items-center gap-4 justify-center">
               <HiPaperAirplane className="text-[var(--alert)] w-12 h-12" />
               <div>
                 <p>Yeni Mesaj</p>
                 <h3 className="text-md font-bold">2</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label7)] p-2 rounded-xl flex items-center gap-4 justify-center">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label7)] p-2 rounded flex items-center gap-4 justify-center">
               <AiFillCodeSandboxSquare className="text-[var(--label7)] w-12 h-12" />
               <div>
                 <p>Yeni Sipariş</p>
                 <h3 className="text-md font-bold">7</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label9)] p-2 rounded-xl flex items-center gap-4 justify-center">
+            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label9)] p-2 rounded flex items-center gap-4 justify-center">
               <IoRocket className="text-[var(--label9)] w-12 h-12" />
               <div>
                 <p>Toplam Kazanç</p>

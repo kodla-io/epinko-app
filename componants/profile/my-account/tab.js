@@ -19,10 +19,10 @@ export default function MyAccount() {
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
-      <div className="bg-[var(--advert-list-bg)] p-4 rounded-lg">
+      <div className="bg-[var(--profile-tab-bg)] p-4 rounded-lg">
         <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4">
           <div className="flex-1">
-            <label className="block text-lg mb-3">Ad</label>
+            <label className="block text-sm mb-3">Ad</label>
             <input
               type="text"
               placeholder="Epinko Epinko"
@@ -32,7 +32,7 @@ export default function MyAccount() {
           </div>
 
           <div className="flex-1">
-            <label className="block text-lg mb-3">Soyad</label>
+            <label className="block text-sm mb-3">Soyad</label>
             <input
               type="text"
               placeholder="EPİNKO"
@@ -43,7 +43,7 @@ export default function MyAccount() {
         </div>
         <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4">
           <div className="flex-1">
-            <label className="block text-lg mb-3">Kullanıcı adı</label>
+            <label className="block text-sm mb-3">Kullanıcı adı</label>
             <input
               type="text"
               placeholder="@epinko"
@@ -54,8 +54,8 @@ export default function MyAccount() {
 
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
-              <label className="block text-lg ">Telefon</label>
-              <div className="flex items-center text-[var(--success)]">
+              <label className="block text-sm">Telefon</label>
+              <div className="flex items-center text-sm text-[var(--success)]">
                 <FaCheckSquare className="w-4 h-4 mr-1" />
                 <span>Doğrulandı</span>
               </div>
@@ -71,8 +71,8 @@ export default function MyAccount() {
         <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4">
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
-              <label className="block text-lg ">TC Kimlik Numarası</label>
-              <div className="flex items-center text-[var(--alert)]">
+              <label className="block text-sm ">TC Kimlik Numarası</label>
+              <div className="flex items-center text-sm text-[var(--alert)]">
                 <IoIosAlert className="w-4 h-4 mr-1" />
                 <span>Doğrula</span>
               </div>
@@ -86,8 +86,8 @@ export default function MyAccount() {
 
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
-              <label className="block text-lg ">E-Mail Adresi</label>
-              <div className="flex items-center text-[var(--success)]">
+              <label className="block text-sm ">E-Mail Adresi</label>
+              <div className="flex items-center text-sm text-[var(--success)]">
                 <FaCheckSquare className="w-4 h-4 mr-1" />
                 <span>Doğrulandı</span>
               </div>
@@ -101,8 +101,8 @@ export default function MyAccount() {
           </div>
         </div>
         <label className="flex items-center gap-2 cursor-pointer select-none">
-          <input type="checkbox" className="w-4 h-4" />
-          <span className="text-gray-300">Fatura Bilgilerimi Oluştur</span>
+          <input type="checkbox" className="!w-4 !h-4" />
+          <span className="text-gray-300 text-sm">Fatura Bilgilerimi Oluştur</span>
         </label>
       </div>
       <div className="flex items-center space-x-4">
@@ -117,7 +117,7 @@ export default function MyAccount() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-2">
         {/* Kutu 1 */}
         <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--bg-info-box)] rounded-xl p-4 text-center">
+          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
             <FaMedal className="mx-auto mb-2 w-12 h-12" />
             <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
             <p className="text-gray-300 text-sm">
@@ -129,7 +129,7 @@ export default function MyAccount() {
 
         {/* Kutu 2 */}
         <div className="bg-gradient-to-t from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--bg-info-box)] rounded-xl p-4 text-center">
+          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
             <AiTwotoneSafetyCertificate className="mx-auto mb-2 w-12 h-12" />
             <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
             <p className="text-gray-300 text-sm">
@@ -141,7 +141,7 @@ export default function MyAccount() {
 
         {/* Kutu 3 */}
         <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--bg-info-box)] rounded-xl p-4 text-center">
+          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
             <PiMedalBold className="mx-auto mb-2 w-12 h-12" />
             <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
             <p className="text-gray-300 text-sm">
@@ -153,7 +153,7 @@ export default function MyAccount() {
 
         {/* Kutu 4 */}
         <div className="bg-gradient-to-t from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--bg-info-box)] rounded-xl p-4 text-center">
+          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
             <AiTwotoneCrown className="mx-auto mb-2 w-12 h-12" />
             <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
             <p className="text-gray-300 text-sm">

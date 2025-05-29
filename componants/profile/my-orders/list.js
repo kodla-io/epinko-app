@@ -258,15 +258,15 @@ export default function orderList({ title }) {
         >
           {title}
         </h2>
-        <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-[var(--success)]" />
       </div>
       {/* Tabs */}
       <div className="flex flex-wrap md:flex-nowrap gap-2 mb-4">
         <button
           onClick={() => setActiveTab("pending")}
-          className={`px-4 py-2 rounded-lg w-full md:flex-1 ${
+          className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "pending"
-              ? "bg-yellow-500 text-white"
+              ? "bg-[var(--label9)] text-white"
               : "border border-yellow-500 text-yellow-500"
           }`}
         >
@@ -274,42 +274,42 @@ export default function orderList({ title }) {
         </button>
         <button
           onClick={() => setActiveTab("preparing")}
-          className={`px-4 py-2 rounded-lg w-full md:flex-1 ${
+          className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "preparing"
-              ? "bg-blue-500 text-white"
-              : "border border-blue-500 text-blue-500"
+              ? "bg-[var(--label1)] text-white"
+              : "border border-[var(--label1)] text-[var(--label1)]"
           }`}
         >
           HAZIRLANIYOR
         </button>
         <button
           onClick={() => setActiveTab("completed")}
-          className={`px-4 py-2 rounded-lg w-full md:flex-1 ${
+          className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "completed"
-              ? "bg-green-500 text-white"
-              : "border border-green-500 text-green-500"
+              ? "bg-[var(--success)] text-white"
+              : "border border-[var(--success)] text-[var(--success)]"
           }`}
         >
           TAMAMLANDI
         </button>
         <button
           onClick={() => setActiveTab("cancelled")}
-          className={`px-4 py-2 rounded-lg w-full md:flex-1 ${
+          className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "cancelled"
-              ? "bg-red-500 text-white"
-              : "border border-red-500 text-red-500"
+              ? "bg-[var(--alert)] text-white"
+              : "border border-[var(--alert)] text-[var(--alert)]"
           }`}
         >
           İPTAL EDİLDİ
         </button>
       </div>
-      <div className="p-4 rounded text-white">
+      <div className="rounded text-white">
         {activeTab === "pending" && (
           <div className="space-y-4">
             {orders.pending.map((order) => (
               <div
                 key={order.id}
-                className="bg-[var(--advert-list-bg)] rounded-xl border border-yellow-400 overflow-hidden"
+                className="bg-[var(--advert-list-bg)] rounded border border-[var(--label9)] overflow-hidden"
               >
                 <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                   <img
@@ -325,7 +325,7 @@ export default function orderList({ title }) {
                         | {order.code}
                       </span>
                     </div>
-                    <div className="text-yellow-400 text-sm mt-1">
+                    <div className="text-[var(--label9)] text-sm mt-1">
                       {order.desc}
                     </div>
                     <div className="text-gray-400 text-xs mt-1">
@@ -336,7 +336,7 @@ export default function orderList({ title }) {
                   <div className="">
                     <button
                       onClick={() => toggle(order.id)}
-                      className="bg-yellow-500 text-white px-3 py-1 rounded hover:opacity-80"
+                      className="bg-[var(--label9)] text-white px-3 py-1 rounded hover:opacity-80"
                     >
                       Detaylı İncele
                     </button>
@@ -353,7 +353,7 @@ export default function orderList({ title }) {
                       transition={{ duration: 0.3 }}
                       className="text-white text-sm px-4 py-3"
                     >
-                      <div className="text-yellow-400 font-bold mb-2">
+                      <div className="text-white font-bold mb-2">
                         Sipariş Detayları
                       </div>
                       <Table headers={headers} data={order.table} />
@@ -369,7 +369,7 @@ export default function orderList({ title }) {
             {orders.preparing.map((order) => (
               <div
                 key={order.id}
-                className="bg-[var(--advert-list-bg)] rounded-xl border border-blue-400 overflow-hidden"
+                className="bg-[var(--advert-list-bg)] rounded border border-[var(--label1)] overflow-hidden"
               >
                 <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                   <img
@@ -385,7 +385,7 @@ export default function orderList({ title }) {
                         | {order.code}
                       </span>
                     </div>
-                    <div className="text-blue-400 text-sm mt-1">
+                    <div className="text-[var(--label1)] text-sm mt-1">
                       {order.desc}
                     </div>
                     <div className="text-gray-400 text-xs mt-1">
@@ -396,7 +396,7 @@ export default function orderList({ title }) {
                   <div className="">
                     <button
                       onClick={() => toggle(order.id)}
-                      className="bg-blue-500 text-white px-3 py-1 rounded hover:opacity-80"
+                      className="bg-[var(--label1)] text-white px-3 py-1 rounded hover:opacity-80"
                     >
                       Detaylı İncele
                     </button>
@@ -413,7 +413,7 @@ export default function orderList({ title }) {
                       transition={{ duration: 0.3 }}
                       className="text-white text-sm px-4 py-3"
                     >
-                      <div className="text-yellow-400 font-bold mb-2">
+                      <div className="text-white font-bold mb-2">
                         Sipariş Detayları
                       </div>
                       <Table headers={headers} data={order.table} />
@@ -429,7 +429,7 @@ export default function orderList({ title }) {
             {orders.preparing.map((order) => (
               <div
                 key={order.id}
-                className="bg-[var(--advert-list-bg)] rounded-xl border border-green-400 overflow-hidden"
+                className="bg-[var(--advert-list-bg)] rounded border border-[var(--success)] overflow-hidden"
               >
                 <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                   <img
@@ -445,7 +445,7 @@ export default function orderList({ title }) {
                         | {order.code}
                       </span>
                     </div>
-                    <div className="text-green-400 text-sm mt-1">
+                    <div className="text-[var(--success)] text-sm mt-1">
                       {order.desc}
                     </div>
                     <div className="text-gray-400 text-xs mt-1">
@@ -456,7 +456,7 @@ export default function orderList({ title }) {
                   <div className="">
                     <button
                       onClick={() => toggle(order.id)}
-                      className="bg-green-500 text-white px-3 py-1 rounded hover:opacity-80"
+                      className="bg-[var(--success)] text-white px-3 py-1 rounded hover:opacity-80"
                     >
                       Detaylı İncele
                     </button>
@@ -471,13 +471,13 @@ export default function orderList({ title }) {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="text-white text-sm px-4 py-3 border-t border-green-400"
+                      className="text-white text-sm px-4 py-3 border-t border-[var(--success)]"
                     >
                       <div className="w-full flex items-center flex-wrap md :flex-nowrap gap-2">
                         <div className="w-full md:flex-1">
                           <div className="flex w-full items-center bg-[var(--advert-list-bg)] rounded-md">
                             <div className="text-white w-full p-4">
-                              <h2 className="mb-4 text-lg font-semibold border-b border-green-600 pb-2">
+                              <h2 className="mb-4 text-lg font-semibold border-b border-[var(--success)] pb-2">
                                 Sipariş Detayları
                               </h2>
                               <ul className="w-full">
@@ -510,8 +510,8 @@ export default function orderList({ title }) {
                           </div>
                         </div>
                         <div className="w-full md:flex-1">
-                          <div className="bg-[var(--advert-list-bg)] text-white p-6 rounded-md">
-                            <h2 className="mb-4 text-lg font-semibold border-b border-green-600 pb-2">
+                          <div className="bg-[var(--advert-list-bg)] text-white p-3 lg:p-4 xl:p-6 rounded-md">
+                            <h2 className="mb-4 text-lg font-semibold border-b border-[var(--success)] pb-2">
                               Epin Kodları
                             </h2>
                             <ul className="max-h-[200px] min-h-auto md:max-h-[100px] md:min-h-[100px] overflow-y-auto p-2">
@@ -519,7 +519,7 @@ export default function orderList({ title }) {
                                 <span>Riot Points 9200 RP</span>
                                 <span className="flex items-center">
                                   312312312
-                                  <span className="ml-2 text-green-400">
+                                  <span className="ml-2 text-[var(--success)]">
                                     <FaCopy className="w-4 h-4 cursor-pointer" />
                                   </span>
                                 </span>
@@ -528,7 +528,7 @@ export default function orderList({ title }) {
                                 <span>Riot Points 9200 RP</span>
                                 <span className="flex items-center">
                                   312312312
-                                  <span className="ml-2 text-green-400">
+                                  <span className="ml-2 text-[var(--success)]">
                                     <FaCopy className="w-4 h-4 cursor-pointer" />
                                   </span>
                                 </span>
@@ -537,7 +537,7 @@ export default function orderList({ title }) {
                                 <span>Riot Points 9200 RP</span>
                                 <span className="flex items-center">
                                   312312312
-                                  <span className="ml-2 text-green-400">
+                                  <span className="ml-2 text-[var(--success)]">
                                     <FaCopy className="w-4 h-4 cursor-pointer" />
                                   </span>
                                 </span>
@@ -546,20 +546,20 @@ export default function orderList({ title }) {
                                 <span>Riot Points 9200 RP</span>
                                 <span className="flex items-center">
                                   312312312
-                                  <span className="ml-2 text-green-400">
+                                  <span className="ml-2 text-[var(--success)]">
                                     <FaCopy className="w-4 h-4 cursor-pointer" />
                                   </span>
                                 </span>
                               </li>
                             </ul>
-                            <div className="flex flex-wrap md:flex-nowrap md:justify-between mt-4 gap-2">
-                              <button className="bg-blue-600 text-sm py-2 px-4 rounded hover:bg-blue-500 md:flex-1 w-full">
+                            <div className="flex flex-wrap md:flex-nowrap md:justify-between mt-4 gap-1 xl:gap-2">
+                              <button className="bg-[var(--label1)] text-xs md:text-sm py-2 px-1 rounded hover:bg-[var(--label1)] md:flex-1 w-full">
                                 Txt Olarak İndir
                               </button>
-                              <button className="bg-green-600 text-sm py-2 px-4 rounded hover:bg-green-500 md:flex-1 w-full">
+                              <button className="bg-[var(--success)] text-xs md:text-sm py-2 px-1 rounded hover:bg-[var(--success)] md:flex-1 w-full">
                                 Değerlendir
                               </button>
-                              <button className="bg-purple-600 text-sm py-2 px-4 rounded hover:bg-purple-500 md:flex-1 w-full">
+                              <button className="bg-[var(--label4)] text-xs md:text-sm py-2 px-1 rounded hover:bg-purple-500 md:flex-1 w-full">
                                 Talep Oluştur
                               </button>
                             </div>
@@ -578,7 +578,7 @@ export default function orderList({ title }) {
             {orders.preparing.map((order) => (
               <div
                 key={order.id}
-                className="bg-[var(--advert-list-bg)] rounded-xl border border-red-400 overflow-hidden"
+                className="bg-[var(--advert-list-bg)] rounded border border-[var(--alert)] overflow-hidden"
               >
                 <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                   <img
@@ -594,7 +594,7 @@ export default function orderList({ title }) {
                         | {order.code}
                       </span>
                     </div>
-                    <div className="text-red-400 text-sm mt-1">
+                    <div className="text-[var(--alert)] text-sm mt-1">
                       {order.desc}
                     </div>
                     <div className="text-gray-400 text-xs mt-1">
@@ -605,7 +605,7 @@ export default function orderList({ title }) {
                   <div className="">
                     <button
                       onClick={() => toggle(order.id)}
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:opacity-80"
+                      className="bg-[var(--alert)] text-white px-3 py-1 rounded hover:opacity-80"
                     >
                       Detaylı İncele
                     </button>
@@ -622,7 +622,7 @@ export default function orderList({ title }) {
                       transition={{ duration: 0.3 }}
                       className="text-white text-sm px-4 py-3"
                     >
-                      <div className="text-yellow-400 font-bold mb-2">
+                      <div className="text-white font-bold mb-2">
                         Sipariş Detayları
                       </div>
                       <Table headers={headers} data={order.table} />

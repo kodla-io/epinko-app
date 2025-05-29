@@ -8,22 +8,22 @@
 }
 
 :root {
-  --label1: #3283d5;
-  --label2: #4140ca;
-  --label3: #41c9c9;
-  --label4: #8440c7;
-  --label5: #d24579;
-  --label6: #c941c9;
-  --label7: #d1832e;
-  --label8: #d34761;
-  --label9: #c7ca3d;
-  --label10: #85c940;
-  --label11: #41c85f;
-  --label12: #3ec576;
-  --primary: #3283d5;
+  --label1: #7fb8f6;
+  --label2: #8e9cf0;
+  --label3: #6fd1d1;
+  --label4: #b48be3;
+  --label5: #e68ca7;
+  --label6: #c97fc9;
+  --label7: #eab96b;
+  --label8: #e68c97;
+  --label9: #d1c900;
+  --label10: #8ee68c;
+  --label11: #6fe6a7;
+  --label12: #6fd1b8;
+  --primary: #7fb8f6;
   --idle: #d1832e;
   --success: #41c85f;
-  --alert: #d2485f;
+  --alert: #c13d54;
   --color: black;
   --background: #ffffff;
   --background-secondary: #d4d4d4;
@@ -44,25 +44,27 @@
   transition: all 1s ease;
   --advert-card-bg: #28282a;
   --advert-card-border: #37373b;
+  --profile-tab-bg: #313338;
+  --profile-input: #1e1f22;
 }
 
 [data-theme="dark"] {
-  --label1: #3283d5;
-  --label2: #4140ca;
-  --label3: #41c9c9;
-  --label4: #8440c7;
-  --label5: #d24579;
-  --label6: #c941c9;
-  --label7: #d1832e;
-  --label8: #d34761;
-  --label9: #c7ca3d;
-  --label10: #85c940;
-  --label11: #41c85f;
-  --label12: #3ec576;
-  --primary: #3283d5;
+  --label1: #7fb8f6;
+  --label2: #8e9cf0;
+  --label3: #6fd1d1;
+  --label4: #b48be3;
+  --label5: #e68ca7;
+  --label6: #c97fc9;
+  --label7: #eab96b;
+  --label8: #e68c97;
+  --label9: #d1c900;
+  --label10: #8ee68c;
+  --label11: #6fe6a7;
+  --label12: #6fd1b8;
+  --primary: #7fb8f6;
   --idle: #d1832e;
   --success: #41c85f;
-  --alert: #d2485f;
+  --alert: #c13d54;
   --color: white;
   --background: #1a1a1a;
   --background-secondary: #14191b;
@@ -82,6 +84,8 @@
   --list-box: #050505;
   --advert-card-bg: #28282a;
   --advert-card-border: #37373b;
+  --profile-tab-bg: #313338;
+  --profile-input: #1e1f22;
 }
 
 * {
@@ -1625,7 +1629,68 @@ nav img {
 #advertCreate input,
 #advertCreate select,
 #advertCreate textarea {
-  background-color: var(--input-bg);
+  /* background-color: var(--input-bg); */
+}
+
+#login input,
+#register input,
+#yayinci-basvuru input,
+#bayilik-basvuru input,
+#bayilik-basvuru select,
+#contact input,
+#contact textarea,
+#streamer-detail input,
+#streamer-detail textarea,
+#buy-sell input,
+#store-comments textarea,
+#my-account input,
+#add-bank-account input,
+#add-bank-account select,
+#help-request-form select,
+#help-request-form textarea,
+#password-change input,
+#earnings input,
+#earnings select,
+#refund-request input,
+#refund-request select,
+#refund-request textarea,
+#top-up-balance input,
+#check-cash input,
+#check-cash select,
+#my-adverts select,
+#advertUpdate input,
+#advertUpdate select,
+#advertUpdate textarea,
+#advertCreate input,
+#advertCreate select,
+#advertCreate textarea {
+  font-size: 16px;
+  width: 100% !important;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid var(--profile-input) !important;
+  padding: 12px 16px;
+  outline: 0;
+  box-shadow: none !important;
+  background-color: var(--profile-input);
+  resize: no;
+  transition: border-color 0.2s;
+  color: #bebebe;
+}
+
+input[type="checkbox"] {
+  background-color: var(--profile-input);
+  font-size: 16px;
+  width: 100% !important;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #1e1f22 !important;
+  padding: 12px 16px;
+  outline: 0;
+  box-shadow: none !important;
+  resize: no;
+  transition: border-color 0.2s;
+  color: #bebebe;
 }
 
 .custom-select,
