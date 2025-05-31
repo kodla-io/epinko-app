@@ -124,16 +124,14 @@ const ProfileTabs = () => {
                     label: "Hesabım",
                   },
                   {
+                    key: "password-change",
+                    icon: passwordChange,
+                    label: "Şİfre Değiştir",
+                  },
+                  {
                     key: "my-orders",
                     icon: order,
                     label: "Siparişlerim",
-                  },
-
-                  
-                  {
-                    key: "my-messages",
-                    icon: message,
-                    label: "Mesajlarım",
                   },
                   {
                     key: "my-adverts",
@@ -144,6 +142,15 @@ const ProfileTabs = () => {
                     key: "advert-orders",
                     icon: adverts,
                     label: "İlan Siparişlerim",
+                  },
+
+
+                  
+
+                  {
+                    key: "my-messages",
+                    icon: message,
+                    label: "Mesajlarım",
                   },
                   {
                     key: "incoming-orders",
@@ -170,11 +177,7 @@ const ProfileTabs = () => {
                     icon: transactions,
                     label: "İşlemlerim",
                   },
-                  {
-                    key: "password-change",
-                    icon: passwordChange,
-                    label: "Şİfre Değiştir",
-                  },
+
                   {
                     key: "verification",
                     icon: verification,
@@ -205,7 +208,7 @@ const ProfileTabs = () => {
                     icon: reference,
                     label: "Referans Sistemi",
                   },
-                  
+
                   {
                     key: "top-up-balance",
                     icon: addBalance,
