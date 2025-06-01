@@ -24,7 +24,7 @@ const Verification = ({ title }) => {
             padding: "4px", // p-1 karşılığı
           }}
         >
-          <div className="p-4 bg-[var(--list-box)] h-full rounded-lg text-white text-center">
+          <div className="p-4 bg-[var(--profile-tab-bg)] h-full rounded-lg text-white text-center">
             <h2 className="text-[55px] font-bold text-[var(--success)]">V1</h2>
             <p className="text-lg font-semibold mt-2">EMAIL DOĞRULAMA</p>
             <div className="text-xs mt-2 text-[var(--success)]">
@@ -43,7 +43,7 @@ const Verification = ({ title }) => {
             padding: "4px", // p-1 karşılığı
           }}
         >
-          <div className="p-4 bg-[var(--list-box)] h-full rounded-lg text-white text-center">
+          <div className="p-4 bg-[var(--profile-tab-bg)] h-full rounded-lg text-white text-center">
             <h2 className="text-[55px] font-bold text-[var(--alert)]">V2</h2>
             <p className="text-lg font-semibold mt-2">TELEFON DOĞRULAMA</p>
             <p className="mt-2 text-xs text-[var(--alert)]">
@@ -61,7 +61,7 @@ const Verification = ({ title }) => {
             padding: "4px", // p-1 karşılığı
           }}
         >
-          <div className="p-4 bg-[var(--list-box)] h-full rounded-lg text-white text-center">
+          <div className="p-4 bg-[var(--profile-tab-bg)] h-full rounded-lg text-white text-center">
             <h2 className="text-[55px] font-bold text-[var(--success)]">V3</h2>
             <p className="text-lg font-semibold mt-2">KİMLİK DOĞRULAMA</p>
             <div className="text-xs mt-2 text-[var(--success)]">

@@ -110,7 +110,7 @@ const MyTransactions = ({ title }) => {
       </div>
 
       <div className="">
-        <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+        <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
           <thead>
             <tr>
               {headers.slice(0, visibleCols).map((header) => (
@@ -222,7 +222,7 @@ const MyTransactions = ({ title }) => {
             <li>
               <button
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
               >
                 <FaAngleDoubleLeft />
               </button>
@@ -233,10 +233,10 @@ const MyTransactions = ({ title }) => {
               <li key={page}>
                 <button
                   onClick={() => handlePageChange(page)}
-                  className={`px-2 py-1 rounded-md border border-[var(--success)] ${
+                  className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                     page === currentPage
-                      ? "bg-[var(--success)] text-white"
-                      : "text-white hover:bg-[var(--label12)]"
+                      ? "bg-[var(--label7)] text-white"
+                      : "text-white hover:bg-[var(--idle)]"
                   }`}
                 >
                   {page}
@@ -250,7 +250,7 @@ const MyTransactions = ({ title }) => {
                 onClick={() =>
                   handlePageChange(Math.min(totalPages, currentPage + 1))
                 }
-                className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-l from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
               >
                 <FaAngleDoubleRight />
               </button>

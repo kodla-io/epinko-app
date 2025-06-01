@@ -10,6 +10,7 @@ import {
   FaAngleDoubleRight,
   FaCircle,
 } from "react-icons/fa";
+import { LuShieldAlert } from "react-icons/lu";
 import Link from "next/link";
 
 const AdvertData = [
@@ -111,7 +112,7 @@ const HelpRequests = ({ title }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-0 md:p-4">
       <div className="flex items-center space-x-4 py-2">
         <h2
           style={{ color: "var(--foreground)" }}
@@ -139,7 +140,7 @@ const HelpRequests = ({ title }) => {
 
       {activeTab === "tab1" && (
         <div className="">
-          <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+          <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
             <thead>
               <tr>
                 {headers.slice(0, visibleCols).map((header) => (
@@ -255,7 +256,7 @@ const HelpRequests = ({ title }) => {
               <li>
                 <button
                   onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
                 >
                   <FaAngleDoubleLeft />
                 </button>
@@ -267,10 +268,10 @@ const HelpRequests = ({ title }) => {
                   <li key={page}>
                     <button
                       onClick={() => handlePageChange(page)}
-                      className={`px-2 py-1 rounded-md border border-[var(--success)] ${
+                      className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                         page === currentPage
-                          ? "bg-[var(--success)] text-white"
-                          : "text-white hover:bg-[var(--label12)]"
+                          ? "bg-[var(--label7)] text-white"
+                          : "text-white hover:bg-[var(--idle)]"
                       }`}
                     >
                       {page}
@@ -285,7 +286,7 @@ const HelpRequests = ({ title }) => {
                   onClick={() =>
                     handlePageChange(Math.min(totalPages, currentPage + 1))
                   }
-                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-l from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
                 >
                   <FaAngleDoubleRight />
                 </button>
@@ -297,7 +298,7 @@ const HelpRequests = ({ title }) => {
       {activeTab === "tab2" && (
         <div
           id="help-request-form"
-          className="bg-[var(--advert-list-bg)] p-4 rounded-lg"
+          className="bg-[var(--profile-tab-bg)] p-4 rounded-lg"
         >
           <div className="flex flex-row flex-wrap space-x-4 mb-2 md:mb-4 gap-2">
             <div className="w-full m-0">
@@ -326,7 +327,7 @@ const HelpRequests = ({ title }) => {
       )}
       {activeTab === "selected-request" && (
         <div>
-          <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+          <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
             <thead>
               <tr>
                 {headersSingle.slice(0, visibleCols).map((header) => (
@@ -438,9 +439,9 @@ const HelpRequests = ({ title }) => {
               ))}
             </tbody>
           </table>
-          <div className="w-full flex flex-col bg-[var(--advert-list-bg)] rounded-xl mt-4">
+          <div className="w-full mt-3 flex flex-col bg-[#3a404b] rounded">
             {/* HEADER */}
-            <div className="p-3 border-b border-gray-600">
+            <div className="p-2 border-b border-gray-600 flex justify-between bg-[#414a59] items-center">
               <div className="flex items-center gap-2 items-center">
                 <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
                   <div className="p-2 bg-[var(--bg-info-box)] rounded-full relative">
@@ -449,7 +450,7 @@ const HelpRequests = ({ title }) => {
                         <img
                           src="https://placehold.co/100"
                           alt="User Avatar"
-                          className="rounded-full w-12 h-12"
+                          className="rounded-full w-8 h-8"
                         />
                       </Link>
                     </div>
@@ -459,10 +460,15 @@ const HelpRequests = ({ title }) => {
                   </div>
                 </div>
                 <div>
-                  <p className="font-semibold text-[var(--success)]">Epinko</p>
-                  <p className="text-sm">Son Güncelleme: 10/12/2022  |  21:57</p>
+                  <p className="font-semibold text-sm">Kamilcan Mutlu</p>
+                  <p className="text-xs text-green-400">çevrimiçi</p>
                 </div>
               </div>
+              <button className="bg-[var(--alert)] text-white text-sm px-3 py-1 rounded hover:bg-red-500 flex items-center gap-2">
+                <LuShieldAlert className="w-8 h-8" />
+
+                <span>Sohbeti Bildir</span>
+              </button>
             </div>
 
             {/* MESAJLAR */}
@@ -485,7 +491,7 @@ const HelpRequests = ({ title }) => {
             </div>
 
             {/* MESAJ GÖNDERME */}
-            <div className="p-4 flex">
+            <div className="p-4 border-t border-gray-700 flex">
               <input
                 type="text"
                 placeholder="Mesaj yaz..."

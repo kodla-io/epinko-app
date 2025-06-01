@@ -18,7 +18,7 @@ const PasswordChange = ({ title }) => {
 
         <div
           id="password-change"
-          className="bg-[var(--advert-list-bg)] p-4 rounded-lg"
+          className="bg-[var(--profile-tab-bg)] p-4 rounded-lg"
         >
           <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4 gap-2">
             <div className="md:flex-1 w-full">

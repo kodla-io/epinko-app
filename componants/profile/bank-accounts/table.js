@@ -107,7 +107,7 @@ const BankAccounts = ({ title }) => {
 
       {activeTab === "tab1" && (
         <div className="">
-          <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+          <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
             <thead>
               <tr>
                 {headers.slice(0, visibleCols).map((header) => (
@@ -121,7 +121,7 @@ const BankAccounts = ({ title }) => {
             <tbody>
               {AdvertData.map((item, index) => (
                 <React.Fragment key={index}>
-                  <tr className="border-b-1 border-[var(--success)] hover:bg-[#3A3B51] cursor-pointer">
+                  <tr className="hover:bg-[#3A3B51] cursor-pointer">
                     {headers.slice(0, visibleCols).map((header) => (
                       <td key={header.key} className="p-4">
                         {header.key === "durum" ? (
@@ -222,7 +222,7 @@ const BankAccounts = ({ title }) => {
       {activeTab === "tab2" && (
         <div
           id="add-bank-account"
-          className="bg-[var(--advert-list-bg)] p-4 rounded-lg"
+          className="bg-[var(--profile-tab-bg)] p-4 rounded-lg"
         >
           <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4 gap-2">
             <div className="md:flex-1 w-full">
@@ -265,7 +265,7 @@ const BankAccounts = ({ title }) => {
           </div>
 
           <div className="flex w-full justify-end">
-            <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--success)] rounded-md">
+            <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--primary)] rounded-md">
               GÜNCELLE
             </button>
           </div>

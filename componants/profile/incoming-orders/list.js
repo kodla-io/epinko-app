@@ -254,7 +254,7 @@ export default function orderList({ title }) {
           >
             {title}
           </h2>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 hidden md:block to-green-500 hidden md:block" />
+          <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 hidden md:block to-[var(--success)] hidden md:block" />
           <button
             onClick={() => setActiveTab("pending")}
             className="w-full md:w-auto py-2 px-4 text-center font-medium w-auto min-w-[200px] bg-[var(--label2)] rounded-md flex gap-2 items-center justify-center text-white hover:opacity-80 transition duration-200"
@@ -269,7 +269,7 @@ export default function orderList({ title }) {
             <div className="flex justify-between items-center text-center text-sm font-semibold mb-6 flex-wrap md:flex-nowrap gap-2">
               <div
                 onClick={() => setActiveTab("pending")}
-                className="w-full md:w-[190px] cursor-pointer text-green-500 relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-green-500 after:top-1/2 after:left-full after:-translate-y-1/2"
+                className="w-full md:w-[190px] cursor-pointer text-[var(--success)] relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-[var(--success)] after:top-1/2 after:left-full after:-translate-y-1/2"
               >
                 <div
                   className="rounded-md"
@@ -279,7 +279,7 @@ export default function orderList({ title }) {
                     padding: "2px", // p-1 karşılığı
                   }}
                 >
-                  <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--success)] rounded-md">
+                  <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--success)] rounded-md">
                     Teslimat Bekleniyor{" "}
                   </div>
                 </div>
@@ -296,7 +296,7 @@ export default function orderList({ title }) {
                     padding: "2px",
                   }}
                 >
-                  <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--success)] rounded-md">
+                  <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--success)] rounded-md">
                     Alıcı Bekleniyor{" "}
                   </div>
                 </div>
@@ -313,7 +313,7 @@ export default function orderList({ title }) {
                     padding: "2px", // p-1 karşılığı
                   }}
                 >
-                  <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--success)] rounded-md">
+                  <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--success)] rounded-md">
                     Admin Onayı Bekleniyor{" "}
                   </div>
                 </div>
@@ -330,7 +330,7 @@ export default function orderList({ title }) {
                     padding: "2px", // p-1 karşılığı
                   }}
                 >
-                  <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--alert)] rounded-md">
+                  <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--alert)] rounded-md">
                     İptal Edildi{" "}
                   </div>
                 </div>
@@ -342,7 +342,7 @@ export default function orderList({ title }) {
               <div className="space-y-4">
                 {orders.pending.map((order) => (
                   <React.Fragment key={order.id}>
-                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-yellow-400 overflow-hidden">
+                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-[var(--idle)] overflow-hidden">
                       <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                         <img
                           src={order.image}
@@ -357,7 +357,7 @@ export default function orderList({ title }) {
                               | {order.code}
                             </span>
                           </div>
-                          <div className="text-yellow-400 text-sm mt-1">
+                          <div className="text-[var(--idle)] text-sm mt-1">
                             {order.desc}
                           </div>
                           <div className="text-gray-400 text-xs mt-1">
@@ -372,7 +372,7 @@ export default function orderList({ title }) {
                             getData([order]);
                           }}
                         >
-                          <button className="bg-green-500 text-white px-3 py-1 rounded hover:opacity-80">
+                          <button className="bg-[var(--success)] text-white px-3 py-1 rounded hover:opacity-80">
                             {order.buttonText}
                           </button>
                         </div>
@@ -388,7 +388,7 @@ export default function orderList({ title }) {
                         onClick={() =>
                           handlePageChange(Math.max(1, currentPage - 1))
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleLeft />
                       </button>
@@ -400,10 +400,10 @@ export default function orderList({ title }) {
                         <li key={page}>
                           <button
                             onClick={() => handlePageChange(page)}
-                            className={`px-2 py-1 rounded-md border border-[var(--success)] ${
+                            className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                               page === currentPage
-                                ? "bg-[var(--success)] text-white"
-                                : "text-white hover:bg-[var(--label12)]"
+                                ? "bg-[var(--label7)] text-white"
+                                : "text-white hover:bg-[var(--idle)]"
                             }`}
                           >
                             {page}
@@ -420,7 +420,7 @@ export default function orderList({ title }) {
                             Math.min(totalPages, currentPage + 1)
                           )
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-l from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleRight />
                       </button>
@@ -433,7 +433,7 @@ export default function orderList({ title }) {
               <div className="space-y-4">
                 {orders.waiting.map((order) => (
                   <React.Fragment key={order.id}>
-                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-yellow-400 overflow-hidden">
+                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-[var(--idle)] overflow-hidden">
                       <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                         <img
                           src={order.image}
@@ -448,7 +448,7 @@ export default function orderList({ title }) {
                               | {order.code}
                             </span>
                           </div>
-                          <div className="text-yellow-400 text-sm mt-1">
+                          <div className="text-[var(--idle)] text-sm mt-1">
                             {order.desc}
                           </div>
                           <div className="text-gray-400 text-xs mt-1">
@@ -479,7 +479,7 @@ export default function orderList({ title }) {
                         onClick={() =>
                           handlePageChange(Math.max(1, currentPage - 1))
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label11)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleLeft />
                       </button>
@@ -494,7 +494,7 @@ export default function orderList({ title }) {
                             className={`px-2 py-1 rounded-md border border-[var(--success)] ${
                               page === currentPage
                                 ? "bg-[var(--success)] text-white"
-                                : "text-white hover:bg-[var(--label12)]"
+                                : "text-white hover:bg-[var(--idle)]"
                             }`}
                           >
                             {page}
@@ -511,7 +511,7 @@ export default function orderList({ title }) {
                             Math.min(totalPages, currentPage + 1)
                           )
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label11)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleRight />
                       </button>
@@ -524,7 +524,7 @@ export default function orderList({ title }) {
               <div className="space-y-4">
                 {orders.confirm.map((order) => (
                   <React.Fragment key={order.id}>
-                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-yellow-400 overflow-hidden">
+                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-[var(--idle)] overflow-hidden">
                       <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                         <img
                           src={order.image}
@@ -539,7 +539,7 @@ export default function orderList({ title }) {
                               | {order.code}
                             </span>
                           </div>
-                          <div className="text-yellow-400 text-sm mt-1">
+                          <div className="text-[var(--idle)] text-sm mt-1">
                             {order.desc}
                           </div>
                           <div className="text-gray-400 text-xs mt-1">
@@ -554,7 +554,7 @@ export default function orderList({ title }) {
                             getData([order]);
                           }}
                         >
-                          <button className="bg-green-500 text-white px-3 py-1 rounded hover:opacity-80">
+                          <button className="bg-[var(--success)] text-white px-3 py-1 rounded hover:opacity-80">
                             {order.buttonText}
                           </button>
                         </div>
@@ -570,7 +570,7 @@ export default function orderList({ title }) {
                         onClick={() =>
                           handlePageChange(Math.max(1, currentPage - 1))
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label11)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleLeft />
                       </button>
@@ -585,7 +585,7 @@ export default function orderList({ title }) {
                             className={`px-2 py-1 rounded-md border border-[var(--success)] ${
                               page === currentPage
                                 ? "bg-[var(--success)] text-white"
-                                : "text-white hover:bg-[var(--label12)]"
+                                : "text-white hover:bg-[var(--idle)]"
                             }`}
                           >
                             {page}
@@ -602,7 +602,7 @@ export default function orderList({ title }) {
                             Math.min(totalPages, currentPage + 1)
                           )
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label11)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleRight />
                       </button>
@@ -615,7 +615,7 @@ export default function orderList({ title }) {
               <div className="space-y-4">
                 {orders.canceled.map((order) => (
                   <React.Fragment key={order.id}>
-                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-yellow-400 overflow-hidden">
+                    <div className="bg-[var(--advert-list-bg)] rounded-xl border border-[var(--idle)] overflow-hidden">
                       <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                         <img
                           src={order.image}
@@ -630,7 +630,7 @@ export default function orderList({ title }) {
                               | {order.code}
                             </span>
                           </div>
-                          <div className="text-yellow-400 text-sm mt-1">
+                          <div className="text-[var(--idle)] text-sm mt-1">
                             {order.desc}
                           </div>
                           <div className="text-gray-400 text-xs mt-1">
@@ -661,7 +661,7 @@ export default function orderList({ title }) {
                         onClick={() =>
                           handlePageChange(Math.max(1, currentPage - 1))
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label11)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleLeft />
                       </button>
@@ -676,7 +676,7 @@ export default function orderList({ title }) {
                             className={`px-2 py-1 rounded-md border border-[var(--success)] ${
                               page === currentPage
                                 ? "bg-[var(--success)] text-white"
-                                : "text-white hover:bg-[var(--label12)]"
+                                : "text-white hover:bg-[var(--idle)]"
                             }`}
                           >
                             {page}
@@ -693,7 +693,7 @@ export default function orderList({ title }) {
                             Math.min(totalPages, currentPage + 1)
                           )
                         }
-                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                        className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label11)] text-white hover:opacity-80"
                       >
                         <FaAngleDoubleRight />
                       </button>
@@ -708,7 +708,7 @@ export default function orderList({ title }) {
             <div className="space-y-4">
               {selectedData.map((order) => (
                 <React.Fragment key={order.id}>
-                  <div className="bg-[var(--advert-list-bg)] rounded-xl border border-green-400 overflow-hidden">
+                  <div className="bg-[var(--advert-list-bg)] rounded-xl border border-[var(--success)] overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                       <img
                         src={order.image}
@@ -723,7 +723,7 @@ export default function orderList({ title }) {
                             | {order.code}
                           </span>
                         </div>
-                        <div className="text-green-400 text-sm mt-1">
+                        <div className="text-[var(--success)] text-sm mt-1">
                           {order.desc}
                         </div>
                         <div className="text-gray-400 text-xs mt-1">
@@ -731,13 +731,13 @@ export default function orderList({ title }) {
                         </div>
                       </div>
 
-                      <div className="border-0 md:border-l-1 border-green-400 p-4 flex flex-wrap justify-center items-center space-y-2">
+                      <div className="border-0 md:border-l-1 border-[var(--success)] p-4 flex flex-wrap justify-center items-center space-y-2">
                         <span className="w-full text-center text-xl">
                           Alıcı Adı
                         </span>
                         <Link
                           href="/"
-                          className="bg-green-500 text-white px-3 py-1 rounded hover:opacity-80 flex items-center gap-2"
+                          className="bg-[var(--success)] text-white px-3 py-1 rounded hover:opacity-80 flex items-center gap-2"
                         >
                           <PiUserCircleGearBold className="w-6 h-6" />
                           kcanmutlu12
@@ -751,8 +751,8 @@ export default function orderList({ title }) {
               <Table headers={header2} data={selectedData[0]?.table2 || []} />
 
               <div className="flex justify-between items-center text-center text-sm font-semibold mb-6 flex-wrap md:flex-nowrap gap-2">
-                <div className="w-full md:w-[190px] cursor-pointer text-green-500 relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-green-500 after:top-1/2 after:left-full after:-translate-y-1/2">
-                  {/* <div className="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-green-500"></div> */}
+                <div className="w-full md:w-[190px] cursor-pointer text-[var(--success)] relative after:content-[''] after:absolute md:after:h-[2px] after:w-0 md:after:w-full after:bg-[var(--success)] after:top-1/2 after:left-full after:-translate-y-1/2">
+                  {/* <div className="bg-[#2a2b3c] rounded-full w-3 h-3 mx-auto mb-1 ring-2 ring-[var(--success)]"></div> */}
                   <div
                     className="rounded-md"
                     style={{
@@ -761,7 +761,7 @@ export default function orderList({ title }) {
                       padding: "2px", // p-1 karşılığı
                     }}
                   >
-                    <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--success)] rounded-md">
+                    <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--success)] rounded-md">
                       Teslimat Bekleniyor{" "}
                     </div>
                   </div>
@@ -776,7 +776,7 @@ export default function orderList({ title }) {
                       padding: "2px", // p-1 karşılığı
                     }}
                   >
-                    <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--success)] rounded-md">
+                    <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--success)] rounded-md">
                       Alıcı Bekleniyor{" "}
                     </div>
                   </div>
@@ -791,7 +791,7 @@ export default function orderList({ title }) {
                       padding: "2px", // p-1 karşılığı
                     }}
                   >
-                    <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--success)] rounded-md">
+                    <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--success)] rounded-md">
                       Admin Onayı Bekleniyor{" "}
                     </div>
                   </div>
@@ -806,14 +806,14 @@ export default function orderList({ title }) {
                       padding: "2px", // p-1 karşılığı
                     }}
                   >
-                    <div className="py-3 px-3 text-cebnter bg-[var(--list-box)] text-[var(--success)] rounded-md">
+                    <div className="py-3 px-3 text-cebnter bg-[var(--profile-tab-bg)] text-[var(--success)] rounded-md">
                       Sipariş Tamamlandı{" "}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-green-600 text-white p-1 rounded-lg flex items-center gap-2">
+              <div className="bg-[var(--success)] text-white p-1 rounded-lg flex items-center gap-2">
                 <FaCheckCircle className="w-10 h-10 hidden md:block" />
                 <p>
                   <strong>Pubg 35 Level Hesap Yeni Sezon 2000 UC</strong> adlı
@@ -823,7 +823,7 @@ export default function orderList({ title }) {
                 </p>
               </div>
 
-              <div className="bg-green-600 text-white p-1 rounded-lg flex items-center justify-between flex-wrap md:flex-nowrap gap-2">
+              <div className="bg-[var(--success)] text-white p-1 rounded-lg flex items-center justify-between flex-wrap md:flex-nowrap gap-2">
                 <div className="flex items-start gap-2">
                   <IoChatbubbles className="w-10 h-10 hidden md:block" />
                   <p>
@@ -833,12 +833,12 @@ export default function orderList({ title }) {
                     </strong>
                   </p>
                 </div>
-                <button className="bg-orange-400 text-black font-semibold px-3 py-1 rounded hover:bg-orange-500 min-w-[180px]">
+                <button className="bg-[var(--idle)] text-white font-semibold px-3 py-1 rounded min-w-[180px]">
                   Canlı Sohbete Git
                 </button>
               </div>
 
-              <div className="bg-green-600 text-white p-1 rounded-lg flex items-center gap-2">
+              <div className="bg-[var(--success)] text-white p-1 rounded-lg flex items-center gap-2">
                 <IoCheckmarkDone className="w-10 h-10 hidden md:block" />
                 <p>
                   Siparişinizi teslim aldıktan sonra onay işlemini
