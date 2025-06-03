@@ -1,6 +1,8 @@
 import { RiPagesLine } from "react-icons/ri";
 import { FaPercent } from "react-icons/fa";
 import { GiReceiveMoney } from "react-icons/gi";
+import React, { useState } from "react";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
 export default function Listings({ title }) {
   const listings = [
@@ -72,6 +74,14 @@ export default function Listings({ title }) {
     },
   ];
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 4;
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    // Burada başka bir şey yapılabilir: API çağrısı vs.
+  };
+
   return (
     <div id="earnings" className="p-6 space-y-4 min-h-screen">
       <div className="flex items-center space-x-4 py-2">
@@ -83,7 +93,7 @@ export default function Listings({ title }) {
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 hidden md:block to-green-500" />
       </div>
-      <div className="flex flex-wrap justify-between gap-2 mb-4">
+      <div className="flex flex-wrap justify-between bg-[var(--profile-tab-bg)] p-2 rounded gap-2 mb-4">
         <input
           type="text"
           placeholder="Ara"
@@ -105,7 +115,7 @@ export default function Listings({ title }) {
         {listings.map((item, index) => (
           <div
             key={index}
-            className="flex items-center flex-wrap md:flex-nowrap justify-between bg-[var(--advert-list-bg)] p-2 rounded-lg text-white"
+            className="flex items-center flex-wrap md:flex-nowrap justify-between bg-[var(--profile-tab-bg)] p-2 rounded text-white"
           >
             <img
               src={item.image}
@@ -139,6 +149,47 @@ export default function Listings({ title }) {
             </div>
           </div>
         ))}
+        <div className="flex justify-center mt-6">
+          <ul className="flex items-center space-x-1 p-2 rounded-lg">
+            {/* Sol ikon */}
+            <li>
+              <button
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
+              >
+                <FaAngleDoubleLeft />
+              </button>
+            </li>
+
+            {/* Sayfa numaraları */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <li key={page}>
+                <button
+                  onClick={() => handlePageChange(page)}
+                  className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
+                    page === currentPage
+                      ? "bg-[var(--label7)] text-white"
+                      : "text-white hover:bg-[var(--idle)]"
+                  }`}
+                >
+                  {page}
+                </button>
+              </li>
+            ))}
+
+            {/* Sağ ikon */}
+            <li>
+              <button
+                onClick={() =>
+                  handlePageChange(Math.min(totalPages, currentPage + 1))
+                }
+                className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-l from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
+              >
+                <FaAngleDoubleRight />
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

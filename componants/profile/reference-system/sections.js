@@ -118,6 +118,7 @@ const ReferenceSystem = ({ title }) => {
             {/* SOL INPUT KUTUSU */}
             <div className="w-full md:flex-1 relative bg-[var(--advert-list-bg)] gap-2 rounded-md text-sm md:text-md">
               <input
+              id="key-input"
                 type="text"
                 defaultValue="#135-FG-25AS#135-FG-25AS#135-FG-25AS#135-FG-25AS"
                 className="w-full p-4 pr-10 rounded-md focus:outline-none"
@@ -127,8 +128,8 @@ const ReferenceSystem = ({ title }) => {
             </div>
 
             {/* SAĞ KUTU */}
-            <div className="w-full md:flex-1 flex items-center gap-2 p-2 md:p-4 rounded-md bg-[var(--label1)]">
-              <Info className="md:w-5 md:h-5 w-12 h-12 text-white mt-1" />
+            <div className="w-full md:flex-1 flex items-center gap-2 p-1 md:p-2 rounded-md bg-[var(--label1)]">
+              <Info className="md:w-5 md:h-5 !w-8 !h-8 text-white mt-1" />
               <div className="text-xs text-white">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -139,7 +140,7 @@ const ReferenceSystem = ({ title }) => {
           </div>
 
           {/* ALT KUTU */}
-          <div className="flex items-start md:items-center gap-2 p-4 rounded-md bg-[var(--advert-list-bg)]">
+          <div className="flex items-start md:items-center gap-2 p-4 rounded-md bg-[var(--profile-tab-bg)]">
             <FcAdvertising className="w-12 h-12 text-green-500 mt-1 hidden md:block" />
             <div className="text-sm">
               Bu, alt kısımdaki açıklama kutusudur. Uzun olabilir ama tek
@@ -164,7 +165,7 @@ const ReferenceSystem = ({ title }) => {
           {boxes.map((box, index) => (
             <div
               key={index}
-              className="flex flex-col items-center p-4 rounded-xl bg-[var(--advert-list-bg)] text-center gap-3"
+              className="flex flex-col items-center p-4 rounded bg-[var(--profile-tab-bg)] text-center gap-3"
               style={{
                 border: `2px solid ${box.borderColor}`,
               }}
@@ -194,7 +195,7 @@ const ReferenceSystem = ({ title }) => {
           <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
         </div>
         <div className="">
-          <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+          <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
             <thead>
               <tr>
                 {headers.slice(0, visibleCols).map((header) => (

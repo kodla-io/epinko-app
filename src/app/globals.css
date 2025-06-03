@@ -1663,7 +1663,8 @@ nav img {
 #advertUpdate textarea,
 #advertCreate input,
 #advertCreate select,
-#advertCreate textarea {
+#advertCreate textarea,
+#key-input {
   font-size: 16px;
   width: 100% !important;
   height: 48px;

@@ -92,12 +92,12 @@ const CheckCash = () => {
     <>
       <div
         id="check-cash"
-        className="flex flex-col md:flex-row gap-4 bg-[var(--advert-list-bg)]"
+        className="flex flex-col md:flex-row gap-4 bg-[var(--profile-tab-bg)]"
       >
         <div className="md:w-1/4 w-full flex flex-col space-y-4 p-4">
-          <div className="flex items-center space-x-2 border-2 border-green-500 rounded-xl p-4">
+          <div className="flex items-center space-x-2 border-2 border-[var(--success)] rounded-xl p-4">
             <div className="flex-none">
-              <div className="bg-green-500 rounded-full p-4">
+              <div className="bg-[var(--success)] rounded-full p-4">
                 <FaWallet className="w-6 h-6" />
               </div>
             </div>
@@ -107,9 +107,9 @@ const CheckCash = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-2 border-2 border-yellow-500 rounded-xl p-4">
+          <div className="flex items-center space-x-2 border-2 border-[var(--label7)] rounded-xl p-4">
             <div className="flex-none">
-              <div className="bg-yellow-500 rounded-full p-4">
+              <div className="bg-[var(--label7)] rounded-full p-4">
                 <FaTimes className="w-6 h-6" />
               </div>
             </div>
@@ -119,9 +119,9 @@ const CheckCash = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-2 border-2 border-red-500 rounded-xl p-4">
+          <div className="flex items-center space-x-2 border-2 border-[var(--alert)] rounded-xl p-4">
             <div className="flex-none">
-              <div className="bg-red-500 rounded-full p-4">
+              <div className="bg-[var(--alert)] rounded-full p-4">
                 <TbDiscountFilled className="w-6 h-6" />
               </div>
             </div>
@@ -135,16 +135,16 @@ const CheckCash = () => {
         <div className="md:w-3/4 w-full p-4 text-white rounded space-y-4">
           <div className="flex space-x-2 w-full flex-wrap md:flex-nowrap gap-4">
             <button
-              className="bg-blue-500 p-2 rounded w-full md:flex-1"
+              className="bg-[var(--primary)] p-2 rounded w-full md:flex-1"
               onClick={() => setActiveTab("transactions")}
             >
               Bakiye Çekim Taleplerim
             </button>
-            <button className="bg-purple-500 p-2 rounded w-full md:flex-1">
+            <button className="bg-[var(--label2)] p-2 rounded w-full md:flex-1">
               Banka Hesabı Ekle
             </button>
             <button
-              className="bg-red-500 p-2 rounded w-full md:flex-1"
+              className="bg-[var(--alert)] p-2 rounded w-full md:flex-1"
               onClick={() => setActiveTab("transactionsCanceled")}
             >
               Başarılı Çekim Taleplerim
@@ -181,7 +181,7 @@ const CheckCash = () => {
             </div>
 
             <div className="flex w-full justify-end">
-              <button type="submit" className="bg-green-500 p-2 rounded">
+              <button type="submit" className="bg-[var(--success)] p-2 rounded">
                 Güncelle
               </button>
             </div>

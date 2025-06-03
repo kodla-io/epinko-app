@@ -124,14 +124,54 @@ const ProfileTabs = () => {
                     label: "Hesabım",
                   },
                   {
+                    key: "notifications",
+                    icon: notifications,
+                    label: "Bildirimler",
+                  },
+                  {
+                    key: "verification",
+                    icon: verification,
+                    label: "Profil Deoğulama",
+                  },
+                  {
                     key: "password-change",
                     icon: passwordChange,
                     label: "Şİfre Değiştir",
                   },
                   {
+                    key: "top-up-balance",
+                    icon: addBalance,
+                    label: "Bakiye Yükle",
+                  },
+                  {
+                    key: "wallet-history",
+                    icon: balanceHistory,
+                    label: "Bakiye Geçmişim",
+                  },
+                  {
+                    key: "check-cash",
+                    icon: checkCash,
+                    label: "Nakit Çek",
+                  },
+                  {
+                    key: "bank-accounts",
+                    icon: bank,
+                    label: "Banka Hesaplarım",
+                  },
+                  {
                     key: "my-orders",
                     icon: order,
                     label: "Siparişlerim",
+                  },
+                  {
+                    key: "earnings",
+                    icon: earnings,
+                    label: "Kazançlarım",
+                  },
+                  {
+                    key: "transactions",
+                    icon: transactions,
+                    label: "İşlemlerim",
                   },
                   {
                     key: "my-adverts",
@@ -143,29 +183,15 @@ const ProfileTabs = () => {
                     icon: adverts,
                     label: "İlan Siparişlerim",
                   },
-
-
-                  
-
-                  {
-                    key: "my-messages",
-                    icon: message,
-                    label: "Mesajlarım",
-                  },
                   {
                     key: "incoming-orders",
                     icon: adverts,
                     label: "Gelen Siparişlerim",
                   },
                   {
-                    key: "wallet-history",
-                    icon: balanceHistory,
-                    label: "Bakiye Geçmişim",
-                  },
-                  {
-                    key: "bank-accounts",
-                    icon: bank,
-                    label: "Banka Hesaplarım",
+                    key: "my-messages",
+                    icon: message,
+                    label: "Mesajlarım",
                   },
                   {
                     key: "help-requests",
@@ -173,15 +199,9 @@ const ProfileTabs = () => {
                     label: "Yardım Taleplerim",
                   },
                   {
-                    key: "transactions",
-                    icon: transactions,
-                    label: "İşlemlerim",
-                  },
-
-                  {
-                    key: "verification",
-                    icon: verification,
-                    label: "Profil Deoğulama",
+                    key: "refunds",
+                    icon: refunds,
+                    label: "İade Talebi",
                   },
                   {
                     key: "entry-logs",
@@ -189,35 +209,9 @@ const ProfileTabs = () => {
                     label: "Giriş Hareketlerim",
                   },
                   {
-                    key: "earnings",
-                    icon: earnings,
-                    label: "Kazançlarım",
-                  },
-                  {
-                    key: "refunds",
-                    icon: refunds,
-                    label: "İade Talebi",
-                  },
-                  {
-                    key: "notifications",
-                    icon: notifications,
-                    label: "Bildirimler",
-                  },
-                  {
                     key: "reference-system",
                     icon: reference,
                     label: "Referans Sistemi",
-                  },
-
-                  {
-                    key: "top-up-balance",
-                    icon: addBalance,
-                    label: "Bakiye Yükle",
-                  },
-                  {
-                    key: "check-cash",
-                    icon: checkCash,
-                    label: "Nakit Çek",
                   },
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>

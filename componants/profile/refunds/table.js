@@ -11,28 +11,28 @@ const steps = [
     title: "İade Talebi Alındı",
     description:
       "Pulvinar mattis nunc sed blandit libero volutpat sed. Sit amet nisl purus in mollis nunc sed id semper.",
-    color: "green",
+    color: "var(--success)",
   },
   {
     id: 2,
     title: "İade Talebi İnceleniyor",
     description:
       "Pulvinar mattis nunc sed blandit libero volutpat sed. Sit amet nisl purus in mollis nunc sed id semper.",
-    color: "green",
+    color: "var(--success)",
   },
   {
     id: 3,
     title: "Admin Onayında",
     description:
       "Pulvinar mattis nunc sed blandit libero volutpat sed. Sit amet nisl purus in mollis nunc sed id semper.",
-    color: "green",
+    color: "var(--success)",
   },
   {
     id: 4,
     title: "İade Tamamlandı",
     description:
       "Pulvinar mattis nunc sed blandit libero volutpat sed. Sit amet nisl purus in mollis nunc sed id semper.",
-    color: "red",
+    color: "var(--alert)",
   },
 ];
 
@@ -169,7 +169,7 @@ const RefundRequests = ({ title }) => {
       {activeTab === "refunds" && (
         <>
           <div className="">
-            <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+            <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
               <thead>
                 <tr>
                   {headers.slice(0, visibleCols).map((header) => (
@@ -310,7 +310,7 @@ const RefundRequests = ({ title }) => {
               <li>
                 <button
                   onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
                 >
                   <FaAngleDoubleLeft />
                 </button>
@@ -322,10 +322,10 @@ const RefundRequests = ({ title }) => {
                   <li key={page}>
                     <button
                       onClick={() => handlePageChange(page)}
-                      className={`px-2 py-1 rounded-md border border-[var(--success)] ${
+                      className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                         page === currentPage
-                          ? "bg-[var(--success)] text-white"
-                          : "text-white hover:bg-[var(--label12)]"
+                          ? "bg-[var(--label7)] text-white"
+                          : "text-white hover:bg-[var(--idle)]"
                       }`}
                     >
                       {page}
@@ -340,7 +340,7 @@ const RefundRequests = ({ title }) => {
                   onClick={() =>
                     handlePageChange(Math.min(totalPages, currentPage + 1))
                   }
-                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
+                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-l from-[var(--idle)] to-[var(--label7)] text-white hover:opacity-80"
                 >
                   <FaAngleDoubleRight />
                 </button>
@@ -351,7 +351,7 @@ const RefundRequests = ({ title }) => {
       )}
       {activeTab === "detail" && (
         <>
-          <div className="bg-[var(--advert-list-bg)] p-6 rounded-lg overflow-x-auto">
+          <div className="bg-[var(--profile-tab-bg)] p-6 rounded-lg overflow-x-auto">
             <div className="relative flex justify-between items-start md:items-center gap-6 md:gap-0 min-w-[800px]">
               {steps.map((step, index) => (
                 <div
@@ -360,7 +360,7 @@ const RefundRequests = ({ title }) => {
                 >
                   {/* Daire */}
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg border-4 border-${step.color}-500 bg-${step.color}-600 z-10`}
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg border-4 border-[${step.color}] bg-[${step.color}] z-10`}
                   >
                     {step.id}
                   </div>
@@ -368,7 +368,7 @@ const RefundRequests = ({ title }) => {
                   {/* Çizgi (bir sonrakine kadar) */}
                   {index < steps.length - 1 && (
                     <div
-                      className={`absolute top-5 left-[50%] h-1 w-[calc(100%+2.5rem)] md:w-[calc(100%+3.5rem)] bg-${step.color}-600`}
+                      className={`absolute top-5 left-[50%] h-1 w-[calc(100%+2.5rem)] md:w-[calc(100%+3.5rem)] bg-[${step.color}]`}
                     ></div>
                   )}
 
@@ -381,7 +381,7 @@ const RefundRequests = ({ title }) => {
                     }}
                   >
                     <div
-                      className={`p-4 rounded-md bg-[var(--list-box)] text-white`}
+                      className={`p-4 rounded-md bg-[var(--profile-input)] text-white`}
                     >
                       <h4
                         className={`font-semibold text-${step.color}-400 text-sm`}
@@ -395,14 +395,14 @@ const RefundRequests = ({ title }) => {
               ))}
             </div>
           </div>
-          <Alerts />
+          <Alerts bg="var(--profile-tab-bg)" />
         </>
       )}
       {activeTab === "create" && (
         <>
           <div
             id="refund-request"
-            className="bg-[var(--advert-list-bg)] p-4 rounded-lg"
+            className="bg-[var(--profile-tab-bg)] p-4 rounded-lg"
           >
             <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4 gap-2">
               <div className="md:flex-1 w-full">
@@ -433,12 +433,12 @@ const RefundRequests = ({ title }) => {
             </div>
 
             <div className="flex w-full justify-end mt-2">
-              <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--success)] rounded-md">
+              <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--primary)] rounded-md">
                 İade Talebi Oluştur
               </button>
             </div>
           </div>
-          <Alerts />
+          <Alerts bg="var(--profile-tab-bg)" />
         </>
       )}
     </div>
