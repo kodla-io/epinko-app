@@ -86,7 +86,7 @@ const EntryLogsTable = ({ title }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-1 md:p-0">
       <div className="flex items-center space-x-4 py-2">
         <h2
           style={{ color: "var(--foreground)" }}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { HiPaperAirplane } from "react-icons/hi2";
 import { GiWallet } from "react-icons/gi";
 import {
@@ -12,6 +12,7 @@ import Link from "next/link";
 import { FaCircle, FaCamera, FaWallet } from "react-icons/fa";
 
 import MyAccount from "./my-account/tab";
+import Security from "./my-account/security/form";
 import Messages from "./messages/tab";
 import MyAdvertsTable from "./my-adverts/table";
 import WalletHistory from "./wallet-history/table";
@@ -30,6 +31,8 @@ import TopUpBalance from "./top-up-balance/section";
 import CheckCash from "./check-cash/list";
 import AdvertOrders from "./advert-orders/section";
 import IncomingOrders from "./incoming-orders/list";
+
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 import dynamic from "next/dynamic";
 
@@ -62,6 +65,7 @@ import checkCash from "../../src/assets/animations/CheckCash.json";
 
 const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("my-account");
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   // player ref'leri array olarak tutuyoruz
   const playerRefs = useRef([]);
@@ -73,6 +77,21 @@ const ProfileTabs = () => {
   const handleMouseLeave = (index) => {
     // playerRefs.current[index]?.goToFirstFrame();
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpenDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const dropdownRef = useRef(null);
 
   return (
     <div>
@@ -116,12 +135,21 @@ const ProfileTabs = () => {
                 </div>
               </div>
 
-              <ul className="w-full text-left mt-4 text-white space-y-0 px-4 pb-4">
+              <ul
+                className="w-full text-left mt-4 text-white space-y-0 px-4 pb-4"
+                ref={dropdownRef}
+              >
                 {[
                   {
                     key: "my-account",
                     icon: user,
                     label: "Hesabım",
+                    subItems: [
+                      { key: "profile", label: "Kişisel Bilgilerim" },
+                      { key: "security", label: "Güvenlik ve Bildirim" },
+                      { key: "support", label: "Destek Taleplerim" },
+                      { key: "verify", label: "Hesap Onayla" },
+                    ],
                   },
                   {
                     key: "notifications",
@@ -216,27 +244,44 @@ const ProfileTabs = () => {
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
                     <li
-                      onClick={() => setActiveTab(item.key)}
-                      onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={() => handleMouseLeave(index)}
-                      className={`relative flex items-center gap-2 cursor-pointer p-2 pl-3 rounded transition-all group
-                      ${
+                      onClick={() => {
+                        if (item.subItems) {
+                          setOpenDropdown(
+                            openDropdown === item.key ? null : item.key
+                          );
+                        } else {
+                          setActiveTab(item.key);
+                        }
+                      }}
+                      className={`relative flex items-center justify-between gap-2 cursor-pointer p-2 pl-3 rounded transition-all group ${
                         activeTab === item.key
                           ? "bg-[#36373c]/50 font-semibold"
                           : "hover:bg-[var(--advert-list-bg)]/5"
-                      }
-                    `}
+                      }`}
                     >
-                      <Player
-                        ref={(el) => (playerRefs.current[index] = el)}
-                        icon={item.icon}
-                        size={30}
-                        style={{ cursor: "pointer" }}
-                        trigger="manual" // manual kontrol için önemli
-                      />
-                      {item.label}
+                      <div className="flex items-center gap-2">
+                        <Player
+                          ref={(el) => (playerRefs.current[index] = el)}
+                          icon={item.icon}
+                          size={30}
+                          style={{ cursor: "pointer" }}
+                          trigger="manual"
+                        />
+                        {item.label}
+                      </div>
 
-                      {/* Sol gradient çizgisi */}
+                      {/* Ok simgesi */}
+                      {item.subItems && (
+                        <span className="mr-2 text-gray-400">
+                          {openDropdown === item.key ? (
+                            <FiChevronUp />
+                          ) : (
+                            <FiChevronDown />
+                          )}
+                        </span>
+                      )}
+
+                      {/* Sol çizgi */}
                       {activeTab === item.key && (
                         <span
                           className="absolute left-0 top-0 h-full w-[5px] rounded-r"
@@ -248,10 +293,50 @@ const ProfileTabs = () => {
                       )}
                     </li>
 
-                    {/* İki <li> arası çizgi */}
-                    {/* {index < arr.length - 1 && (
-                      <div className="h-[1px] bg-gradient-to-r from-transparent via-[var(--success)] to-transparent my-1" />
-                    )} */}
+                    {/* Dropdown alt menü */}
+                    {item.subItems && openDropdown === item.key && (
+                      <>
+                        {/* Mobilde göster */}
+                        <ul className="ml-10 mt-1 space-y-1 block lg:hidden">
+                          {item.subItems.map((sub) => (
+                            <li
+                              key={sub.key}
+                              onClick={() => {
+                                setActiveTab(sub.key);
+                                setOpenDropdown(null); // bu satır eklenmeli
+                              }}
+                              className={`text-sm cursor-pointer p-1 rounded px-2 transition-all ${
+                                activeTab === sub.key
+                                  ? "bg-[#36373c]/50 font-semibold"
+                                  : "hover:bg-[var(--advert-list-bg)]/10"
+                              }`}
+                            >
+                              {sub.label}
+                            </li>
+                          ))}
+                        </ul>
+
+                        {/* Masaüstünde sağda göster */}
+                        <ul className="hidden lg:block absolute left-full mt-[-46px] w-56 bg-[#1e1e1e] shadow-lg rounded ml-2 py-2 z-50">
+                          {item.subItems.map((sub) => (
+                            <li
+                              key={sub.key}
+                              onClick={() => {
+                                setActiveTab(sub.key);
+                                setOpenDropdown(null); // bu satır eklenmeli
+                              }}
+                              className={`text-sm cursor-pointer p-2 px-4 hover:bg-[var(--advert-list-bg)]/10 transition-all ${
+                                activeTab === sub.key
+                                  ? "bg-[#36373c]/50 font-semibold"
+                                  : ""
+                              }`}
+                            >
+                              {sub.label}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
                   </React.Fragment>
                 ))}
               </ul>
@@ -295,6 +380,9 @@ const ProfileTabs = () => {
 
           {/* TAB CONTENTS */}
           {activeTab === "my-account" && <MyAccount />}
+          {activeTab === "security" && (
+            <Security title={"Güvenlik Tercihleri"} />
+          )}
           {activeTab === "my-messages" && <Messages />}
           {activeTab === "my-adverts" && <MyAdvertsTable title={"İLANLARIM"} />}
           {activeTab === "wallet-history" && (
