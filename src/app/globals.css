@@ -1666,7 +1666,8 @@ nav img {
 #advertCreate textarea,
 #key-input,
 #security input,
-#authModal select {
+#authModal select,
+#help-requests input {
   font-size: 16px;
   width: 100% !important;
   height: 48px;

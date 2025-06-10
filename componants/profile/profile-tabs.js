@@ -64,7 +64,7 @@ import checkCash from "../../src/assets/animations/CheckCash.json";
 // import incomingOrders from "../../src/assets/animations/Adverts.json";
 
 const ProfileTabs = () => {
-  const [activeTab, setActiveTab] = useState("my-account");
+  const [activeTab, setActiveTab] = useState("personal-details");
   const [openDropdown, setOpenDropdown] = useState(null);
 
   // player ref'leri array olarak tutuyoruz
@@ -145,9 +145,9 @@ const ProfileTabs = () => {
                     icon: user,
                     label: "Hesabım",
                     subItems: [
-                      { key: "profile", label: "Kişisel Bilgilerim" },
+                      { key: "personal-details", label: "Kişisel Bilgilerim" },
                       { key: "security", label: "Güvenlik ve Bildirim" },
-                      { key: "support", label: "Destek Taleplerim" },
+                      { key: "help-requests", label: "Destek Taleplerim" },
                       { key: "verify", label: "Hesap Onayla" },
                     ],
                   },
@@ -159,7 +159,7 @@ const ProfileTabs = () => {
                   {
                     key: "verification",
                     icon: verification,
-                    label: "Profil Deoğulama",
+                    label: "Profil Doğrulama",
                   },
                   {
                     key: "password-change",
@@ -222,19 +222,9 @@ const ProfileTabs = () => {
                     label: "Mesajlarım",
                   },
                   {
-                    key: "help-requests",
-                    icon: help,
-                    label: "Yardım Taleplerim",
-                  },
-                  {
                     key: "refunds",
                     icon: refunds,
                     label: "İade Talebi",
-                  },
-                  {
-                    key: "entry-logs",
-                    icon: logInHistory,
-                    label: "Giriş Hareketlerim",
                   },
                   {
                     key: "reference-system",
@@ -379,7 +369,7 @@ const ProfileTabs = () => {
           </div>
 
           {/* TAB CONTENTS */}
-          {activeTab === "my-account" && <MyAccount />}
+          {activeTab === "personal-details" && <MyAccount />}
           {activeTab === "security" && (
             <Security title={"Güvenlik Tercihleri"} />
           )}
@@ -391,9 +381,7 @@ const ProfileTabs = () => {
           {activeTab === "bank-accounts" && (
             <BankAccounts title={"BANKA HESAPLARIM"} />
           )}
-          {activeTab === "help-requests" && (
-            <HelpRequests title={"YARDIM TALEPLERİM"} />
-          )}
+          {activeTab === "help-requests" && <HelpRequests title={"Destek"} />}
           {activeTab === "transactions" && (
             <Transactions title={"İŞLEMLERİM"} />
           )}
