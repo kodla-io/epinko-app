@@ -1,25 +1,131 @@
 import React, { useState, useEffect } from "react";
 import Switch from "../../switch";
 import { FiEdit } from "react-icons/fi";
-import { FaShieldAlt } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import { AiOutlineSafety } from "react-icons/ai";
+import { GoAlertFill } from "react-icons/go";
+
 import EntryLogs from "../../entry-logs/table";
 
-const GoogleAuthModal = ({ onClose }) => {
+const GoogleAuthModal = ({
+  onClose,
+  setGoogleAuth,
+  googleAuth,
+  authFrequency,
+  setAuthFrequency,
+}) => {
+  const [code, setCode] = useState("");
+
+  const handleActivate2FA = () => {
+    if (/^\d{6}$/.test(code)) {
+      setGoogleAuth(true); // switch aktif hale getirilir
+      onClose(); // modal kapanır
+    } else {
+      console.warn("Geçersiz kod.");
+    }
+  };
+
+  const handleDisable2FA = () => {
+    const confirmResult = window.confirm(
+      "2FA güvenliğini devre dışı bırakmak istediğinize emin misiniz?"
+    );
+    if (confirmResult) {
+      setGoogleAuth(false);
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 px-4">
-      <div className="bg-gray-800 rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl">
-        <h3 className="text-xl font-semibold text-white mb-4">
-          Google Authenticator
+    <div
+      id="authModal"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4"
+    >
+      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl relative">
+        <h3 className="text-xl font-semibold text-white mb-6 flex gap-2 flex-nowrap items-center">
+          <AiOutlineSafety className="w-10 h-10 text-[var(--success)]" /> Hesap
+          Güvenliği
         </h3>
-        <p className="text-gray-300 mb-4">
-          Modal içeriğini buraya ekleyeceksin.
+        <p className="text-white font-medium mb-4 border-t border-b border-[#ffffff2e] py-4">
+          Google 2 Faktörlü Doğrulama Sistemi
         </p>
-        <div className="text-right">
-          <button
-            onClick={onClose}
-            className="bg-primary text-white px-4 py-2 rounded hover:opacity-90"
-          >
-            Kapat
+
+        {googleAuth ? (
+          <div className="text-white space-y-4">
+            <div>
+              <h2 className="text-lg font-semibold mb-1">
+                Tebrikler, Google 2FA özelliğiniz aktif.
+              </h2>
+              <p className="text-sm text-gray-300">
+                Aşağıdan ne sıklıkla kod kullanmak istediğinizi ayarlayabilir
+                veya 2FA devre dışı bırakabilirsiniz.
+              </p>
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm font-medium">
+                Kullanım Sıklığı
+              </label>
+              <select
+                value={authFrequency}
+                onChange={(e) => setAuthFrequency(e.target.value)}
+                className="w-full text-white rounded px-3 py-2"
+              >
+                <option>Her Girişte Kod Sorulsun</option>
+                <option>Haftada 1 girişte kod sorulsun</option>
+                <option>Ayda 1 girişte kod sorulsun</option>
+              </select>
+            </div>
+
+            <div className="text-right">
+              <button
+                onClick={handleDisable2FA}
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded flex items-center gap-1 flex items-center ggap-2"
+              >
+                <GoAlertFill className="w-6 h-6 text-white" />
+                2FA Güvenliği Kapat
+              </button>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="flex flex-col md:flex-row gap-4 items-start">
+              <img
+                src="https://placehold.co/1000"
+                alt="QR Kod"
+                className="w-40 h-40 object-cover"
+              />
+
+              <div className="flex flex-col flex-1">
+                <input
+                  type="text"
+                  placeholder="Telefonunuzda görünen kodu giriniz."
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  className="bg-gray-900 text-white border border-gray-700 rounded px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+
+                <button
+                  className={`px-4 py-2 rounded text-white transition-colors ${
+                    /^\d{6}$/.test(code)
+                      ? "bg-[var(--success)]"
+                      : "bg-[var(--success)] opacity-50"
+                  }`}
+                  disabled={!/^\d{6}$/.test(code)}
+                  onClick={handleActivate2FA}
+                >
+                  2FA Aktif Et
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+
+        <div
+          onClick={onClose}
+          className="absolute top-0 right-5 w-8 h-8 rounded-md flex justify-center items-center mt-6 bg-[var(--alert)] cursor-pointer"
+        >
+          <button className="text-white">
+            <FaTimes className="w-4 h-4" />
           </button>
         </div>
       </div>
@@ -30,18 +136,18 @@ const GoogleAuthModal = ({ onClose }) => {
 export default function Security({ title }) {
   const [emailEnabled, setEmailEnabled] = useState(false);
   const [smsEnabled, setSmsEnabled] = useState(false);
-  const [googleAuthEnabled, setGoogleAuthEnabled] = useState(false);
-  const [safeIpEnabled, setSafeIpEnabled] = useState(false);
-  const [lastLoginEnabled, setLastLoginEnabled] = useState(false);
   const [streamerModeEnabled, setStreamerModeEnabled] = useState(false);
   const [mailNotificationEnabled, setMailNotificationEnabled] = useState(false);
   const [smsNotificationEnabled, setSmsNotificationEnabled] = useState(false);
+  const [authFrequency, setAuthFrequency] = useState(
+    "Her Girişte Kod Sorulsun"
+  );
 
   const [googleAuth, setGoogleAuth] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const toggleGoogleAuth = () => {
-    setGoogleAuth((prev) => !prev);
+    setShowModal(true); // sadece modalı aç
   };
 
   // `googleAuth` true olduğunda modal'ı aç
@@ -139,7 +245,15 @@ export default function Security({ title }) {
         </div>
       </div>
 
-      {showModal && <GoogleAuthModal onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <GoogleAuthModal
+          googleAuth={googleAuth}
+          setGoogleAuth={setGoogleAuth}
+          authFrequency={authFrequency}
+          setAuthFrequency={setAuthFrequency}
+          onClose={() => setShowModal(false)}
+        />
+      )}
 
       <EntryLogs title={"Giriş Hareketllerim"} />
     </div>
