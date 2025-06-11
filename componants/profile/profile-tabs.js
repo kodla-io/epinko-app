@@ -149,7 +149,6 @@ const ProfileTabs = () => {
                       { key: "personal-details", label: "Kişisel Bilgilerim" },
                       { key: "security", label: "Güvenlik ve Bildirim" },
                       { key: "help-requests", label: "Destek Taleplerim" },
-                      { key: "billing", label: "Fatura" },
                     ],
                   },
                   {
@@ -374,7 +373,7 @@ const ProfileTabs = () => {
           {activeTab === "security" && (
             <Security title={"Güvenlik Tercihleri"} />
           )}
-          {activeTab === "billing" && <Billing title={"Fatura Adreslerim"} />}
+          {/* {activeTab === "billing" && <Billing title={"Fatura Adreslerim"} />} */}
           {activeTab === "my-messages" && <Messages />}
           {activeTab === "my-adverts" && <MyAdvertsTable title={"İLANLARIM"} />}
           {activeTab === "wallet-history" && (

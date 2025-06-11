@@ -234,21 +234,46 @@ const BillingModal = ({ onClose, initialData = {}, onDelete }) => {
 const truncate = (str, length) =>
   str.length > length ? str.slice(0, length) + "..." : str;
 
-const BillingAddress = ({ title }) => {
+const BillingAddress = ({
+  title,
+  externalModalOpen = false,
+  externalModalData = {},
+  onExternalModalClose = () => {},
+}) => {
   const [showModal, setShowModal] = useState(false);
   const [addresses, setAddresses] = useState(exampleAddresses);
   const [editIndex, setEditIndex] = useState(null);
 
-  // Modalı AÇarken editIndex durumunu da ayarla
+  const [externalMode, setExternalMode] = useState(false);
+
+  // Modalı kendi içinden açarken
   const handleOpenModal = (idx = null) => {
     setEditIndex(idx);
     setShowModal(true);
+    setExternalMode(false);
   };
 
-  // Modalı kapatırken editIndex'i de sıfırla
+  // Modalı dışarıdan tetiklenip açıldığında
+  useEffect(() => {
+    if (externalModalOpen) {
+      setShowModal(true);
+      setEditIndex(null);
+      setExternalMode(true);
+    }
+    // Kapanış için de kontrol (Opsiyonel)
+    if (!externalModalOpen && showModal && externalMode) {
+      setShowModal(false);
+      setEditIndex(null);
+      setExternalMode(false);
+    }
+  }, [externalModalOpen]);
+
+  // Modalı kapatırken
   const handleCloseModal = () => {
     setShowModal(false);
     setEditIndex(null);
+    setExternalMode(false);
+    onExternalModalClose();
   };
 
   // Silme fonksiyonu
@@ -281,9 +306,17 @@ const BillingAddress = ({ title }) => {
       {showModal && (
         <BillingModal
           onClose={handleCloseModal}
-          initialData={editIndex !== null ? addresses[editIndex] : {}}
+          initialData={
+            externalMode
+              ? externalModalData
+              : editIndex !== null
+              ? addresses[editIndex]
+              : {}
+          }
           onDelete={
-            editIndex !== null ? () => handleDelete(editIndex) : undefined
+            !externalMode && editIndex !== null
+              ? () => handleDelete(editIndex)
+              : undefined
           }
         />
       )}

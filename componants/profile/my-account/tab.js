@@ -1,13 +1,26 @@
-import React from "react";
-
-import { FaMedal } from "react-icons/fa";
-import { AiTwotoneSafetyCertificate } from "react-icons/ai";
-import { PiMedalBold } from "react-icons/pi";
-import { AiTwotoneCrown } from "react-icons/ai";
+import React, { useState } from "react";
 import { FaCheckSquare } from "react-icons/fa";
 import { IoIosAlert } from "react-icons/io";
+import Billing from "../billing/form";
 
 export default function MyAccount() {
+  const [billingModalOpen, setBillingModalOpen] = useState(false);
+  const [billingModalData, setBillingModalData] = useState({});
+
+  const handleBillingCheckbox = (e) => {
+    if (e.target.checked) {
+      setBillingModalData({
+        companyName: name + " " + surname,
+        phone1: telNo,
+      });
+      setBillingModalOpen(true);
+    }
+  };
+
+  const [name, setName] = useState("Epinko"); // default değerleri istersen özelleştirirsin
+  const [surname, setsurname] = useState("Epinko");
+  const [telNo, setTelNo] = useState("90555 555 5555");
+
   return (
     <div id="my-account">
       <div className="flex items-center space-x-4">
@@ -25,22 +38,24 @@ export default function MyAccount() {
             <label className="block text-sm mb-3">Ad</label>
             <input
               type="text"
-              placeholder="Epinko Epinko"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               disabled
             />
           </div>
-
           <div className="flex-1">
             <label className="block text-sm mb-3">Soyad</label>
             <input
               type="text"
-              placeholder="EPİNKO"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
+              value={surname}
+              onChange={(e) => setsurname(e.target.value)}
               disabled
             />
           </div>
         </div>
+
         <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4">
           <div className="flex-1">
             <label className="block text-sm mb-3">Kullanıcı adı</label>
@@ -51,7 +66,6 @@ export default function MyAccount() {
               disabled
             />
           </div>
-
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
               <label className="block text-sm">Telefon</label>
@@ -62,12 +76,14 @@ export default function MyAccount() {
             </div>
             <input
               type="text"
-              placeholder="90555 555 5555"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
+              value={telNo}
+              onChange={(e) => setTelNo(e.target.value)}
               disabled
             />
           </div>
         </div>
+
         <div className="flex md:flex-row flex-col space-x-4 mb-2 md:mb-4">
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
@@ -83,7 +99,6 @@ export default function MyAccount() {
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
             />
           </div>
-
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
               <label className="block text-sm ">E-Mail Adresi</label>
@@ -100,10 +115,25 @@ export default function MyAccount() {
             />
           </div>
         </div>
+
         <label className="flex items-center gap-2 cursor-pointer select-none">
-          <input type="checkbox" className="!w-4 !h-4" />
-          <span className="text-gray-300 text-sm">Fatura Bilgilerimi Oluştur</span>
+          <input
+            type="checkbox"
+            className="!w-4 !h-4"
+            onChange={handleBillingCheckbox}
+          />
+          <span className="text-gray-300 text-sm">
+            Fatura Bilgilerimi Oluştur
+          </span>
         </label>
+      </div>
+      <div className="mt-3">
+        <Billing
+          title="Fatura Adreslerim"
+          externalModalOpen={billingModalOpen}
+          externalModalData={billingModalData}
+          onExternalModalClose={() => setBillingModalOpen(false)}
+        />
       </div>
     </div>
   );
