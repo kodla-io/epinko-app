@@ -1667,7 +1667,9 @@ nav img {
 #key-input,
 #security input,
 #authModal select,
-#help-requests input {
+#help-requests input,
+#billing input,
+#billing select {
   font-size: 16px;
   width: 100% !important;
   height: 48px;

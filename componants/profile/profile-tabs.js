@@ -13,6 +13,7 @@ import { FaCircle, FaCamera, FaWallet } from "react-icons/fa";
 
 import MyAccount from "./my-account/tab";
 import Security from "./my-account/security/form";
+import Billing from "./billing/form";
 import Messages from "./messages/tab";
 import MyAdvertsTable from "./my-adverts/table";
 import WalletHistory from "./wallet-history/table";
@@ -148,7 +149,7 @@ const ProfileTabs = () => {
                       { key: "personal-details", label: "Kişisel Bilgilerim" },
                       { key: "security", label: "Güvenlik ve Bildirim" },
                       { key: "help-requests", label: "Destek Taleplerim" },
-                      { key: "verify", label: "Hesap Onayla" },
+                      { key: "billing", label: "Fatura" },
                     ],
                   },
                   {
@@ -373,6 +374,7 @@ const ProfileTabs = () => {
           {activeTab === "security" && (
             <Security title={"Güvenlik Tercihleri"} />
           )}
+          {activeTab === "billing" && <Billing title={"Fatura Adreslerim"} />}
           {activeTab === "my-messages" && <Messages />}
           {activeTab === "my-adverts" && <MyAdvertsTable title={"İLANLARIM"} />}
           {activeTab === "wallet-history" && (

@@ -105,64 +105,6 @@ export default function MyAccount() {
           <span className="text-gray-300 text-sm">Fatura Bilgilerimi Oluştur</span>
         </label>
       </div>
-      <div className="flex items-center space-x-4">
-        <h2
-          style={{ color: "var(--foreground)" }}
-          className="text-white text-[30px] py-2 font-bold px-4"
-        >
-          ROZETLERİM
-        </h2>
-        <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-2">
-        {/* Kutu 1 */}
-        <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
-            <FaMedal className="mx-auto mb-2 w-12 h-12" />
-            <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
-            <p className="text-gray-300 text-sm">
-              congue mauris rhoncus aenean vels elit scelerisque mauris
-              pellentesque
-            </p>
-          </div>
-        </div>
-
-        {/* Kutu 2 */}
-        <div className="bg-gradient-to-t from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
-            <AiTwotoneSafetyCertificate className="mx-auto mb-2 w-12 h-12" />
-            <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
-            <p className="text-gray-300 text-sm">
-              congue mauris rhoncus aenean vels elit scelerisque mauris
-              pellentesque
-            </p>
-          </div>
-        </div>
-
-        {/* Kutu 3 */}
-        <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
-            <PiMedalBold className="mx-auto mb-2 w-12 h-12" />
-            <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
-            <p className="text-gray-300 text-sm">
-              congue mauris rhoncus aenean vels elit scelerisque mauris
-              pellentesque
-            </p>
-          </div>
-        </div>
-
-        {/* Kutu 4 */}
-        <div className="bg-gradient-to-t from-[color:var(--success)] to-transparent rounded-xl p-[2px]">
-          <div className="bg-[var(--profile-tab-bg)] rounded-xl p-4 text-center">
-            <AiTwotoneCrown className="mx-auto mb-2 w-12 h-12" />
-            <h3 className="text-white text-lg font-semibold">Lorem Ipsum</h3>
-            <p className="text-gray-300 text-sm">
-              congue mauris rhoncus aenean vels elit scelerisque mauris
-              pellentesque
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
