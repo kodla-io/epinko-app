@@ -151,6 +151,11 @@ const ProfileTabs = () => {
                       { key: "personal-details", label: "Kişisel Bilgilerim" },
                       { key: "security", label: "Güvenlik ve Bildirim" },
                       { key: "help-requests", label: "Destek Taleplerim" },
+                      {
+                        key: "verification",
+                        icon: verification,
+                        label: "Profil Doğrulama",
+                      },
                     ],
                   },
                   {
@@ -163,11 +168,7 @@ const ProfileTabs = () => {
                     icon: stream,
                     label: "Yayıncı Paneli",
                   },
-                  {
-                    key: "verification",
-                    icon: verification,
-                    label: "Profil Doğrulama",
-                  },
+
                   {
                     key: "password-change",
                     icon: passwordChange,
