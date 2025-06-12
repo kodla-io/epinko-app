@@ -1669,7 +1669,8 @@ nav img {
 #authModal select,
 #help-requests input,
 #billing input,
-#billing select {
+#billing select,
+#stream-form input {
   font-size: 16px;
   width: 100% !important;
   height: 48px;

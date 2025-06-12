@@ -32,6 +32,7 @@ import TopUpBalance from "./top-up-balance/section";
 import CheckCash from "./check-cash/list";
 import AdvertOrders from "./advert-orders/section";
 import IncomingOrders from "./incoming-orders/list";
+import StreamerPanel from "./streamer-panel/form";
 
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
@@ -61,6 +62,7 @@ import reference from "../../src/assets/animations/Reference.json";
 import order from "../../src/assets/animations/Order.json";
 import addBalance from "../../src/assets/animations/balanceHistory.json";
 import checkCash from "../../src/assets/animations/CheckCash.json";
+import stream from "../../src/assets/animations/stream.json";
 // import advertOrders from "../../src/assets/animations/Adverts.json";
 // import incomingOrders from "../../src/assets/animations/Adverts.json";
 
@@ -157,6 +159,11 @@ const ProfileTabs = () => {
                     label: "Bildirimler",
                   },
                   {
+                    key: "streamer-panel",
+                    icon: stream,
+                    label: "Yayıncı Paneli",
+                  },
+                  {
                     key: "verification",
                     icon: verification,
                     label: "Profil Doğrulama",
@@ -234,6 +241,8 @@ const ProfileTabs = () => {
                 ].map((item, index, arr) => (
                   <React.Fragment key={item.key}>
                     <li
+                      onMouseEnter={() => handleMouseEnter(index)}
+                      onMouseLeave={() => handleMouseLeave(index)}
                       onClick={() => {
                         if (item.subItems) {
                           setOpenDropdown(
@@ -372,6 +381,9 @@ const ProfileTabs = () => {
           {activeTab === "personal-details" && <MyAccount />}
           {activeTab === "security" && (
             <Security title={"Güvenlik Tercihleri"} />
+          )}
+          {activeTab === "streamer-panel" && (
+            <StreamerPanel title={"Yayıncı Paneli"} />
           )}
           {/* {activeTab === "billing" && <Billing title={"Fatura Adreslerim"} />} */}
           {activeTab === "my-messages" && <Messages />}
