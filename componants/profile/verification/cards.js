@@ -258,7 +258,7 @@ const Verification = () => {
           >
             {/* Daire ve iconlar */}
             <div
-              className={`w-50 h-50 rounded-full flex flex-col items-center justify-center mb-5 border-8 ${
+              className={`w-40 h-40 rounded-full flex flex-col items-center justify-center mb-5 border-8 ${
                 item.verified
                   ? "border-[var(--success)]/10 bg-[var(--success)]/10"
                   : "border-[var(--alert)]/10 bg-[var(--alert)]/10"
@@ -275,9 +275,9 @@ const Verification = () => {
                   <FaTimes size={38} className="text-white" />
                 )}
               </div>
-              <div className="text-[var(--foreground)] text-center opacity-60 mt-1">
+              {/* <div className="text-[var(--foreground)] text-center opacity-60 mt-1">
                 {item.title}
-              </div>
+              </div> */}
             </div>
 
             {/* Başlık */}
@@ -285,9 +285,9 @@ const Verification = () => {
               {item.title}
             </div>
             {/* Açıklama */}
-            <div className="text-sm mb-2 text-center text-gray-400 max-w-[320px]">
+            {/* <div className="text-sm mb-2 text-center text-gray-400 max-w-[320px]">
               {item.description}
-            </div>
+            </div> */}
             {/* Onay ✓ veya Buton */}
             {/* Onaylıysa yazı, onaylı değilse sadece buton */}
             {item.showBtn ? (

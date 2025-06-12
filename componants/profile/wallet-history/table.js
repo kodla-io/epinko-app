@@ -2,73 +2,92 @@
 
 import React, { useState, useEffect } from "react";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import {
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
+  FaEye,
+  FaTimes,
+} from "react-icons/fa";
 
-const AdvertData = [
+const WalletHistoryData = [
   {
     no: "3535-4359",
-    tarih: "25.01.2023",
-    product: "Bronz Kasa 100% Bakiye",
-    orderNo: "#QR-1537-70",
-    price: "7000₺",
+    method: "Wamo",
+    earn: "100₺",
+    comission: "0₺",
+    TotalPayment: "100₺",
+    Date: "25.01.2023",
+    status: "İptal Edildi",
+    statusColor: "var(--alert)",
+    BankMessage:
+      "Bakiyeniz Yetersiz Olduğundan Dolayı İşleminiz İptal Edilmiştir!",
+  },
+  {
+    no: "3535-4359",
+    method: "Revolut",
+    earn: "100₺",
+    comission: "0₺",
+    TotalPayment: "100₺",
+    Date: "25.01.2023",
     status: "Onay Bekliyor",
     statusColor: "var(--label7)",
   },
   {
     no: "3535-4359",
-    tarih: "25.01.2023",
-    product: "Valorant 2000VP Kod",
-    orderNo: "#QR-1537-70",
-    price: "1200₺",
-    status: "Tamamlandı",
-    statusColor: "var(--label2)",
+    method: "PayTR Kredi Kartı",
+    earn: "100₺",
+    comission: "0₺",
+    TotalPayment: "100₺",
+    Date: "25.01.2023",
+    status: "Onaylandı",
+    statusColor: "var(--success)",
   },
   {
     no: "3535-4359",
-    tarih: "25.01.2023",
-    product: "Bronz Kasa 100% Bakiye",
-    orderNo: "#QR-1537-70",
-    price: "7000₺",
-    status: "İptal Edildi",
-    statusColor: "var(--alert)",
-  },
-  {
-    no: "3535-4359",
-    tarih: "25.01.2023",
-    product: "Bronz Kasa 100% Bakiye",
-    orderNo: "#QR-1537-70",
-    price: "7000₺",
+    method: "Papara",
+    earn: "200₺",
+    comission: "6.16₺",
+    TotalPayment: "206.16₺",
+    Date: "25.01.2023",
     status: "Onay Bekliyor",
     statusColor: "var(--label7)",
-  },
-  {
-    no: "3535-4359",
-    tarih: "25.01.2023",
-    product: "Valorant 2000VP Kod",
-    orderNo: "#QR-1537-70",
-    price: "1200₺",
-    status: "Tamamlandı",
-    statusColor: "var(--label2)",
-  },
-  {
-    no: "3535-4359",
-    tarih: "25.01.2023",
-    product: "Bronz Kasa 100% Bakiye",
-    orderNo: "#QR-1537-70",
-    price: "7000₺",
-    status: "İptal Edildi",
-    statusColor: "var(--alert)",
   },
 ];
 
 const headers = [
-  { key: "no", label: "İşlem No" },
-  { key: "tarih", label: "Tarih" },
-  { key: "product", label: "Ürün" },
-  { key: "orderNo", label: "Sipariş No" },
-  { key: "price", label: "Fiyat" },
+  { key: "no", label: "#" },
+  { key: "method", label: "Ödeme Yöntemi" },
+  { key: "earn", label: "Hesaba Geçen Tutar" },
+  { key: "comission", label: "Komisyon" },
+  { key: "TotalPayment", label: "Ödenen Tutar" },
+  { key: "Date", label: "Ödeme Tarihi" },
   { key: "durum", label: "Durum" },
+  // { key: "action", label: "Detay" },
 ];
+
+const WalletDetailModal = ({ onClose, data }) => {
+  if (!data) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4">
+      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl relative">
+        <h3 className="text-xl font-semibold text-white mb-4 flex gap-2 items-center">
+          Cüzdan İşlem Detayı
+        </h3>
+        <div className="mb-4 p-3 rounded bg-[var(--alert)] text-white">
+          <b>Red Mesajı:</b> {data.BankMessage}
+        </div>
+        <div
+          onClick={onClose}
+          className="absolute top-0 right-5 w-8 h-8 rounded-md flex justify-center items-center mt-6 bg-[var(--alert)] cursor-pointer"
+        >
+          <button className="text-white">
+            <FaTimes className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const WalletHistory = ({ title }) => {
   const [expandedRow, setExpandedRow] = useState(null);
@@ -76,6 +95,9 @@ const WalletHistory = ({ title }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 4;
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -126,18 +148,31 @@ const WalletHistory = ({ title }) => {
             </tr>
           </thead>
           <tbody>
-            {AdvertData.map((item, index) => (
+            {WalletHistoryData.map((item, index) => (
               <React.Fragment key={index}>
                 <tr className="hover:bg-[#3A3B51] cursor-pointer">
                   {headers.slice(0, visibleCols).map((header) => (
-                    <td key={header.key} className="p-4">
+                    <td key={header.key} className="p-2">
                       {header.key === "durum" ? (
-                        <span
-                          className={`px-2 py-1 rounded font-semibold`}
-                          style={{ backgroundColor: item.statusColor }}
-                        >
-                          {item.status}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <span
+                            style={{ backgroundColor: item.statusColor }}
+                            className="px-2 py-1 rounded"
+                          >
+                            {item.status}
+                          </span>
+                          {item.status === "İptal Edildi" && (
+                            <span
+                              className="w-8 h-8 flex rounded bg-[var(--label7)] cursor-pointer justify-center items-center"
+                              onClick={() => {
+                                setModalData(item);
+                                setModalOpen(true);
+                              }}
+                            >
+                              <FaEye className="w-4 h-4 text-white" />
+                            </span>
+                          )}
+                        </div>
                       ) : (
                         item[header.key]
                       )}
@@ -171,15 +206,31 @@ const WalletHistory = ({ title }) => {
                   >
                     {expandedRow === index &&
                       headers.slice(visibleCols).map((header) => (
-                        <div key={header.key} className="mb-1 px-6 py-3">
+                        <div
+                          key={header.key}
+                          className="mb-1 px-6 py-3 flex gap-2"
+                        >
                           <strong>{header.label}:</strong>{" "}
                           {header.key === "durum" ? (
-                            <span
-                              style={{ backgroundColor: item.statusColor }}
-                              className="px-2 py-1 rounded"
-                            >
-                              {item.status}
-                            </span>
+                            <div className="flex items-center gap-2">
+                              <span
+                                style={{ backgroundColor: item.statusColor }}
+                                className="px-2 py-1 rounded"
+                              >
+                                {item.status}
+                              </span>
+                              {item.status === "İptal Edildi" && (
+                                <span
+                                  className="w-8 h-8 flex rounded bg-[var(--label7)] cursor-pointer justify-center items-center"
+                                  onClick={() => {
+                                    setModalData(item);
+                                    setModalOpen(true);
+                                  }}
+                                >
+                                  <FaEye className="w-4 h-4 text-white" />
+                                </span>
+                              )}
+                            </div>
                           ) : (
                             item[header.key]
                           )}
@@ -233,6 +284,12 @@ const WalletHistory = ({ title }) => {
           </li>
         </ul>
       </div>
+      {modalOpen && (
+        <WalletDetailModal
+          data={modalData}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
     </div>
   );
 };

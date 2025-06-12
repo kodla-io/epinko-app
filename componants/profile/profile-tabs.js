@@ -182,7 +182,7 @@ const ProfileTabs = () => {
                   {
                     key: "wallet-history",
                     icon: balanceHistory,
-                    label: "Bakiye Geçmişim",
+                    label: "Ödeme Geçmişim",
                   },
                   {
                     key: "check-cash",
@@ -390,7 +390,7 @@ const ProfileTabs = () => {
           {activeTab === "my-messages" && <Messages />}
           {activeTab === "my-adverts" && <MyAdvertsTable title={"İLANLARIM"} />}
           {activeTab === "wallet-history" && (
-            <WalletHistory title={"BAKİYE GEÇMİŞİM"} />
+            <WalletHistory title={"ÖDEME GEÇMİŞİM"} />
           )}
           {activeTab === "bank-accounts" && (
             <BankAccounts title={"BANKA HESAPLARIM"} />
