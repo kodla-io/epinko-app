@@ -1670,7 +1670,9 @@ nav img {
 #help-requests input,
 #billing input,
 #billing select,
-#stream-form input {
+#stream-form input,
+#transaction-modal input,
+#transaction-modal select {
   font-size: 16px;
   width: 100% !important;
   height: 48px;

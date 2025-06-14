@@ -1,332 +1,164 @@
-"use client";
+import { useState } from "react";
+import { FaCopy } from "react-icons/fa";
 
-import React, { useState, useEffect } from "react";
-import { FaPlusCircle, FaMinusCircle, FaEdit, FaTrash } from "react-icons/fa";
-
-import { FcAdvertising } from "react-icons/fc";
-import { Copy, Info } from "lucide-react";
-import { FcMoneyTransfer } from "react-icons/fc";
-import { RiWalletFill } from "react-icons/ri";
-import { GiCoins } from "react-icons/gi";
-import { IoPeople } from "react-icons/io5";
-import { FaPeopleRobbery } from "react-icons/fa6";
-
-const boxes = [
-  {
-    icon: <FcMoneyTransfer size={28} />,
-    title: "Çekilen Bakiyeniz",
-    text: "424,50₺",
-    borderColor: "var(--label7)",
-  },
-  {
-    icon: <RiWalletFill size={28} />,
-    title: "Referans Bakiyeniz",
-    text: "424,50₺",
-    borderColor: "var(--label2)",
-  },
-  {
-    icon: <GiCoins size={28} />,
-    title: "Toplam Kazancınız",
-    text: "424,50₺",
-    borderColor: "var(--label9)",
-  },
-  {
-    icon: <IoPeople size={28} />,
-    title: "1 Aylık Üye Sayısı",
-    text: "1200 kişi",
-    borderColor: "var(--label4)",
-  },
-  {
-    icon: <FaPeopleRobbery size={28} />,
-    title: "Toplam Üye Sayısı",
-    text: "1200 kişi",
-    borderColor: "var(--label11)",
-  },
+const refUserList = [
+  { name: "Ayşe Yıldız", date: "12.06.2023" },
+  { name: "Mehmet Demir", date: "09.05.2023" },
+  { name: "Selin Kurt", date: "17.02.2024" },
 ];
 
-const AdvertData = [
-  {
-    name: "Lorem Ipsum",
-    username: "kcannmutlu",
-    lorem1: "150₺",
-    lorem2: "Lorem Ipsum",
-    tarih: "25.01.2023 Çarşamba 01:13",
-  },
-  {
-    name: "Lorem Ipsum",
-    username: "kcannmutlu",
-    lorem1: "150₺",
-    lorem2: "Lorem Ipsum",
-    tarih: "25.01.2023 Çarşamba 01:13",
-  },
-  {
-    name: "Lorem Ipsum",
-    username: "kcannmutlu",
-    lorem1: "150₺",
-    lorem2: "Lorem Ipsum",
-    tarih: "25.01.2023 Çarşamba 01:13",
-  },
+const earningList = [
+  { month: "Ocak 2024", amount: 120 },
+  { month: "Şubat 2024", amount: 60 },
+  { month: "Mart 2024", amount: 210 },
 ];
 
-const headers = [
-  { key: "name", label: "Ad Soyad" },
-  { key: "username", label: "Kullanıcı Adı" },
-  { key: "lorem1", label: "Lorem" },
-  { key: "lorem2", label: "Lorem" },
-  { key: "tarih", label: "Tarih" },
-];
+const totalEarning = earningList.reduce((sum, item) => sum + item.amount, 0);
 
-const ReferenceSystem = ({ title }) => {
-  const [expandedRow, setExpandedRow] = useState(null);
-  const [visibleCols, setVisibleCols] = useState(7);
+const referralLink = "https://oyuneks.com/kayit-ol?ref=0347521698";
+const myReferralCode = "0347521698";
 
-  const handleResize = () => {
-    const width = window.innerWidth;
-    if (width < 640) setVisibleCols(2);
-    else if (width < 768) setVisibleCols(2);
-    else if (width < 1024) setVisibleCols(4);
-    else if (width < 1280) setVisibleCols(5);
-    else if (width < 1536) setVisibleCols(6);
-    else setVisibleCols(headers.length);
-  };
+export default function ReferenceSystem({ title }) {
+  // Kopyalandı uyarısı için
+  const [copied, setCopied] = useState("");
 
-  useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const toggleRow = (index) => {
-    setExpandedRow(expandedRow === index ? null : index);
+  // Kopyalama işlemi
+  const copyToClipboard = (text, label) => {
+    navigator.clipboard.writeText(text);
+    setCopied(label);
+    setTimeout(() => setCopied(""), 1200);
   };
 
   return (
-    <>
-      <div className="space-y-4">
-        <div className="flex items-center space-x-4 py-2">
-          <h2
-            style={{ color: "var(--foreground)" }}
-            className="text-[30px] py-2 font-bold"
-          >
-            {title}
-          </h2>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
-        </div>
-        <div>
-          {/* ÜSTTEKİ 2 KUTU */}
-          <div className="flex items-center flex-wrap md:flex-nowrap sm:flex-row gap-4 mb-4">
-            {/* SOL INPUT KUTUSU */}
-            <div className="w-full md:flex-1 relative bg-[var(--advert-list-bg)] gap-2 rounded-md text-sm md:text-md">
-              <input
-              id="key-input"
-                type="text"
-                defaultValue="#135-FG-25AS#135-FG-25AS#135-FG-25AS#135-FG-25AS"
-                className="w-full p-4 pr-10 rounded-md focus:outline-none"
-                disabled
-              />
-              <Copy className="w-5 h-5 absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer" />
-            </div>
-
-            {/* SAĞ KUTU */}
-            <div className="w-full md:flex-1 flex items-center gap-2 p-1 md:p-2 rounded-md bg-[var(--label1)]">
-              <Info className="md:w-5 md:h-5 !w-8 !h-8 text-white mt-1" />
-              <div className="text-xs text-white">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* ALT KUTU */}
-          <div className="flex items-start md:items-center gap-2 p-4 rounded-md bg-[var(--profile-tab-bg)]">
-            <FcAdvertising className="w-12 h-12 text-green-500 mt-1 hidden md:block" />
-            <div className="text-sm">
-              Bu, alt kısımdaki açıklama kutusudur. Uzun olabilir ama tek
-              satırda da güzel durur. Bu, alt kısımdaki açıklama kutusudur. Uzun
-              olabilir ama tek satırda da güzel durur. Bu, alt kısımdaki
-              açıklama kutusudur. Uzun olabilir ama tek satırda da güzel durur
-            </div>
-          </div>
-        </div>
+    <div className="w-full p-1 md:p-4 max-w-6xl mx-auto text-white">
+      {/* HEADER */}
+      <div className="flex items-center space-x-4 py-2">
+        <h2
+          style={{ color: "var(--foreground)" }}
+          className="text-[30px] py-2 font-bold"
+        >
+          {title}
+        </h2>
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
-      <div className="w-full my-4">
-        <div className="flex items-center space-x-4 py-2">
-          <h2
-            style={{ color: "var(--foreground)" }}
-            className="text-[30px] py-2 font-bold"
-          >
-            İstatikleriniz
-          </h2>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
+
+      {/* ÜST INFO KUTULARI */}
+      <div className="flex md:flex-row flex-col gap-4 mb-5 items-stretch">
+        {/* SOL TARAF: Toplam kazanç + Bakiye Çek */}
+        <div className="flex-1 bg-[#262737] rounded-xl p-5 flex flex-col justify-between min-h-[110px]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <div>
+              <div className="text-lg font-bold">~ {totalEarning}₺</div>
+              <div className="text-sm text-gray-400">Toplam Kazancın</div>
+            </div>
+          </div>
+          <button className="mt-2 py-2 bg-[#303199] rounded-lg hover:bg-[#3c40b4] font-semibold transition">
+            BAKİYE ÇEK
+          </button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {boxes.map((box, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center p-4 rounded bg-[var(--profile-tab-bg)] text-center gap-3"
-              style={{
-                border: `2px solid ${box.borderColor}`,
-              }}
+
+        {/* SAĞ TARAF: Referans Linki + Kodu */}
+        <div className="flex-2 flex flex-col gap-2">
+          {/* Link */}
+          <div className="flex items-center bg-[#262737] rounded-xl px-4 py-2">
+            <span className="text-[13px] text-[#33ff99] font-semibold min-w-auto md:min-w-[130px]">
+              Referans Linki
+            </span>
+            <input
+              type="text"
+              className="flex-1 bg-transparent text-white font-medium ml-2 outline-none select-all"
+              value={referralLink}
+              readOnly
+              onClick={(e) => e.target.select()}
+            />
+            <span
+              className="ml-2 text-[var(--success)] cursor-pointer"
+              onClick={() => copyToClipboard(referralLink, "link")}
             >
-              <div className="mb-2" style={{ color: box.borderColor }}>
-                {box.icon}
-              </div>
-              <h4
-                className="text-xs font-semibold mb-1"
-                style={{ color: box.borderColor }}
-              >
-                {box.title}
-              </h4>
-              <p className="text-md">{box.text}</p>
+              <FaCopy />
+            </span>
+            {copied === "link" && (
+              <span className="ml-2 text-green-400 text-xs">Kopyalandı</span>
+            )}
+          </div>
+          {/* Kod */}
+          <div className="flex items-center bg-[#262737] rounded-xl px-4 py-2">
+            <span className="text-[13px] text-[#fabe32] font-semibold min-w-auto md:min-w-[130px]">
+              Size Ait Referans Kodu
+            </span>
+            <input
+              type="text"
+              className="flex-1 bg-transparent text-white font-medium ml-2 outline-none select-all"
+              value={myReferralCode}
+              readOnly
+              onClick={(e) => e.target.select()}
+            />
+            <span
+              className="ml-2 text-[var(--success)] cursor-pointer"
+              onClick={() => copyToClipboard(myReferralCode, "kod")}
+            >
+              <FaCopy />
+            </span>
+            {copied === "kod" && (
+              <span className="ml-2 text-green-400 text-xs">Kopyalandı</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* ALT: Kazanç Durumu */}
+      <div className="my-3 mt-8 text-xl font-semibold text-white border-t border-gray-600 pt-3">
+        Kazanç Durumu
+      </div>
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* SOL LİSTE - Referanslar */}
+        <div className="flex-1 bg-[#262737] rounded-xl p-3">
+          <div className="flex w-full justify-between items-center mb-2">
+            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+              Ad Soyad
             </div>
-          ))}
+            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+              Kayıt Tarihi
+            </div>
+          </div>
+          <ul className="divide-y divide-[#35354b]">
+            {refUserList.map((item, idx) => (
+              <li
+                key={idx}
+                className="py-2 flex justify-between items-center text-white/90"
+              >
+                <span className="font-medium">{item.name}</span>
+                <span className="text-sm text-gray-400">{item.date}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-      <div className="w-full my-4">
-        <div className="flex items-center space-x-4 py-2">
-          <h2
-            style={{ color: "var(--foreground)" }}
-            className="text-[30px] py-2 font-bold"
-          >
-            Kazanç Verileriniz
-          </h2>
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
-        </div>
-        <div className="">
-          <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
-            <thead>
-              <tr>
-                {headers.slice(0, visibleCols).map((header) => (
-                  <th key={header.key} className="p-4">
-                    {header.label}
-                  </th>
-                ))}
-                {visibleCols < headers.length && <th className="p-4"></th>}
-              </tr>
-            </thead>
-            <tbody>
-              {AdvertData.map((item, index) => (
-                <React.Fragment key={index}>
-                  <tr className="hover:bg-[#3A3B51] cursor-pointer">
-                    {headers.slice(0, visibleCols).map((header) => (
-                      <td key={header.key} className="p-2">
-                        {header.key === "resim" ? (
-                          <img
-                            src={item.resim}
-                            alt="İlan"
-                            className="w-16 h-16 rounded-sm object-cover"
-                          />
-                        ) : header.key === "durum" ? (
-                          <div
-                            className={`px-2 py-1 rounded font-semibold min-w-[140px] text-center`}
-                            style={{ backgroundColor: item.statusColor }}
-                          >
-                            <span className="">{item.status}</span>
-                          </div>
-                        ) : header.key === "username" ? (
-                          <div
-                            className={`px-2 py-1 rounded font-semibold min-w-[140px] text-center bg-[var(--label4)]`}
-                          >
-                            <span className="">{item.username}</span>
-                          </div>
-                        ) : header.key === "actions" ? (
-                          <div className="flex items-center gap-2">
-                            <button
-                              onClick={() => alert(`Düzenle: ${item.no}`)}
-                            >
-                              <FaEdit />
-                            </button>
-                            <button onClick={() => alert(`Sil: ${item.no}`)}>
-                              <FaTrash />
-                            </button>
-                          </div>
-                        ) : (
-                          item[header.key]
-                        )}
-                      </td>
-                    ))}
-                    {visibleCols < headers.length && (
-                      <td onClick={() => toggleRow(index)} className="p-4">
-                        <button>
-                          {expandedRow === index ? (
-                            <FaMinusCircle />
-                          ) : (
-                            <FaPlusCircle />
-                          )}
-                        </button>
-                      </td>
-                    )}
-                  </tr>
+        {/* SAĞ LİSTE - Aylar/Kazanç */}
+        <div className="flex-1 bg-[#262737] rounded-xl p-3">
+          <div className="flex w-full justify-between items-center mb-2">
+            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+              Aylar
+            </div>
+            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+              Kazanç
+            </div>
+          </div>
 
-                  {/* Genişletilen Bilgiler */}
-                  <tr
-                    style={{
-                      maxHeight: expandedRow === index ? "1000px" : "0",
-                      opacity: expandedRow === index ? "1" : "0",
-                      overflow: "hidden",
-                      transition: "max-height 0.5s ease, opacity 0.5s ease",
-                    }}
-                  >
-                    <td
-                      colSpan={visibleCols + 1}
-                      className="bg-[var(--advert-list-bg)]"
-                    >
-                      {expandedRow === index &&
-                        headers.slice(visibleCols).map((header) => (
-                          <div
-                            key={header.key}
-                            className="mb-1 px-6 py-3 flex items-center gap-2"
-                          >
-                            <strong>{header.label}:</strong>{" "}
-                            {header.key === "resim" ? (
-                              <img
-                                src={item.resim}
-                                alt="İlan"
-                                className="w-16 h-16 rounded-sm object-cover"
-                              />
-                            ) : header.key === "durum" ? (
-                              <span
-                                style={{ backgroundColor: item.statusColor }}
-                                className="px-2 py-1 rounded"
-                              >
-                                {item.status}
-                              </span>
-                            ) : header.key === "username" ? (
-                              <div
-                                className={`px-2 py-1 rounded font-semibold min-w-[140px] text-center bg-[var(--label4)]`}
-                              >
-                                <span className="">{item.username}</span>
-                              </div>
-                            ) : header.key === "actions" ? (
-                              <div className="flex items-center gap-2">
-                                <button
-                                  onClick={() => alert(`Düzenle: ${item.no}`)}
-                                >
-                                  <FaEdit />
-                                </button>
-                                <button
-                                  onClick={() => alert(`Sil: ${item.no}`)}
-                                >
-                                  <FaTrash />
-                                </button>
-                              </div>
-                            ) : (
-                              item[header.key]
-                            )}
-                          </div>
-                        ))}
-                    </td>
-                  </tr>
-                </React.Fragment>
-              ))}
-            </tbody>
-          </table>
+          <ul className="divide-y divide-[#35354b]">
+            {earningList.map((item, idx) => (
+              <li
+                key={idx}
+                className="py-2 flex justify-between items-center text-white/90"
+              >
+                <span className="font-medium">{item.month}</span>
+                <span className="text-lg text-[var(--success)] font-semibold">
+                  {item.amount}₺
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </>
+    </div>
   );
-};
-
-export default ReferenceSystem;
+}

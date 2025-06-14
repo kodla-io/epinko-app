@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FaEdit, FaTrash, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import {
+  FaEdit,
+  FaTrash,
+  FaPlusCircle,
+  FaMinusCircle,
+  FaEye,
+} from "react-icons/fa";
 
-export default function AdvertTable({ headers, data }) {
+export default function AdvertTable({ headers, data, onShowDetail }) {
   const [expandedRow, setExpandedRow] = useState(null);
   const [visibleCols, setVisibleCols] = useState(7);
 
@@ -67,14 +73,24 @@ export default function AdvertTable({ headers, data }) {
                       {item.iconThird} {item.iconThirdText}
                     </span>
                   ) : header.key === "durum" ? (
-                    <div
-                      className={`px-2 py-1 rounded font-semibold text-center`}
-                      style={{
-                        backgroundColor: item.statusColor,
-                        color: item.statusTextColor,
-                      }}
-                    >
-                      <span>{item.status}</span>
+                    <div className="flex items-center gap-2">
+                      <span
+                        style={{ backgroundColor: item.statusColor }}
+                        className="px-2 py-1 rounded"
+                      >
+                        {item.status}
+                      </span>
+                      {item.status === "İptal Edildi" && (
+                        <span
+                          className="w-8 h-8 flex rounded bg-[var(--label7)] cursor-pointer justify-center items-center"
+                          onClick={() => {
+                            onShowDetail(item);
+                            // onShowDetail(true);
+                          }}
+                        >
+                          <FaEye className="w-4 h-4 text-white" />
+                        </span>
+                      )}
                     </div>
                   ) : header.key === "animation" ? (
                     <div
@@ -172,15 +188,25 @@ export default function AdvertTable({ headers, data }) {
                           {item.iconThird} {item.iconThirdText}
                         </span>
                       ) : header.key === "durum" ? (
-                        <span
-                          style={{
-                            backgroundColor: item.statusColor,
-                            color: item.statusTextColor,
-                          }}
-                          className="px-2 py-1 rounded"
-                        >
-                          {item.status}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <span
+                            style={{ backgroundColor: item.statusColor }}
+                            className="px-2 py-1 rounded"
+                          >
+                            {item.status}
+                          </span>
+                          {item.status === "İptal Edildi" && (
+                            <span
+                              className="w-8 h-8 flex rounded bg-[var(--label7)] cursor-pointer justify-center items-center"
+                              onClick={() => {
+                                onShowDetail(item);
+                                // onShowDetail(true);
+                              }}
+                            >
+                              <FaEye className="w-4 h-4 text-white" />
+                            </span>
+                          )}
+                        </div>
                       ) : header.key === "actions" ? (
                         <div className="flex items-center gap-2">
                           <button onClick={() => handleSelectRequest(item.no)}>

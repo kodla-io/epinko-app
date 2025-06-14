@@ -187,7 +187,7 @@ const ProfileTabs = () => {
                   {
                     key: "check-cash",
                     icon: checkCash,
-                    label: "Nakit Çek",
+                    label: "Bakiye Çek",
                   },
                   {
                     key: "bank-accounts",
