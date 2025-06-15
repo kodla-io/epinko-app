@@ -159,6 +159,11 @@ const ProfileTabs = () => {
                     ],
                   },
                   {
+                    key: "my-orders",
+                    icon: order,
+                    label: "Siparişlerim",
+                  },
+                  {
                     key: "notifications",
                     icon: notifications,
                     label: "Bildirimler",
@@ -193,11 +198,6 @@ const ProfileTabs = () => {
                     key: "bank-accounts",
                     icon: bank,
                     label: "Banka Hesaplarım",
-                  },
-                  {
-                    key: "my-orders",
-                    icon: order,
-                    label: "Siparişlerim",
                   },
                   {
                     key: "earnings",

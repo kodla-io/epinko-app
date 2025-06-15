@@ -2,11 +2,15 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCopy } from "react-icons/fa6";
+import { FaFilter } from "react-icons/fa";
+import { FaRegCopy, FaRegQuestionCircle, FaFileAlt } from "react-icons/fa";
+import { FiDownload } from "react-icons/fi";
+import { TbCopy } from "react-icons/tb";
 
 import Table from "../table";
 
 const orders = {
-  pending: [
+  ePin: [
     {
       id: 0,
       image: "https://placehold.co/80x80",
@@ -14,6 +18,9 @@ const orders = {
       code: "OR-700-35",
       desc: "1x380₺ = 380₺ | Lorem ipsum dolor sit amet",
       date: "2022-11-25 21:20",
+      total: "760₺",
+      status: "Teslimat Bekliyor",
+      color: "var(--label9)",
       table: [
         {
           no: "OR-700-35",
@@ -24,41 +31,17 @@ const orders = {
           orderState: "Teslimat Bekliyor",
         },
       ],
-    },
-    {
-      id: 1,
-      image: "https://placehold.co/80x80",
-      title: "League of Legends Riot Points 9200 RP",
-      code: "OR-700-36",
-      desc: "2x600₺ = 1200₺ | Lorem ipsum dolor sit amet",
-      date: "2022-11-25 21:20",
-      table: [
-        {
-          no: "OR-700-35",
-          date: "2022-11-25   21:20",
-          count: "2",
-          onlyPrice: "380₺",
-          totalPrice: "760₺",
-          orderState: "Teslimat Bekliyor",
-        },
-      ],
-    },
-    {
-      id: 2,
-      image: "https://placehold.co/80x80",
-      title: "League of Legends Riot Points 9200 RP",
-      code: "OR-700-36",
-      desc: "2x600₺ = 1200₺ | Lorem ipsum dolor sit amet",
-      date: "2022-11-25 21:20",
-      table: [
-        {
-          no: "OR-700-35",
-          date: "2022-11-25   21:20",
-          count: "2",
-          onlyPrice: "380₺",
-          totalPrice: "760₺",
-          orderState: "Teslimat Bekliyor",
-        },
+      epinData: [
+        { id: 1, code: "45940_0" },
+        { id: 2, code: "45940_1" },
+        { id: 3, code: "45940_2" },
+        { id: 4, code: "45940_3" },
+        { id: 5, code: "45940_4" },
+        { id: 6, code: "45940_5" },
+        { id: 7, code: "45940_6" },
+        { id: 8, code: "45940_7" },
+        { id: 9, code: "45940_8" },
+        { id: 10, code: "45940_9" },
       ],
     },
   ],
@@ -241,16 +224,37 @@ const headers = [
   { key: "orderState", label: "Sipariş Durumu" },
 ];
 
+const buttonClass =
+  "flex items-center gap-2 py-2 px-3 rounded-sm bg-[var(--profile-input)] hover:opacity-60 text-xs font-semibold transition";
+
 export default function orderList({ title }) {
   const [expanded, setExpanded] = useState(null);
-  const [activeTab, setActiveTab] = useState("pending");
+  const [activeTab, setActiveTab] = useState("ePin");
+
+  const [bank, setBank] = useState("");
+  const [requestType, setRequestType] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const toggle = (id) => {
     setExpanded((prev) => (prev === id ? null : id));
   };
 
+  const [copied, setCopied] = useState(null);
+
+  const handleCopy = (code, id) => {
+    navigator.clipboard.writeText(code);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1000);
+  };
+
+  const groupedEPin = [];
+  for (let i = 0; i < orders.ePin[0].epinData.length; i += 1) {
+    groupedEPin.push(orders.ePin[0].epinData.slice(i, i + 1));
+  }
+
   return (
-    <div className="p-4">
+    <div id="orders" className="p-4">
       <div className="flex items-center space-x-4 py-2">
         <h2
           style={{ color: "var(--foreground)" }}
@@ -263,24 +267,24 @@ export default function orderList({ title }) {
       {/* Tabs */}
       <div className="flex flex-wrap md:flex-nowrap gap-2 mb-4">
         <button
-          onClick={() => setActiveTab("pending")}
+          onClick={() => setActiveTab("orders")}
           className={`px-4 py-2 rounded w-full md:flex-1 ${
-            activeTab === "pending"
-              ? "bg-[var(--label9)] text-white"
-              : "border border-yellow-500 text-yellow-500"
+            activeTab === "orders"
+              ? "bg-[var(--success)] text-white"
+              : "border border-[var(--success)] text-[var(--success)]"
           }`}
         >
-          ONAY BEKLİYOR
+          Siparişlerim
         </button>
         <button
-          onClick={() => setActiveTab("preparing")}
+          onClick={() => setActiveTab("ePin")}
           className={`px-4 py-2 rounded w-full md:flex-1 ${
-            activeTab === "preparing"
-              ? "bg-[var(--label1)] text-white"
-              : "border border-[var(--label1)] text-[var(--label1)]"
+            activeTab === "ePin"
+              ? "bg-[var(--success)] text-white"
+              : "border border-[var(--success)] text-[var(--success)]"
           }`}
         >
-          HAZIRLANIYOR
+          E Pin Siparişlerim
         </button>
         <button
           onClick={() => setActiveTab("completed")}
@@ -290,26 +294,77 @@ export default function orderList({ title }) {
               : "border border-[var(--success)] text-[var(--success)]"
           }`}
         >
-          TAMAMLANDI
+          Kasa Siparişlerim
         </button>
         <button
           onClick={() => setActiveTab("cancelled")}
           className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "cancelled"
-              ? "bg-[var(--alert)] text-white"
-              : "border border-[var(--alert)] text-[var(--alert)]"
+              ? "bg-[var(--success)] text-white"
+              : "border border-[var(--success)] text-[var(--success)]"
           }`}
         >
-          İPTAL EDİLDİ
+          Çekiliş Siparişlerim
+        </button>
+      </div>
+      {/* FİLTRELER */}
+      <div className="flex flex-col md:flex-row gap-3 mb-5">
+        {/* 1 - Banka seçimi */}
+        <select
+          className="flex-1 rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33]"
+          value={bank}
+          onChange={(e) => setBank(e.target.value)}
+        >
+          <option value="">Tüm Bankalar</option>
+          <option value="ziraat">Ziraat</option>
+          <option value="is">İş Bankası</option>
+        </select>
+
+        {/* 2 - Çekim türü seçimi */}
+        <select
+          className="flex-1 rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33]"
+          value={requestType}
+          onChange={(e) => setRequestType(e.target.value)}
+        >
+          <option value="all orders">Tüm İşlemler</option>
+          <option value="olumlu">Olumlu İşlemler</option>
+          <option value="olumsuz">Olumsuz İşlemler</option>
+        </select>
+
+        {/* 3 - Başlangıç Tarihi */}
+        <input
+          type="date"
+          className="flex-1 !border !border-[#ffffff33] rounded px-4 py-2 text-white outline-none"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+
+        {/* 4 - Bitiş Tarihi */}
+        <input
+          type="date"
+          className="flex-1 !border !border-[#ffffff33] rounded px-4 py-2 text-white outline-none"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+
+        {/* FİLTRELE BUTONU */}
+        <button
+          className="flex-1 md:max-w-[150px] bg-[var(--success)] rounded-md text-white font-semibold gap-2 flex items-center justify-center hover:bg-[var(--primary)] transition"
+          onClick={() => {
+            console.log("Filtrele");
+          }}
+        >
+          <FaFilter className="w-5 h-5 text-white" />
+          FİLTRELE
         </button>
       </div>
       <div className="rounded text-white">
-        {activeTab === "pending" && (
+        {activeTab === "ePin" && (
           <div className="space-y-4">
-            {orders.pending.map((order) => (
+            {orders.ePin.map((order) => (
               <div
                 key={order.id}
-                className="bg-[var(--advert-list-bg)] rounded border border-[var(--label9)] overflow-hidden"
+                className="bg-[var(--profile-tab-bg)] rounded-sm overflow-hidden"
               >
                 <div className="flex flex-col md:flex-row items-center p-4 gap-4 relative">
                   <img
@@ -325,7 +380,7 @@ export default function orderList({ title }) {
                         | {order.code}
                       </span>
                     </div>
-                    <div className="text-[var(--label9)] text-sm mt-1">
+                    <div className="text-[var(--success)] text-sm mt-1">
                       {order.desc}
                     </div>
                     <div className="text-gray-400 text-xs mt-1">
@@ -336,7 +391,7 @@ export default function orderList({ title }) {
                   <div className="">
                     <button
                       onClick={() => toggle(order.id)}
-                      className="bg-[var(--label9)] text-white px-3 py-1 rounded hover:opacity-80"
+                      className="bg-[var(--success)] text-white px-3 py-1 rounded hover:opacity-80"
                     >
                       Detaylı İncele
                     </button>
@@ -356,7 +411,101 @@ export default function orderList({ title }) {
                       <div className="text-white font-bold mb-2">
                         Sipariş Detayları
                       </div>
-                      <Table headers={headers} data={order.table} />
+
+                      <div className="flex items-center justify-between bg-[var(--profile-input)] px-4 py-3 rounded-xl w-full mb-4">
+                        {/* Sol: Total */}
+                        <span className="text-white whitespace-nowrap">
+                          Sipariş Tutarı:{" "}
+                          <span className="text-[var(--succes)] font-semibold text-lg">
+                            {order.total}
+                          </span>
+                        </span>
+                        {/* Sağ: Durum Badge */}
+                        <span
+                          style={{
+                            backgroundColor: order.color,
+                            color: "#fff",
+                            borderRadius: "999px",
+                            padding: "6px 18px",
+                            fontWeight: 600,
+                            fontSize: "0.95rem",
+                            marginLeft: "14px",
+                            minWidth: 110,
+                            display: "inline-block",
+                            textAlign: "center",
+                          }}
+                        >
+                          {order.status}
+                        </span>
+                      </div>
+
+                      <div className="w-full">
+                        {/* Header */}
+                        <div className="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center mb-4">
+                          {/* Başlık */}
+                          <div className="flex items-center gap-2 font-bold text-lg text-gray-200 tracking-wide">
+                            E-PİN KODLARI
+                            <span className="text-xs opacity-70 font-normal ml-2">
+                              ({orders.ePin[0].epinData.length})
+                            </span>
+                          </div>
+                          {/* Butonlar */}
+                          <div className="grid grid-cols-2 gap-2 md:flex md:grid-cols-1">
+                            <button className={buttonClass}>
+                              <FaRegQuestionCircle size={16} />
+                              Nasıl Kullanırım
+                            </button>
+                            <button className={buttonClass}>
+                              <FaFileAlt size={16} />
+                              Metin Olarak Gör
+                            </button>
+                            <button className={buttonClass}>
+                              <FiDownload size={16} />
+                              TXT Olarak İndir
+                            </button>
+                            <button className={buttonClass}>
+                              <TbCopy size={16} />
+                              Tümünü Kopyala
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Kodlar - 2'li Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          {groupedEPin.map((group, idx) => (
+                            <div key={idx} className="flex flex-col gap-3">
+                              {group.map((item, j) => (
+                                <div
+                                  key={item.id}
+                                  className={`flex items-center justify-between rounded-lg bg-[var(--profile-input)] shadow py-3 px-5 transition group`}
+                                >
+                                  <span className="flex items-center gap-3">
+                                    <span className="font-bold text-base min-w-[22px]">
+                                      {item.id}
+                                    </span>
+                                    <span className="font-mono text-base">
+                                      {item.code}
+                                    </span>
+                                  </span>
+                                  <button
+                                    onClick={() =>
+                                      handleCopy(item.code, item.id)
+                                    }
+                                    className={`p-2 rounded-md transition-colors duration-200 ${
+                                      copied === item.id
+                                        ? "bg-[var(--success)] text-white"
+                                        : "bg-[#25272f] text-[var(--success)] hover:opacity-80"
+                                    }`}
+                                    title="Kopyala"
+                                  >
+                                    <FaRegCopy className="w-5 h-5" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
