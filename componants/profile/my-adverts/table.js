@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FaPlusCircle, FaMinusCircle, FaEdit, FaTrash } from "react-icons/fa";
+import {
+  FaPlusCircle,
+  FaMinusCircle,
+  FaEdit,
+  FaTrash,
+  FaFilter,
+} from "react-icons/fa";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { GiCrossedSwords } from "react-icons/gi";
 import { GiCheckedShield } from "react-icons/gi";
@@ -18,10 +24,13 @@ import { FaRegImages } from "react-icons/fa";
 import { FaPen } from "react-icons/fa";
 import { RxStarFilled } from "react-icons/rx";
 import { IoIosAlert } from "react-icons/io";
+import { FaCheckCircle } from "react-icons/fa";
+
 
 import Table from "../table";
 import AdvertCard from "../../advert/advert-card";
 import Calendar from "../calendar";
+import TimerDisplay from "../timer-display";
 
 const AdvertData = [
   {
@@ -299,215 +308,231 @@ const MyAdvertsTable = ({ title }) => {
             <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
           </div>
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center gap-4 bg-[var(--profile-tab-bg)] p-4 rounded-sm text-white">
-              {/* Arama Alanı */}
-              <div className="flex w-full md:w-auto items-center gap-2 bg-[var(--input-bg)] px-3 py-2 rounded-md">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"
-                  />
-                </svg>
+            <div className="flex flex-col md:flex-row gap-3 mb-5">
+              {/* Search Input */}
+              <div className="flex-3 relative">
                 <input
                   type="text"
-                  placeholder="Ara"
-                  className="bg-transparent outline-none text-sm placeholder:text-gray-400 text-white"
+                  placeholder="İlan ara..."
+                  className="w-full rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent"
                 />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </div>
               </div>
 
-              {/* Statü Alanı */}
-              <div className="flex w-full md:w-auto items-center gap-2">
-                <span className="text-sm text-gray-300">Statü:</span>
-                <select className="bg-[#2B2D3C] text-xs !p-0 !px-2 rounded-sm !h-[36px] text-white outline-none custom-select">
-                  <option>Onay Bekliyor</option>
-                  <option>Aktif</option>
-                  <option>Reddedildi</option>
-                </select>
-              </div>
+              {/* İlan Durumu */}
+              <select className="flex-1 rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent">
+                <option value="">Tüm İlanlar</option>
+                <option value="active">Aktif İlanlar</option>
+                <option value="passive">Pasif İlanlar</option>
+              </select>
 
-              {/* Tür Alanı */}
-              <div className="flex w-full md:w-auto items-center gap-2">
-                <span className="text-xs text-gray-300">Tür:</span>
-                <select className="bg-[#2B2D3C] text-sm !p-0 !px-2 rounded-sm !h-[36px] text-white outline-none custom-select">
-                  <option>Stoklu</option>
-                  <option>Tekil</option>
-                </select>
-              </div>
+              {/* FİLTRELE BUTONU */}
+              <button className="flex-1 md:max-w-[150px] bg-[var(--success)] rounded-md text-white font-semibold gap-2 flex items-center justify-center hover:bg-[var(--primary)] transition">
+                <FaFilter className="w-5 h-5 text-white" />
+                FİLTRELE
+              </button>
             </div>
 
-            <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
-              <thead>
-                <tr>
-                  {headers.slice(0, visibleCols).map((header) => (
-                    <th key={header.key} className="p-4">
-                      {header.label}
-                    </th>
-                  ))}
-                  {visibleCols < headers.length && <th className="p-4"></th>}
-                </tr>
-              </thead>
-              <tbody>
-                {AdvertData.map((item, index) => (
-                  <React.Fragment key={index}>
-                    <tr className="text-sm hover:bg-[#3A3B51] cursor-pointer">
-                      {headers.slice(0, visibleCols).map((header) => (
-                        <td key={header.key} className="p-2">
-                          {header.key === "resim" ? (
-                            <img
-                              src={item.resim}
-                              alt="İlan"
-                              className="w-16 h-16 rounded-sm object-cover"
-                            />
-                          ) : header.key === "durum" ? (
-                            <div
-                              className={`px-2 py-1 rounded font-semibold min-w-[140px] text-center`}
-                              style={{ backgroundColor: item.statusColor }}
-                            >
-                              <span className="">{item.status}</span>
-                            </div>
-                          ) : header.key === "actions" ? (
-                            <div className="flex items-center gap-2">
-                              <button
-                                onClick={() => {
-                                  setActiveTab("detail");
-                                  getData([item]);
-                                }}
-                              >
-                                <FaEdit />
-                              </button>
-                              <button onClick={() => alert(`Sil: ${item.no}`)}>
-                                <FaTrash />
-                              </button>
-                            </div>
-                          ) : (
-                            item[header.key]
-                          )}
-                        </td>
-                      ))}
-                      {visibleCols < headers.length && (
-                        <td onClick={() => toggleRow(index)} className="p-4">
-                          <button>
-                            {expandedRow === index ? (
-                              <FaMinusCircle />
-                            ) : (
-                              <FaPlusCircle />
-                            )}
-                          </button>
-                        </td>
-                      )}
-                    </tr>
-
-                    {/* Genişletilen Bilgiler */}
-                    <tr
-                      style={{
-                        maxHeight: expandedRow === index ? "1000px" : "0",
-                        opacity: expandedRow === index ? "1" : "0",
-                        overflow: "hidden",
-                        transition: "max-height 0.5s ease, opacity 0.5s ease",
-                      }}
-                    >
-                      <td
-                        colSpan={visibleCols + 1}
-                        className="bg-[var(--profile-tab-bg)]"
-                      >
-                        {expandedRow === index &&
-                          headers.slice(visibleCols).map((header) => (
-                            <div
-                              key={header.key}
-                              className="mb-1 px-6 py-3 flex items-center gap-2"
-                            >
-                              <strong>{header.label}:</strong>{" "}
-                              {header.key === "resim" ? (
-                                <img
-                                  src={item.resim}
-                                  alt="İlan"
-                                  className="w-16 h-16 rounded-sm object-cover"
-                                />
-                              ) : header.key === "durum" ? (
-                                <span
-                                  style={{ backgroundColor: item.statusColor }}
-                                  className="px-2 py-1 rounded"
-                                >
-                                  {item.status}
-                                </span>
-                              ) : header.key === "actions" ? (
-                                <div className="flex items-center gap-2">
-                                  <button
-                                    onClick={() => {
-                                      setActiveTab("detail");
-                                      getData([item]);
-                                    }}
-                                  >
-                                    <FaEdit />
-                                  </button>
-                                  <button
-                                    onClick={() => alert(`Sil: ${item.no}`)}
-                                  >
-                                    <FaTrash />
-                                  </button>
-                                </div>
-                              ) : (
-                                item[header.key]
-                              )}
-                            </div>
-                          ))}
-                      </td>
-                    </tr>
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="flex justify-center mt-6">
-            <ul className="flex items-center space-x-1 p-2 rounded-lg">
-              {/* Sol ikon */}
-              <li>
-                <button
-                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
-                >
-                  <FaAngleDoubleLeft />
-                </button>
-              </li>
-
-              {/* Sayfa numaraları */}
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <li key={page}>
-                    <button
-                      onClick={() => handlePageChange(page)}
-                      className={`px-2 py-1 rounded-md border border-[var(--success)] ${
-                        page === currentPage
-                          ? "bg-[var(--success)] text-white"
-                          : "text-white hover:bg-[var(--label12)]"
-                      }`}
-                    >
-                      {page}
+            {/* İlan Kartları */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Kart 1 */}
+              <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
+                <div className="relative">
+                  <img
+                    src="https://placehold.co/300x300"
+                    alt="game"
+                    className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
+                  />
+                  <div className="absolute bottom-0 right-0 p-2">
+                    <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
+                      <FaMinusCircle size={14} />
+                      Pasif
                     </button>
-                  </li>
-                )
-              )}
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    League of Legends Riot Points 5800 RP
+                  </h3>
+                  <div className="flex w-full items-center gap-2">
+                    <div className="space-y-2 w-full">
+                      <div className="w-full space-y-2 mt-2">
+                        <div className="flex gap-2 w-full">
+                          <button
+                            onClick={() => setActiveTab("update")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <FaEdit size={10} />
+                            Güncelle
+                          </button>
+                          <button
+                            onClick={() => setActiveTab("detail")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <FaEdit size={10} />
+                            Detay
+                          </button>
+                        </div>
+                        <div className="flex gap-2 w-full">
+                          <button
+                            onClick={() => setActiveTab("ad")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <RxStarFilled size={10} />
+                            Reklam
+                          </button>
+                          <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
+                            <FaTrash size={10} />
+                            Sil
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    {/* Süre göstergesi */}
+                    <TimerDisplay />
+                  </div>
+                </div>
+              </div>
 
-              {/* Sağ ikon */}
-              <li>
-                <button
-                  onClick={() =>
-                    handlePageChange(Math.min(totalPages, currentPage + 1))
-                  }
-                  className="px-2 py-1 h-[34px] rounded-md bg-gradient-to-r from-[var(--label12)] to-[var(--label11)] text-white hover:opacity-80"
-                >
-                  <FaAngleDoubleRight />
-                </button>
-              </li>
-            </ul>
+              {/* Kart 2 */}
+              <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
+                <div className="relative">
+                  <img
+                    src="https://placehold.co/300x300"
+                    alt="game"
+                    className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
+                  />
+                  <div className="absolute bottom-0 right-0 p-2">
+                    <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
+                      <FaMinusCircle size={14} />
+                      Pasif
+                    </button>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    League of Legends Riot Points 5800 RP
+                  </h3>
+                  <div className="flex w-full items-center gap-2">
+                    <div className="space-y-2 w-full">
+                      <div className="w-full space-y-2 mt-2">
+                        <div className="flex gap-2 w-full">
+                          <button
+                            onClick={() => setActiveTab("update")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <FaEdit size={10} />
+                            Güncelle
+                          </button>
+                          <button
+                            onClick={() => setActiveTab("detail")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <FaEdit size={10} />
+                            Detay
+                          </button>
+                        </div>
+                        <div className="flex gap-2 w-full">
+                          <button
+                            onClick={() => setActiveTab("ad")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <RxStarFilled size={10} />
+                            Reklam
+                          </button>
+                          <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
+                            <FaTrash size={10} />
+                            Sil
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    {/* Süre göstergesi */}
+                    <TimerDisplay />
+                  </div>
+                </div>
+              </div>
+
+              {/* Kart 3 */}
+              <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
+                <div className="relative">
+                  <img
+                    src="https://placehold.co/300x300"
+                    alt="game"
+                    className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
+                  />
+                  <div className="absolute bottom-0 right-0 p-2">
+                    <button className="flex-1 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
+                      <FaCheckCircle size={14} />
+                      Aktif
+                    </button>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    League of Legends Riot Points 5800 RP
+                  </h3>
+                  <div className="flex w-full items-center gap-2">
+                    <div className="space-y-2 w-full">
+                      <div className="w-full space-y-2 mt-2">
+                        <div className="flex gap-2 w-full">
+                          <button
+                            onClick={() => setActiveTab("update")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <FaEdit size={10} />
+                            Güncelle
+                          </button>
+                          <button
+                            onClick={() => setActiveTab("detail")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <FaEdit size={10} />
+                            Detay
+                          </button>
+                        </div>
+                        <div className="flex gap-2 w-full">
+                          <button
+                            onClick={() => setActiveTab("ad")}
+                            className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                          >
+                            <RxStarFilled size={10} />
+                            Reklam
+                          </button>
+                          <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
+                            <FaTrash size={10} />
+                            Sil
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    {/* Süre göstergesi */}
+                    <TimerDisplay />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       )}
@@ -523,23 +548,6 @@ const MyAdvertsTable = ({ title }) => {
                   #4FXZ1270 - İlan Detayları
                 </h2>
                 <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500 hidden md:block" />
-                <button
-                  onClick={() => setActiveTab("ad")}
-                  className={`px-4 py-2 rounded-md bg-[var(--success)] w-full md:w-auto`}
-                >
-                  İlanı Öne Çıkart
-                </button>
-                <button
-                  onClick={() => setActiveTab("update")}
-                  className={`px-4 py-2 rounded-md bg-[var(--label7)] w-full md:w-auto`}
-                >
-                  İlanı Güncelle
-                </button>
-                <button
-                  className={`px-4 py-2 rounded-md bg-[var(--alert)] w-full md:w-auto`}
-                >
-                  İlanı Sil
-                </button>
                 <button
                   onClick={() => setActiveTab("list")}
                   className={`px-4 py-2 rounded-md bg-[var(--label2)] w-full md:w-auto`}
@@ -586,7 +594,9 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("PUBG Mobile")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "PUBG Mobile" ? "bg-[var(--label6)] text-white" : ""
+                    selected === "PUBG Mobile"
+                      ? "bg-[var(--label6)] text-white"
+                      : ""
                   }`}
                   style={{
                     backgroundColor:
@@ -600,7 +610,9 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("Hesap Satış")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "Hesap Satış" ? "bg-[var(--label4)] text-white" : ""
+                    selected === "Hesap Satış"
+                      ? "bg-[var(--label4)] text-white"
+                      : ""
                   }`}
                   style={{
                     backgroundColor:
@@ -766,7 +778,7 @@ const MyAdvertsTable = ({ title }) => {
               </h2>
               <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500 hidden md:block" />
               <button
-                onClick={() => setActiveTab("detail")}
+                onClick={() => setActiveTab("list")}
                 className={`px-4 py-2 rounded-md bg-[var(--label2)] w-full md:w-auto`}
               >
                 Geri
@@ -795,7 +807,9 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("PUBG Mobile")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "PUBG Mobile" ? "bg-[var(--label4)] text-white" : ""
+                    selected === "PUBG Mobile"
+                      ? "bg-[var(--label4)] text-white"
+                      : ""
                   }`}
                   style={{
                     backgroundColor:
@@ -809,7 +823,9 @@ const MyAdvertsTable = ({ title }) => {
                 <span
                   onClick={() => setSelected("Hesap Satış")}
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                    selected === "Hesap Satış" ? "bg-[var(--label4)] text-white" : ""
+                    selected === "Hesap Satış"
+                      ? "bg-[var(--label4)] text-white"
+                      : ""
                   }`}
                   style={{
                     backgroundColor:
@@ -1126,7 +1142,7 @@ const MyAdvertsTable = ({ title }) => {
               </h2>
               <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500 hidden md:block" />
               <button
-                onClick={() => setActiveTab("detail")}
+                onClick={() => setActiveTab("list")}
                 className={`px-4 py-2 rounded-md bg-[var(--label2)] w-full md:w-auto`}
               >
                 Geri
