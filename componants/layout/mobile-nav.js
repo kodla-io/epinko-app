@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, Home, Mail, Gamepad, Megaphone } from "lucide-react";
+import { X, Menu, Home, Mail, Gamepad, Megaphone, LogIn, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "./Theme";
 
-export default function MobileNav() {
+export default function MobileNav({ onLoginClick, onRegisterClick }) {
   const toggleTheme = useTheme();
   const [isDark, setIsDark] = useState(false);
 
@@ -135,6 +135,40 @@ export default function MobileNav() {
                     </Link>
                   </li>
                 ))}
+                
+                {/* Login/Register Buttons */}
+                <li className="pt-4 border-t border-gray-600">
+                  <button
+                    onClick={() => {
+                      closeMenu();
+                      onLoginClick && onLoginClick();
+                    }}
+                    className="flex items-center text-lg font-medium relative transition-transform duration-300 hover:-translate-y-1 w-full text-left"
+                  >
+                    <span className="flex items-center">
+                      <LogIn size={18} className="mr-2" />
+                      <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">
+                        Giriş Yap
+                      </span>
+                    </span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      closeMenu();
+                      onRegisterClick && onRegisterClick();
+                    }}
+                    className="flex items-center text-lg font-medium relative transition-transform duration-300 hover:-translate-y-1 w-full text-left"
+                  >
+                    <span className="flex items-center">
+                      <UserPlus size={18} className="mr-2" />
+                      <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">
+                        Kayıt Ol
+                      </span>
+                    </span>
+                  </button>
+                </li>
               </ul>
             </motion.div>
           </>

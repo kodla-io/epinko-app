@@ -10,6 +10,9 @@ import { MdOutlineFavorite } from "react-icons/md";
 import { FaSteamSquare } from "react-icons/fa";
 import { GiConsoleController } from "react-icons/gi";
 import { HiSpeakerphone } from "react-icons/hi";
+import { FcGoogle } from "react-icons/fc";
+import { IoLogoTwitch } from "react-icons/io5";
+import { X } from "lucide-react";
 import FloatingSidebar from "./all-pages";
 import MobileNav from "./mobile-nav"
 
@@ -141,6 +144,8 @@ const items2 = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const toggleTheme = useTheme();
   const [isDark, setIsDark] = useState(false);
@@ -187,6 +192,196 @@ const Header = () => {
 
     setMenuItems(items);
   };
+
+  // Modal açma/kapama fonksiyonları
+  const openLoginModal = () => {
+    setIsLoginModalOpen(true);
+    setIsRegisterModalOpen(false);
+  };
+
+  const openRegisterModal = () => {
+    setIsRegisterModalOpen(true);
+    setIsLoginModalOpen(false);
+  };
+
+  const closeModals = () => {
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(false);
+  };
+
+  // Login Modal Component
+  const LoginModal = () => (
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-[var(--background)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
+        {/* Kapatma butonu */}
+        <button
+          onClick={closeModals}
+          className="absolute right-4 top-4 text-gray-400 hover:text-white z-10"
+        >
+          <X size={24} />
+        </button>
+
+        <div className="p-6">
+          <div className="mb-6">
+            <h2 className="text-2xl text-white mb-2">Merhaba</h2>
+            <h1 className="text-4xl font-bold text-white mb-4">Giriş Yap</h1>
+            <div className="text-sm text-gray-300">
+              Yeni Misin?{" "}
+              <button 
+                onClick={openRegisterModal}
+                className="text-blue-400 hover:underline"
+              >
+                Kayıt Ol
+              </button>
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-white text-sm mb-2">
+              Kullanıcı adınızı veya e-posta adresinizi giriniz
+            </label>
+            <input
+              type="text"
+              placeholder="Kullanıcı adı ya da Eposta adresi"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-white text-sm mb-2">Şifrenizi Giriniz</label>
+            <input
+              type="password"
+              placeholder="Şifre"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+            />
+            <div className="text-right text-sm text-blue-400 mt-2 hover:underline cursor-pointer">
+              Şifremi Unuttum
+            </div>
+          </div>
+
+          <button className="w-full mb-4 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+            Giriş Yap
+          </button>
+
+          <div className="flex flex-col gap-2">
+            <button className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+              <FcGoogle className="w-6 h-6" />
+              <span>Google ile Giriş Yap</span>
+            </button>
+
+            <button className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+              <IoLogoTwitch className="w-6 h-6" />
+              <span>Twitch ile Giriş Yap</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Register Modal Component
+  const RegisterModal = () => (
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-[var(--background)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
+        {/* Kapatma butonu */}
+        <button
+          onClick={closeModals}
+          className="absolute right-4 top-4 text-gray-400 hover:text-white z-10"
+        >
+          <X size={24} />
+        </button>
+
+        <div className="p-6">
+          <div className="mb-6">
+            <h2 className="text-2xl text-white mb-2">Merhaba</h2>
+            <h1 className="text-4xl font-bold text-white mb-4">Kayıt Ol</h1>
+            <div className="text-sm text-gray-300">
+              Üye Misin?{" "}
+              <button 
+                onClick={openLoginModal}
+                className="text-blue-400 hover:underline"
+              >
+                Giriş Yap
+              </button>
+            </div>
+          </div>
+
+          <div className="flex gap-2 mb-4">
+            <div className="flex-1">
+              <label className="block text-white text-sm mb-2">Ad</label>
+              <input
+                type="text"
+                placeholder="Adınız"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-white text-sm mb-2">Soyad</label>
+              <input
+                type="text"
+                placeholder="Soyadınız"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-2 mb-4">
+            <div className="flex-1">
+              <label className="block text-white text-sm mb-2">Kullanıcı adı</label>
+              <input
+                type="text"
+                placeholder="Kullanıcı adı"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-white text-sm mb-2">Email Adresi</label>
+              <input
+                type="email"
+                placeholder="Email Adresi"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-2 mb-4">
+            <div className="flex-1">
+              <label className="block text-white text-sm mb-2">Şifre</label>
+              <input
+                type="password"
+                placeholder="Şifre"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-white text-sm mb-2">Şifre Tekrar</label>
+              <input
+                type="password"
+                placeholder="Şifre Tekrar"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <button className="w-full mb-4 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+            Üye Ol
+          </button>
+
+          <div className="flex flex-col gap-2">
+            <button className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+              <FcGoogle className="w-6 h-6" />
+              <span>Google ile Kayıt Ol</span>
+            </button>
+
+            <button className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+              <IoLogoTwitch className="w-6 h-6" />
+              <span>Twitch ile Kayıt Ol</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -270,21 +465,26 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-              <Link href="/">
-                <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
-                  Giriş Yap
-                </button>
-              </Link>
-              <Link href="/">
-                <button className="px-4 py-2 text-white rounded-md transition border-glow-header">
-                  Kayıt Ol
-                </button>
-              </Link>
+              <button 
+                onClick={openLoginModal}
+                className="px-4 py-2 text-white rounded-md transition border-glow-header"
+              >
+                Giriş Yap
+              </button>
+              <button 
+                onClick={openRegisterModal}
+                className="px-4 py-2 text-white rounded-md transition border-glow-header"
+              >
+                Kayıt Ol
+              </button>
               {/* <FaShoppingCart className="text-xl cursor-pointer" /> */}
             </div>
 
             {/* Mobil Menü Butonu */}
-            <MobileNav />
+            <MobileNav 
+              onLoginClick={openLoginModal}
+              onRegisterClick={openRegisterModal}
+            />
           </div>
         </div>
 
@@ -379,6 +579,10 @@ const Header = () => {
         )}
       </header>
       <FloatingSidebar />
+      
+      {/* Modals */}
+      {isLoginModalOpen && <LoginModal />}
+      {isRegisterModalOpen && <RegisterModal />}
     </>
   );
 };
