@@ -406,7 +406,7 @@ export default function orderList({ title }) {
 
         {/* FİLTRELE BUTONU */}
         <button
-          className="flex-1 md:max-w-[150px] bg-[var(--success)] rounded-md text-white font-semibold gap-2 flex items-center justify-center hover:bg-[var(--primary)] transition"
+          className="flex-1 md:max-w-[150px] py-2 bg-[var(--success)] rounded-md text-white font-semibold gap-2 flex items-center justify-center hover:bg-[var(--primary)] transition"
           onClick={() => {
             console.log("Filtrele");
           }}

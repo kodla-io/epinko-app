@@ -164,6 +164,11 @@ const ProfileTabs = () => {
                     label: "Siparişlerim",
                   },
                   {
+                    key: "my-adverts",
+                    icon: adverts,
+                    label: "İlanlarım",
+                  },
+                  {
                     key: "notifications",
                     icon: notifications,
                     label: "Bildirimler",
@@ -209,21 +214,17 @@ const ProfileTabs = () => {
                     icon: transactions,
                     label: "İşlemlerim",
                   },
-                  {
-                    key: "my-adverts",
-                    icon: adverts,
-                    label: "İlanlarım",
-                  },
-                  {
-                    key: "advert-orders",
-                    icon: adverts,
-                    label: "İlan Siparişlerim",
-                  },
-                  {
-                    key: "incoming-orders",
-                    icon: adverts,
-                    label: "Gelen Siparişlerim",
-                  },
+
+                  // {
+                  //   key: "advert-orders",
+                  //   icon: adverts,
+                  //   label: "İlan Siparişlerim",
+                  // },
+                  // {
+                  //   key: "incoming-orders",
+                  //   icon: adverts,
+                  //   label: "Gelen Siparişlerim",
+                  // },
                   {
                     key: "my-messages",
                     icon: message,
