@@ -160,7 +160,7 @@ const MultipleTabs = () => {
   };
 
   return (
-    <div className="container mx-auto my-8 px-4 md:px-0">
+    <div className="container mx-auto mt-4 px-0 md:px-4 md:px-0">
       <div className="w-full">
         {/* Tabs */}
         <div className="flex overflow-x-auto bg-[var(--advert-list-bg)] rounded-t-lg px-2 py-3 gap-2 scrollbar-hide">

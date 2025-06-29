@@ -1,15 +1,13 @@
 "use client";
 
-import Details from "../../../componants/advert/advert-detail-top";
-import Tabs from "../../../componants/advert/advert-detail-tabs";
+import AdvertDetailFull from "../../../componants/advert/advert-detail-top";
 import Warning from "../../../componants/texts/warning";
 import SimilarAdverts from "../../../componants/advert/similar-adverts";
 
-export default function AdvertDetail() {
+export default function AdvertDetailPage() {
   return (
     <>
-      <Details />
-      <Tabs />
+      <AdvertDetailFull />
       <Warning />
       <SimilarAdverts />
     </>
