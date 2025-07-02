@@ -19,7 +19,7 @@ export default function FilterAndTabs({ activeTab, setActiveTab }) {
           <input
             type="text"
             placeholder="Arama"
-            className="bg-[#2d2d2d] text-white rounded-lg p-4 w-full"
+            className="bg-[var(--background)] text-white rounded-lg p-4 w-full placeholder:text-[var(--foreground)]"
           />
         </div>
         <div className="flex justify-center md:justify-between gap-2 flex-wrap w-full md:w-2/3 bg-[#0000001f] p-2 rounded-lg">

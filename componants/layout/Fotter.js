@@ -11,7 +11,7 @@ import {
 
 const Footer = () => {
   const linkClass =
-    "relative inline-block text-white transition-transform duration-300 hover:-translate-y-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full";
+    "relative inline-block text-gray-400 transition-transform duration-300 hover:-translate-y-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full";
 
   return (
     <footer className="text-white">
@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="container mx-auto py-8 px-4">
         <div className="flex flex-wrap justify-between">
           {/* Logo ve Açıklama */}
-          <div className="w-full md:w-3/14 mb-4 p-4">
+          <div className="w-full md:w-4/14 mb-4 p-4">
             <div className="text-2xl font-bold text-green-500 mb-2">epinKO</div>
             <p className="text-sm text-gray-400">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -62,101 +62,168 @@ const Footer = () => {
           </div>
 
           {/* Link Grupları */}
-          <div className="w-6/12 md:w-2/14 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Marketplace</h4>
+          <div className="w-6/12 md:w-2/12 mb-4 p-4">
+            <h4 className="font-semibold text-white mb-2">Kurumsal</h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
-                <Link href="/explore" className={linkClass}>
-                  Explore
+                <Link href="/gizlilik-politikasi" className={linkClass}>
+                  Gizlilik Politikamız
                 </Link>
               </li>
               <li>
-                <Link href="/item-detail" className={linkClass}>
-                  Item Detail
+                <Link href="/kisisel-verilerin-korunmasi" className={linkClass}>
+                  Kişisel Verilerin Korunma Politikası
                 </Link>
               </li>
               <li>
-                <Link href="/live-auction" className={linkClass}>
-                  Live Auction
+                <Link href="/uyelik-sozlesmesi" className={linkClass}>
+                  Üyelik Sözleşmesi
+                </Link>
+              </li>
+              <li>
+                <Link href="/cerez-politikasi" className={linkClass}>
+                  Çerez Politikası
+                </Link>
+              </li>
+              <li>
+                <Link href="/iptal-iade" className={linkClass}>
+                  İptal & İade Koşulları
+                </Link>
+              </li>
+              <li>
+                <Link href="/hakkimizda" className={linkClass}>
+                  Hakkımızda
+                </Link>
+              </li>
+              <li>
+                <Link href="/yayinci-basvuru" className={linkClass}>
+                  Yayıncı Başvuru
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="w-6/12 md:w-2/14 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Stats</h4>
+          <div className="w-6/12 md:w-2/12 mb-4 p-4">
+            <h4 className="font-semibold text-white mb-2">Kategoriler</h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
-                <Link href="/ranking" className={linkClass}>
-                  Ranking
+                <Link href="/metin2-pvp-serverlar" className={linkClass}>
+                  Metin2 PvP Serverlar
                 </Link>
               </li>
               <li>
-                <Link href="/activity" className={linkClass}>
-                  Activity
+                <Link href="/knight-online" className={linkClass}>
+                  Knight Online
                 </Link>
               </li>
               <li>
-                <Link href="/author" className={linkClass}>
-                  Author
+                <Link href="/homekoworld" className={linkClass}>
+                  HomekoWorld
+                </Link>
+              </li>
+              <li>
+                <Link href="/ko4fun" className={linkClass}>
+                  KO4FUN
+                </Link>
+              </li>
+              <li>
+                <Link href="/forgottenko" className={linkClass}>
+                  Forgottenko İtem & Goldbar
+                </Link>
+              </li>
+              <li>
+                <Link href="/call-of-duty-mobile" className={linkClass}>
+                  Call of Duty Mobile
+                </Link>
+              </li>
+              <li>
+                <Link href="/darkko" className={linkClass}>
+                  Darkko
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="w-6/12 md:w-2/14 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Resource</h4>
+          <div className="w-6/12 md:w-2/12 mb-4 p-4">
+            <h4 className="font-semibold text-white mb-2">Ürünler</h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
-                <Link href="/blogs" className={linkClass}>
-                  Blogs
+                <Link href="/knight-online-proxy" className={linkClass}>
+                  Knight Online PvP Server Proxy
                 </Link>
               </li>
               <li>
-                <Link href="/help" className={linkClass}>
-                  Help And Center
+                <Link href="/disney-plus" className={linkClass}>
+                  Disney Plus 50 TL Hediye Kartı
                 </Link>
               </li>
               <li>
-                <Link href="/sss" className={linkClass}>
-                  FAQs
+                <Link href="/rise-online" className={linkClass}>
+                  Rise Online 1000 Cash + 20
+                </Link>
+              </li>
+              <li>
+                <Link href="/homekorealm" className={linkClass}>
+                  HomekoRealm 5000 KC
+                </Link>
+              </li>
+              <li>
+                <Link href="/fortnite" className={linkClass}>
+                  Fortnite Vpapel 200 USD
+                </Link>
+              </li>
+              <li>
+                <Link href="/test-epin" className={linkClass}>
+                  Test Epin
+                </Link>
+              </li>
+              <li>
+                <Link href="/bigo-live" className={linkClass}>
+                  Bigo Live 117 Elmas
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="w-6/12 md:w-2/14 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">My Account</h4>
+          <div className="w-6/12 md:w-2/12 mb-4 p-4">
+            <h4 className="font-semibold text-white mb-2">Sayfalarımız</h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
-                <Link href="/profile" className={linkClass}>
-                  Profile
+                <Link href="/" className={linkClass}>
+                  ANASAYFA
                 </Link>
               </li>
               <li>
-                <Link href="/wallet" className={linkClass}>
-                  My Wallet
+                <Link href="/oyunlar" className={linkClass}>
+                  OYUNLAR
+                </Link>
+              </li>
+              <li>
+                <Link href="/oyuncu-pazari" className={linkClass}>
+                  OYUNCU PAZARI
+                </Link>
+              </li>
+              <li>
+                <Link href="/ilan-olustur" className={linkClass}>
+                  İLAN OLUŞTUR
+                </Link>
+              </li>
+              <li>
+                <Link href="/yayinci-basvuru" className={linkClass}>
+                  YAYINCI BAŞVURU
+                </Link>
+              </li>
+              <li>
+                <Link href="/pvp-serverlar" className={linkClass}>
+                  PVP SERVERLAR
+                </Link>
+              </li>
+              <li>
+                <Link href="/bakiye-yukle" className={linkClass}>
+                  BAKİYE YÜKLE
                 </Link>
               </li>
             </ul>
-          </div>
-
-          {/* E-posta Abonelik */}
-          <div className="w-full md:w-3/14 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Subscribe Us</h4>
-            <p className="text-sm text-gray-400 mb-2">
-              Signup for our newsletter to get the latest news in your inbox.
-            </p>
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="Info@Yourgmail.Com"
-                className="px-4 py-2 bg-gray-800 text-sm text-gray-300 rounded-l-md focus:outline-none"
-              />
-              <button className="bg-green-500 px-4 py-2 rounded-r-md">
-                &gt;
-              </button>
-            </div>
           </div>
         </div>
 

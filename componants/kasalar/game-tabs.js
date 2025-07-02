@@ -115,9 +115,9 @@ const GameTabs = () => {
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
-      <div className="w-full mx-auto p-4 bg-[var(--advert-list-bg)] rounded-lg">
+      <div className="w-full mx-auto p-4 bg-[var(--advert-card-bg)] rounded-lg">
         {/* Tab Content */}
-        <div className="text-white p-6 flex flex-col md:flex-row gap-6">
+        <div className="text-[var(--foreground)] p-6 flex flex-col md:flex-row gap-6">
           <div>
             <div className="relative rounded-lg">
               <img

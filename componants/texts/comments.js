@@ -71,7 +71,8 @@ const Comments = () => {
       {reviews.map((review, index) => (
         <div
           style={{
-            backgroundColor: "var(--advert-list-bg)",
+            backgroundColor: "var(--advert-card-bg)",
+            color: "var(--foreground)",
           }}
           key={index}
           className="p-4 rounded-lg flex items-start space-x-4"

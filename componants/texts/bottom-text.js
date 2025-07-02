@@ -3,7 +3,7 @@ import React from "react";
 const BottomText = () => {
   return (
     <div className="container mx-auto my-8 p-4">
-      <div className="bg-[var(--advert-list-bg)] p-4 rounded-lg">
+      <div className="bg-[var(--advert-card-bg)] p-4 rounded-lg">
         <div className="p-4 rounded-lg max-h-[250px] overflow-y-auto">
           <h2 className="text-xl font-bold mb-4">
             İtemSatış: Türkiye'nin En Gelişmiş Oyuncu Alışveriş Platformu

@@ -247,11 +247,11 @@ export default function SingleCategoryCards() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-shrink-0 px-4 py-6 text-md font-semibold whitespace-nowrap transition-all flex items-center
+                className={`flex-shrink-0 px-4 text-[var(--foreground)] py-6 text-md font-semibold whitespace-nowrap transition-all flex items-center
                 ${
                   activeTab === tab.id
-                    ? "bg-[#4b5357] text-white"
-                    : "bg-[#2a2a2e] text-gray-300 hover:bg-[#3a3a3f]"
+                    ? "bg-[var(--active-advert-tab)]"
+                    : "bg-[var(--advert-tab)] hover:bg-[var(--active-advert-tab)]"
                 }`}
               >
                 <img
@@ -265,101 +265,106 @@ export default function SingleCategoryCards() {
               </button>
             ))}
           </div>
-          <button className="bg-[var(--label2)] hover:bg-[var(--label1)] text-white text-sm font-semibold px-6 py-4 rounded-full m-2 min-w-[160px] md:min-w-auto hidden md:block">
+          <button className="bg-[var(--success)] hover:opacity-70 text-white text-sm font-semibold px-6 py-4 rounded-full m-2 min-w-[160px] md:min-w-auto hidden md:block">
             <Link href="/">TÜMÜNÜ GÖR</Link>
           </button>
         </div>
-        
-        <>
-          <Swiper
-            slidesPerView={2}
-            spaceBetween={10}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-              1280: {
-                slidesPerView: 6,
-                spaceBetween: 20,
-              },
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Autoplay]}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            className="mySwiper"
-          >
-            {tabData
-              .find((tab) => tab.id === activeTab)
-              ?.cards.map((data, index) => (
-                <SwiperSlide key={index}>
-                  <Link href="#">
-                    <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)]">
-                      <div className="overflow-hidden">
-                        <div className="relative">
-                          <img
-                            src={data.image}
-                            alt={`Card ${data.title}`}
-                            className="w-full h-full object-cover min-h-[200px] max-h-[200px] md:min-h-[250px] md:max-h-[250px] bg-gradient-to-tl rounded-md"
-                          />
-                          <div className="absolute top-2 right-2">
-                            <img
-                              src={data.iconUrl}
-                              className="!w-8 !h-8 rounded-full"
-                            />
-                          </div>
-                        </div>
-                        <div className="text-white p-2 w-full">
-                          <h3 className="text-sm font-bold clamp-2 max-h-[40px] min-h-[40px] text-left">
-                            {data.title}
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md relative">
-                      <div className="text-md font-bold text-white p-2 min-h-[88px] max-h-[88px]">
-                        <div className="flex space-x-1 items-center">
-                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                          <FaStar className="w-4 h-4 text-[var(--label7)]" />
-                          <FaStar className="w-4 h-4 text-white" />
-                          <span> (11) </span>
-                        </div>
 
-                        <span className="font-semibold">
-                          {data.price.toFixed(2)}₺
-                        </span>
-                        <br />
-                        <div className="line-through text-gray-500 text-xs">
-                          <span>{data.priceLast.toFixed(2)}₺</span>
+        <Swiper
+          slidesPerView={2}
+          spaceBetween={10}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            1280: {
+              slidesPerView: 6,
+              spaceBetween: 20,
+            },
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Autoplay]}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          className="mySwiper"
+        >
+          {tabData
+            .find((tab) => tab.id === activeTab)
+            ?.cards.map((data, index) => (
+              <SwiperSlide key={index}>
+                <Link href="/category-detail">
+                  <div 
+                    className="p-2 rounded-t-md bg-[var(--advert-card-bg)] text-[var(--foreground)]"
+                    style={{
+                      boxShadow: "0 4px 12px -3px rgba(0, 0, 0, 0.2), 0 2px 6px -2px rgba(0, 0, 0, 0.1)"
+                    }}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="relative">
+                        <img
+                          src={data.image}
+                          alt={`Card ${data.title}`}
+                          className="w-full h-full object-cover min-h-[200px] max-h-[200px] md:min-h-[250px] md:max-h-[250px] bg-gradient-to-tl rounded-md"
+                        />
+                        <div className="absolute top-2 right-2">
+                          <img
+                            src={data.iconUrl}
+                            className="!w-8 !h-8 rounded-full"
+                          />
                         </div>
                       </div>
-                      <div className="p-2 absolute bottom-0 right-0">
-                        <img
-                          src="/media/icons/riot.png"
-                          className="!w-8 !h-8"
-                        />
+                      <div className="p-2 w-full">
+                        <h3 className="text-sm font-bold clamp-2 max-h-[40px] min-h-[40px] text-left">
+                          {data.title}
+                        </h3>
                       </div>
                     </div>
-                  </Link>
-                </SwiperSlide>
-              ))}
-          </Swiper>
-        </>
+                  </div>
+                  <div 
+                    className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md relative"
+                    style={{
+                      boxShadow: "0 4px 12px -3px rgba(0, 0, 0, 0.15), 0 2px 6px -2px rgba(0, 0, 0, 0.08)"
+                    }}
+                  >
+                    <div className="text-md font-bold p-2 min-h-[88px] max-h-[88px]">
+                      <div className="flex space-x-1 items-center">
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4 text-[var(--label7)]" />
+                        <FaStar className="w-4 h-4" />
+                        <span> (11) </span>
+                      </div>
+
+                      <span className="font-semibold">
+                        {data.price.toFixed(2)}₺
+                      </span>
+                      <br />
+                      <div className="line-through text-gray-500 text-xs">
+                        <span>{data.priceLast.toFixed(2)}₺</span>
+                      </div>
+                    </div>
+                    <div className="p-2 absolute bottom-0 right-0">
+                      <img src="/media/icons/riot.png" className="!w-8 !h-8" />
+                    </div>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
     </div>
   );

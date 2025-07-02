@@ -2,17 +2,20 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { Thumb } from "./EmblaCarouselThumbsButton";
 import Link from "next/link";
 
 const EmblaCarousel = () => {
-  const options = {};
+  const options = { loop: true };
   const SLIDE_COUNT = 4;
   const slides = Array.from(Array(SLIDE_COUNT).keys());
   const containerClass = slides.length <= 6 ? 'flex justify-center embla-thumbs__container' : 'embla-thumbs__container';
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options);
+  const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, [
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
+  ]);
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: "keepSnaps",
     dragFree: true,
@@ -37,6 +40,10 @@ const EmblaCarousel = () => {
     onSelect();
 
     emblaMainApi.on("select", onSelect).on("reInit", onSelect);
+    
+    return () => {
+      emblaMainApi.off("select", onSelect).off("reInit", onSelect);
+    };
   }, [emblaMainApi, onSelect]);
 
   return (
@@ -50,10 +57,12 @@ const EmblaCarousel = () => {
                 <div className="embla__container">
                   {slides.map((index) => (
                     <div className="embla__slide" key={index}>
-                      <div className="embla__slide__number">
-                        {/* {index + 1} */}
-                        <img className="object-cover rounded-xl w-full" src="https://placehold.co/2000x1000" />
-                      </div>
+                      <Link href="/advert-detail">
+                        <div className="embla__slide__number cursor-pointer">
+                          {/* {index + 1} */}
+                          <img className="object-cover rounded-xl w-full" src="https://placehold.co/2000x1000" />
+                        </div>
+                      </Link>
                     </div>
                   ))}
                 </div>

@@ -60,7 +60,7 @@ const NewsSlider = () => {
             >
               {Array.from({ length: 15 }).map((_, index) => (
                 <SwiperSlide key={index}>
-                  <Link href="/">
+                  <Link href="/news-detail">
                     <div
                       style={{
                         backgroundColor: "var(--news-card-bg)",
@@ -110,13 +110,14 @@ const NewsSlider = () => {
         </div>
       </div>
       <div className="flex justify-center items-center py-4">
-        <Link href="/all-games">
+        <Link href="/news">
           <button
             style={{
-              // backgroundColor: "var(--btn-bg)",
-              color: "var(--btn-color)",
+              color: "var(--foreground)",
+              boxShadow:
+                "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
             }}
-            className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+            className="px-6 py-2 text-white rounded-lg transition duration-300 border-glow"
           >
             Tümünü Görüntüle
           </button>

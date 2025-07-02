@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 const cardData = Array.from({ length: 12 }).map((_, i) => ({
@@ -22,9 +23,10 @@ const KasaProducts = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mx-auto">
         {cardData.map((card) => (
-          <div
+          <Link
+            href="/kasa-detail"
             key={card.id}
-            className="bg-[var(--advert-list-bg)] rounded-xl overflow-hidden shadow-md text-center text-white"
+            className="bg-[var(--advert-card-bg)] text-[var(--foreground)] rounded-xl overflow-hidden shadow-md text-center"
           >
             <img
               src={card.image}
@@ -32,12 +34,12 @@ const KasaProducts = () => {
               className="w-full h-48 object-cover"
             />
             <div className="py-2">
-              <p className="text-sm text-gray-400">{card.subtitle}</p>
+              <p className="text-sm">{card.subtitle}</p>
               <p className="font-semibold">
                 <span className="clamp-1">{card.title}</span> Mobile
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

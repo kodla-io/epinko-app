@@ -44,14 +44,14 @@ const KasaTable = ({ data, title }) => {
       <div className="flex items-center space-x-4 py-2">
         <h2
           style={{ color: "var(--foreground)" }}
-          className="text-white text-[30px] py-2 font-bold"
+          className="text-[30px] py-2 font-bold"
         >
           {title}
         </h2>
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-lg">
+        <table className="min-w-full text-left bg-[var(--advert-card-bg)] rounded-lg">
           <thead>
             <tr>
               {headers.slice(0, visibleCols).map((header) => (
@@ -65,7 +65,7 @@ const KasaTable = ({ data, title }) => {
           <tbody>
             {data.map((item, index) => (
               <React.Fragment key={index}>
-                <tr className="border-b-2 border-[#3A3B51] hover:bg-[#3A3B51] cursor-pointer">
+                <tr className="border-b-2 border-[var(--active-advert-tab)] hover:bg-[var(--active-advert-tab)] cursor-pointer">
                   {headers.slice(0, visibleCols).map((header) => (
                     <td key={header.key} className="p-4">
                       {header.key === "oyun" && item.oyunResim ? (
@@ -114,7 +114,7 @@ const KasaTable = ({ data, title }) => {
                 >
                   <td
                     colSpan={visibleCols + 1}
-                    className="bg-[var(--advert-list-bg)]"
+                    className="bg-[var(--advert-card-bg)]"
                   >
                     {expandedRow === index &&
                       headers.slice(visibleCols).map((header) => (

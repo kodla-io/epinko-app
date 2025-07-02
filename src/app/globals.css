@@ -38,14 +38,16 @@
   --news-card-bg: #0000000a;
   --advert-list-bg: #333333;
   --input-bg: #0000001e;
-  --btn-bg: #1a2543;
+  --btn-bg: #070707;
   --btn-color: white;
   --list-box: #a1a1a1;
   transition: all 1s ease;
-  --advert-card-bg: #28282a;
+  --advert-card-bg: #ededed;
   --advert-card-border: #37373b;
   --profile-tab-bg: #313338;
   --profile-input: #1e1f22;
+  --active-advert-tab: #aaaaaa;
+  --advert-tab: #dadada;
 }
 
 [data-theme="dark"] {
@@ -79,13 +81,15 @@
   --news-card-bg: #ffffff0d;
   --advert-list-bg: #ffffff0d;
   --input-bg: #ffffff0d;
-  --btn-bg: #1a2543;
+  --btn-bg: #070707;
   --btn-color: white;
   --list-box: #050505;
   --advert-card-bg: #28282a;
   --advert-card-border: #37373b;
   --profile-tab-bg: #313338;
   --profile-input: #1e1f22;
+  --active-advert-tab: #4b4b4b;
+  --advert-tab: #2a2a2e;
 }
 
 * {
@@ -503,7 +507,7 @@ nav img {
 .tab-content.active {
   opacity: 1;
   transform: translateY(0);
-  max-height: unset; /* İçerik boyutuna uygun bir değer */
+  max-height: none;
 }
 
 .advert-tabs {
@@ -1542,12 +1546,13 @@ nav img {
 
 .advert-tabs {
   /* padding-bottom: 8px; */
-  background-color: var(--bg-soft);
+  background-color: var(--advert-card-bg);
   border-radius: 12px;
+  color: var(--foreground);
 }
 
 .advert-tab {
-  color: #fff;
+  color: var(--foreground);
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 8px;
@@ -1555,7 +1560,7 @@ nav img {
 
 .advert-tab-active {
   /* background-color: #2d68c741; */
-  color: #fff;
+  color: var(--foreground);
   border-radius: 8px;
   box-shadow: inset 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
 }
@@ -1571,16 +1576,6 @@ nav img {
 .mobil-top-title {
   display: block;
 }
-/* 
-@media (max-width: 768px) {
-  .advert-tab {
-    max-width: auto;
-  }
-
-  .advert-tab-active {
-    max-width: 100px;
-  }
-} */
 
 @media (max-width: 1024px) {
   .products-detail-top-banner {

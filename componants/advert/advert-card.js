@@ -3,10 +3,15 @@ import { FaRegEye } from "react-icons/fa";
 import Link from "next/link";
 import { AiOutlineSafety } from "react-icons/ai";
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data, link }) => {
   return (
-    <Link href="#">
-      <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)]">
+    <Link href={link}>
+      <div 
+        className="p-2 rounded-t-md bg-[var(--advert-card-bg)] text-[var(--foreground)]"
+        style={{
+          boxShadow: "0 4px 12px -3px rgba(0, 0, 0, 0.2), 0 2px 6px -2px rgba(0, 0, 0, 0.1)"
+        }}
+      >
         <div className="overflow-hidden">
           <div className="relative">
             <img
@@ -16,7 +21,7 @@ const ProductCard = ({ data }) => {
             />
             {data.isVitrin && (
               <span
-                className="absolute top-[75px] left-[-21px] text-white w-[135px] text-center py-[2px] px-[30px] text-xs font-bold transform -rotate-45 origin-top-left"
+                className="absolute top-[75px] left-[-21px] w-[135px] text-center py-[2px] px-[30px] text-xs font-bold transform -rotate-45 origin-top-left"
                 style={{ backgroundColor: data.vitrinColor }}
               >
                 {data.vitrinText}
@@ -26,15 +31,20 @@ const ProductCard = ({ data }) => {
               <AiOutlineSafety className="w-8 h-8" />
             </div>
           </div>
-          <div className="text-white p-2 w-full">
+          <div className="p-2 w-full">
             <h3 className="text-sm font-bold clamp-2 max-h-[40px] min-h-[40px] text-left">
               {data.title}
             </h3>
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)]">
-        <div className="text-md font-bold text-white p-2">
+      <div 
+        className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)]"
+        style={{
+          boxShadow: "0 4px 12px -3px rgba(0, 0, 0, 0.15), 0 2px 6px -2px rgba(0, 0, 0, 0.08)"
+        }}
+      >
+        <div className="text-md font-bold p-2">
           {data.price.toFixed(2)}₺
         </div>
         <div className="p-2">
@@ -44,7 +54,12 @@ const ProductCard = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="relative bg-[var(--advert-card-bg)] rounded-b-md">
+      <div 
+        className="relative bg-[var(--advert-card-bg)] rounded-b-md"
+        style={{
+          boxShadow: "0 4px 12px -3px rgba(0, 0, 0, 0.1), 0 2px 6px -2px rgba(0, 0, 0, 0.05)"
+        }}
+      >
         <div className="flex items-center w-full (bg-[#0000007a]) p-2">
           <img
             src={data.sellerImage}

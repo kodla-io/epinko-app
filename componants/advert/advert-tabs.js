@@ -161,15 +161,15 @@ const Advert = () => {
   ];
 
   const leftTabs = [
-    { id: "tab1", label: "Rise Online", items: sampleArray },
-    { id: "tab2", label: "Pubg Mobile", items: sampleArray },
-    { id: "tab3", label: "Valorant", items: sampleArray },
+    { id: "tab1", label: "Rise Online", items: sampleArray.slice(0, 6) },
+    { id: "tab2", label: "Pubg Mobile", items: sampleArray.slice(2, 4) },
+    { id: "tab3", label: "Valorant", items: sampleArray.slice(4, 10) },
   ];
 
   const rightTabs = [
-    { id: "tab4", label: "Rise Online", items: sampleArray },
-    { id: "tab5", label: "Pubg Mobile", items: sampleArray },
-    { id: "tab6", label: "Valorant", items: sampleArray },
+    { id: "tab4", label: "Rise Online", items: sampleArray.slice(1, 8) },
+    { id: "tab5", label: "Pubg Mobile", items: sampleArray.slice(3, 8) },
+    { id: "tab6", label: "Valorant", items: sampleArray.slice(5, 7) },
   ];
 
   return (
@@ -229,72 +229,13 @@ const Advert = () => {
         <div
           key={tab.id}
           className={`tab-content ${
-            activeTab === tab.id ? "active" : "hidden"
+            activeTab === tab.id ? "active" : ""
           }`}
         >
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {tab.items.map((_, index) => (
               <div key={index} className="p-1 md:p-2 md:p-2">
-                {/* <Link href="#">
-                  <div
-                    className="p-2 rounded-t-md"
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, var(--success) 0%, var(--success) 20%, #28282A 40% , var(--advert-card-bg) 100%)",
-                    }}
-                  >
-                    <AnimatedLabel
-                      text="ÇOK SATAN"
-                      textColor="#ffffff"
-                    />
-
-                    <div className="overflow-hidden">
-                      <div className="relative">
-                        <img
-                          src="https://placehold.co/300x300"
-                          alt={`Card ${index}`}
-                          className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gradient-to-tl rounded-md"
-                        />
-                        <div className="flex items-center py-1 px-2 absolute bottom-0 left-0 w-full bg-[#0000007a]">
-                          <img
-                            src="https://placehold.co/50x50"
-                            alt="Seller"
-                            className="w-6 h-6 rounded-md"
-                          />
-                          <div className="ml-2">
-                            <p className="text-sm font-bold truncate max-w-[60px] md:max-w-[100%]">
-                              Lorem Ipsum
-                            </p>
-                          </div>
-                        </div>
-                        <div className="absolute bottom-0 right-0 p-2">
-                          <img
-                            src="https://placehold.co/50x50/000000/FFFFFF?text=Category"
-                            alt="Category"
-                            className="w-10 h-10 rounded-md"
-                          />
-                        </div>
-                      </div>
-                      <div className="text-white p-2 w-full">
-                        <h3 className="text-sm font-bold clamp-2 max-h-[40px] min-h-[40px]">
-                          LOREM IPSUM LOREM IPSUM
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] rounded-b-md">
-                    <div className="text-md font-bold text-white p-2">
-                      199.90₺
-                    </div>
-                    <div className="p-2">
-                      <div className="flex items-center rounded-full bg-[#20c65c33] text-[var(--success)] p-1">
-                        <FaRegEye className="w-4 h-4 mr-1" />
-                        <span className="text-[11px]">150</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link> */}
-                <AdvertCard data={_} />
+                <AdvertCard data={_} link="/advert-detail" />
               </div>
             ))}
           </div>
@@ -305,10 +246,10 @@ const Advert = () => {
         <Link href="/all-adverts">
           <button
             style={{
-              // backgroundColor: "var(--btn-bg)",
-              color: "var(--btn-color)",
+              color: "var(--foreground)",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
             }}
-            className="px-6 py-2 text-white rounded-lg shadow-lg transition duration-300 border-glow"
+            className="px-6 py-2 text-white rounded-lg transition duration-300 border-glow"
           >
             Tümünü Görüntüle
           </button>

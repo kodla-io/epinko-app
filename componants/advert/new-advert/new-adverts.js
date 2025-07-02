@@ -105,31 +105,31 @@ const NewAdver = () => {
           {/* Sol Bölüm (Yan Menü) */}
           <div
             style={{
-              backgroundColor: "var(--list-box)",
               color: "var(--foreground)",
+              backgroundColor: "var(--advert-card-bg)",
             }}
-            className="flex-auto lg:basis-4/16 p-4 rounded-lg min-h-[664px] max-h-[664px]"
+            className="flex-auto lg:basis-4/16 p-4 py-8 rounded-lg min-h-[730px] max-h-[730px] mt-3"
           >
             <div className="text-white mb-4">
               <input
                 type="text"
                 placeholder="Kategori Ara"
-                style={{backgroundColor: "var(--advert-list-bg)"}}
+                style={{backgroundColor: "var(--active-advert-tab)"}}
                 className="w-full p-2 rounded border-2 border-[#ffffff17] focus:border-blue-500 text-sm"
               />
             </div>
             <div className="rounded-lg p-2">
-              <ul className="overflow-y-scroll overflow-x-hidden min-h-[553px] max-h-[553px] pr-2">
+              <ul className="overflow-y-scroll overflow-x-hidden min-h-[630px] max-h-[630px] pr-2">
                 {items.map((item, index) => (
-                  <li
-                    key={index}
-                    style={{
-                      backgroundColor: "var(--advert-list-bg)",
-                      color: "var(--foreground)",
-                    }}
-                    className="flex items-start mb-4 rounded-lg shadow-lg"
-                  >
-                    <Link href="#">
+                  <Link href="/advert-detail" key={index}>
+                    <li
+                      style={{
+                        backgroundColor: "var(--advert-card-bg)",
+                        color: "var(--foreground)",
+                        boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.3), 0 8px 20px -4px rgba(0, 0, 0, 0.15), 0 4px 8px -2px rgba(0, 0, 0, 0.1)",
+                      }}
+                      className="flex items-start mb-4 rounded-lg cursor-pointer hover:transform hover:scale-[1.02] transition-all duration-200"
+                    >
                       <div className="flex w-full p-2">
                         <img
                           src={item.imageUrl}
@@ -138,7 +138,7 @@ const NewAdver = () => {
                           style={{ flex: "2" }}
                         />
                         <div
-                          className="text-white text-sm flex flex-col justify-between"
+                          className="text-[var(--foreground)] text-sm flex flex-col justify-between"
                           style={{ flex: "6" }}
                         >
                           <div>
@@ -147,11 +147,11 @@ const NewAdver = () => {
 
                           <div className="flex flex-col space-y-4 text-[9px]">
                             <div className="flex flex-col space-y-2">
-                              <div className="flex items-center text-gray-400">
+                              <div className="flex items-center text-[var(--foreground)]">
                                 <span>🔰</span>
                                 <span>100+ Başarılı İşlem</span>
                               </div>
-                              <div className="flex items-center text-gray-400">
+                              <div className="flex items-center text-[var(--foreground)]">
                                 <span>🛡️</span>
                                 <span>100+ Güvenilir Satıcı</span>
                               </div>
@@ -159,8 +159,8 @@ const NewAdver = () => {
                           </div>
                         </div>
                       </div>
-                    </Link>
-                  </li>
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>
@@ -169,10 +169,9 @@ const NewAdver = () => {
           {/* Sağ Bölüm (Ana İçerik) */}
           <div
             style={{
-              backgroundColor: "var(--list-box)",
               color: "var(--foreground)",
             }}
-            className="flex-auto lg:basis-12/16 p-1 rounded-lg md:p-4"
+            className="flex-auto lg:basis-12/16 p-1 rounded-lg md:px-4"
           >
             <SingleAdvert />
           </div>

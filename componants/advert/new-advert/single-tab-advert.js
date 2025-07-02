@@ -164,7 +164,7 @@ const SingleAdvert = () => {
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
         {items.map((_, index) => (
           <div key={index} className="p-2 md:p-2">
-            <AdvertCard data={_} />
+            <AdvertCard data={_} link="/advert-detail" />
           </div>
         ))}
       </div>

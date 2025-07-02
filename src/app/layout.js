@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "../../componants/layout/Header";
 import Footer from "../../componants/layout/Fotter";
 import BottomText from "../../componants/texts/bottom-text";
+import Preloader from "../../componants/layout/Preloader";
 
 import { Inter } from "next/font/google";
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
+        <Preloader />
         <Header />
         {children}
         {/* <BottomText /> */}
