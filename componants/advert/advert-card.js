@@ -3,7 +3,7 @@ import { FaRegEye } from "react-icons/fa";
 import Link from "next/link";
 import { AiOutlineSafety } from "react-icons/ai";
 
-const ProductCard = ({ data, link }) => {
+const ProductCard = ({ data, link = "/advert-detail" }) => {
   return (
     <Link href={link}>
       <div 

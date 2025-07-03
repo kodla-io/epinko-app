@@ -1957,7 +1957,7 @@ const MyAdvertsTable = ({ title }) => {
 
                   {/* Önizleme Alanı */}
                   <div className="md:w-1/3 w-full">
-                    <AdvertCard data={adCardData[0]} />
+                    <AdvertCard data={adCardData[0]} link="/advert-detail" />
                   </div>
                 </div>
               </div>
@@ -2064,7 +2064,7 @@ const MyAdvertsTable = ({ title }) => {
 
                   {/* Sağda Siz Ayarlayacağınız Kısım */}
                   <div className="w-full md:w-1/3">
-                    <AdvertCard data={adCardData[0]} />
+                    <AdvertCard data={adCardData[0]} link="/advert-detail" />
                   </div>
                 </div>
               </div>

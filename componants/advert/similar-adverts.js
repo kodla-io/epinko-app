@@ -172,7 +172,7 @@ const SimilarAdverts = () => {
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6">
         {AllAdverts.map((item, index) => (
           <div key={index} className="p-2 md:p-2">
-            <AdvertCard data={item} />
+            <AdvertCard data={item} link="/advert-detail" />
           </div>
         ))}
       </div>

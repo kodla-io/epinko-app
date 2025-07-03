@@ -225,22 +225,13 @@ const Advert = () => {
         </div>
       </div>
 
-      {leftTabs.concat(rightTabs).map((tab) => (
-        <div
-          key={tab.id}
-          className={`tab-content ${
-            activeTab === tab.id ? "active" : ""
-          }`}
-        >
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {tab.items.map((_, index) => (
-              <div key={index} className="p-1 md:p-2 md:p-2">
-                <AdvertCard data={_} link="/advert-detail" />
-              </div>
-            ))}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
+        {activeTab && leftTabs.find((tab) => tab.id === activeTab)?.items.map((item, index) => (
+          <div key={index} className="p-2 md:p-2">
+            <AdvertCard data={item} link="/advert-detail" />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       <div className="flex justify-center items-center py-4">
         <Link href="/all-adverts">

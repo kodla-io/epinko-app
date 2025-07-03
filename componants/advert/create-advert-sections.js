@@ -679,7 +679,7 @@ const CategoryStep = () => {
               </div>
             </div>
 
-            <AdvertCard data={Data[0]} />
+            <AdvertCard data={Data[0]} link="/advert-detail" />
             <div className="p-1 hidden md:block cursor-progress">
               {/* Görsel */}
               <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)] animate-pulse">

@@ -210,58 +210,7 @@ const NewAdvertSlider = () => {
             >
               {AllAdverts.map((game, index) => (
                 <SwiperSlide key={index}>
-                  {/* <Link href="/">
-                    <div className="p-1">
-                      <div className="relative min-h-[300px] max-h-[300px] overflow-hidden rounded-xl">
-                        {game.isVitrin && (
-                          <span
-                            className="absolute top-[75px] left-[-21px] text-white py-[2px] px-[30px] text-xs font-bold transform -rotate-45 origin-top-left"
-                            style={{ backgroundColor: game.vitrinColor }}
-                          >
-                            VİTRİN İLANI
-                          </span>
-                        )}
-                        <div className="absolute top-2 right-2">
-                          <AiOutlineSafety className="w-8 h-8" />
-                        </div>
-                        <img
-                          src="https://placehold.co/200x300"
-                          alt={`Card ${index}`}
-                          className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
-                        />
-                        <div
-                          className="text-white absolute bottom-0 p-2 w-full"
-                          style={{
-                            backdropFilter: "blur(4px)",
-                          }}
-                        >
-                          <img
-                            src="https://placehold.co/200x70/000000/FFFFFF"
-                            className="relative bottom-[5px] left-1/2 transform -translate-x-1/2 !w-[70%] md:!w-[80%]"
-                          />
-                          <h3 className="text-md font-bold clamp-1">{game.title}</h3>
-                          <div className="flex justify-between items-center mt-2">
-                            <div className="flex items-center">
-                              <img
-                                src="https://placehold.co/50x50/000000/FFFFFF"
-                                alt="Seller"
-                                className="w-8 h-8 rounded-full"
-                              />
-                              <div className="ml-2">
-                                <p className="text-[8px] text-gray-400">
-                                  GÜVENİLİR SATICI
-                                </p>
-                              </div>
-                            </div>
-                            <div className="text-md font-bold text-yellow-400">
-                              199.90₺
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Link> */}
-                  <AdvertCard data={game} />
+                  <AdvertCard data={game} link="/advert-detail" />
                 </SwiperSlide>
               ))}
             </Swiper>

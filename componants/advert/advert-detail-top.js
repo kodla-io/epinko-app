@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import {
   FaRegHeart,
@@ -86,6 +88,8 @@ const infoBoxes = [
 ];
 
 export default function AdvertDetailFull() {
+  // Initialize state with default values
+  const [mounted, setMounted] = useState(false);
   const [showSmsModal, setShowSmsModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
@@ -95,6 +99,11 @@ export default function AdvertDetailFull() {
     minutes: 0,
     seconds: 0
   });
+
+  // Only run client-side code after mounting
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Modal içerikleri
   const modalContents = {
@@ -130,6 +139,8 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
 
   // Geri sayım fonksiyonu
   useEffect(() => {
+    if (!mounted) return;
+
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev.seconds > 0) {
@@ -146,7 +157,12 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [mounted]);
+
+  // Don't render anything until mounted
+  if (!mounted) {
+    return <div className="animate-pulse bg-gray-700 h-96 rounded-lg"></div>;
+  }
 
   return (
     <div className="container mx-auto text-white p-4">
