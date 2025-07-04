@@ -195,7 +195,7 @@ const GiveawayTabs = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredGiveaways.length > 0 ? (
             filteredGiveaways.map((giveaway, index) => (
               <div
@@ -264,26 +264,26 @@ const GiveawayTabs = () => {
                     {giveaway.status === "active" ? (
                       <>
                         <button className="bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-600 transition">
-                          Çekilişe Katıl
-                        </button>
+                      Çekilişe Katıl
+                    </button>
                         <Link href="/giveaway-detail" className="bg-green-500 text-white w-full py-2 rounded hover:bg-green-600 transition flex items-center justify-center">
-                          Kuralları İncele
+                      Kuralları İncele
                         </Link>
                       </>
                     ) : (
                       <button className="bg-gray-500 text-white w-full py-2 rounded cursor-not-allowed">
                         Çekiliş Sona Erdi
-                      </button>
+                    </button>
                     )}
                   </div>
                 </div>
               </div>
             ))
-          ) : (
+        ) : (
             <div className="col-span-full text-center py-8 text-[var(--text-gray)]">
               Arama kriterlerinize uygun çekiliş bulunamadı.
-            </div>
-          )}
+          </div>
+        )}
         </div>
       </div>
     </div>

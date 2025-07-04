@@ -14,6 +14,7 @@ import { IoMdFlash } from "react-icons/io";
 import { FaStar, FaBolt } from "react-icons/fa";
 import Tabs from "./advert-detail-tabs";
 import { IoMdChatbubbles } from "react-icons/io";
+import Link from "next/link";
 
 const product = {
   image: "https://placehold.co/400x250",
@@ -97,7 +98,7 @@ export default function AdvertDetailFull() {
     days: 30,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
 
   // Only run client-side code after mounting
@@ -114,22 +115,22 @@ export default function AdvertDetailFull() {
 
 Bu bilgilerini doğrulayan satıcıların dolandırıcılık yapma ihtimalleri daha düşüktür. Önceki bir dolandırıcılık durumunda tarafımıza gelecek herhangi bir resmi tebligatta dolandırıcı kişinin tüm kişisel ve erişim bilgilerini savcılık ile paylaşmaktayız. Kimlik bilgileri onaylanmış kullanıcılara bu yüzden dolandırıcılık denemesinde bulunmamaz.
 
-Bir kez dolandırıcılığa kalkışmış kullanıcıların kimlik bilgileri sistemden yasaklanır, aynı kişiler farklı üyeliklerle siteye kayıt olamazlar.`
+Bir kez dolandırıcılığa kalkışmış kullanıcıların kimlik bilgileri sistemden yasaklanır, aynı kişiler farklı üyeliklerle siteye kayıt olamazlar.`,
     },
     otomatikTeslimat: {
       title: "Otomatik Teslimat Sistemi",
       icon: <FaBolt className="text-yellow-400 w-8 h-8" />,
       content: `Bu ilanı satın aldığınızda ürün otomatik olarak ekli stoklardan teslim edilecektir.
 
-Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ürünle ilgili sorun olması durumunda video kayıt alarak canlı desteğe veya satıcınıza ulaşmanız gerekmektedir.`
+Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ürünle ilgili sorun olması durumunda video kayıt alarak canlı desteğe veya satıcınıza ulaşmanız gerekmektedir.`,
     },
     garantiliUrun: {
       title: "Garantili Ürün",
       icon: <MdSecurity className="text-orange-400 w-8 h-8" />,
       content: `Bu ürün satıcı tarafından garanti kapsamında sunulmaktadır.
 
-Ürünle ilgili herhangi bir sorun yaşamanız durumunda satıcı ile iletişime geçerek çözüm talep edebilirsiniz. Garanti süresi ve koşulları ürün açıklamasında belirtilmiştir.`
-    }
+Ürünle ilgili herhangi bir sorun yaşamanız durumunda satıcı ile iletişime geçerek çözüm talep edebilirsiniz. Garanti süresi ve koşulları ürün açıklamasında belirtilmiştir.`,
+    },
   };
 
   const openInfoModal = (type) => {
@@ -142,7 +143,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
     if (!mounted) return;
 
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
+      setTimeLeft((prev) => {
         if (prev.seconds > 0) {
           return { ...prev, seconds: prev.seconds - 1 };
         } else if (prev.minutes > 0) {
@@ -150,7 +151,13 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
         } else if (prev.hours > 0) {
           return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
         } else if (prev.days > 0) {
-          return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
+          return {
+            ...prev,
+            days: prev.days - 1,
+            hours: 23,
+            minutes: 59,
+            seconds: 59,
+          };
         }
         return prev;
       });
@@ -191,9 +198,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
               <div className="flex flex-col gap-1">
                 <div className="text-xl font-bold">{product.title}</div>
                 <div className="flex items-center gap-2">
-                  <span className="text-white font-bold">
-                    {product.rating}
-                  </span>
+                  <span className="text-white font-bold">{product.rating}</span>
                   <div className="flex text-yellow-400">
                     <span>★</span>
                     <span>★</span>
@@ -215,24 +220,34 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
               <div className="flex gap-2 flex-wrap mt-3 pt-3 border-t border-gray-600">
                 {product.features.map((f, i) => {
                   const gradients = [
-                    'bg-gradient-to-r from-green-500 to-teal-500',
-                    'bg-gradient-to-r from-blue-500 to-purple-500',
-                    'bg-gradient-to-r from-orange-500 to-red-500',
-                    'bg-gradient-to-r from-pink-500 to-rose-500'
+                    "bg-gradient-to-r from-green-500 to-teal-500",
+                    "bg-gradient-to-r from-blue-500 to-purple-500",
+                    "bg-gradient-to-r from-orange-500 to-red-500",
+                    "bg-gradient-to-r from-pink-500 to-rose-500",
                   ];
                   const icons = [
                     <MdVerified className="text-white" />,
                     <FaBolt className="text-white" />,
                     <MdSecurity className="text-white" />,
-                    <FaStar className="text-white" />
+                    <FaStar className="text-white" />,
                   ];
-                  const modalTypes = ['kimlikOnaylı', 'otomatikTeslimat', 'garantiliUrun'];
-                  
+                  const modalTypes = [
+                    "kimlikOnaylı",
+                    "otomatikTeslimat",
+                    "garantiliUrun",
+                  ];
+
                   return (
                     <button
                       key={i}
-                      onClick={() => i < 3 ? openInfoModal(modalTypes[i]) : null}
-                      className={`${gradients[i % gradients.length]} px-4 py-2 rounded-full text-xs flex items-center gap-2 text-white font-medium hover:opacity-80 transition-opacity ${i < 3 ? 'cursor-pointer' : 'cursor-default'}`}
+                      onClick={() =>
+                        i < 3 ? openInfoModal(modalTypes[i]) : null
+                      }
+                      className={`${
+                        gradients[i % gradients.length]
+                      } px-4 py-2 rounded-full text-xs flex items-center gap-2 text-white font-medium hover:opacity-80 transition-opacity ${
+                        i < 3 ? "cursor-pointer" : "cursor-default"
+                      }`}
                     >
                       {icons[i % icons.length]} {f}
                     </button>
@@ -250,7 +265,8 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                 </ul>
               </div>
               <div className="mt-2 text-xs text-[var(--text-gray)]">
-                Kalan süre : {timeLeft.days} gün {timeLeft.hours} saat {timeLeft.minutes} dakika {timeLeft.seconds} saniye
+                Kalan süre : {timeLeft.days} gün {timeLeft.hours} saat{" "}
+                {timeLeft.minutes} dakika {timeLeft.seconds} saniye
               </div>
             </div>
           </div>
@@ -259,7 +275,8 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
             <div className="font-semibold mb-2">Satıcının Benzer İlanları</div>
             <div className="flex gap-3 overflow-x-auto pb-2">
               {similarAds.map((ad, i) => (
-                <div
+                <Link
+                  href="/advert-detail"
                   key={i}
                   className="bg-[var(--profile-input)] rounded-lg min-w-[160px] p-2 flex flex-row gap-2 items-center"
                 >
@@ -276,7 +293,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                     </div>
                     <div className="text-yellow-400 font-bold">{ad.price}</div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -298,20 +315,20 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
               <div className="flex justify-between w-full">
                 <div>
                   <div className="font-bold text-sm">{seller.name}</div>
-                                  <div className="flex gap-1 mt-1">
-                  <button 
-                    onClick={() => openInfoModal('kimlikOnaylı')}
-                    className="text-xs hover:opacity-80 transition-opacity"
-                  >
-                    <MdVerified className="text-green-400 w-5 h-5" />
-                  </button>
-                  <button 
-                    onClick={() => openInfoModal('otomatikTeslimat')}
-                    className="text-xs hover:opacity-80 transition-opacity"
-                  >
-                    <IoMdFlash className="text-yellow-400 w-5 h-5" />
-                  </button>
-                </div>
+                  <div className="flex gap-1 mt-1">
+                    <button
+                      onClick={() => openInfoModal("kimlikOnaylı")}
+                      className="text-xs hover:opacity-80 transition-opacity"
+                    >
+                      <MdVerified className="text-green-400 w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => openInfoModal("otomatikTeslimat")}
+                      className="text-xs hover:opacity-80 transition-opacity"
+                    >
+                      <IoMdFlash className="text-yellow-400 w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
                 <div className="text-xs text-[var(--text-gray)] mt-1 text-right flex flex-col justify-between">
                   <span className="font-bold text-[var(--foreground)] text-2xl">
@@ -328,7 +345,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
               <button className="bg-[var(--label9)] text-white py-2 px-3 rounded font-semibold flex items-center justify-center hover:opacity-80 transition-opacity">
                 <IoMdChatbubbles />
               </button>
-              <button 
+              <button
                 onClick={() => setShowSmsModal(true)}
                 className="flex-1 bg-[var(--label9)] text-white py-2 rounded font-semibold hover:opacity-80 transition-opacity"
               >
@@ -340,13 +357,17 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                 <div className="text-2xl font-bold text-green-400 mb-1">
                   {product.price}
                 </div>
-                <div className="text-sm text-[var(--text-gray)]">İlan Ücreti</div>
+                <div className="text-sm text-[var(--text-gray)]">
+                  İlan Ücreti
+                </div>
               </div>
               <div className="text-right">
                 <div className="text-lg font-bold text-[var(--foreground)]">
                   {product.stock}
                 </div>
-                <div className="text-sm text-[var(--text-gray)]">Stok Sayısı</div>
+                <div className="text-sm text-[var(--text-gray)]">
+                  Stok Sayısı
+                </div>
               </div>
             </div>
             <button className="bg-[var(--success)] text-white py-2 rounded font-bold mt-2 hover:opacity-80 transition-opacity">
@@ -383,7 +404,9 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                 </div>
                 <div>
                   <div className="font-bold mb-1 ml-6">{box.title}</div>
-                  <div className="text-xs text-[var(--text-gray)]">{box.desc}</div>
+                  <div className="text-xs text-[var(--text-gray)]">
+                    {box.desc}
+                  </div>
                 </div>
               </div>
             ))}
@@ -393,38 +416,48 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
 
       {/* SMS Modal */}
       {showSmsModal && (
-        <div 
+        <div
           className="fixed inset-0 bg-[#0000007d] flex items-center justify-center z-50 p-4"
           onClick={() => setShowSmsModal(false)}
         >
-          <div 
+          <div
             className="bg-[var(--advert-card-bg)] rounded-xl p-6 w-full max-w-lg mx-4 shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={() => setShowSmsModal(false)}
               className="text-[var(--text-gray)] hover:text-white absolute top-4 right-4 z-10"
             >
               <FaTimes className="w-5 h-5" />
             </button>
             <div className="mb-6">
-              <h3 className="text-[var(--foreground)] text-center font-medium">Satıcıya SMS Gönder</h3>
+              <h3 className="text-[var(--foreground)] text-center font-medium">
+                Satıcıya SMS Gönder
+              </h3>
             </div>
-            
+
             <p className="text-[var(--text-gray)] text-sm mb-6 text-center leading-relaxed">
-              Bu panel üzerinden ilan sahibine SMS olarak mesaj gönderebilirsiniz. Gönderilen SMS mesajında telefon numaranız paylaşılmamaktadır.
+              Bu panel üzerinden ilan sahibine SMS olarak mesaj
+              gönderebilirsiniz. Gönderilen SMS mesajında telefon numaranız
+              paylaşılmamaktadır.
             </p>
 
             <div className="mb-4">
-              <label className="block text-[var(--text-gray)] text-sm mb-2 font-medium">Şablon Seçimi</label>
+              <label className="block text-[var(--text-gray)] text-sm mb-2 font-medium">
+                Şablon Seçimi
+              </label>
               <select className="w-full bg-[var(--profile-input)] text-[var(--foreground)] p-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500">
-                <option>İlanınız ile ilgileniyorum. Teslimat süresini hızlandırma</option>
+                <option>
+                  İlanınız ile ilgileniyorum. Teslimat süresini hızlandırma
+                </option>
               </select>
             </div>
 
             <div className="mb-4">
-              <label className="block text-[var(--text-gray)] text-sm mb-2 font-medium">Gönderilecek Mesaj</label>
-              <textarea 
+              <label className="block text-[var(--text-gray)] text-sm mb-2 font-medium">
+                Gönderilecek Mesaj
+              </label>
+              <textarea
                 className="w-full bg-[var(--profile-input)] text-[var(--foreground)] p-3 rounded-lg border-0 h-28 resize-none focus:ring-2 focus:ring-blue-500 text-sm leading-relaxed"
                 defaultValue="★ PUBG Mobile 50-60 SKIN Random Hesap | 7/24 Oto adlı ilanınız için kullanıcısından yeni bir mesajınız var! İlanınız ile ilgileniyorum. Teslimat süresini hızlandırma şansınız var mı? Lütfen benimle itemsatış.com üzerinden iletişime geçin."
               />
@@ -432,7 +465,10 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
 
             <div className="flex items-start mb-6 gap-3">
               <input type="checkbox" id="smsRules" className="mt-1 !w-4 !h-4" />
-              <label htmlFor="smsRules" className="text-[var(--text-gray)] text-sm leading-relaxed">
+              <label
+                htmlFor="smsRules"
+                className="text-[var(--text-gray)] text-sm leading-relaxed"
+              >
                 SMS Gönderim Kurallarını okudum & kabul ediyorum.
               </label>
             </div>
@@ -446,26 +482,28 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
 
       {/* Info Modal */}
       {showInfoModal && modalContent && (
-        <div 
+        <div
           className="fixed inset-0 bg-[#0000007d] bg-opacity-30 flex items-center justify-center z-50 p-4"
           onClick={() => setShowInfoModal(false)}
         >
-          <div 
-            className="bg-[#4a5568] rounded-xl p-6 w-full max-w-lg mx-4 shadow-2xl relative"
+          <div
+            className="bg-[var(--advert-card-bg)] rounded-xl p-6 w-full max-w-lg mx-4 shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={() => setShowInfoModal(false)}
               className="text-[var(--text-gray)] hover:text-[var(--foreground)] absolute top-4 right-4 z-10"
             >
               <FaTimes className="w-5 h-5" />
             </button>
-            
+
             <div className="flex items-center gap-3 mb-6">
               {modalContent.icon}
-              <h3 className="text-white font-medium text-lg">{modalContent.title}</h3>
+              <h3 className="text-[var(--foreground)] font-medium text-lg">
+                {modalContent.title}
+              </h3>
             </div>
-            
+
             <div className="text-[var(--text-gray)] text-sm leading-relaxed whitespace-pre-line">
               {modalContent.content}
             </div>

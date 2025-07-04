@@ -20,7 +20,7 @@ const BuySellProducts = () => {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-4">
         {products.map((product, index) => (
           <Link
-            href="/"
+            href="/buy-sell-to-us"
             key={index}
             className="bg-[var(--advert-list-bg)] rounded-xl overflow-hidden shadow-md relative"
           >

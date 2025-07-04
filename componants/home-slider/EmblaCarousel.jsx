@@ -59,9 +59,9 @@ const EmblaCarousel = () => {
                     <div className="embla__slide" key={index}>
                       <Link href="/advert-detail">
                         <div className="embla__slide__number cursor-pointer">
-                          {/* {index + 1} */}
-                          <img className="object-cover rounded-xl w-full" src="https://placehold.co/2000x1000" />
-                        </div>
+                        {/* {index + 1} */}
+                        <img className="object-cover rounded-xl w-full" src="https://placehold.co/2000x1000" />
+                      </div>
                       </Link>
                     </div>
                   ))}

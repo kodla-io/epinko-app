@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "./Theme";
 import SearchInput from "./Search";
 import MegaMenu from "./MegaMenu";
@@ -17,6 +17,35 @@ import FloatingSidebar from "./all-pages";
 import MobileNav from "./mobile-nav"
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
+import dynamic from "next/dynamic";
+import accountAnim from "../../src/assets/animations/account.json";
+import EarningsAnim from "../../src/assets/animations/Earnings.json";
+import NotificationsAnim from "../../src/assets/animations/Notifications.json";
+import LogInHistoryAnim from "../../src/assets/animations/LogInHistory.json";
+import user from "../../src/assets/animations/account.json";
+import message from "../../src/assets/animations/message.json";
+import adverts from "../../src/assets/animations/Adverts.json";
+import balanceHistory from "../../src/assets/animations/EarnHistory.json";
+import bank from "../../src/assets/animations/Bank.json";
+import help from "../../src/assets/animations/Help.json";
+import transactions from "../../src/assets/animations/Transactions.json";
+import passwordChange from "../../src/assets/animations/PasswordChange.json";
+import verification from "../../src/assets/animations/Verification.json";
+import logInHistory from "../../src/assets/animations/LogInHistory.json";
+import earnings from "../../src/assets/animations/Earnings.json";
+import refunds from "../../src/assets/animations/Refunds.json";
+import notifications from "../../src/assets/animations/Notifications.json";
+import reference from "../../src/assets/animations/Reference.json";
+import order from "../../src/assets/animations/Order.json";
+import addBalance from "../../src/assets/animations/balanceHistory.json";
+import checkCash from "../../src/assets/animations/CheckCash.json";
+import stream from "../../src/assets/animations/stream.json";
+import giveaway from "../../src/assets/animations/giveaway.json";
+
+const Player = dynamic(
+  () => import("@lordicon/react").then((mod) => mod.Player),
+  { ssr: false }
+);
 
 const items = [
   {
@@ -144,6 +173,25 @@ const items2 = [
   },
 ];
 
+const profileTabs = [
+  { key: "my-account", icon: user, label: "Hesabım" },
+  { key: "my-orders", icon: order, label: "Siparişlerim" },
+  { key: "my-adverts", icon: adverts, label: "İlanlarım" },
+  { key: "notifications", icon: notifications, label: "Bildirimler" },
+  { key: "streamer-panel", icon: stream, label: "Yayıncı Paneli" },
+  { key: "password-change", icon: passwordChange, label: "Şifre Değiştir" },
+  { key: "giveaways", icon: giveaway, label: "Çekiliş Yönetimi" },
+  { key: "top-up-balance", icon: addBalance, label: "Bakiye Yükle" },
+  { key: "wallet-history", icon: balanceHistory, label: "Ödeme Geçmişim" },
+  { key: "check-cash", icon: checkCash, label: "Bakiye Çek" },
+  { key: "bank-accounts", icon: bank, label: "Banka Hesaplarım" },
+  { key: "earnings", icon: earnings, label: "Kazançlarım" },
+  { key: "transactions", icon: transactions, label: "İşlemlerim" },
+  { key: "my-messages", icon: message, label: "Mesajlarım" },
+  { key: "refunds", icon: refunds, label: "İade Talebi" },
+  { key: "reference-system", icon: reference, label: "Referans Sistemi" },
+];
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -227,21 +275,21 @@ const Header = () => {
 
   // Login Modal Component
   const LoginModal = () => (
-    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-[var(--background)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
+    <div className="fixed inset-0 bg-black/20 text-[var(--foreground)] backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-[var(--advert-card-bg)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
         {/* Kapatma butonu */}
         <button
           onClick={closeModals}
-          className="absolute right-4 top-4 text-gray-400 hover:text-white z-10"
+          className="absolute right-4 top-4 text-[var(--text-gray)] hover:text-white z-10"
         >
           <X size={24} />
         </button>
 
         <div className="p-6">
           <div className="mb-6">
-            <h2 className="text-2xl text-white mb-2">Merhaba</h2>
-            <h1 className="text-4xl font-bold text-white mb-4">Giriş Yap</h1>
-            <div className="text-sm text-gray-300">
+            <h2 className="text-2xl mb-2">Merhaba</h2>
+            <h1 className="text-4xl font-bold mb-4">Giriş Yap</h1>
+            <div className="text-sm text-[var(--text-gray)]">
               Yeni Misin?{" "}
               <button 
                 onClick={openRegisterModal}
@@ -253,29 +301,34 @@ const Header = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-white text-sm mb-2">
+            <label className="block text-sm mb-2">
               Kullanıcı adınızı veya e-posta adresinizi giriniz
             </label>
             <input
               type="text"
               placeholder="Kullanıcı adı ya da Eposta adresi"
-              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-white text-sm mb-2">Şifrenizi Giriniz</label>
+            <label className="block text-sm mb-2">Şifrenizi Giriniz</label>
             <input
               type="password"
               placeholder="Şifre"
-              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none"
             />
-            <div className="text-right text-sm text-blue-400 mt-2 hover:underline cursor-pointer">
+            <div className="text-right text-sm text-[var(--primary)] mt-2 hover:underline cursor-pointer"
+              onClick={() => {
+                setIsLoginModalOpen(false);
+                setIsForgotModalOpen(true);
+              }}
+            >
               Şifremi Unuttum
             </div>
           </div>
 
-          <button className="w-full mb-4 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+          <button className="w-full mb-4 bg-[var(--success)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
             Giriş Yap
           </button>
 
@@ -298,7 +351,7 @@ const Header = () => {
   // Register Modal Component
   const RegisterModal = () => (
     <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-[var(--background)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
+      <div className="bg-[var(--advert-card-bg)] text-[var(--foreground)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
         {/* Kapatma butonu */}
         <button
           onClick={closeModals}
@@ -309,9 +362,9 @@ const Header = () => {
 
         <div className="p-6">
           <div className="mb-6">
-            <h2 className="text-2xl text-white mb-2">Merhaba</h2>
-            <h1 className="text-4xl font-bold text-white mb-4">Kayıt Ol</h1>
-            <div className="text-sm text-gray-300">
+            <h2 className="text-2xl text-[var(--foreground)] mb-2">Merhaba</h2>
+            <h1 className="text-4xl font-bold text-[var(--foreground)] mb-4">Kayıt Ol</h1>
+            <div className="text-sm text-[var(--text-gray)]">
               Üye Misin?{" "}
               <button 
                 onClick={openLoginModal}
@@ -324,63 +377,63 @@ const Header = () => {
 
           <div className="flex gap-2 mb-4">
             <div className="flex-1">
-              <label className="block text-white text-sm mb-2">Ad</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">Ad</label>
               <input
                 type="text"
                 placeholder="Adınız"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
               />
             </div>
             <div className="flex-1">
-              <label className="block text-white text-sm mb-2">Soyad</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">Soyad</label>
               <input
                 type="text"
                 placeholder="Soyadınız"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
               />
             </div>
           </div>
 
           <div className="flex gap-2 mb-4">
             <div className="flex-1">
-              <label className="block text-white text-sm mb-2">Kullanıcı adı</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">Kullanıcı adı</label>
               <input
                 type="text"
                 placeholder="Kullanıcı adı"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
               />
             </div>
             <div className="flex-1">
-              <label className="block text-white text-sm mb-2">Email Adresi</label>
+                <label className="block text-[var(--foreground)] text-sm mb-2">Email Adresi</label>
               <input
                 type="email"
                 placeholder="Email Adresi"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
               />
             </div>
           </div>
 
           <div className="flex gap-2 mb-4">
             <div className="flex-1">
-              <label className="block text-white text-sm mb-2">Şifre</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">Şifre</label>
               <input
                 type="password"
                 placeholder="Şifre"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
               />
             </div>
             <div className="flex-1">
-              <label className="block text-white text-sm mb-2">Şifre Tekrar</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">Şifre Tekrar</label>
               <input
                 type="password"
                 placeholder="Şifre Tekrar"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-white border-none focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
               />
             </div>
           </div>
 
           <button className="w-full mb-4 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
-            Üye Ol
+            Kayıt Ol
           </button>
 
           <div className="flex flex-col gap-2">
@@ -415,6 +468,94 @@ const Header = () => {
     setIsLanguageDropdownOpen(false);
     // Burada dil değişimi için gerekli işlemleri yapabilirsiniz
   };
+
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const profileIconRef = useRef(null);
+  const dropdownRefs = useRef([]);
+
+  const handleMenuItemEnter = (index) => {
+    dropdownRefs.current[index]?.playFromBeginning();
+  };
+
+  const [isForgotModalOpen, setIsForgotModalOpen] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [showForgotInfo, setShowForgotInfo] = useState(false);
+
+  // Şifremi Unuttum Modal Component
+  const ForgotPasswordModal = () => {
+    const inputRef = useRef(null);
+    // Modal açıldığında inputa otomatik focus
+    useEffect(() => {
+      if (inputRef.current) inputRef.current.focus();
+    }, []);
+    return (
+      <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-[var(--advert-card-bg)] text-[var(--foreground)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
+          {/* Kapatma butonu */}
+          <button
+            onClick={() => setIsForgotModalOpen(false)}
+            className="absolute right-4 top-4 text-gray-400 hover:text-white z-10"
+          >
+            <X size={24} />
+          </button>
+          <div className="p-6">
+            <div className="mb-6">
+              <h2 className="text-2xl mb-2">Şifremi Unuttum</h2>
+              <h1 className="text-4xl font-bold mb-4">Şifre Sıfırlama</h1>
+              <div className="text-sm text-[var(--text-gray)]">
+                Kayıtlı e-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.
+              </div>
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm mb-2">E-posta adresiniz</label>
+              <input
+                ref={inputRef}
+                type="email"
+                placeholder="E-posta adresi"
+                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none text-[var(--foreground)]"
+                value={forgotEmail}
+                onChange={e => setForgotEmail(e.target.value)}
+                autoComplete="off"
+              />
+              <div
+                className="mt-2 text-sm text-blue-400 hover:underline cursor-pointer text-right"
+                onClick={() => {
+                  setIsForgotModalOpen(false);
+                  setIsLoginModalOpen(true);
+                }}
+              >
+                Giriş Yap
+              </div>
+            </div>
+            <button
+              className="w-full mb-4 bg-[var(--success)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold"
+              onClick={() => {
+                setShowForgotInfo(true);
+                setTimeout(() => {
+                  setShowForgotInfo(false);
+                  setIsForgotModalOpen(false);
+                  setForgotEmail("");
+                }, 2000);
+              }}
+            >
+              Şifre Sıfırlama Maili Gönder
+            </button>
+            {showForgotInfo && (
+              <div className="bg-[var(--success)]/10 text-[var(--success)] p-3 rounded text-center font-semibold mt-2">
+                Mail gönderildi! Lütfen e-posta kutunuzu kontrol edin.
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  useEffect(() => {
+    const handler = () => setIsForgotModalOpen(true);
+    window.addEventListener('openForgotPasswordModal', handler);
+    return () => window.removeEventListener('openForgotPasswordModal', handler);
+  }, []);
 
   return (
     <>
@@ -522,14 +663,6 @@ const Header = () => {
 
             {/* Sağ Kısım */}
             <div className="flex items-center space-x-4">
-              {/* Sepet İkonu ve Sayaç */}
-              <div className="relative flex items-center">
-                <FaShoppingCart className="text-2xl text-white" />
-                {/* Sepet sayacı örnek olarak 0, context ile güncellenecek */}
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 font-bold">
-                  0
-                </span>
-              </div>
               <div className="md:block hidden d-l-mode">
                 <div className="middle">
                   <div
@@ -560,6 +693,61 @@ const Header = () => {
               >
                 Kayıt Ol
               </button>
+              {/* Profile (Kişi) ikonu ve dropdown */}
+              <div className="relative">
+                <button
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--advert-list-bg)] hover:bg-[var(--label2)] transition"
+                  onClick={() => setIsProfileDropdownOpen((v) => !v)}
+                >
+                  <Player
+                    ref={profileIconRef}
+                    icon={user}
+                    size={32}
+                    trigger="manual"
+                  />
+                </button>
+                {/* Dropdown */}
+                <div
+                  className={`absolute right-0 mt-2 min-w-[220px] bg-[var(--background)] rounded-xl shadow-lg border border-[var(--border-color)] overflow-hidden z-50 transition-all duration-200 ${isProfileDropdownOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-95 opacity-0 pointer-events-none'}`}
+                  style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.15)' }}
+                >
+                  {/* Kullanıcı kutusu */}
+                  <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--advert-list-bg)] bg-[var(--advert-list-bg)]">
+                    <img
+                      src="https://placehold.co/48x48"
+                      alt="Profil Fotoğrafı"
+                      className="w-12 h-12 rounded-full border-2 border-[var(--success)]"
+                    />
+                    <div className="flex flex-col">
+                      <span className="font-bold text-[var(--foreground)] text-base">onurtasdeler</span>
+                      <span className="text-xs text-[var(--text-gray)]">0.00 ₺</span>
+                    </div>
+                  </div>
+                  <ul className="flex flex-col py-2">
+                    {profileTabs.map((item, idx) => (
+                      <li
+                        key={item.key}
+                        className="flex items-center gap-3 px-4 py-2 hover:bg-[var(--advert-list-bg)] cursor-pointer transition"
+                        onMouseEnter={() => handleMenuItemEnter(idx)}
+                      >
+                        <Link
+                          href={`/profile?tab=${item.key}`}
+                          className="flex items-center gap-3 w-full"
+                          onClick={() => setIsProfileDropdownOpen(false)}
+                        >
+                          <Player
+                            ref={(el) => (dropdownRefs.current[idx] = el)}
+                            icon={item.icon}
+                            size={28}
+                            trigger="manual"
+                          />
+                          <span className="text-[var(--foreground)]">{item.label}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
 
             {/* Mobil Menü Butonu */}
@@ -665,6 +853,7 @@ const Header = () => {
       {/* Modals */}
       {isLoginModalOpen && <LoginModal />}
       {isRegisterModalOpen && <RegisterModal />}
+      {isForgotModalOpen && <ForgotPasswordModal />}
     </>
   );
 };

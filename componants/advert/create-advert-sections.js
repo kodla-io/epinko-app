@@ -15,6 +15,13 @@ import { MdOutlineRocketLaunch } from "react-icons/md";
 import { PiStarDuotone } from "react-icons/pi";
 import { PiRectangleDashedFill } from "react-icons/pi";
 import { PiRectangleDashedDuotone } from "react-icons/pi";
+import dynamic from "next/dynamic";
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import Underline from '@tiptap/extension-underline';
+import TextAlign from '@tiptap/extension-text-align';
+import Link from '@tiptap/extension-link';
+import Highlight from '@tiptap/extension-highlight';
 
 import AdvertCard from "./advert-card";
 
@@ -150,6 +157,7 @@ const CategoryStep = () => {
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [selected, setSelected] = useState("PUBG Mobile");
   const [selectedLanguage, setSelectedLanguage] = useState("language1");
+  const [description, setDescription] = useState("");
 
   const selectedCategory = fakeData.find(
     (cat) => cat.id === selectedCategoryId
@@ -204,6 +212,26 @@ const CategoryStep = () => {
       "Renkli Çerçeve": options.colorFrame[selected.colorFrame],
     });
   };
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Underline,
+      TextAlign.configure({ types: ['heading', 'paragraph'] }),
+      Link,
+      Highlight,
+    ],
+    content: description,
+    onUpdate: ({ editor }) => {
+      setDescription(editor.getHTML());
+    },
+    editorProps: {
+      attributes: {
+        class:
+          'custom-tiptap-editor bg-[var(--advert-card-bg)] text-[var(--foreground)] min-h-[120px] rounded-b px-3 py-2 outline-none',
+      },
+    },
+  });
 
   return (
     <div className="text-[var(--foreground)] space-y-6 bg-[var(--advert-list-bg)] p-4">
@@ -298,342 +326,393 @@ const CategoryStep = () => {
 
       {/* Adım 2 */}
       {currentStep === 2 && (
-        <div
-          id="advertCreate"
-          className="space-y-4 md:space-y-6 p-2 md:p-4 rounded-lg"
-        >
-          {/* Select: Kategori */}
-          <div className="flex items-center gap-2">
-            <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-[var(--foreground)] font-semibold">
-              İlan kategori Bilgileri
-            </h2>
-          </div>
-          <div>
-            <select className="w-full p-2 rounded text-[var(--foreground)]">
-              <option value="">Kategori Seçin</option>
-              <option value="1">Knight Online</option>
-            </select>
-          </div>
-
-          {/* Kategori ve Butonlar */}
-          <div className="flex flex-wrap md: flex-nowrap gap-4 items-center text-center">
-            <span
-              onClick={() => setSelected("PUBG Mobile")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "PUBG Mobile" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
-              }`}
-              style={{
-                backgroundColor:
-                  selected === "PUBG Mobile" ? "" : "var(--advert-list-bg)",
-              }}
-            >
-              <GiCrossedSwords className="w-8 h-8" />
-              <span>PUBG Mobile</span>
-            </span>
-
-            <span
-              onClick={() => setSelected("Hesap Satış")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "Hesap Satış" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
-              }`}
-              style={{
-                backgroundColor:
-                  selected === "Hesap Satış" ? "" : "var(--advert-list-bg)",
-              }}
-            >
-              <GiCheckedShield className="w-8 h-8" />
-              <span>Hesap Satış</span>
-            </span>
-
-            <span
-              onClick={() => setSelected("Lorem Ipsum 1")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "Lorem Ipsum 1" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
-              }`}
-              style={{
-                backgroundColor:
-                  selected === "Lorem Ipsum 1" ? "" : "var(--advert-list-bg)",
-              }}
-            >
-              <GiLegArmor className="w-8 h-8" />
-              <span>Lorem Ipsum</span>
-            </span>
-
-            <span
-              onClick={() => setSelected("Lorem Ipsum 2")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "Lorem Ipsum 2" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
-              }`}
-              style={{
-                backgroundColor:
-                  selected === "Lorem Ipsum 2" ? "" : "var(--advert-list-bg)",
-              }}
-            >
-              <LiaCoinsSolid className="w-8 h-8" />
-              <span>Lorem Ipsum</span>
-            </span>
-          </div>
-
-          <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
-            <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </span>
-          </div>
-
-          {/* İlan Özellikleri Başlığı */}
-          <div className="flex items-center gap-2">
-            <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-[var(--foreground)] font-semibold">İlan Özellikleri</h2>
-          </div>
-
-          {/* 8 Select (4-4) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, index) => (
-              <div key={index}>
-                <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
-                <select className="w-full p-2 rounded text-[var(--foreground)]">
-                  <option>Seçiniz</option>
-                  <option>Option 1</option>
-                </select>
-              </div>
-            ))}
-          </div>
-
-          {/* Başlık */}
-          <div className="flex items-center gap-2">
-            <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-[var(--foreground)] font-semibold">
-              İlan Başlık ve Açıklama Bilgileri
-            </h2>
-          </div>
-
-          <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
-            <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </span>
-          </div>
-
-          {/* Kategori ve Butonlar */}
-          <div className="flex flex-wrap md: flex-nowrap gap-4 items-center text-center">
-            <span
-              onClick={() => setSelectedLanguage("language1")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selectedLanguage === "language1"
-                  ? "bg-[var(--success)] text-white"
-                  : ""
-              }`}
-              style={{
-                backgroundColor:
-                  selectedLanguage === "language1"
-                    ? ""
-                    : "var(--advert-list-bg)",
-              }}
-            >
-              <span>Türkçe</span>
-            </span>
-
-            <span
-              onClick={() => setSelectedLanguage("language2")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selectedLanguage === "language2"
-                  ? "bg-[var(--success)] text-white"
-                  : ""
-              }`}
-              style={{
-                backgroundColor:
-                  selectedLanguage === "language2"
-                    ? ""
-                    : "var(--advert-list-bg)",
-              }}
-            >
-              <span>Türkçe</span>
-            </span>
-
-            <span
-              onClick={() => setSelectedLanguage("language3")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selectedLanguage === "language3"
-                  ? "bg-[var(--success)] text-white"
-                  : ""
-              }`}
-              style={{
-                backgroundColor:
-                  selectedLanguage === "language3"
-                    ? ""
-                    : "var(--advert-list-bg)",
-              }}
-            >
-              <span>Türkçe</span>
-            </span>
-
-            <span
-              onClick={() => setSelectedLanguage("language4")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selectedLanguage === "language4"
-                  ? "bg-[var(--success)] text-white"
-                  : ""
-              }`}
-              style={{
-                backgroundColor:
-                  selectedLanguage === "language4"
-                    ? ""
-                    : "var(--advert-list-bg)",
-              }}
-            >
-              <span>Türkçe</span>
-            </span>
-
-            <span
-              onClick={() => setSelectedLanguage("language5")}
-              className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selectedLanguage === "language5"
-                  ? "bg-[var(--success)] text-white"
-                  : ""
-              }`}
-              style={{
-                backgroundColor:
-                  selectedLanguage === "language5"
-                    ? ""
-                    : "var(--advert-list-bg)",
-              }}
-            >
-              <span>Türkçe</span>
-            </span>
-          </div>
-
-          {/* Başlık inputu */}
-          <div>
-            <label className="text-[var(--foreground)] block mb-1">İlan Başlığı</label>
-            <input type="text" className="w-full p-2 rounded text-[var(--foreground)]" />
-          </div>
-
-          {/* Açıklamalar */}
-          <div>
-            <label className="text-[var(--foreground)] block mb-1">İlan Açıklaması</label>
-            <textarea
-              rows="4"
-              className="w-full p-2 rounded text-[var(--foreground)] resize-none !h-[100px]"
-            ></textarea>
-          </div>
-
-          <div>
-            {/* Stok Bilgileri Başlığı */}
-            <div className="flex items-center gap-2 mb-2">
-              <FaRegCircleDot className="w-6 h-6 text-[var(--success)]" />
-              <h2 className="text-[var(--foreground)] font-semibold">Stok Bilgileri</h2>
+        <>
+          <div
+            id="advertCreate"
+            className="space-y-4 md:space-y-6 p-2 md:p-4 rounded-lg"
+          >
+            {/* Select: Kategori */}
+            <div className="flex items-center gap-2">
+              <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
+              <h2 className="text-[var(--foreground)] font-semibold">
+                İlan kategori Bilgileri
+              </h2>
             </div>
-            <textarea
-              rows="3"
-              className="w-full p-2 rounded text-[var(--foreground)] resize-none !h-[100px]"
-            ></textarea>
-          </div>
-
-          {/* Teslimat Süresi ve Fiyat Bilgileri */}
-          <div className="flex items-center gap-2 mb-2">
-            <IoTimeOutline className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-[var(--foreground)] font-semibold">
-              Teslimat Süresi ve Fiyat Bilgileri
-            </h2>
-          </div>
-
-          {/* 1 Select + 3 Input / Responsive */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label className="text-[var(--foreground)] block mb-1">Teslim Süresi</label>
-              <select className="w-full p-2 rounded">
-                <option>0000dk</option>
-                <option>0010dk</option>
+              <select className="w-full p-2 rounded text-[var(--foreground)]">
+                <option value="">Kategori Seçin</option>
+                <option value="1">Knight Online</option>
               </select>
             </div>
-            <div>
-              <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
-              <input type="text" className="w-full p-2 rounded" />
-            </div>
-            <div>
-              <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
-              <input type="text" className="w-full p-2 rounded" />
-            </div>
-            <div>
-              <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
-              <input type="text" className="w-full p-2 rounded" />
-            </div>
-          </div>
 
-          {/* Kategori Resimleri Başlık */}
-          <div className="mb-4">
+            {/* Kategori ve Butonlar */}
+            <div className="flex flex-wrap md: flex-nowrap gap-4 items-center text-center">
+              <span
+                onClick={() => setSelected("PUBG Mobile")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selected === "PUBG Mobile" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
+                }`}
+                style={{
+                  backgroundColor:
+                    selected === "PUBG Mobile" ? "" : "var(--advert-list-bg)",
+                }}
+              >
+                <GiCrossedSwords className="w-8 h-8" />
+                <span>PUBG Mobile</span>
+              </span>
+
+              <span
+                onClick={() => setSelected("Hesap Satış")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selected === "Hesap Satış" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
+                }`}
+                style={{
+                  backgroundColor:
+                    selected === "Hesap Satış" ? "" : "var(--advert-list-bg)",
+                }}
+              >
+                <GiCheckedShield className="w-8 h-8" />
+                <span>Hesap Satış</span>
+              </span>
+
+              <span
+                onClick={() => setSelected("Lorem Ipsum 1")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selected === "Lorem Ipsum 1" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
+                }`}
+                style={{
+                  backgroundColor:
+                    selected === "Lorem Ipsum 1" ? "" : "var(--advert-list-bg)",
+                }}
+              >
+                <GiLegArmor className="w-8 h-8" />
+                <span>Lorem Ipsum</span>
+              </span>
+
+              <span
+                onClick={() => setSelected("Lorem Ipsum 2")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selected === "Lorem Ipsum 2" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
+                }`}
+                style={{
+                  backgroundColor:
+                    selected === "Lorem Ipsum 2" ? "" : "var(--advert-list-bg)",
+                }}
+              >
+                <LiaCoinsSolid className="w-8 h-8" />
+                <span>Lorem Ipsum</span>
+              </span>
+            </div>
+
+            <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
+              <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
+              <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </span>
+            </div>
+
+            {/* İlan Özellikleri Başlığı */}
+            <div className="flex items-center gap-2">
+              <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
+              <h2 className="text-[var(--foreground)] font-semibold">İlan Özellikleri</h2>
+            </div>
+
+            {/* 8 Select (4-4) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <div key={index}>
+                  <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
+                  <select className="w-full p-2 rounded text-[var(--foreground)]">
+                    <option>Seçiniz</option>
+                    <option>Option 1</option>
+                  </select>
+                </div>
+              ))}
+            </div>
+
+            {/* Başlık */}
+            <div className="flex items-center gap-2">
+              <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
+              <h2 className="text-[var(--foreground)] font-semibold">
+                İlan Başlık ve Açıklama Bilgileri
+              </h2>
+            </div>
+
+            <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
+              <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
+              <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </span>
+            </div>
+
+            {/* Kategori ve Butonlar */}
+            <div className="flex flex-wrap md: flex-nowrap gap-4 items-center text-center">
+              <span
+                onClick={() => setSelectedLanguage("language1")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selectedLanguage === "language1"
+                    ? "bg-[var(--success)] text-white"
+                    : ""
+                }`}
+                style={{
+                  backgroundColor:
+                    selectedLanguage === "language1"
+                      ? ""
+                      : "var(--advert-list-bg)",
+                }}
+              >
+                <span>Türkçe</span>
+              </span>
+
+              <span
+                onClick={() => setSelectedLanguage("language2")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selectedLanguage === "language2"
+                    ? "bg-[var(--success)] text-white"
+                    : ""
+                }`}
+                style={{
+                  backgroundColor:
+                    selectedLanguage === "language2"
+                      ? ""
+                      : "var(--advert-list-bg)",
+                }}
+              >
+                <span>Türkçe</span>
+              </span>
+
+              <span
+                onClick={() => setSelectedLanguage("language3")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selectedLanguage === "language3"
+                    ? "bg-[var(--success)] text-white"
+                    : ""
+                }`}
+                style={{
+                  backgroundColor:
+                    selectedLanguage === "language3"
+                      ? ""
+                      : "var(--advert-list-bg)",
+                }}
+              >
+                <span>Türkçe</span>
+              </span>
+
+              <span
+                onClick={() => setSelectedLanguage("language4")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selectedLanguage === "language4"
+                    ? "bg-[var(--success)] text-white"
+                    : ""
+                }`}
+                style={{
+                  backgroundColor:
+                    selectedLanguage === "language4"
+                      ? ""
+                      : "var(--advert-list-bg)",
+                }}
+              >
+                <span>Türkçe</span>
+              </span>
+
+              <span
+                onClick={() => setSelectedLanguage("language5")}
+                className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
+                  selectedLanguage === "language5"
+                    ? "bg-[var(--success)] text-white"
+                    : ""
+                }`}
+                style={{
+                  backgroundColor:
+                    selectedLanguage === "language5"
+                      ? ""
+                      : "var(--advert-list-bg)",
+                }}
+              >
+                <span>Türkçe</span>
+              </span>
+            </div>
+
+            {/* Başlık inputu */}
+            <div>
+              <label className="text-[var(--foreground)] block mb-1">İlan Başlığı</label>
+              <input type="text" className="w-full p-2 rounded text-[var(--foreground)]" />
+            </div>
+
+            {/* Açıklamalar */}
+            <div>
+              <label className="text-[var(--foreground)] block mb-1">İlan Açıklaması <span className="text-red-500">*</span></label>
+              <div className="custom-tiptap-wrapper border-[1.5px] border-[var(--success)] rounded-md bg-[var(--advert-card-bg)]">
+                <div className="flex flex-wrap gap-2 p-2 bg-[var(--success)] rounded-t-md">
+                  <button type="button" onClick={() => editor.chain().focus().toggleBold().run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('bold') ? 'bg-white text-[var(--success)] font-bold' : 'text-white hover:bg-white/20'}`}>B</button>
+                  <button type="button" onClick={() => editor.chain().focus().toggleItalic().run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('italic') ? 'bg-white text-[var(--success)] italic' : 'text-white hover:bg-white/20'}`}>I</button>
+                  <button type="button" onClick={() => editor.chain().focus().toggleUnderline().run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('underline') ? 'bg-white text-[var(--success)] underline' : 'text-white hover:bg-white/20'}`}>U</button>
+                  <button type="button" onClick={() => editor.chain().focus().toggleStrike().run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('strike') ? 'bg-white text-[var(--success)] line-through' : 'text-white hover:bg-white/20'}`}>S</button>
+                  
+                  <div className="w-px h-6 bg-white/30 mx-1"></div>
+                  
+                  <button type="button" onClick={() => editor.chain().focus().toggleBulletList().run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('bulletList') ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>• List</button>
+                  <button type="button" onClick={() => editor.chain().focus().toggleOrderedList().run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('orderedList') ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>1. List</button>
+                  
+                  <div className="w-px h-6 bg-white/30 mx-1"></div>
+                  
+                  <button type="button" onClick={() => editor.chain().focus().setTextAlign('left').run()} className={`px-2 py-1 rounded text-sm ${editor.isActive({ textAlign: 'left' }) ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>Sol</button>
+                  <button type="button" onClick={() => editor.chain().focus().setTextAlign('center').run()} className={`px-2 py-1 rounded text-sm ${editor.isActive({ textAlign: 'center' }) ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>Orta</button>
+                  <button type="button" onClick={() => editor.chain().focus().setTextAlign('right').run()} className={`px-2 py-1 rounded text-sm ${editor.isActive({ textAlign: 'right' }) ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>Sağ</button>
+                  
+                  <div className="w-px h-6 bg-white/30 mx-1"></div>
+                  
+                  <button type="button" onClick={() => editor.chain().focus().toggleHighlight().run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('highlight') ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>Vurgu</button>
+                  <button type="button" onClick={() => {
+                    const url = prompt('Bağlantı (URL) girin:');
+                    if (url) editor.chain().focus().setLink({ href: url }).run();
+                  }} className="px-2 py-1 rounded text-sm text-white hover:bg-white/20">Link</button>
+                  <button type="button" onClick={() => editor.chain().focus().unsetLink().run()} className="px-2 py-1 rounded text-sm text-white hover:bg-white/20">Linki Kaldır</button>
+                  
+                  <div className="w-px h-6 bg-white/30 mx-1"></div>
+                  
+                  <button type="button" onClick={() => editor.chain().focus().setHeading({ level: 1 }).run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('heading', { level: 1 }) ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>H1</button>
+                  <button type="button" onClick={() => editor.chain().focus().setHeading({ level: 2 }).run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('heading', { level: 2 }) ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>H2</button>
+                  <button type="button" onClick={() => editor.chain().focus().setHeading({ level: 3 }).run()} className={`px-2 py-1 rounded text-sm ${editor.isActive('heading', { level: 3 }) ? 'bg-white text-[var(--success)]' : 'text-white hover:bg-white/20'}`}>H3</button>
+                  
+                  <div className="w-px h-6 bg-white/30 mx-1"></div>
+                  
+                  <button type="button" onClick={() => editor.chain().focus().unsetAllMarks().run()} className="px-2 py-1 rounded text-sm text-white hover:bg-white/20">Temizle</button>
+                </div>
+                <EditorContent editor={editor} />
+              </div>
+            </div>
+
+            <div>
+              {/* Stok Bilgileri Başlığı */}
+              <div className="flex items-center gap-2 mb-2">
+                <FaRegCircleDot className="w-6 h-6 text-[var(--success)]" />
+                <h2 className="text-[var(--foreground)] font-semibold">Stok Bilgileri</h2>
+              </div>
+              <textarea
+                rows="3"
+                className="w-full p-2 rounded text-[var(--foreground)] resize-none !h-[100px]"
+              ></textarea>
+            </div>
+
+            {/* Teslimat Süresi ve Fiyat Bilgileri */}
+            <div className="flex items-center gap-2 mb-2">
+              <IoTimeOutline className="w-6 h-6 text-[var(--success)]" />
+              <h2 className="text-[var(--foreground)] font-semibold">
+                Teslimat Süresi ve Fiyat Bilgileri
+              </h2>
+            </div>
+
+            {/* 1 Select + 3 Input / Responsive */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <label className="text-[var(--foreground)] block mb-1">Teslim Süresi</label>
+                <select className="w-full p-2 rounded">
+                  <option>0000dk</option>
+                  <option>0010dk</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
+                <input type="text" className="w-full p-2 rounded" />
+              </div>
+              <div>
+                <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
+                <input type="text" className="w-full p-2 rounded" />
+              </div>
+              <div>
+                <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
+                <input type="text" className="w-full p-2 rounded" />
+              </div>
+            </div>
+
+            {/* Kategori Resimleri Başlık */}
+            <div className="mb-4">
+              <div className="flex items-center gap-2 mb-2">
+                <FaRegImages className="w-6 h-6 text-[var(--success)]" />
+                <h3 className="font-medium text-sm">Kategori Resimleri</h3>
+              </div>
+
+              {/* Kategori Resimleri */}
+              <div className="flex flex-wrap gap-4">
+                {/* Görsel Kutusu 1 */}
+                <label className="relative cursor-pointer">
+                  <input
+                    type="radio"
+                    name="kategori"
+                    className="absolute top-2 left-2 z-10 !w-4 !h-4"
+                  />
+                  <img
+                    src="https:/placehold.co/500"
+                    alt="Kategori 1"
+                    className="w-32 h-32 rounded object-cover"
+                  />
+                </label>
+
+                {/* Görsel Kutusu 2 */}
+                <label className="relative cursor-pointer">
+                  <input
+                    type="radio"
+                    name="kategori"
+                    className="absolute top-2 left-2 z-10 !w-4 !h-4"
+                  />
+                  <img
+                    src="https:/placehold.co/500"
+                    alt="Kategori 2"
+                    className="w-32 h-32 rounded object-cover"
+                  />
+                </label>
+              </div>
+            </div>
+
+            {/* İlan Resmi Yükle Başlık */}
             <div className="flex items-center gap-2 mb-2">
               <FaRegImages className="w-6 h-6 text-[var(--success)]" />
-              <h3 className="font-medium text-sm">Kategori Resimleri</h3>
+              <h3 className="font-medium text-sm">İlan Resmi Yükle</h3>
             </div>
 
-            {/* Kategori Resimleri */}
-            <div className="flex flex-wrap gap-4">
-              {/* Görsel Kutusu 1 */}
-              <label className="relative cursor-pointer">
-                <input
-                  type="radio"
-                  name="kategori"
-                  className="absolute top-2 left-2 z-10 !w-4 !h-4"
-                />
-                <img
-                  src="https:/placehold.co/500"
-                  alt="Kategori 1"
-                  className="w-32 h-32 rounded object-cover"
-                />
-              </label>
+            <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
+              <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
+              <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </span>
+            </div>
 
-              {/* Görsel Kutusu 2 */}
-              <label className="relative cursor-pointer">
-                <input
-                  type="radio"
-                  name="kategori"
-                  className="absolute top-2 left-2 z-10 !w-4 !h-4"
-                />
-                <img
-                  src="https:/placehold.co/500"
-                  alt="Kategori 2"
-                  className="w-32 h-32 rounded object-cover"
-                />
-              </label>
+            {/* Yüklenen Görsel Placeholder */}
+            <label className="flex items-center gap-2 text-sm rounded-md px-3 py-2 cursor-pointer bg-[var(--input-bg)]">
+              <FaRegImages className="w-4 h-4 text-[var(--success)]" />
+              <span>Görsel yükle</span>
+              <input type="file" accept="image/*" className="hidden mt-2" />
+            </label>
+
+            <div className="w-full flex justify-end">
+              <button
+                onClick={() => setStep(3)}
+                className="flex items-center gap-2 bg-[var(--success)] text-white text-sm px-4 py-2 rounded-md hover:opacity-80 transition"
+              >
+                <FaPen className="w-3.5 h-3.5" />
+                <span>Kaydet</span>
+              </button>
             </div>
           </div>
-
-          {/* İlan Resmi Yükle Başlık */}
-          <div className="flex items-center gap-2 mb-2">
-            <FaRegImages className="w-6 h-6 text-[var(--success)]" />
-            <h3 className="font-medium text-sm">İlan Resmi Yükle</h3>
+          <div className="mt-6">
+            <ul className="bg-[var(--advert-card-bg)] text-[var(--foreground)] rounded-lg p-4 text-sm space-y-1 border border-[var(--border-color)]">
+              <li>• Geçerli komisyon oranı: <span className="font-semibold">2.00%</span></li>
+              <li>• Komisyon oranı ilan kategorisi ve satıcının seviyesine göre değişiklik gösterebilir.</li>
+              <li>• Satıcı, ilandaki ürünün durumunda herhangi bir değişiklik olduğunda, güncelleme veya yayından kaldırmakla yükümlüdür.</li>
+              <li>• İlanlar kişisel bilgi içeremez (telefon, mail, sosyal medya hesabı, discord vb.), kişisel bilgi içeren ilanlar yayınlanmaz.</li>
+              <li>
+                <span className="text-green-400">
+                  • 'İlan Yönetimi &gt; Kuponlarım' bölümünden müşterilerinizin ilanlarınızda kullanabileceği
+                  <span className="font-bold"> 'İNDİRİM KUPONU'</span> oluşturabilirsiniz.
+                </span>
+              </li>
+            </ul>
           </div>
-
-          <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
-            <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </span>
-          </div>
-
-          {/* Yüklenen Görsel Placeholder */}
-          <label className="flex items-center gap-2 text-sm rounded-md px-3 py-2 cursor-pointer bg-[var(--input-bg)]">
-            <FaRegImages className="w-4 h-4 text-[var(--success)]" />
-            <span>Görsel yükle</span>
-            <input type="file" accept="image/*" className="hidden mt-2" />
-          </label>
-
-          <div className="w-full flex justify-end">
-            <button
-              onClick={() => setStep(3)}
-              className="flex items-center gap-2 bg-[var(--success)] text-white text-sm px-4 py-2 rounded-md hover:opacity-80 transition"
-            >
-              <FaPen className="w-3.5 h-3.5" />
-              <span>Kaydet</span>
-            </button>
-          </div>
-        </div>
+        </>
       )}
 
       {/* Adım 3 */}
@@ -898,9 +977,12 @@ const CategoryStep = () => {
 
       {/* Adım 4 */}
       {currentStep === 4 && (
-        <div className="bg-[var(--advert-card-bg)] text-[var(--foreground)] p-6 rounded">
-          <h2 className="text-xl font-bold mb-4">4. Aşama</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div className="bg-[#23413b] border border-[#3ecf4a] p-8 rounded text-center flex flex-col items-center justify-center" style={{ minHeight: 120 }}>
+          <h2 className="text-2xl font-bold text-white mb-2">Tebrikler!</h2>
+          <p className="text-white mb-1">İlanınız oluşturuldu ve otomatik olarak onaylandı.</p>
+          <Link href="/profile?tab=my-adverts" className="text-white underline hover:text-green-300 mt-2 text-base" style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+            İlanınıza gitmek için tıklayın
+          </Link>
         </div>
       )}
     </div>
@@ -908,3 +990,37 @@ const CategoryStep = () => {
 };
 
 export default CategoryStep;
+
+<style jsx global>{`
+  .custom-quill .ql-toolbar {
+    background: #ff8800;
+    border-radius: 6px 6px 0 0;
+    border: none;
+    color: #fff;
+  }
+  .custom-quill .ql-toolbar .ql-stroke {
+    stroke: #fff;
+  }
+  .custom-quill .ql-toolbar .ql-picker {
+    color: #fff;
+  }
+  .custom-quill .ql-container {
+    background: var(--advert-card-bg);
+    color: var(--foreground);
+    border-radius: 0 0 6px 6px;
+    border: 1.5px solid #ff8800;
+    min-height: 160px;
+  }
+  .custom-quill .ql-editor {
+    background: var(--advert-card-bg);
+    color: var(--foreground);
+    min-height: 120px;
+  }
+  .custom-quill .ql-container.ql-snow {
+    border-top: none;
+  }
+  .custom-quill .ql-toolbar.ql-snow {
+    border: 1.5px solid #ff8800;
+    border-bottom: none;
+  }
+`}</style>

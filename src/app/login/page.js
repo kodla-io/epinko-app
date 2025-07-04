@@ -1,3 +1,6 @@
+
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
@@ -44,7 +47,13 @@ const Login = () => {
               placeholder="Şifre"
               className="w-full px-4 py-6 rounded-lg border-none focus:outline-none"
             />
-            <div className="text-right text-sm text-blue-400 mt-1 hover:underline cursor-pointer mt-2">
+            <div className="text-right text-sm text-blue-400 mt-1 hover:underline cursor-pointer mt-2"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('openForgotPasswordModal'));
+                }
+              }}
+            >
               Şifremi Unuttum
             </div>
           </div>

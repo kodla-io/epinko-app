@@ -9,7 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@lordicon/react": "^1.11.0",
+    "@mantine/core": "^5.10.5",
+    "@mantine/hooks": "^5.10.5",
+    "@tiptap/extension-highlight": "^2.24.2",
+    "@tiptap/extension-link": "^2.24.2",
+    "@tiptap/extension-text-align": "^2.24.2",
+    "@tiptap/extension-underline": "^2.24.2",
+    "@tiptap/react": "^2.24.2",
+    "@tiptap/starter-kit": "^2.24.2",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.5.2",
     "embla-carousel-reactive-utils": "^8.6.0",

@@ -33,11 +33,11 @@ const DealOfTheDayProducts = ({ items }) => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative p-4">
                   <Link href="/advert-detail">
-                    <img
-                      src="https://placehold.co/300x400"
-                      alt="Product"
+                  <img
+                    src="https://placehold.co/300x400"
+                    alt="Product"
                       className="w-full h-full object-cover rounded-xl cursor-pointer"
-                    />
+                  />
                   </Link>
                   <div
                     className="absolute top-0 -translate-x-1/2 left-1/2 flex items-center min-w-[120px] md:min-w-[150px] justify-center rounded-b-[30px] p-2"

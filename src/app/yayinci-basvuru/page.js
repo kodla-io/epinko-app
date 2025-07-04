@@ -76,12 +76,12 @@ const YayinciBasvuru = () => {
           />
         </div>
 
-        <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 rounded-xl shadow-md mx-auto text-white">
+        <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 rounded-xl shadow-md mx-auto">
           <h2 className="text-2xl font-bold mb-4 text-center">Başvuru Kuralları</h2>
           <ul className="space-y-4">
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Eget dolor morbi non arcu risus. Viverra ipsum nunc aliquet
                 bibendum enim facilisis gravida neque convallis. Fermentum et
                 sollicitudin ac orci.
@@ -89,7 +89,7 @@ const YayinciBasvuru = () => {
             </li>
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Cursus mattis molestie a iaculis. Amet commodo nulla facilisi
                 nullam vehicula ipsum a arcu cursus. Vitae turpis massa sed
                 elementum tempus egestas sed.
@@ -97,7 +97,7 @@ const YayinciBasvuru = () => {
             </li>
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Dictumst quisque sagittis purus sit amet volutpat consequat
                 mauris nunc. Iaculis luctus accumsan tortor posuere ac. Id diam
                 maecenas ultricies mi eget mauris.
@@ -105,7 +105,7 @@ const YayinciBasvuru = () => {
             </li>
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Nisi vitae suscipit tellus mauris a diam. Tristique et egestas
                 quis ipsum suspendisse. Odio ut sem nulla pharetra diam sit amet
                 nisl.

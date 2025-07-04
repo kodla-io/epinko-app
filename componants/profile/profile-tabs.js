@@ -10,10 +10,11 @@ import {
 import { IoRocket } from "react-icons/io5";
 import Link from "next/link";
 import { FaCircle, FaCamera, FaWallet } from "react-icons/fa";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import MyAccount from "./my-account/tab";
 import Security from "./my-account/security/form";
-import Billing from "./billing/form";
+import Giveaways from "./giveaways/form";
 import Messages from "./messages/tab";
 import MyAdvertsTable from "./my-adverts/table";
 import WalletHistory from "./wallet-history/table";
@@ -63,11 +64,16 @@ import order from "../../src/assets/animations/Order.json";
 import addBalance from "../../src/assets/animations/balanceHistory.json";
 import checkCash from "../../src/assets/animations/CheckCash.json";
 import stream from "../../src/assets/animations/stream.json";
+import giveaway from "../../src/assets/animations/giveaway.json";
 // import advertOrders from "../../src/assets/animations/Adverts.json";
 // import incomingOrders from "../../src/assets/animations/Adverts.json";
 
 const ProfileTabs = () => {
-  const [activeTab, setActiveTab] = useState("personal-details");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  // İlk açılışta URL'den tab parametresini oku
+  const initialTab = searchParams.get("tab") || "personal-details";
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [openDropdown, setOpenDropdown] = useState(null);
 
   // player ref'leri array olarak tutuyoruz
@@ -95,6 +101,28 @@ const ProfileTabs = () => {
   }, []);
 
   const dropdownRef = useRef(null);
+
+  // Tab değiştiğinde URL'yi güncelle
+  const handleTabChange = (tabKey) => {
+    let realTabKey = tabKey;
+    if (tabKey === "my-account") {
+      realTabKey = "personal-details";
+    }
+    setActiveTab(realTabKey);
+    setOpenDropdown(null);
+    const params = new URLSearchParams(window.location.search);
+    params.set("tab", realTabKey);
+    router.push(`/profile?${params.toString()}`);
+  };
+
+  // Eğer kullanıcı URL'den tab parametresini değiştirirse, activeTab'i güncelle
+  useEffect(() => {
+    const urlTab = searchParams.get("tab");
+    if (urlTab && urlTab !== activeTab) {
+      setActiveTab(urlTab);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   return (
     <div>
@@ -185,6 +213,11 @@ const ProfileTabs = () => {
                     label: "Şİfre Değiştir",
                   },
                   {
+                    key: "giveaways",
+                    icon: giveaway,
+                    label: "Çekiliş Yönetimi",
+                  },
+                  {
                     key: "top-up-balance",
                     icon: addBalance,
                     label: "Bakiye Yükle",
@@ -240,7 +273,7 @@ const ProfileTabs = () => {
                             openDropdown === item.key ? null : item.key
                           );
                         } else {
-                          setActiveTab(item.key);
+                          handleTabChange(item.key);
                         }
                       }}
                       className={`relative flex items-center justify-between gap-2 cursor-pointer p-2 pl-3 rounded transition-all group ${
@@ -292,8 +325,8 @@ const ProfileTabs = () => {
                             <li
                               key={sub.key}
                               onClick={() => {
-                                setActiveTab(sub.key);
-                                setOpenDropdown(null); // bu satır eklenmeli
+                                handleTabChange(sub.key);
+                                setOpenDropdown(null);
                               }}
                               className={`text-sm cursor-pointer p-1 rounded px-2 transition-all ${
                                 activeTab === sub.key
@@ -312,8 +345,8 @@ const ProfileTabs = () => {
                             <li
                               key={sub.key}
                               onClick={() => {
-                                setActiveTab(sub.key);
-                                setOpenDropdown(null); // bu satır eklenmeli
+                                handleTabChange(sub.key);
+                                setOpenDropdown(null);
                               }}
                               className={`text-sm cursor-pointer p-2 px-4 hover:bg-[var(--advert-list-bg)]/10 transition-all ${
                                 activeTab === sub.key
@@ -407,6 +440,7 @@ const ProfileTabs = () => {
             <ReferenceSystem title={"Referans Sistemi"} />
           )}
           {activeTab === "my-orders" && <MyOrders title={"Siparişlerim"} />}
+          {activeTab === "giveaways" && <Giveaways title={"İlan Yönetimi"} />}
           {activeTab === "top-up-balance" && (
             <TopUpBalance title={"Bakiye Yükle"} />
           )}

@@ -14,7 +14,7 @@ const StreamerDetailTop = () => {
       <div className="text-white min-h-screen p-4">
         <div className="flex justify-between items-center w-full mb-4">
           <div className="flex space-x-4 flex-wrap space-y-2">
-            <Link href="/">
+            <Link href="#">
               <button className="bg-[var(--label4)] hover:bg-[var(--label6)] py-1 px-4 rounded">
                 <span className="flex items-center">
                   <FaTwitch className="mr-2" />
@@ -27,7 +27,7 @@ const StreamerDetailTop = () => {
                 TAKİP ET
               </button>
             </Link>
-            <Link href="/">
+            <Link href="/yayinci-basvuru">
               <button className="bg-[var(--label4)] hover:bg-[var(--label6)] py-1 px-4 rounded">
                 YAYINCI BAŞVURUSU YAP
               </button>
@@ -44,7 +44,7 @@ const StreamerDetailTop = () => {
             />
           </div>
 
-          <div className="flex flex-wrap flex-col justify-between bg-[var(--list-box)] p-6 rounded-lg shadow-md md:mt-0 mt-6 max-w-md w-full md:w-3/8 max-h-[500px] min-h-[500px]">
+          <div className="flex flex-wrap flex-col justify-between bg-[var(--advert-list-bg)] p-6 rounded-lg shadow-md md:mt-0 mt-6 w-full md:w-3/8 max-h-[500px] min-h-[500px]">
             <div className="flex  items-center w-full mb-8">
               <div className="w-full flex space-x-4 justify-between">
                 <Link href="/">
@@ -59,7 +59,7 @@ const StreamerDetailTop = () => {
                 </Link>
               </div>
             </div>
-            <h2 className="text-xl text-center font-semibold mb-4">
+            <h2 className="text-[var(--foreground)] text-xl text-center font-semibold mb-4">
               ozlemyilmaz
             </h2>
             <input
@@ -70,9 +70,9 @@ const StreamerDetailTop = () => {
             <textarea
               placeholder="Mesajınızı Giriniz (En fazla 250 Karakter)"
               maxLength="250"
-              className="w-full mb-4 px-3 py-2 rounded resize-none border border-[var(--label4)]"
+              className="w-full !h-20 mb-4 px-3 py-2 rounded resize-none border border-[var(--label4)]"
             />
-            <h3 className="mb-2">BAĞIŞ MİKTARI</h3>
+            <h3 className="mb-2 text-[var(--foreground)]">BAĞIŞ MİKTARI</h3>
             <div className="flex justify-center space-x-2 mb-4">
               {[10, 15, 20, 30].map((amount) => (
                 <button
@@ -81,7 +81,7 @@ const StreamerDetailTop = () => {
                   className={`py-1 px-4 rounded ${
                     activeAmount === amount
                       ? "bg-[var(--label4)]"
-                      : "border border-[var(--label4)] bg-transparent"
+                      : "border border-[var(--label4)] text-[var(--foreground)] bg-transparent"
                   } hover:bg-[var(--label6)]`}
                 >
                   {amount}

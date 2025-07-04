@@ -159,7 +159,7 @@ const AllStreamersList = () => {
       {/* Üst bar */}
       <div className="w-full flex flex-wrap justify-between items-between gap-2 p-2 rounded-xl">
         {/* Arama */}
-        <div className="flex items-center bg-gradient-to-r from-purple-700 to-indigo-800 rounded-full px-3 py-1 w-full sm:w-auto">
+        <div className="flex items-center bg-gradient-to-r from-[var(--label4)] to-[var(--primary)] rounded-full px-3 py-1 w-full sm:w-auto">
           <FaSearch className="w-4 h-4 text-white mr-2" />
           <input
             type="text"
@@ -174,8 +174,8 @@ const AllStreamersList = () => {
             onClick={() => setActiveTab("populer")}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
               activeTab === "populer"
-                ? "bg-gradient-to-r from-purple-700 to-indigo-800 text-white"
-                : "bg-neutral-900 text-white/80 hover:text-white"
+                ? "bg-gradient-to-r from-[var(--label4)] to-[var(--primary)] text-white"
+                : "bg-[var(--advert-list-bg)] text-[var(--foreground)]"
             }`}
           >
             POPÜLER YAYINCILAR
@@ -184,8 +184,8 @@ const AllStreamersList = () => {
             onClick={() => setActiveTab("yeni")}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
               activeTab === "yeni"
-                ? "bg-gradient-to-r from-purple-700 to-indigo-800 text-white"
-                : "bg-neutral-900 text-white/80 hover:text-white"
+                ? "bg-gradient-to-r from-[var(--label4)] to-[var(--primary)] text-white"
+                : "bg-[var(--advert-list-bg)] text-[var(--foreground)]"
             }`}
           >
             YENİ YAYINCILAR
@@ -193,20 +193,20 @@ const AllStreamersList = () => {
         </div>
 
         {/* Sağdaki Buton */}
-        <Link href="/">
-          <button className="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-purple-700 to-indigo-800 text-white hover:opacity-90 transition">
+        <Link href="/yayinci-basvuru">
+          <button className="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-[var(--label4)] to-[var(--primary)] text-white hover:opacity-90 transition">
             YAYINCI BAŞVURUSU YAP
           </button>
         </Link>
       </div>
 
       {/* Tab İçeriği */}
-      <div className="w-full mt-2 text-white p-4 rounded-xl shadow-lg bg-[var(--list-box)]">
+      <div className="w-full mt-2 text-white p-4 rounded-xl shadow-lg">
         {activeTab === "populer" && (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {popularStreamers.map((card, index) => (
-                <Link key={index} href="/">
+                <Link key={index} href="/streamer-detail">
                   <div
                     style={{ border: "2px solid var(--label4)" }}
                     className="bg-gray-900 rounded-lg overflow-hidden"
@@ -235,14 +235,14 @@ const AllStreamersList = () => {
               ))}
             </div>
             <div className="flex justify-center mt-6">
-              <ul className="flex items-center space-x-1 bg-[#0f0f1a] p-2 rounded-lg">
+              <ul className="flex items-center space-x-1 p-2 rounded-lg">
                 {/* Sol ikon */}
                 <li>
                   <button
                     onClick={() =>
                       handlePageChange(Math.max(1, currentPage - 1))
                     }
-                    className="px-3 py-2 h-[42px] rounded-md bg-gradient-to-r from-purple-800 to-purple-600 text-white hover:opacity-80"
+                    className="px-3 py-2 h-[42px] rounded-md bg-[var(--label4)] text-white hover:opacity-80"
                   >
                     <FaAngleDoubleLeft />
                   </button>
@@ -254,10 +254,10 @@ const AllStreamersList = () => {
                     <li key={page}>
                       <button
                         onClick={() => handlePageChange(page)}
-                        className={`px-3 py-2 rounded-md border border-purple-500 ${
+                        className={`px-3 py-2 rounded-md border border-[var(--label4)] ${
                           page === currentPage
-                            ? "bg-purple-600 text-white"
-                            : "text-white hover:bg-purple-700"
+                            ? "bg-[var(--label4)] text-white"
+                            : "text-[var(--foreground)] hover:bg-[var(--label4)]"
                         }`}
                       >
                         {page}
@@ -272,7 +272,7 @@ const AllStreamersList = () => {
                     onClick={() =>
                       handlePageChange(Math.min(totalPages, currentPage + 1))
                     }
-                    className="px-3 py-2 h-[42px] rounded-md bg-gradient-to-r from-purple-800 to-purple-600 text-white hover:opacity-80"
+                    className="px-3 py-2 h-[42px] rounded-md bg-[var(--label4)] text-white hover:opacity-80"
                   >
                     <FaAngleDoubleRight />
                   </button>
@@ -285,7 +285,7 @@ const AllStreamersList = () => {
           <>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {newStreamers.map((card, index) => (
-                <Link key={index} href="/">
+                <Link key={index} href="/streamer-detail">
                   <div
                     style={{ border: "2px solid var(--label4)" }}
                     className="bg-gray-900 rounded-lg overflow-hidden"
@@ -314,14 +314,14 @@ const AllStreamersList = () => {
               ))}
             </div>
             <div className="flex justify-center mt-6">
-              <ul className="flex items-center space-x-1 bg-[#0f0f1a] p-2 rounded-lg">
+              <ul className="flex items-center space-x-1 p-2 rounded-lg">
                 {/* Sol ikon */}
                 <li>
                   <button
                     onClick={() =>
                       handlePageChange(Math.max(1, currentPage - 1))
                     }
-                    className="px-3 py-2 h-[42px] rounded-md bg-gradient-to-r from-purple-800 to-purple-600 text-white hover:opacity-80"
+                    className="px-3 py-2 h-[42px] rounded-md bg-[var(--label4)] text-white hover:opacity-80"
                   >
                     <FaAngleDoubleLeft />
                   </button>
@@ -333,10 +333,10 @@ const AllStreamersList = () => {
                     <li key={page}>
                       <button
                         onClick={() => handlePageChange(page)}
-                        className={`px-3 py-2 rounded-md border border-purple-500 ${
+                        className={`px-3 py-2 rounded-md border border-[var(--label4)] ${
                           page === currentPage
-                            ? "bg-purple-600 text-white"
-                            : "text-white hover:bg-purple-700"
+                            ? "bg-[var(--label4)] text-white"
+                            : "text-[var(--foreground)] hover:bg-[var(--label4)]"
                         }`}
                       >
                         {page}
@@ -351,7 +351,7 @@ const AllStreamersList = () => {
                     onClick={() =>
                       handlePageChange(Math.min(totalPages, currentPage + 1))
                     }
-                    className="px-3 py-2 h-[42px] rounded-md bg-gradient-to-r from-purple-800 to-purple-600 text-white hover:opacity-80"
+                      className="px-3 py-2 h-[42px] rounded-md bg-[var(--label4)] text-white hover:opacity-80"
                   >
                     <FaAngleDoubleRight />
                   </button>

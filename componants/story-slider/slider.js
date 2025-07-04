@@ -80,7 +80,7 @@ const StorySlider = () => {
             >
               {items.map((src, index) => (
                 <SwiperSlide key={index} className="glow-on-hover-circle">
-                  <Link href="/">
+                  <Link href="/category-detail">
                     <img
                       src={src}
                       alt={`Item ${index + 1}`}
