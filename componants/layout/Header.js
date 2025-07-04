@@ -15,6 +15,8 @@ import { IoLogoTwitch } from "react-icons/io5";
 import { X } from "lucide-react";
 import FloatingSidebar from "./all-pages";
 import MobileNav from "./mobile-nav"
+import Image from "next/image";
+import { FaShoppingCart } from "react-icons/fa";
 
 const items = [
   {
@@ -146,6 +148,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('tr');
 
   const toggleTheme = useTheme();
   const [isDark, setIsDark] = useState(false);
@@ -153,6 +157,18 @@ const Header = () => {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     setIsDark(savedTheme === "dark");
+
+    // Dil dropdown menüsü için click-outside handler
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.language-dropdown')) {
+        setIsLanguageDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   const handleToggle = () => {
@@ -383,6 +399,23 @@ const Header = () => {
     </div>
   );
 
+  const languages = {
+    tr: {
+      name: 'Türkçe',
+      flag: '/media/tr.png'
+    },
+    en: {
+      name: 'English',
+      flag: '/media/en.png'
+    }
+  };
+
+  const handleLanguageChange = (lang) => {
+    setSelectedLanguage(lang);
+    setIsLanguageDropdownOpen(false);
+    // Burada dil değişimi için gerekli işlemleri yapabilirsiniz
+  };
+
   return (
     <>
       <header className="w-full text-white">
@@ -404,7 +437,51 @@ const Header = () => {
               </a>
             </div>
             <div className="flex items-center space-x-2">
-              <span>TR</span>
+              <div className="relative language-dropdown">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
+                  }}
+                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity py-1"
+                >
+                  <div className="w-7 h-5 relative overflow-hidden rounded-sm">
+                    <Image
+                      src={languages[selectedLanguage].flag}
+                      alt={languages[selectedLanguage].name}
+                      fill
+                      className="object-contain"
+                      style={{ backgroundColor: 'transparent' }}
+                    />
+                  </div>
+                  <span className="text-sm">{selectedLanguage.toUpperCase()}</span>
+                </button>
+
+                {isLanguageDropdownOpen && (
+                  <div className="absolute top-full right-0 mt-1 w-32 bg-[var(--background)] border border-[var(--border)] rounded-lg shadow-lg overflow-hidden z-50">
+                    {Object.entries(languages).map(([code, lang]) => (
+                      <button
+                        key={code}
+                        onClick={() => handleLanguageChange(code)}
+                        className={`flex items-center space-x-3 w-full px-3 py-2 hover:bg-[var(--background)] transition-colors ${
+                          selectedLanguage === code ? 'bg-[var(--advert-list-bg)]' : ''
+                        }`}
+                      >
+                        <div className="w-7 h-5 relative overflow-hidden rounded-sm">
+                          <Image
+                            src={lang.flag}
+                            alt={lang.name}
+                            fill
+                            className="object-contain"
+                            style={{ backgroundColor: 'transparent' }}
+                          />
+                        </div>
+                        <span className="text-sm text-[var(--foreground)]">{lang.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -445,6 +522,14 @@ const Header = () => {
 
             {/* Sağ Kısım */}
             <div className="flex items-center space-x-4">
+              {/* Sepet İkonu ve Sayaç */}
+              <div className="relative flex items-center">
+                <FaShoppingCart className="text-2xl text-white" />
+                {/* Sepet sayacı örnek olarak 0, context ile güncellenecek */}
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 font-bold">
+                  0
+                </span>
+              </div>
               <div className="md:block hidden d-l-mode">
                 <div className="middle">
                   <div
@@ -453,10 +538,8 @@ const Header = () => {
                   >
                     <span className="sun"></span>
                     <span className="moon"></span>
-
                     <span className="sun--bubble--left"></span>
                     <span className="sun--bubble--right"></span>
-
                     <span className="moon--bubble--left"></span>
                     <span className="moon--bubble--middle"></span>
                     <span className="moon--bubble--right"></span>
@@ -477,7 +560,6 @@ const Header = () => {
               >
                 Kayıt Ol
               </button>
-              {/* <FaShoppingCart className="text-xl cursor-pointer" /> */}
             </div>
 
             {/* Mobil Menü Butonu */}

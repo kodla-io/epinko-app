@@ -25,6 +25,7 @@ import { FaRegImages } from "react-icons/fa";
 import { FaPen } from "react-icons/fa";
 import { RxStarFilled } from "react-icons/rx";
 import { IoIosAlert } from "react-icons/io";
+import Link from "next/link";
 
 import Table from "../table";
 import AdvertCard from "../../advert/advert-card";
@@ -305,698 +306,269 @@ const MyAdvertsTable = ({ title }) => {
   };
 
   const [chosenDate, setChosenDate] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const AdvertsContent = () => (
-    <div className="space-y-4">
-      <div className="flex flex-col md:flex-row gap-3 mb-5">
-        {/* Search Input */}
-        <div className="flex-3 relative">
+  const AdvertsContent = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const filteredAdverts = AdvertData.filter(advert => advert.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    return (
+      <div className="space-y-4">
+        <div className="flex flex-col md:flex-row gap-3 mb-5">
           <input
             type="text"
             placeholder="İlan ara..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
             className="w-full rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent"
           />
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </div>
         </div>
 
-        {/* İlan Durumu */}
-        <select className="flex-1 rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent">
-          <option value="">Tüm İlanlar</option>
-          <option value="active">Aktif İlanlar</option>
-          <option value="passive">Pasif İlanlar</option>
-        </select>
-
-        {/* FİLTRELE BUTONU */}
-        <button className="flex-1 md:max-w-[150px] py-2 bg-[var(--success)] rounded-md text-white font-semibold gap-2 flex items-center justify-center hover:bg-[var(--primary)] transition">
-          <FaFilter className="w-5 h-5 text-white" />
-          FİLTRELE
-        </button>
-      </div>
-
-      {/* İlan Kartları */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Kart 1 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaMinusCircle size={14} />
-                Pasif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
+        {/* İlan Kartları */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {filteredAdverts.map((advert, index) => (
+            <div key={advert.no + '-' + advert.tarih + '-' + index} className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
+              <div className="relative">
+                <Link href="/advert-detail">
+                  <img
+                    src={advert.resim}
+                    alt="game"
+                    className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover cursor-pointer"
+                  />
+                </Link>
+                <div className="absolute bottom-0 right-0 p-2">
+                  <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
+                    <FaMinusCircle size={14} />
+                    Pasif
+                  </button>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+                  {advert.name}
+                </h3>
+                <div className="flex w-full items-center gap-2">
+                  <div className="space-y-2 w-full">
+                    <div className="w-full space-y-2 mt-2">
+                      <div className="flex gap-2 w-full">
+                        <button
+                          onClick={() => setActiveTab("update")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <FaEdit size={10} />
+                          Güncelle
+                        </button>
+                        <button
+                          onClick={() => setActiveTab("detail")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <FaEdit size={10} />
+                          Detay
+                        </button>
+                      </div>
+                      <div className="flex gap-2 w-full">
+                        <button
+                          onClick={() => setActiveTab("ad")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <RxStarFilled size={10} />
+                          Reklam
+                        </button>
+                        <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
+                          <FaTrash size={10} />
+                          Sil
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
+                </div>
+                <div>
+                  {/* Süre göstergesi */}
+                  <TimerDisplay />
                 </div>
               </div>
             </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
-        </div>
-
-        {/* Kart 2 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaMinusCircle size={14} />
-                Pasif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
-                  </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
-        </div>
-
-        {/* Kart 3 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaCheckCircle size={14} />
-                Aktif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
-                  </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Aktif İlanlar içeriği (sadece aktif kartlar)
-  const ActiveAdvertsContent = () => (
-    <div className="space-y-4">
-      <div className="flex flex-col md:flex-row gap-3 mb-5">
-        {/* Search Input */}
-        <div className="flex-3 relative">
+  const ActiveAdvertsContent = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const filteredAdverts = AdvertData.filter(advert => advert.status === "Onaylandı" && advert.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    return (
+      <div className="space-y-4">
+        <div className="flex flex-col md:flex-row gap-3 mb-5">
           <input
             type="text"
             placeholder="İlan ara..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
             className="w-full rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent"
           />
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </div>
         </div>
 
-        {/* İlan Durumu */}
-        <select className="flex-1 rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent">
-          <option value="">Tüm İlanlar</option>
-          <option value="active">Aktif İlanlar</option>
-          <option value="passive">Pasif İlanlar</option>
-        </select>
+        {/* İlan Kartları */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {filteredAdverts.map((advert, index) => (
+            <div key={advert.no + '-' + advert.tarih + '-' + index} className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
+              <div className="relative">
+                <Link href="/advert-detail">
+                  <img
+                    src={advert.resim}
+                    alt="game"
+                    className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
+                  />
+                </Link>
 
-        {/* FİLTRELE BUTONU */}
-        <button className="flex-1 md:max-w-[150px] py-2 bg-[var(--success)] rounded-md text-white font-semibold gap-2 flex items-center justify-center hover:bg-[var(--primary)] transition">
-          <FaFilter className="w-5 h-5 text-white" />
-          FİLTRELE
-        </button>
-      </div>
-
-      {/* İlan Kartları */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Aktif Kart 1 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaCheckCircle size={14} />
-                Aktif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
+                <div className="absolute bottom-0 right-0 p-2">
+                  <button className="flex-1 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
+                    <FaCheckCircle size={14} />
+                    Aktif
+                  </button>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+                  {advert.name}
+                </h3>
+                <div className="flex w-full items-center gap-2">
+                  <div className="space-y-2 w-full">
+                    <div className="w-full space-y-2 mt-2">
+                      <div className="flex gap-2 w-full">
+                        <button
+                          onClick={() => setActiveTab("update")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <FaEdit size={10} />
+                          Güncelle
+                        </button>
+                        <button
+                          onClick={() => setActiveTab("detail")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <FaEdit size={10} />
+                          Detay
+                        </button>
+                      </div>
+                      <div className="flex gap-2 w-full">
+                        <button
+                          onClick={() => setActiveTab("ad")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <RxStarFilled size={10} />
+                          Reklam
+                        </button>
+                        <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
+                          <FaTrash size={10} />
+                          Sil
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
+                </div>
+                <div>
+                  {/* Süre göstergesi */}
+                  <TimerDisplay />
                 </div>
               </div>
             </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
-        </div>
-
-        {/* Aktif Kart 2 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaCheckCircle size={14} />
-                Aktif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
-                  </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
-        </div>
-
-        {/* Aktif Kart 3 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaCheckCircle size={14} />
-                Aktif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
-                  </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Pasif İlanlar içeriği (sadece pasif kartlar)
-  const PassiveAdvertsContent = () => (
-    <div className="space-y-4">
-      <div className="flex flex-col md:flex-row gap-3 mb-5">
-        {/* Search Input */}
-        <div className="flex-3 relative">
+  const PassiveAdvertsContent = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const filteredAdverts = AdvertData.filter(advert => advert.status === "İptal Edildi" && advert.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    return (
+      <div className="space-y-4">
+        <div className="flex flex-col md:flex-row gap-3 mb-5">
           <input
             type="text"
             placeholder="İlan ara..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
             className="w-full rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent"
           />
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </div>
         </div>
 
-        {/* İlan Durumu */}
-        <select className="flex-1 rounded-md px-4 py-2 text-white outline-none !border !border-[#ffffff33] bg-transparent">
-          <option value="">Tüm İlanlar</option>
-          <option value="active">Aktif İlanlar</option>
-          <option value="passive">Pasif İlanlar</option>
-        </select>
+        {/* İlan Kartları */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {filteredAdverts.map((advert, index) => (
+            <div key={advert.no + '-' + advert.tarih + '-' + index} className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
+              <div className="relative">
+                <Link href="/advert-detail">
+                  <img
+                    src={advert.resim}
+                    alt="game"
+                    className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
+                  />
+                </Link>
 
-        {/* FİLTRELE BUTONU */}
-        <button className="flex-1 md:max-w-[150px] py-2 bg-[var(--success)] rounded-md text-white font-semibold gap-2 flex items-center justify-center hover:bg-[var(--primary)] transition">
-          <FaFilter className="w-5 h-5 text-white" />
-          FİLTRELE
-        </button>
-      </div>
-
-      {/* İlan Kartları */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Pasif Kart 1 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaMinusCircle size={14} />
-                Pasif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
+                <div className="absolute bottom-0 right-0 p-2">
+                  <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
+                    <FaMinusCircle size={14} />
+                    Pasif
+                  </button>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+                  {advert.name}
+                </h3>
+                <div className="flex w-full items-center gap-2">
+                  <div className="space-y-2 w-full">
+                    <div className="w-full space-y-2 mt-2">
+                      <div className="flex gap-2 w-full">
+                        <button
+                          onClick={() => setActiveTab("update")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <FaEdit size={10} />
+                          Güncelle
+                        </button>
+                        <button
+                          onClick={() => setActiveTab("detail")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <FaEdit size={10} />
+                          Detay
+                        </button>
+                      </div>
+                      <div className="flex gap-2 w-full">
+                        <button
+                          onClick={() => setActiveTab("ad")}
+                          className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
+                        >
+                          <RxStarFilled size={10} />
+                          Reklam
+                        </button>
+                        <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
+                          <FaTrash size={10} />
+                          Sil
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
+                </div>
+                <div>
+                  {/* Süre göstergesi */}
+                  <TimerDisplay />
                 </div>
               </div>
             </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
-        </div>
-
-        {/* Pasif Kart 2 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaMinusCircle size={14} />
-                Pasif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
-                  </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
-        </div>
-
-        {/* Pasif Kart 3 */}
-        <div className="bg-[var(--advert-card-bg)] rounded-md overflow-hidden">
-          <div className="relative">
-            <img
-              src="https://placehold.co/300x300"
-              alt="game"
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] object-cover"
-            />
-            <div className="absolute bottom-0 right-0 p-2">
-              <button className="flex-1 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 flex items-center justify-center gap-2">
-                <FaMinusCircle size={14} />
-                Pasif
-              </button>
-            </div>
-          </div>
-          <div className="p-4">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              League of Legends Riot Points 5800 RP
-            </h3>
-            <div className="flex w-full items-center gap-2">
-              <div className="space-y-2 w-full">
-                <div className="w-full space-y-2 mt-2">
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("update")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--success)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Güncelle
-                    </button>
-                    <button
-                      onClick={() => setActiveTab("detail")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--primary)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <FaEdit size={10} />
-                      Detay
-                    </button>
-                  </div>
-                  <div className="flex gap-2 w-full">
-                    <button
-                      onClick={() => setActiveTab("ad")}
-                      className="w-1/2 flex items-center justify-center gap-2 bg-[var(--label9)] text-white px-2 py-1 rounded hover:opacity-80 text-xs"
-                    >
-                      <RxStarFilled size={10} />
-                      Reklam
-                    </button>
-                    <button className="w-1/2 flex items-center justify-center gap-2 bg-[var(--alert)] text-white px-2 py-1 rounded hover:opacity-80 text-xs">
-                      <FaTrash size={10} />
-                      Sil
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              {/* Süre göstergesi */}
-              <TimerDisplay />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Satış İlanları içeriği (açılır kapanır sistem)
   const BuyAdvertsContent = () => {
@@ -1010,7 +582,7 @@ const MyAdvertsTable = ({ title }) => {
       <div className="space-y-4">
         {incomingOrders.map((order) => (
           <React.Fragment key={order.id}>
-            <div className="bg-[var(--profile-tab-bg)] border border-white/20 rounded-xl overflow-hidden">
+            <div className="bg-[var(--advert-card-bg)] border border-white/20 rounded-xl overflow-hidden text-[var(--foreground)]">
               {/* Ana kart içeriği */}
               <div className="p-6">
                 <div className="flex items-start gap-4">
@@ -1026,15 +598,15 @@ const MyAdvertsTable = ({ title }) => {
                   {/* Orta kısım - Sipariş bilgileri */}
                   <div className="flex-1">
                     <div className="mb-2">
-                      <span className="text-white font-semibold">
-                        Sipariş No :{" "}
+                      <span className="font-semibold">Sipariş No : </span>
+                      <span className="text-[var(--text-gray)]">
+                        {order.code}
                       </span>
-                      <span className="text-white">{order.code}</span>
                     </div>
 
                     <div className="mb-2">
                       <span className="text-red-500">● </span>
-                      <span className="text-white">
+                      <span className="text-[var(--text-gray)]">
                         Sipariş satıcı tarafından iptal edildi
                       </span>
                     </div>
@@ -1045,13 +617,15 @@ const MyAdvertsTable = ({ title }) => {
                         alt="user"
                         className="w-6 h-6 rounded-full"
                       />
-                      <span className="text-white">fareyiyy</span>
+                      <span>fareyiyy</span>
                     </div>
                   </div>
 
                   {/* Sağ taraf - Tarih ve fiyat */}
                   <div className="text-right">
-                    <div className="text-gray-400 mb-2">02.08.2024</div>
+                    <div className="text-[var(--text-gray)] mb-2">
+                      02.08.2024
+                    </div>
                     <div className="text-orange-400 font-bold text-lg">
                       20.00 TL
                     </div>
@@ -1059,7 +633,7 @@ const MyAdvertsTable = ({ title }) => {
                     {/* Detay butonu */}
                     <div className="mt-2">
                       <button
-                        className="bg-[var(--primary)] text-white px-3 py-1 rounded text-sm hover:opacity-80 transition-opacity"
+                        className="bg-[var(--success)] text-white px-3 py-1 rounded text-sm hover:opacity-80 transition-opacity"
                         onClick={() => toggleExpand(order.id)}
                       >
                         {expandedOrder === order.id ? "Gizle" : "Detay"}
@@ -1083,7 +657,7 @@ const MyAdvertsTable = ({ title }) => {
                 >
                   {/* Sol panel - Oyun bilgileri */}
                   <div className="flex gap-6 pt-4">
-                    <div className="flex-1 p-4 bg-[var(--profile-input)] rounded-md">
+                    <div className="flex-1 p-4 bg-[var(--advert-card-bg)] rounded-md">
                       <div className="mb-4 flex items-start gap-3">
                         <img
                           src="https://placehold.co/150x180"
@@ -1091,22 +665,22 @@ const MyAdvertsTable = ({ title }) => {
                           className="w-18 h-22 object-cover rounded"
                         />
                         <div>
-                          <h3 className="text-white font-semibold mb-2">
+                          <h3 className="font-semibold mb-2">
                             Valorant Random Hesap
                           </h3>
-                          <div className="text-white mb-1">
-                            10-40 SKİNLİ RANDOM HESAP
-                          </div>
+                          <div className="mb-1">10-40 SKİNLİ RANDOM HESAP</div>
                           <div className="text-orange-400 font-bold text-xl">
                             20.00 TL
                           </div>
                         </div>
                       </div>
 
-                      <button className="bg-[var(--primary)] text-white px-4 py-2 rounded flex items-center gap-2 hover:opacity-80">
-                        <CiViewList size={16} className="text-white" />
-                        İlanı Görüntüle
-                      </button>
+                      <Link href={`/advert-detail`}>
+                        <button className="bg-[var(--success)] text-white px-4 py-2 rounded flex items-center gap-2 hover:opacity-80">
+                          <CiViewList size={16} className="text-white" />
+                          İlanı Görüntüle
+                        </button>
+                      </Link>
                     </div>
 
                     {/* Sağ panel - Mesaj geçmişi */}
@@ -1124,10 +698,10 @@ const MyAdvertsTable = ({ title }) => {
                               className="w-10 h-10 rounded relative z-10"
                             />
                             <div>
-                              <div className="text-xs text-gray-400 mb-1">
+                              <div className="text-xs text-[var(--text-gray)] mb-1">
                                 2 Ağustos 2024, 20:15, Cuma
                               </div>
-                              <div className="text-white">
+                              <div className="text-[var(--foreground)]">
                                 Satıcının teslimati bekleniyor
                               </div>
                             </div>
@@ -1141,13 +715,13 @@ const MyAdvertsTable = ({ title }) => {
                               className="w-10 h-10 rounded relative z-10"
                             />
                             <div>
-                              <div className="text-xs text-gray-400 mb-1">
+                              <div className="text-xs text-[var(--text-gray)] mb-1">
                                 2 Ağustos 2024, 20:27, Cuma
                               </div>
-                              <div className="text-white font-semibold">
+                              <div className="font-semibold text-[var(--alert)]">
                                 Sipariş satıcı tarafından iptal edildi
                               </div>
-                              <div className="text-gray-300 text-sm">
+                              <div className="text-[var(--text-gray)] text-sm">
                                 Sipariş satıcı tarafından iptal edildi.
                               </div>
                             </div>
@@ -1167,6 +741,8 @@ const MyAdvertsTable = ({ title }) => {
 
   return (
     <div id="my-adverts" className="container mx-auto">
+      {/* Sekmeler ve içerikleri burada */}
+      {/* Her sekmede filteredAdverts = AdvertData.filter(advert => advert.name.toLowerCase().includes(searchTerm.toLowerCase())) */}
       {activeTab === "list" && (
         <>
           <div className="flex items-center space-x-4 py-2">
@@ -1231,10 +807,10 @@ const MyAdvertsTable = ({ title }) => {
         </>
       )}
 
-      <div className="p-0 md:py-2 min-h-screen text-white">
+      <div className="p-0 md:py-2 min-h-screen text-[var(--foreground)]">
         {activeTab === "detail" && (
           <>
-            <div className="rounded-sm p-2 md:p-4 text-white space-y-4">
+            <div className="rounded-sm p-2 md:p-4 text-[var(--foreground)] space-y-4">
               <div className="flex items-center space-x-4 py-2 flex flex-wrap md:flex-nowrap gap-2">
                 <h2
                   style={{ color: "var(--foreground)" }}
@@ -1245,24 +821,24 @@ const MyAdvertsTable = ({ title }) => {
                 <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500 hidden md:block" />
                 <button
                   onClick={() => setActiveTab("list")}
-                  className={`px-4 py-2 rounded-md bg-[var(--label2)] w-full md:w-auto`}
+                  className={`px-4 py-2 rounded-md bg-[var(--label2)] w-full md:w-auto text-white`}
                 >
                   Geri
                 </button>
               </div>
 
               {/* Üst Bilgi */}
-              <div className="bg-[var(--profile-tab-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
+              <div className="bg-[var(--advert-card-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
                 <img
                   src="https://placehold.co/300x200"
                   alt="ürün"
                   className="rounded-md max-w-[250px] min-h-[20px]"
                 />
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold mb-3">
+                  <h3 className="text-lg text-[var(--foreground)] font-semibold mb-3">
                     Dolor purus non enim praesent elementum.
                   </h3>
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-sm text-[var(--text-gray)] mt-1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Eget velit aliquet sagittis id. Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Eget velit aliquet sagittis id.
@@ -1291,11 +867,11 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "PUBG Mobile"
                       ? "bg-[var(--label6)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
-                      selected === "PUBG Mobile" ? "" : "var(--profile-tab-bg)",
+                      selected === "PUBG Mobile" ? "" : "var(--advert-card-bg)",
                   }}
                 >
                   <GiCrossedSwords className="w-8 h-8" />
@@ -1307,11 +883,11 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Hesap Satış"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
-                      selected === "Hesap Satış" ? "" : "var(--profile-tab-bg)",
+                      selected === "Hesap Satış" ? "" : "var(--advert-card-bg)",
                   }}
                 >
                   <GiCheckedShield className="w-8 h-8" />
@@ -1323,13 +899,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 1"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selected === "Lorem Ipsum 1"
                         ? ""
-                        : "var(--profile-tab-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <GiLegArmor className="w-8 h-8" />
@@ -1341,13 +917,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 2"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selected === "Lorem Ipsum 2"
                         ? ""
-                        : "var(--profile-tab-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <LiaCoinsSolid className="w-8 h-8" />
@@ -1358,7 +934,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Bilgiler */}
               <div className="flex flex-col md:flex-row gap-4 mt-4">
                 {/* Sol kutu (2/3) */}
-                <div className="md:w-2/3 w-full bg-[var(--profile-tab-bg)] p-4 rounded-lg">
+                <div className="md:w-2/3 w-full bg-[var(--advert-card-bg)] p-4 rounded-lg">
                   <div className="flex flex-col md:flex-row">
                     {/* Sol liste */}
                     <ul className="flex-1 space-y-2 px-1 custom-border">
@@ -1416,7 +992,7 @@ const MyAdvertsTable = ({ title }) => {
                 </div>
 
                 {/* Sağ kutu (1/3) */}
-                <div className="md:w-1/3 w-full bg-[var(--profile-tab-bg)] p-4 rounded-lg flex items-center justify-center">
+                <div className="md:w-1/3 w-full bg-[var(--advert-card-bg)] p-4 rounded-lg flex items-center justify-center">
                   <div className="flex flex-col items-center gap-2 text-center">
                     <div className="flex items-center justify-center">
                       <div className="bg-green-800 p-2 rounded-full">
@@ -1487,12 +1063,12 @@ const MyAdvertsTable = ({ title }) => {
               {/* Select: Kategori */}
               <div className="flex items-center gap-2">
                 <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-                <h2 className="text-white font-semibold">
+                <h2 className="text-[var(--foreground)] font-semibold">
                   İlan kategori Bilgileri
                 </h2>
               </div>
               <div>
-                <select className="w-full p-2 rounded text-white">
+                <select className="w-full p-2 rounded !text-[var(--foreground)] bg-[var(--background)]">
                   <option value="">Kategori Seçin</option>
                   <option value="1">Knight Online</option>
                 </select>
@@ -1505,11 +1081,11 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "PUBG Mobile"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
-                      selected === "PUBG Mobile" ? "" : "var(--advert-list-bg)",
+                      selected === "PUBG Mobile" ? "" : "var(--advert-card-bg)",
                   }}
                 >
                   <GiCrossedSwords className="w-8 h-8" />
@@ -1521,11 +1097,11 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Hesap Satış"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
-                      selected === "Hesap Satış" ? "" : "var(--advert-list-bg)",
+                      selected === "Hesap Satış" ? "" : "var(--advert-card-bg)",
                   }}
                 >
                   <GiCheckedShield className="w-8 h-8" />
@@ -1537,13 +1113,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 1"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selected === "Lorem Ipsum 1"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <GiLegArmor className="w-8 h-8" />
@@ -1555,13 +1131,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selected === "Lorem Ipsum 2"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selected === "Lorem Ipsum 2"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <LiaCoinsSolid className="w-8 h-8" />
@@ -1580,15 +1156,19 @@ const MyAdvertsTable = ({ title }) => {
               {/* İlan Özellikleri Başlığı */}
               <div className="flex items-center gap-2">
                 <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-                <h2 className="text-white font-semibold">İlan Özellikleri</h2>
+                <h2 className="text-[var(--foreground)] font-semibold">
+                  İlan Özellikleri
+                </h2>
               </div>
 
               {/* 8 Select (4-4) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {Array.from({ length: 8 }).map((_, index) => (
                   <div key={index}>
-                    <label className="text-white block mb-1">Lorem Ipsum</label>
-                    <select className="w-full p-2 rounded text-white">
+                    <label className="text-[var(--foreground)] block mb-1">
+                      Lorem Ipsum
+                    </label>
+                    <select className="w-full p-2 rounded !text-[var(--foreground)] bg-[var(--background)]">
                       <option>Seçiniz</option>
                       <option>Option 1</option>
                     </select>
@@ -1599,7 +1179,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Başlık */}
               <div className="flex items-center gap-2">
                 <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-                <h2 className="text-white font-semibold">
+                <h2 className="text-[var(--foreground)] font-semibold">
                   İlan Başlık ve Açıklama Bilgileri
                 </h2>
               </div>
@@ -1619,13 +1199,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language1"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selectedLanguage === "language1"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <span>Türkçe</span>
@@ -1636,13 +1216,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language2"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selectedLanguage === "language2"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <span>Türkçe</span>
@@ -1653,13 +1233,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language3"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selectedLanguage === "language3"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <span>Türkçe</span>
@@ -1670,13 +1250,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language4"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selectedLanguage === "language4"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <span>Türkçe</span>
@@ -1687,13 +1267,13 @@ const MyAdvertsTable = ({ title }) => {
                   className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                     selectedLanguage === "language5"
                       ? "bg-[var(--label4)] text-white"
-                      : ""
+                      : "text-[var(--foreground)]"
                   }`}
                   style={{
                     backgroundColor:
                       selectedLanguage === "language5"
                         ? ""
-                        : "var(--advert-list-bg)",
+                        : "var(--advert-card-bg)",
                   }}
                 >
                   <span>Türkçe</span>
@@ -1702,16 +1282,20 @@ const MyAdvertsTable = ({ title }) => {
 
               {/* Başlık inputu */}
               <div>
-                <label className="text-white block mb-1">İlan Başlığı</label>
+                <label className="text-[var(--foreground)] block mb-1">
+                  İlan Başlığı
+                </label>
                 <input type="text" className="w-full p-2 rounded text-white" />
               </div>
 
               {/* Açıklamalar */}
               <div>
-                <label className="text-white block mb-1">İlan Açıklaması</label>
+                <label className="text-[var(--foreground)] block mb-1">
+                  İlan Açıklaması
+                </label>
                 <textarea
                   rows="4"
-                  className="w-full p-2 rounded text-white resize-none"
+                  className="w-full p-2 rounded text-white resize-none !h-[100px]"
                 ></textarea>
               </div>
 
@@ -1719,18 +1303,20 @@ const MyAdvertsTable = ({ title }) => {
                 {/* Stok Bilgileri Başlığı */}
                 <div className="flex items-center gap-2 mb-2">
                   <FaRegCircleDot className="w-6 h-6 text-[var(--success)]" />
-                  <h2 className="text-white font-semibold">Stok Bilgileri</h2>
+                  <h2 className="text-[var(--foreground)] font-semibold">
+                    Stok Bilgileri
+                  </h2>
                 </div>
                 <textarea
                   rows="3"
-                  className="w-full p-2 rounded text-white resize-none"
+                  className="w-full p-2 rounded text-white resize-none !h-[100px]"
                 ></textarea>
               </div>
 
               {/* Teslimat Süresi ve Fiyat Bilgileri */}
               <div className="flex items-center gap-2 mb-2">
                 <IoTimeOutline className="w-6 h-6 text-[var(--success)]" />
-                <h2 className="text-white font-semibold">
+                <h2 className="text-[var(--foreground)] font-semibold">
                   Teslimat Süresi ve Fiyat Bilgileri
                 </h2>
               </div>
@@ -1738,22 +1324,30 @@ const MyAdvertsTable = ({ title }) => {
               {/* 1 Select + 3 Input / Responsive */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div>
-                  <label className="text-white block mb-1">Teslim Süresi</label>
-                  <select className="w-full p-2 rounded">
+                  <label className="text-[var(--foreground)] block mb-1">
+                    Teslim Süresi
+                  </label>
+                  <select className="w-full p-2 rounded !text-[var(--foreground)] bg-[var(--background)]">
                     <option>0000dk</option>
                     <option>0010dk</option>
                   </select>
                 </div>
                 <div>
-                  <label className="text-white block mb-1">Lorem Ipsum</label>
+                  <label className="text-[var(--foreground)] block mb-1">
+                    Lorem Ipsum
+                  </label>
                   <input type="text" className="w-full p-2 rounded" />
                 </div>
                 <div>
-                  <label className="text-white block mb-1">Lorem Ipsum</label>
+                  <label className="text-[var(--foreground)] block mb-1">
+                    Lorem Ipsum
+                  </label>
                   <input type="text" className="w-full p-2 rounded" />
                 </div>
                 <div>
-                  <label className="text-white block mb-1">Lorem Ipsum</label>
+                  <label className="text-[var(--foreground)] block mb-1">
+                    Lorem Ipsum
+                  </label>
                   <input type="text" className="w-full p-2 rounded" />
                 </div>
               </div>
@@ -1762,7 +1356,9 @@ const MyAdvertsTable = ({ title }) => {
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
                   <FaRegImages className="w-6 h-6 text-[var(--success)]" />
-                  <h3 className="font-medium text-sm">Kategori Resimleri</h3>
+                  <h3 className="font-medium text-[var(--foreground)] text-sm">
+                    Kategori Resimleri
+                  </h3>
                 </div>
 
                 {/* Kategori Resimleri */}
@@ -1800,7 +1396,9 @@ const MyAdvertsTable = ({ title }) => {
               {/* İlan Resmi Yükle Başlık */}
               <div className="flex items-center gap-2 mb-2">
                 <FaRegImages className="w-6 h-6 text-[var(--success)]" />
-                <h3 className="font-medium text-sm">İlan Resmi Yükle</h3>
+                <h3 className="font-medium text-[var(--foreground)] text-sm">
+                  İlan Resmi Yükle
+                </h3>
               </div>
 
               <div className="flex items-center bg-[var(--label4)] text-white text-sm rounded-md p-1 gap-2">
@@ -1814,7 +1412,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Yüklenen Görsel Placeholder */}
               <label className="flex items-center gap-2 text-sm rounded-md px-3 py-2 cursor-pointer bg-[var(--input-bg)]">
                 <FaRegImages className="w-4 h-4 text-[var(--success)]" />
-                <span>Görsel yükle</span>
+                <span className="text-[var(--foreground)]">Görsel yükle</span>
                 <input type="file" accept="image/*" className="hidden mt-2" />
               </label>
 
@@ -1846,17 +1444,17 @@ const MyAdvertsTable = ({ title }) => {
               </button>
             </div>
             {/* Üst Bilgi */}
-            <div className="bg-[var(--profile-tab-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
+            <div className="bg-[var(--advert-card-bg)] flex flex-col md:flex-row p-4 gap-4 items-center rounded-md">
               <img
                 src="https://placehold.co/300x200"
                 alt="ürün"
                 className="rounded-md max-w-[250px] min-h-[20px]"
               />
               <div className="flex-1">
-                <h3 className="text-lg font-semibold mb-3">
+                <h3 className="text-lg text-[var(--foreground)] font-semibold mb-3">
                   Dolor purus non enim praesent elementum.
                 </h3>
-                <p className="text-sm text-gray-400 mt-1">
+                <p className="text-sm text-[var(--text-gray)] mt-1">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget
                   velit aliquet sagittis id. Lorem ipsum dolor sit amet,
                   consectetur adipiscing elit. Eget velit aliquet sagittis id.
@@ -1890,7 +1488,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Üst Kısım */}
               <div className="md:col-span-3 flex gap-2 md:gap-4 flex-wrap md:flex-nowrap">
                 {/* Sol Kutu */}
-                <div className="w-full md:w-1/3 bg-[var(--profile-tab-bg)] p-4 flex flex-wrap justify-between">
+                <div className="w-full md:w-1/3 bg-[var(--advert-card-bg)] p-4 flex flex-wrap justify-between">
                   <h2>Öne Çıkarma Süresi</h2>
                   <select className="w-full mt-2 bg-gray-700 p-2">
                     <option>Seçiniz</option>
@@ -1909,7 +1507,7 @@ const MyAdvertsTable = ({ title }) => {
                 {/* Sağ Kutu */}
                 <div className="w-full md:w-2/3 flex gap-2 rounded-lg">
                   {/* İlanınızı Özelleştirin */}
-                  <div className="md:w-2/3 w-full bg-[var(--profile-tab-bg)] p-4 flex justify-between flex-wrap">
+                  <div className="md:w-2/3 w-full bg-[var(--advert-card-bg)] p-4 flex justify-between flex-wrap">
                     <h2>İLANINIZI ÖZELLEŞTİRİN</h2>
                     <div>
                       <div className="space-y-1">
@@ -1965,7 +1563,7 @@ const MyAdvertsTable = ({ title }) => {
               {/* Alt Kısım */}
               <div className="md:col-span-3 flex gap-2 md:gap-4 flex-wrap md:flex-nowrap">
                 {/* Siz Ayarlayacağınız Kısım */}
-                <div className="md:w-1/3 w-full bg-[var(--profile-tab-bg)] p-4 rounded-lg flex items-center justify-center">
+                <div className="md:w-1/3 w-full bg-[var(--advert-card-bg)] p-4 rounded-lg flex items-center justify-center">
                   <div className="flex flex-col items-center gap-2 text-center">
                     <div className="flex items-center justify-center">
                       <div className="bg-green-800 p-2 rounded-full">
@@ -1998,7 +1596,7 @@ const MyAdvertsTable = ({ title }) => {
                 {/* Sağ Kutu */}
                 <div className="w-full md:w-2/3 flex gap-2 rounded-lg">
                   {/* Seçilen İlan Özellikleri */}
-                  <div className="w-full md:w-2/3 bg-[var(--profile-tab-bg)] p-4 flex justify-between flex-wrap">
+                  <div className="w-full md:w-2/3 bg-[var(--advert-card-bg)] p-4 flex justify-between flex-wrap">
                     <h2>SEÇİLEN İLAN ÖZELLİKLERİ</h2>
                     <div className="space-y-1 w-full">
                       <div className="flex items-center">

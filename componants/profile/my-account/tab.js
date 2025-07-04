@@ -122,7 +122,7 @@ export default function MyAccount() {
             className="!w-4 !h-4"
             onChange={handleBillingCheckbox}
           />
-          <span className="text-gray-300 text-sm">
+          <span className="text-[var(--text-gray)] text-sm">
             Fatura Bilgilerimi Oluştur
           </span>
         </label>

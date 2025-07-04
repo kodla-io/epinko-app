@@ -131,7 +131,7 @@ const GameListSlider = () => {
             >
               {sliderItems.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Link href="/">
+                  <Link href="/game-detail">
                     <div className="rounded-xl p-3 game-picture-card">
                       <img
                         src={item.media}
@@ -158,7 +158,7 @@ const GameListSlider = () => {
                       }}
                       className="absolute bottom-[-13px] left-1/2 transform -translate-x-1/2 rounded-sm"
                     >
-                      <p className="text-center">{item.title}</p>
+                      <p className="text-center text-white">{item.title}</p>
                     </div>
                   </Link>
                 </SwiperSlide>

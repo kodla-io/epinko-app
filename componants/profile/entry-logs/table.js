@@ -98,7 +98,7 @@ const EntryLogsTable = ({ title }) => {
       </div>
 
       <div className="">
-        <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
+        <table className="min-w-full text-left text-[var(--foreground)] bg-[var(--profile-tab-bg)] rounded-lg">
           <thead>
             <tr>
               {headers.slice(0, visibleCols).map((header) => (
@@ -112,7 +112,7 @@ const EntryLogsTable = ({ title }) => {
           <tbody>
             {AdvertData.map((item, index) => (
               <React.Fragment key={index}>
-                <tr className="hover:bg-[#3A3B51] cursor-pointer">
+                <tr className="hover:bg-[var(--advert-card-bg)] cursor-pointer">
                   {headers.slice(0, visibleCols).map((header) => (
                     <td key={header.key} className="p-4">
                       {header.key === "durum" ? (
@@ -224,7 +224,7 @@ const EntryLogsTable = ({ title }) => {
                   className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                     page === currentPage
                       ? "bg-[var(--label7)] text-white"
-                      : "text-white hover:bg-[var(--idle)]"
+                      : "text-[var(--foreground)] hover:bg-[var(--idle)]"
                   }`}
                 >
                   {page}

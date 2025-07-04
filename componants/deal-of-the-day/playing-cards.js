@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
 
 // Import Swiper styles
 import "swiper/css";
@@ -23,11 +24,13 @@ export default function App() {
         >
           {slides.map((_, index) => (
             <SwiperSlide key={index}>
-              <img
-                src="https://placehold.co/300x350"
-                alt={`Slide ${index + 1}`}
-                className="object-cover  rounded-lg"
-              />
+              <Link href="/advert-detail">
+                <img
+                  src="https://placehold.co/300x350"
+                  alt={`Slide ${index + 1}`}
+                  className="object-cover  rounded-lg cursor-pointer"
+                />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

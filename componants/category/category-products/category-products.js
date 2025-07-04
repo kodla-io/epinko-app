@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const productList = [
   {
@@ -155,9 +156,24 @@ const CategoryProducts = ({ title }) => {
   };
 
   const [activeTab, setActiveTab] = useState("Tab1");
+  const [showPopup, setShowPopup] = useState(false);
+  const router = useRouter();
+
+  const handleBuy = (product) => {
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 1200);
+  };
 
   return (
     <div className="p-4">
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-bounce">
+          Ürün sepete eklendi!
+        </div>
+      )}
       <div className="container m-auto">
         {title && (
           <div className="flex items-center space-x-4">
@@ -176,7 +192,7 @@ const CategoryProducts = ({ title }) => {
           <button
             onClick={() => setActiveTab("Tab1")}
             className={`px-4 py-1 rounded-md w-full flex items-center gap-2 ${
-              activeTab === "Tab1" ? "bg-[var(--primary)] text-white" : ""
+              activeTab === "Tab1" ? "bg-[var(--success)] text-white" : ""
             }`}
           >
             <img
@@ -189,7 +205,7 @@ const CategoryProducts = ({ title }) => {
           <button
             onClick={() => setActiveTab("Tab2")}
             className={`px-4 py-1 rounded-md w-full flex items-center gap-2 ${
-              activeTab === "Tab2" ? "bg-[var(--primary)] text-white" : ""
+              activeTab === "Tab2" ? "bg-[var(--success)] text-white" : ""
             }`}
           >
             <img
@@ -202,7 +218,7 @@ const CategoryProducts = ({ title }) => {
           <button
             onClick={() => setActiveTab("Tab3")}
             className={`px-4 py-1 rounded-md w-full flex items-center gap-2 ${
-              activeTab === "Tab3" ? "bg-[var(--primary)] text-white" : ""
+              activeTab === "Tab3" ? "bg-[var(--success)] text-white" : ""
             }`}
           >
             <img
@@ -227,7 +243,7 @@ const CategoryProducts = ({ title }) => {
                 }`}
               >
                 {product.isPopular && (
-                  <div className="absolute top-[-5px] left-1/2 translate-x-[-50%] bg-[var(--success)] text-black rounded-lg px-4 py-1 text-xs font-bold flex items-center justify-center gap-2">
+                  <div className="absolute top-[-5px] left-1/2 translate-x-[-50%] bg-[var(--success)] text-white rounded-lg px-4 py-1 text-xs font-bold flex items-center justify-center gap-2">
                     <FaStar />
                     <span>Çok Satan Ürün</span>
                   </div>
@@ -297,13 +313,16 @@ const CategoryProducts = ({ title }) => {
                   <div className="col-span-1 flex items-center justify-start">
                     {product.stockAvailable ? (
                       <div className="flex flex-wrap items-center">
-                        <button className="bg-[var(--label2)] hover:bg-[var(--primary)] text-white text-sm px-3 md:py-1 py-3 rounded mb-0 md:mb-2 flex flex-wrap items-center justify-center gap-2">
-                          <FaShoppingCart className="w-8 h-8" />
+                        <button
+                          className="bg-[var(--success)] hover:opacity-80 text-white text-sm px-3 md:py-1 py-3 rounded mb-0 md:mb-2 flex flex-wrap items-center justify-center gap-2"
+                          onClick={() => handleBuy(product)}
+                        >
+                          <FaShoppingCart className="w-6 h-6" />
                           Satın Al
                         </button>
                       </div>
                     ) : (
-                      <div className="bg-red-600 text-white px-3 py-3 md:py-1 rounded">
+                      <div className="bg-[var(--alert)] text-white px-3 py-3 md:py-1 rounded">
                         Stokta Yok
                       </div>
                     )}
@@ -395,13 +414,16 @@ const CategoryProducts = ({ title }) => {
                   <div className="col-span-1 flex items-center justify-start">
                     {product.stockAvailable ? (
                       <div className="flex flex-wrap items-center">
-                        <button className="bg-[var(--label2)] hover:bg-[var(--primary)] text-white text-sm px-3 md:py-1 py-3 rounded mb-0 md:mb-2 flex flex-wrap items-center justify-center gap-2">
-                          <FaShoppingCart className="w-8 h-8" />
+                        <button
+                          className="bg-[var(--success)] hover:opacity-80 text-white text-sm px-3 md:py-1 py-3 rounded mb-0 md:mb-2 flex flex-wrap items-center justify-center gap-2"
+                          onClick={() => handleBuy(product)}
+                        >
+                          <FaShoppingCart className="w-6 h-6" />
                           Satın Al
                         </button>
                       </div>
                     ) : (
-                      <div className="bg-red-600 text-white px-3 py-3 md:py-1 rounded">
+                      <div className="bg-[var(--alert)] text-white px-3 py-3 md:py-1 rounded">
                         Stokta Yok
                       </div>
                     )}
@@ -493,13 +515,16 @@ const CategoryProducts = ({ title }) => {
                   <div className="col-span-1 flex items-center justify-start">
                     {product.stockAvailable ? (
                       <div className="flex flex-wrap items-center">
-                        <button className="bg-[var(--label2)] hover:bg-[var(--primary)] text-white text-sm px-3 md:py-1 py-3 rounded mb-0 md:mb-2 flex flex-wrap items-center justify-center gap-2">
-                          <FaShoppingCart className="w-8 h-8" />
+                        <button
+                          className="bg-[var(--success)] hover:opacity-80 text-white text-sm px-3 md:py-1 py-3 rounded mb-0 md:mb-2 flex flex-wrap items-center justify-center gap-2"
+                          onClick={() => handleBuy(product)}
+                        >
+                          <FaShoppingCart className="w-6 h-6" />
                           Satın Al
                         </button>
                       </div>
                     ) : (
-                      <div className="bg-red-600 text-white px-3 py-3 md:py-1 rounded">
+                      <div className="bg-[var(--alert)] text-white px-3 py-3 md:py-1 rounded">
                         Stokta Yok
                       </div>
                     )}

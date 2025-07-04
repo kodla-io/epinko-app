@@ -2,7 +2,7 @@ import React from "react";
 
 const ScrollableText = () => {
   return (
-    <div className="container m-auto p-4 bg-[var(--advert-list-bg)] text-white rounded-xl my-6 md:my-12">
+    <div className="container m-auto p-4 bg-[var(--advert-list-bg)] text-[var(--foreground)] rounded-xl my-6 md:my-12">
       <div className="max-h-[200px] min-h-[200px] overflow-y-scroll p-4 rounded-md">
         <p
           className="text-justify"

@@ -43,7 +43,7 @@ const WithdrawRequestModal = ({ onClose }) => {
       id="transaction-modal"
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
     >
-      <div className="relative bg-[var(--profile-tab-bg)] text-white rounded-2xl p-6 w-full max-w-lg shadow-lg">
+      <div className="relative bg-[var(--profile-tab-bg)] text-[var(--foreground)] rounded-2xl p-6 w-full max-w-lg shadow-lg">
         {/* Başlık ve Kapat */}
         <div className="text-2xl font-semibold mb-4">Çekim Talebi Oluştur</div>
         <button
@@ -208,7 +208,7 @@ const WithdrawRequestModal = ({ onClose }) => {
         )}
 
         {/* Oluştur Butonu */}
-        <button className="mt-6 w-full py-3 rounded bg-[#5657ef] hover:bg-[#7d7de5] text-white font-semibold text-base flex items-center justify-center gap-2 transition">
+        <button className="mt-6 w-full py-3 rounded bg-[var(--success)] hover:bg-[var(--label3)] text-white font-semibold text-base flex items-center justify-center gap-2 transition">
           <LuBanknote className="w-5 h-5" /> OLUŞTUR
         </button>
       </div>
@@ -221,8 +221,8 @@ const CheckCashDetailModal = ({ onClose, data }) => {
   console.log("Modal Data:", data.BankMessage);
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4">
-      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl relative">
-        <h3 className="text-xl font-semibold text-white mb-4 flex gap-2 items-center">
+      <div className="bg-[var(--advert-card-bg)] rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl relative">
+        <h3 className="text-xl font-semibold text-[var(--foreground)] mb-4 flex gap-2 items-center">
           Cüzdan İşlem Detayı
         </h3>
         <div className="mb-4 p-3 rounded bg-[var(--alert)] text-white">
@@ -298,7 +298,7 @@ const headers = [
   { key: "durum", label: "Durum" },
 ];
 
-const CheckCash = ({ title }) => {
+const CheckCash = ({ title, onTabChange }) => {
   // Filtreler için state (isteğe göre sonra geliştir)
   const [bank, setBank] = useState("");
   const [requestType, setRequestType] = useState("");
@@ -311,22 +311,22 @@ const CheckCash = ({ title }) => {
 
   const boxes = [
     {
-      icon: <FaWallet className="text-yellow-300 w-7 h-7" />,
+      icon: <FaWallet className="text-[var(--label9)] w-7 h-7" />,
       title: "11.50 TL",
       desc: "Toplam Bakiye",
     },
     {
-      icon: <FaWallet className="text-yellow-300 w-7 h-7" />,
+      icon: <FaWallet className="text-[var(--label9)] w-7 h-7" />,
       title: "0.00 TL",
       desc: "Çek.Bloke Bakiye",
     },
     {
-      icon: <FaWallet className="text-yellow-300 w-7 h-7" />,
+      icon: <FaWallet className="text-[var(--label9)] w-7 h-7" />,
       title: "0.00 TL",
       desc: "Çekilebilir Bakiye",
     },
     {
-      icon: <FaWallet className="text-yellow-300 w-7 h-7" />,
+      icon: <FaWallet className="text-[var(--label9)] w-7 h-7" />,
       title: "0.00 TL",
       desc: "Yayıncı Çek.Bakiye",
     },
@@ -358,14 +358,14 @@ const CheckCash = ({ title }) => {
             {boxes.map((box, i) => (
               <div
                 key={i}
-                className="flex-1 bg-[var(--profile-tab-bg)] rounded-md p-3 flex gap-3 items-center min-w-[140px]"
+                className="flex-1 bg-[var(--label9-light)] rounded-md p-3 flex gap-3 items-center min-w-[140px]"
               >
                 <span>{box.icon}</span>
                 <div>
-                  <div className="text-yellow-300 text-lg font-bold">
+                  <div className="text-[var(--label9)] text-lg font-bold">
                     {box.title}
                   </div>
-                  <div className="text-xs text-white font-semibold">
+                  <div className="text-xs text-[var(--foreground)] font-semibold">
                     {box.desc}
                   </div>
                 </div>
@@ -380,7 +380,10 @@ const CheckCash = ({ title }) => {
               Çekim Talebi Oluştur
             </button>
             {/* Banka Hesaplarını Düzenle (Buton) */}
-            <button className="flex-1 bg-[var(--primary)] rounded-md text-white font-semibold text-center text-xs p-3 flex items-center justify-center hover:opacity-80 transition focus:outline-none">
+            <button 
+              className="flex-1 bg-[var(--primary)] rounded-md text-white font-semibold text-center text-xs p-3 flex items-center justify-center hover:opacity-80 transition focus:outline-none"
+              onClick={() => onTabChange && onTabChange("bank-accounts")}
+            >
               <FaRegBuilding className="w-6 h-6 mr-2" />
               Banka Hesaplarını Düzenle
             </button>
@@ -438,8 +441,6 @@ const CheckCash = ({ title }) => {
             </button>
           </div>
 
-          {/* TABLO BURAYA GELECEK */}
-          {/* <WithdrawTable .../> */}
         </div>
       </div>
       <div className="mt-2 space-y-2">

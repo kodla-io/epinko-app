@@ -78,19 +78,21 @@ const CategoryDetails = () => {
             }}
             className="flex-1 lg:w-3/4 lg:pl-2 relative min-h-[100px] md:min-h-[500px]"
           >
-            <div className="block lg:flex lg:flex-row items-center mb-0 w-full p-4 relative lg:absolute top-[0] lg:top-[-150px]">
+            <div className="hidden md:block lg:flex lg:flex-row items-center mb-0 w-full p-4 relative lg:absolute top-[0] lg:top-[-150px]">
               <div className="flex-1 lg:flex-4 p-4 rounded-lg lg:mr-4 mb-4 ">
-                <h2 className="text-lg xl:text-xl font-bold">
+                <h2 className="text-lg xl:text-xl text-white font-bold">
                   LEAGUE OF LEGENDS
                 </h2>
-                <p className="text-sm xl:text-md font-bold">
+                <p className="text-sm xl:text-md text-white font-bold">
                   %30'a varan indirimlerle Global PUBG Mobile UC satın alın ve
                   kâra geçin.
                 </p>
               </div>
             </div>
-            <div className="w-full min-h-[105px] max-h-[105px] p-4 mb-4">
-              <img className="w-full h-full object-cover rounded-md" src="https://placehold.co/1100x110" alt="banner" />
+            <div className="w-full p-4">
+              <div className="w-full min-h-[120px] max-h-[120px] md:min-h-[105px] md:max-h-[105px] relative overflow-hidden rounded-md">
+                <img className="w-full h-full object-cover absolute top-0 left-0 block" src="https://placehold.co/1100x110" alt="banner" />
+              </div>
             </div>
             <CategoryProducts title={false} />
           </div>

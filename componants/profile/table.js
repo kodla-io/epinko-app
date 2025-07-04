@@ -32,7 +32,7 @@ export default function AdvertTable({ headers, data, onShowDetail }) {
   };
 
   return (
-    <table className="min-w-full text-left text-white bg-[var(--advert-list-bg)] rounded-sm">
+    <table className="min-w-full text-left text-[var(--foreground)] bg-[var(--advert-card-bg)] rounded-sm">
       <thead>
         <tr>
           {headers.slice(0, visibleCols).map((header) => (
@@ -46,7 +46,7 @@ export default function AdvertTable({ headers, data, onShowDetail }) {
       <tbody>
         {data.map((item, index) => (
           <React.Fragment key={index}>
-            <tr className="hover:bg-[#3A3B51] cursor-pointer">
+            <tr className="hover:bg-[var(--advert-list-bg)] cursor-pointer">
               {headers.slice(0, visibleCols).map((header) => (
                 <td key={header.key} className="p-4">
                   {header.key === "resim" ? (
@@ -76,7 +76,7 @@ export default function AdvertTable({ headers, data, onShowDetail }) {
                     <div className="flex items-center gap-2">
                       <span
                         style={{ backgroundColor: item.statusColor }}
-                        className="px-2 py-1 rounded"
+                        className="px-2 py-1 rounded text-white"
                       >
                         {item.status}
                       </span>
@@ -191,7 +191,7 @@ export default function AdvertTable({ headers, data, onShowDetail }) {
                         <div className="flex items-center gap-2">
                           <span
                             style={{ backgroundColor: item.statusColor }}
-                            className="px-2 py-1 rounded"
+                            className="px-2 py-1 rounded text-white"
                           >
                             {item.status}
                           </span>

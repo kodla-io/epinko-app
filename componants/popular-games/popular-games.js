@@ -51,33 +51,39 @@ const PopularGames = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-14 gap-4 p-4">
         {/* 1. Kutu: Oran 3 */}
-        <div
-          ref={cardRef}
-          className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center relative min-h-[420px] max-h-[420px] popular-game-card"
+
+        <Link
+          href="/game-detail"
+          className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg"
         >
-          <img
-            src="/media/knight-online.jpg"
-            alt="Knight Online"
-            className="object-cover w-full h-full rounded-lg"
-          />
           <div
-            style={{
-              background:
-                "linear-gradient(to top, rgba(157, 85, 35, 0.7) 20%, rgba(157, 86, 35, 0) 100%)",
-            }}
-            className="text-white p-4 absolute bottom-[0px] left-[0px] w-full popular-card-content"
+            ref={cardRef}
+            className=" flex flex-col justify-center items-center relative min-h-[420px] max-h-[420px] popular-game-card"
           >
-            <h3 className="text-lg font-bold">Knight Online</h3>
-            <p>Lorem Lorem Lorem</p>
-            <p className="text-right">200,00 ₺</p>
+            <img
+              src="/media/knight-online.jpg"
+              alt="Knight Online"
+              className="object-cover w-full h-[100vh] rounded-lg"
+            />
+            <div
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(157, 85, 35, 0.7) 20%, rgba(157, 86, 35, 0) 100%)",
+              }}
+              className="text-white p-4 absolute bottom-[0px] left-[0px] w-full popular-card-content"
+            >
+              <h3 className="text-lg font-bold">Knight Online</h3>
+              <p>Lorem Lorem Lorem</p>
+              <p className="text-right">200,00 ₺</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* 2. Kutu: Oran 6 */}
         <div className="col-span-1 md:col-span-1 lg:col-span-6 flex flex-col justify-between min-h-[420px] max-h-[420px]">
           <div className="flex gap-4 flex-1 min-h-[200px] max-h-[200px]">
             <div className="rounded-lg flex-1">
-              <Link href="#">
+              <Link href="/game-detail">
                 <img
                   src="../media/roblox.jpg"
                   alt="Roblox"
@@ -86,7 +92,7 @@ const PopularGames = () => {
               </Link>
             </div>
             <div className="rounded-lg flex-2">
-              <Link href="#">
+              <Link href="/game-detail">
                 <img
                   src="../media/valorant.png"
                   alt="Rise Online"
@@ -97,7 +103,7 @@ const PopularGames = () => {
           </div>
           <div className="flex gap-4 flex-1 min-h-[200px] max-h-[200px]">
             <div className="rounded-lg flex-2">
-              <Link href="#">
+              <Link href="/game-detail">
                 <img
                   src="../media/pubg.jpeg"
                   alt="Valorant"
@@ -106,7 +112,7 @@ const PopularGames = () => {
               </Link>
             </div>
             <div className="rounded-lg flex-1">
-              <Link href="#">
+              <Link href="/game-detail">
                 <img
                   src="../media/rise-online.jpg"
                   alt="Metin 2"
@@ -119,7 +125,7 @@ const PopularGames = () => {
 
         {/* 3. Kutu: Oran 3 */}
         <Link
-          href="#"
+          href="/game-detail"
           className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center min-h-[420px] max-h-[420px]"
         >
           <img
@@ -132,7 +138,7 @@ const PopularGames = () => {
         {/* 4. Kutu: Oran 2 */}
         <div className="col-span-1 md:col-span-1 lg:col-span-2 flex flex-col justify-between">
           <div className="rounded-lg min-h-[200px] max-h-[200px]">
-            <Link href="#">
+            <Link href="/game-detail">
               <img
                 src="../media/metin-2.png"
                 alt="PUBG"
@@ -141,7 +147,7 @@ const PopularGames = () => {
             </Link>
           </div>
           <div className="rounded-lg mt-4 min-h-[200px] max-h-[200px]">
-            <Link href="#">
+            <Link href="/game-detail">
               <img
                 src="../media/lol.jpg"
                 alt="Metin 2"

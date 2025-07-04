@@ -67,15 +67,15 @@ const NotificationDetailModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4">
-      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-lg shadow-xl relative">
+      <div className="bg-[var(--advert-card-bg)] rounded-xl p-6 w-full max-w-lg shadow-xl relative">
         <div className="flex justify-between items-start mb-4">
           <div className="flex gap-3 items-center">
             <MdOutlineNotificationsActive className="w-8 h-8 text-blue-400" />
             <div>
-              <div className="font-semibold text-lg text-white">
+              <div className="font-semibold text-lg text-[var(--foreground)]">
                 {notification.title}
               </div>
-              <div className="text-xs text-gray-400">{notification.date}</div>
+              <div className="text-xs text-[var(--text-gray)]">{notification.date}</div>
             </div>
           </div>
           <button
@@ -85,11 +85,11 @@ const NotificationDetailModal = ({
             <FaTimes className="text-white w-4 h-4" />
           </button>
         </div>
-        <div className="mb-3 text-white">{notification.description}</div>
+        <div className="mb-3 text-[var(--foreground)]">{notification.description}</div>
 
         {/* Durum satırı: Switch */}
-        <div className="mb-2 flex items-center justify-between gap-2 border-t border-gray-600 pt-2">
-          <span className="mr-2 font-semibold text-gray-200">
+        <div className="mb-2 flex items-center justify-between gap-2 border-t border-[var(--text-gray)] pt-2">
+          <span className="mr-2 font-semibold text-[var(--text-gray)]">
             Okundu Durumu:
           </span>
           {/* <span

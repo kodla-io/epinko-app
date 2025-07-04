@@ -23,7 +23,7 @@ const ImageTextScrollComponent = () => {
         </div>
 
         {/* Sağ kısım: Metin */}
-        <div className="flex-1 w-full md:w-2/3 max-h-[400px] p-4 overflow-y-scroll text-white">
+        <div className="flex-1 w-full md:w-2/3 max-h-[400px] p-4 overflow-y-scroll text-[var(--foreground)]">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida

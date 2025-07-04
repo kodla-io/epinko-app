@@ -32,10 +32,10 @@ const DealOfTheDayCountdown = () => {
     <div className="container m-auto flex flex-col md:flex-row items-center justify-between gap-8 py-8">
       {/* Left Side */}
       <div className="flex flex-col gap-6 w-full md:w-1/2 p-4 text-left">
-        <h2 className="text-2xl md:text-3xl font-bold text-white">
+        <h2 className="text-2xl md:text-3xl font-bold text-[var(--foreground)]">
           SIT AMET CURSUS SIT AMET DICTUM.
         </h2>
-        <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+        <p className="text-[var(--text-gray)] text-sm md:text-base leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Mauris vitae
           ultricies leo integer malesuada nunc. Sit amet cursus sit amet dictum.
@@ -43,19 +43,19 @@ const DealOfTheDayCountdown = () => {
         </p>
 
         <div className="flex gap-2">
-          <div className="bg-gray-700 rounded-md p-2 text-center text-white text-sm">
+          <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] rounded-md p-2 text-center text-sm">
             <div className="font-bold">{timeLeft.days}</div>
             <div>gün</div>
           </div>
-          <div className="bg-gray-700 rounded-md p-2 text-center text-white text-sm">
+          <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] rounded-md p-2 text-center text-sm">
             <div className="font-bold">{timeLeft.hours}</div>
             <div>saat</div>
           </div>
-          <div className="bg-gray-700 rounded-md p-2 text-center text-white text-sm">
+          <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] rounded-md p-2 text-center text-sm">
             <div className="font-bold">{timeLeft.minutes}</div>
             <div>dakika</div>
           </div>
-          <div className="bg-gray-700 rounded-md p-2 text-center text-white text-sm">
+          <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] rounded-md p-2 text-center text-sm">
             <div className="font-bold">{timeLeft.seconds}</div>
             <div>saniye</div>
           </div>

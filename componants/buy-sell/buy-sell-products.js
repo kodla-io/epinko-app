@@ -11,8 +11,7 @@ const BuySellProducts = () => {
     <div className="container m-auto my-4">
       <div className="flex items-center space-x-4">
         <h2
-          style={{ color: "var(--foreground)" }}
-          className="text-white text-[30px] py-2 font-bold"
+          className="text-[var(--foreground)] text-[30px] py-2 font-bold"
         >
           OYUN PARASI
         </h2>
@@ -23,7 +22,7 @@ const BuySellProducts = () => {
           <Link
             href="/"
             key={index}
-            className="bg-[var(--bg-soft)] rounded-xl overflow-hidden shadow-md relative"
+            className="bg-[var(--advert-list-bg)] rounded-xl overflow-hidden shadow-md relative"
           >
             <img
               src={product.img}

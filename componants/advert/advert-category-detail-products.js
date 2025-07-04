@@ -1,13 +1,37 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import { IoSearch } from "react-icons/io5";
 import { FcAdvertising } from "react-icons/fc";
 
 const AdvertCategoryDetailProducts = () => {
-  const products = Array.from({ length: 18 }, (_, i) => ({
-    title: `Rise Online Goldbar`,
-    img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100",
-  }));
+  const products = [
+    { title: "Rise Online Goldbar", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "PUBG Mobile UC", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Valorant Points", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "CS:GO Skin", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "League of Legends RP", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Metin2 Yang", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Knight Online GB", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Roblox Robux", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Steam Cüzdan Kodu", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Zula Altın", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Wolfteam Nakit", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Mobile Legends Elmas", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Free Fire Elmas", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Rust Skin", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "GTA V Online Para", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Minecraft Hesap", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "FIFA Coins", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" },
+    { title: "Fortnite V-Bucks", img: "https://kabasakalonline.com/_next/image?url=https%3A%2F%2Fcdn.ksobilisim.com%2Fstatic%2Ftg%2Fupload%2Furunler%2Fb1de7e6b-6f8e-4252-acee-a93f15e02d9d.webp&w=3840&q=100" }
+  ];
+
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="container m-auto my-4">
@@ -15,6 +39,8 @@ const AdvertCategoryDetailProducts = () => {
         <div className="relative">
           <input
             type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="İlan Kategori Filtrele"
             className="w-full p-4 rounded-full text-[var(--foreground)] border border-gray-400 cursor-pointer focus:outline-none"
           />
@@ -25,7 +51,7 @@ const AdvertCategoryDetailProducts = () => {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 md:gap-6 p-4">
-        {products.map((product, index) => (
+        {filteredProducts.map((product, index) => (
           <Link
             href="/"
             key={index}
@@ -34,7 +60,7 @@ const AdvertCategoryDetailProducts = () => {
             <img
               src={product.img}
               alt={product.title}
-              className="w-full  object-cover min-h-[280px] max-h-[280px]"
+              className="w-full object-cover min-h-[280px] max-h-[280px]"
             />
             <div className="p-2 text-white font-semibold text-center text-lg clamp-1 absolute bottom-[-2px] w-full backdrop-blur-lg">
               <p>{product.title}</p>

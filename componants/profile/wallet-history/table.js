@@ -69,8 +69,8 @@ const WalletDetailModal = ({ onClose, data }) => {
   if (!data) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4">
-      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl relative">
-        <h3 className="text-xl font-semibold text-white mb-4 flex gap-2 items-center">
+      <div className="bg-[var(--advert-card-bg)] rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl relative">
+        <h3 className="text-xl font-semibold text-[var(--foreground)] mb-4 flex gap-2 items-center">
           Cüzdan İşlem Detayı
         </h3>
         <div className="mb-4 p-3 rounded bg-[var(--alert)] text-white">
@@ -136,7 +136,7 @@ const WalletHistory = ({ title }) => {
         <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       </div>
       <div className="">
-        <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
+        <table className="min-w-full text-left text-[var(--foreground)] bg-[var(--advert-card-bg)] rounded-lg">
           <thead>
             <tr>
               {headers.slice(0, visibleCols).map((header) => (
@@ -150,14 +150,14 @@ const WalletHistory = ({ title }) => {
           <tbody>
             {WalletHistoryData.map((item, index) => (
               <React.Fragment key={index}>
-                <tr className="hover:bg-[#3A3B51] cursor-pointer">
+                <tr className="hover:bg-[var(--advert-list-bg)] cursor-pointer">
                   {headers.slice(0, visibleCols).map((header) => (
                     <td key={header.key} className="p-2">
                       {header.key === "durum" ? (
                         <div className="flex items-center gap-2">
                           <span
                             style={{ backgroundColor: item.statusColor }}
-                            className="px-2 py-1 rounded"
+                            className="px-2 py-1 rounded text-white"
                           >
                             {item.status}
                           </span>
@@ -169,7 +169,7 @@ const WalletHistory = ({ title }) => {
                                 setModalOpen(true);
                               }}
                             >
-                              <FaEye className="w-4 h-4 text-white" />
+                              <FaEye className="w-4 h-4 text-white text-white" />
                             </span>
                           )}
                         </div>
@@ -263,7 +263,7 @@ const WalletHistory = ({ title }) => {
                 className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                   page === currentPage
                     ? "bg-[var(--label7)] text-white"
-                    : "text-white hover:bg-[var(--idle)]"
+                    : "text-[var(--foreground)] hover:bg-[var(--idle)]"
                 }`}
               >
                 {page}

@@ -18,7 +18,7 @@ const ImageTextScrollComponent = () => {
           </h2>
           <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
         </div>
-        <p className="text-gray-400 text-sm max-h-[150px] overflow-y-scroll">
+        <p className="text-[var(--text-gray)] text-sm max-h-[150px] overflow-y-scroll">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut

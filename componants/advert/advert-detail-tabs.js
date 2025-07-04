@@ -170,8 +170,8 @@ const MultipleTabs = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-md whitespace-nowrap transition-all duration-200 ${
                 activeTab === tab.id
-                  ? "bg-[#3f3f5e]"
-                  : "bg-[#2a2a3b] hover:bg-[#3a3a50]"
+                  ? "bg-[var(--advert-list-bg)]"
+                  : "bg-[var(--advert-card-bg)] hover:bg-[var(--advert-list-bg)]"
               }`}
             >
               {tab.icon}

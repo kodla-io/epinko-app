@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { GiTwoCoins } from "react-icons/gi";
 import { TbBasket } from "react-icons/tb";
 import { TbBasketDollar } from "react-icons/tb";
 
-const BuySell = () => {
+const BuySell = ({ onSellToUs }) => {
+  const [showPopup, setShowPopup] = useState(false);
   const items = Array(5).fill({
     title: "LOREM IPSUM DOLAR SIT AMET",
     details: [
@@ -16,8 +17,23 @@ const BuySell = () => {
     sellPrice: "37,60₺",
   });
 
+  const handleAddToCart = () => {
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 1200);
+  };
+
+  const handleSellToUs = () => {
+    if (onSellToUs) onSellToUs();
+  };
+
   return (
     <div className="flex flex-col lg:flex-row gap-6">
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-bounce">
+          Ürün sepete eklendi!
+        </div>
+      )}
       {/* Sol Kısım */}
       <div className="lg:w-1/4 w-full">
         <div className="bg-[var(--advert-list-bg)] p-4 rounded-xl">
@@ -31,8 +47,8 @@ const BuySell = () => {
             className="relative top-[-50px] left-1/2 transform -translate-x-1/2"
           />
           <div className="relative top-[-30px]">
-            <h2 className="text-white font-bold text-lg mb-2">KNIGHT ONLINE</h2>
-            <p className="text-gray-400 text-sm">
+            <h2 className="text-[var(--foreground)] font-bold text-lg mb-2">KNIGHT ONLINE</h2>
+            <p className="text-[var(--text-gray)] text-sm">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s.
@@ -54,10 +70,10 @@ const BuySell = () => {
               className="w-[100px] h-[100px] object-cover rounded-lg"
             />
             <div className="flex-1">
-              <h3 className="text-white font-bold text-sm md:text-md mb-1">
+              <h3 className="text-[var(--foreground)] font-bold text-sm md:text-md mb-1">
                 {item.title}
               </h3>
-              <ul className="text-gray-400 text-xs list-disc ml-4 space-y-1">
+              <ul className="text-[var(--text-gray)] text-xs list-disc ml-4 space-y-1">
                 {item.details.map((line, i) => (
                   <li key={i}>{line}</li>
                 ))}
@@ -69,7 +85,7 @@ const BuySell = () => {
                   <GiTwoCoins className="mr-2" />
                   {item.price}
                 </button>
-                <button className="bg-[var(--primary)] text-white font-semibold text-sm px-2 py-2 rounded-md w-full flex items-center justify-center">
+                <button className="bg-[var(--primary)] text-white font-semibold text-sm px-2 py-2 rounded-md w-full flex items-center justify-center" onClick={handleAddToCart}>
                   <TbBasket className="mr-2" />
                   Sepete Ekle
                 </button>
@@ -79,7 +95,7 @@ const BuySell = () => {
                   <GiTwoCoins className="mr-2" />
                   {item.sellPrice}
                 </button>
-                <button className="bg-[var(--success)] text-white font-semibold text-sm px-2 py-2 rounded-md w-full flex items-center justify-center">
+                <button className="bg-[var(--success)] text-white font-semibold text-sm px-2 py-2 rounded-md w-full flex items-center justify-center" onClick={handleSellToUs}>
                   <TbBasketDollar className="mr-2" />
                   Bize GB Sat
                 </button>

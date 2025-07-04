@@ -41,21 +41,21 @@ const GoogleAuthModal = ({
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4"
     >
       <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-md md:max-w-lg shadow-xl relative">
-        <h3 className="text-xl font-semibold text-white mb-6 flex gap-2 flex-nowrap items-center">
+        <h3 className="text-xl font-semibold text-[var(--foreground)] mb-6 flex gap-2 flex-nowrap items-center">
           <AiOutlineSafety className="w-10 h-10 text-[var(--success)]" /> Hesap
           Güvenliği
         </h3>
-        <p className="text-white font-medium mb-4 border-t border-b border-[#ffffff2e] py-4">
+        <p className="font-medium mb-4 border-t border-b border-[#ffffff2e] py-4">
           Google 2 Faktörlü Doğrulama Sistemi
         </p>
 
         {googleAuth ? (
-          <div className="text-white space-y-4">
+          <div className="space-y-4">
             <div>
               <h2 className="text-lg font-semibold mb-1">
                 Tebrikler, Google 2FA özelliğiniz aktif.
               </h2>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Aşağıdan ne sıklıkla kod kullanmak istediğinizi ayarlayabilir
                 veya 2FA devre dışı bırakabilirsiniz.
               </p>
@@ -68,7 +68,7 @@ const GoogleAuthModal = ({
               <select
                 value={authFrequency}
                 onChange={(e) => setAuthFrequency(e.target.value)}
-                className="w-full text-white rounded px-3 py-2"
+                className="w-full bg-[var(--background)] rounded px-3 py-2"
               >
                 <option>Her Girişte Kod Sorulsun</option>
                 <option>Haftada 1 girişte kod sorulsun</option>
@@ -79,7 +79,7 @@ const GoogleAuthModal = ({
             <div className="text-right">
               <button
                 onClick={handleDisable2FA}
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded flex items-center gap-1 flex items-center ggap-2"
+                className="bg-[var(--alert)] hover:opacity-80 text-white font-semibold px-4 py-2 rounded flex items-center gap-1 flex items-center ggap-2"
               >
                 <GoAlertFill className="w-6 h-6 text-white" />
                 2FA Güvenliği Kapat

@@ -79,13 +79,13 @@ const BillingModal = ({ onClose, initialData = {}, onDelete }) => {
       id="billing"
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 px-4"
     >
-      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-2xl shadow-xl relative text-white max-h-[90vh] overflow-y-auto sm:max-h-[80vh]">
+      <div className="bg-[var(--advert-list-bg)] rounded-xl p-6 w-full max-w-2xl shadow-xl relative text-[var(--foreground)] max-h-[90vh] overflow-y-auto sm:max-h-[80vh]">
         {/* Title */}
         <div className="flex items-center gap-2 mb-2">
-          <MdOutlineReceiptLong className="text-green-500 w-7 h-7" />
+          <MdOutlineReceiptLong className="text-[var(--success)] w-7 h-7" />
           <h2 className="text-2xl font-semibold">Billing Information</h2>
         </div>
-        <p className="text-sm text-gray-400 mb-3 border-b border-[#272731] pb-2">
+        <p className="text-sm text-[var(--text-gray)] mb-3 border-b border-[#272731] pb-2">
           Bakiye iade taleplerinizi buradan gerçekleştirebilirsiniz.
         </p>
 
@@ -106,7 +106,7 @@ const BillingModal = ({ onClose, initialData = {}, onDelete }) => {
           paylaşılmamaktadır.
         </div>
 
-        <form onSubmit={handleSave} className="space-y-4">
+        <form onSubmit={handleSave} className="space-y-4 text-[var(--foreground)]">
           {/* Section Title */}
           <h3 className="text-lg font-semibold mb-1">Ödeme Bilgileri</h3>
 
@@ -295,7 +295,7 @@ const BillingAddress = ({
         <div className="flex md:flex-nowrap flex-wrap items-center w-full md:w-auto gap-2 mb-4">
           <button
             onClick={() => handleOpenModal(null)}
-            className="flex-1 py-2 text-center font-medium w-auto min-w-[200px] bg-[var(--success)] rounded-md"
+            className="flex-1 py-2 text-center text-white font-medium w-auto min-w-[200px] bg-[var(--success)] rounded-md"
           >
             Fatura Adresi Ekle
           </button>

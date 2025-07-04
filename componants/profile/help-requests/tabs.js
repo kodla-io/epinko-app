@@ -10,6 +10,7 @@ import {
   FaAngleDoubleRight,
   FaCircle,
 } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import { LuShieldAlert } from "react-icons/lu";
 import Link from "next/link";
 
@@ -145,7 +146,7 @@ const HelpRequests = ({ title }) => {
           <div className="flex md:flex-nowrap flex-wrap items-center w-full md:w-auto gap-2 mb-4">
             <button
               onClick={() => setActiveTab("requests")}
-              className="flex-1 py-2 text-center font-medium w-auto min-w-[200px] bg-[var(--success)] rounded-md"
+              className="flex-1 py-2 text-center font-medium w-auto min-w-[200px] bg-[var(--success)] text-white rounded-md"
             >
               Geri Git
             </button>
@@ -157,7 +158,7 @@ const HelpRequests = ({ title }) => {
         <div className="">
           <div className="mx-auto mb-3">
             {/* Uyarı Mesajı */}
-            <div className="bg-[var(--label5)] text-white font-bold text-center py-3 rounded mb-6">
+            <div className="bg-[var(--alert)] text-white font-bold text-center py-3 rounded mb-6">
               LÜTFEN ÖDEME YAPTIKDAN SONRA DİREK BURDAN YAZMAYIN İŞLEMİ
               HIZLANDIRMAYACAKTIR 10,15 DAKİKA ÖDEME KONTROLÜ SÜRMEKTEDİR.
             </div>
@@ -168,7 +169,7 @@ const HelpRequests = ({ title }) => {
             </h3>
 
             {/* İçerik Alanı */}
-            <div className="bg-[var(--profile-tab-bg)] text-white p-4 rounded grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-[var(--profile-tab-bg)] text-[var(--foreground)] p-4 rounded grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Sol: Fotoğraf Yükleme */}
               <div>
                 <label
@@ -183,7 +184,7 @@ const HelpRequests = ({ title }) => {
                   multiple
                   accept="image/*"
                   onChange={handleFileChange}
-                  className="block w-full cursor-pointer text-sm text-gray-200 file:mr-4 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:text-white"
+                  className="block !p-2 w-full cursor-pointer text-sm text-[var(--foreground)] file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:text-[var(--foreground)] file:cursor-pointer"
                 />
 
                 <label
@@ -195,14 +196,24 @@ const HelpRequests = ({ title }) => {
                 </label>
 
                 {/* Görsel Önizleme */}
-                <div className="grid grid-cols-4 gap-2 mt-4 h-15">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-h-[400px] overflow-y-auto p-2">
                   {screenshots.map((img, index) => (
-                    <img
-                      key={index}
-                      src={img.url}
-                      alt={`screenshot-${index}`}
-                      className="w-full h-full object-cover rounded"
-                    />
+                    <div key={index} className="aspect-square relative">
+                      <img
+                        src={img.url}
+                        alt={`screenshot-${index}`}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                      <button 
+                        onClick={() => {
+                          const newScreenshots = screenshots.filter((_, i) => i !== index);
+                          setScreenshots(newScreenshots);
+                        }}
+                        className="absolute top-1 right-1 bg-black/50 text-white p-0.5 rounded-full hover:bg-black/70 transition-colors"
+                      >
+                        <IoClose className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -211,9 +222,6 @@ const HelpRequests = ({ title }) => {
               <div className="md:col-span-2">
                 <label htmlFor="topic" className="block mb-2 font-medium">
                   Destek Talep Konusu{" "}
-                  {/* <span className="text-xs text-gray-400">
-                    (Max 50 Karakter)
-                  </span> */}
                 </label>
                 <input
                   type="text"
@@ -221,7 +229,7 @@ const HelpRequests = ({ title }) => {
                   value={topic}
                   maxLength={50}
                   onChange={(e) => setTopic(e.target.value)}
-                  className="w-full px-4 py-2 rounded bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                  className="w-full px-4 py-2 rounded bg-gray-800 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 placeholder-[var(--foreground)]"
                 />
 
                 <label htmlFor="details" className="block mb-2 font-medium">
@@ -232,7 +240,7 @@ const HelpRequests = ({ title }) => {
                   rows={6}
                   value={details}
                   onChange={(e) => setDetails(e.target.value)}
-                  className="w-full px-4 py-2 rounded bg-[var(--profile-input)] resize-none text-white focus:outline-none"
+                  className="w-full px-4 py-2 rounded bg-[var(--profile-input)] resize-none text-[var(--foreground)] focus:outline-none placeholder-[var(--foreground)]"
                   placeholder="Talebinizi detaylı şekilde açıklayınız..."
                 ></textarea>
 
@@ -240,7 +248,7 @@ const HelpRequests = ({ title }) => {
                 <div className="text-right mt-4">
                   <button
                     onClick={handleSubmit}
-                    className="bg-[var(--primary)] hover:opacity-80 text-white font-semibold py-2 px-6 rounded"
+                    className="bg-[var(--success)] hover:opacity-80 text-white font-semibold py-2 px-6 rounded"
                   >
                     Destek Talebi Oluştur
                   </button>
@@ -257,7 +265,7 @@ const HelpRequests = ({ title }) => {
             </h2>
             <div className="flex-1 h-[2px] bg-gradient-to-r from-orange-500 hidden md:block to-green-500" />
           </div>
-          <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
+          <table className="min-w-full text-left text-[var(--foreground)] bg-[var(--profile-tab-bg)] rounded-lg">
             <thead>
               <tr>
                 {headers.slice(0, visibleCols).map((header) => (
@@ -271,7 +279,7 @@ const HelpRequests = ({ title }) => {
             <tbody>
               {AdvertData.map((item, index) => (
                 <React.Fragment key={index}>
-                  <tr className="hover:bg-[#3A3B51] cursor-pointer">
+                  <tr className="hover:bg-[var(--advert-card-bg)] cursor-pointer">
                     {headers.slice(0, visibleCols).map((header) => (
                       <td key={header.key} className="p-4">
                         {header.key === "durum" ? (
@@ -388,7 +396,7 @@ const HelpRequests = ({ title }) => {
                       className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                         page === currentPage
                           ? "bg-[var(--label7)] text-white"
-                          : "text-white hover:bg-[var(--idle)]"
+                          : "text-[var(--foreground)] hover:bg-[var(--idle)]"
                       }`}
                     >
                       {page}

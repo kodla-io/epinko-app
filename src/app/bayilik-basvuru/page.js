@@ -5,8 +5,7 @@ const BayilikBasvuru = () => {
   return (
     <div
       id="bayilik-basvuru"
-      style={{ color: "var(--foreground)" }}
-      className="container m-auto flex flex-col md:flex-row text-white my-6"
+      className="container m-auto flex flex-col md:flex-row text-[var(--foreground)] my-6"
     >
       <div className="w-full md:w-3/7 flex items-center justify-center p-8 order-1 md:order-2">
         <div className="w-full">
@@ -19,10 +18,18 @@ const BayilikBasvuru = () => {
               className="w-full px-4 py-6 rounded-lg border-none focus:outline-none"
               defaultValue="Lorem Ipsum 1"
             >
-              <option className="bg-[var(--background)]" value="Lorem Ipsum 1">Lorem1</option>
-              <option className="bg-[var(--background)]" value="Lorem Ipsum 2">Lorem2</option>
-              <option className="bg-[var(--background)]" value="Lorem Ipsum 3">Lorem3</option>
-              <option className="bg-[var(--background)]" value="Lorem Ipsum 4">Lorem4</option>
+              <option className="bg-[var(--background)]" value="Lorem Ipsum 1">
+                Lorem1
+              </option>
+              <option className="bg-[var(--background)]" value="Lorem Ipsum 2">
+                Lorem2
+              </option>
+              <option className="bg-[var(--background)]" value="Lorem Ipsum 3">
+                Lorem3
+              </option>
+              <option className="bg-[var(--background)]" value="Lorem Ipsum 4">
+                Lorem4
+              </option>
             </select>
           </div>
 
@@ -64,7 +71,7 @@ const BayilikBasvuru = () => {
             />
           </div>
 
-          <button className="w-full bg-[var(--label4)] hover:bg-[var(--label6)] transition-colors py-3 rounded-lg text-white font-semibold">
+          <button className="w-full bg-[var(--success)] hover:opacity-80 transition-colors py-3 rounded-lg text-white font-semibold">
             Başvuruyu Gönder
           </button>
         </div>
@@ -79,7 +86,7 @@ const BayilikBasvuru = () => {
           />
           <div className="max-w-md text-center lg:text-left">
             <h2 className="text-3xl font-bold mb-4">Lorem Ipsum</h2>
-            <p className="text-sm text-gray-300">
+            <p className="text-sm text-[var(--text-gray)]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s. It has survived not only five centuries, but
@@ -89,24 +96,53 @@ const BayilikBasvuru = () => {
           </div>
         </div>
 
-        <div
-          style={{
-            color: "var(--btn-color)",
-          }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 w-full"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 w-full">
+          <div className="bg-[var(--advert-list-bg)] p-4 rounded-lg flex items-center gap-3">
+            <div className="bg-white text-black p-2 rounded">
+              🛍️ {/* örnek emoji / ikon */}
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
+              <p className="text-xs text-[var(--text-gray)]">
+                Elit lorem ipsum dummy info.
+              </p>
+            </div>
+          </div>
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
+            className="bg-[var(--advert-list-bg)] p-4 rounded-lg flex items-center gap-3"
           >
             <div className="bg-white text-black p-2 rounded">
               🛍️ {/* örnek emoji / ikon */}
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
+                Elit lorem ipsum dummy info.
+              </p>
+            </div>
+          </div>
+          <div
+            className="bg-[var(--advert-list-bg)] p-4 rounded-lg flex items-center gap-3"
+          >
+            <div className="bg-white text-black p-2 rounded">
+              🛍️ {/* örnek emoji / ikon */}
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
+              <p className="text-xs text-[var(--text-gray)]">
+                Elit lorem ipsum dummy info.
+              </p>
+            </div>
+          </div>
+          <div
+            className="bg-[var(--advert-list-bg)] p-4 rounded-lg flex items-center gap-3"
+          >
+            <div className="bg-white text-black p-2 rounded">
+              🛍️ {/* örnek emoji / ikon */}
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
@@ -122,7 +158,7 @@ const BayilikBasvuru = () => {
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
@@ -138,69 +174,21 @@ const BayilikBasvuru = () => {
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
-                Elit lorem ipsum dummy info.
-              </p>
-            </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
-          >
-            <div className="bg-white text-black p-2 rounded">
-              🛍️ {/* örnek emoji / ikon */}
-            </div>
-            <div>
-              <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
-                Elit lorem ipsum dummy info.
-              </p>
-            </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
-          >
-            <div className="bg-white text-black p-2 rounded">
-              🛍️ {/* örnek emoji / ikon */}
-            </div>
-            <div>
-              <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
-                Elit lorem ipsum dummy info.
-              </p>
-            </div>
-          </div>
-          <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
-          >
-            <div className="bg-white text-black p-2 rounded">
-              🛍️ {/* örnek emoji / ikon */}
-            </div>
-            <div>
-              <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 rounded-xl shadow-md mx-auto text-white">
+        <div className="bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 rounded-xl shadow-md mx-auto">
           <h2 className="text-2xl font-bold mb-4 text-center">
             Başvuru Kuralları
           </h2>
           <ul className="space-y-4">
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Eget dolor morbi non arcu risus. Viverra ipsum nunc aliquet
                 bibendum enim facilisis gravida neque convallis. Fermentum et
                 sollicitudin ac orci.
@@ -208,7 +196,7 @@ const BayilikBasvuru = () => {
             </li>
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Cursus mattis molestie a iaculis. Amet commodo nulla facilisi
                 nullam vehicula ipsum a arcu cursus. Vitae turpis massa sed
                 elementum tempus egestas sed.
@@ -216,7 +204,7 @@ const BayilikBasvuru = () => {
             </li>
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Dictumst quisque sagittis purus sit amet volutpat consequat
                 mauris nunc. Iaculis luctus accumsan tortor posuere ac. Id diam
                 maecenas ultricies mi eget mauris.
@@ -224,7 +212,7 @@ const BayilikBasvuru = () => {
             </li>
             <li className="flex items-start gap-3">
               <FaTimes className="w-6 h-6 mt-1 text-[var(--alert)]" />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-[var(--text-gray)]">
                 Nisi vitae suscipit tellus mauris a diam. Tristique et egestas
                 quis ipsum suspendisse. Odio ut sem nulla pharetra diam sit amet
                 nisl.

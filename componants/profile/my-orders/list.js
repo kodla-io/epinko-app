@@ -261,7 +261,7 @@ const headers = [
 ];
 
 const buttonClass =
-  "flex items-center gap-2 py-2 px-3 rounded-sm bg-[var(--profile-input)] hover:opacity-60 text-xs font-semibold transition";
+  "flex items-center gap-2 py-2 px-3 rounded-sm bg-[var(--profile-input)] hover:opacity-60 text-xs text-[var(--foreground)] font-semibold transition";
 
 export default function orderList({ title }) {
   const [expanded, setExpanded] = useState(null);
@@ -323,7 +323,7 @@ export default function orderList({ title }) {
           className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "allOrders"
               ? "bg-[var(--success)] text-white"
-              : "border border-[var(--success)] text-[var(--success)]"
+              : "border border-[var(--success)] text-[var(--foreground)]"
           }`}
         >
           Siparişlerim
@@ -333,7 +333,7 @@ export default function orderList({ title }) {
           className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "ePin"
               ? "bg-[var(--success)] text-white"
-              : "border border-[var(--success)] text-[var(--success)]"
+              : "border border-[var(--success)] text-[var(--foreground)]"
           }`}
         >
           E Pin Siparişlerim
@@ -343,7 +343,7 @@ export default function orderList({ title }) {
           className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "case"
               ? "bg-[var(--success)] text-white"
-              : "border border-[var(--success)] text-[var(--success)]"
+              : "border border-[var(--success)] text-[var(--foreground)]"
           }`}
         >
           Kasa Siparişlerim
@@ -353,7 +353,7 @@ export default function orderList({ title }) {
           className={`px-4 py-2 rounded w-full md:flex-1 ${
             activeTab === "draw"
               ? "bg-[var(--success)] text-white"
-              : "border border-[var(--success)] text-[var(--success)]"
+              : "border border-[var(--success)] text-[var(--foreground)]"
           }`}
         >
           Çekiliş Siparişlerim
@@ -370,7 +370,7 @@ export default function orderList({ title }) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-gray)]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -415,7 +415,7 @@ export default function orderList({ title }) {
           FİLTRELE
         </button>
       </div>
-      <div className="rounded text-white">
+      <div className="rounded text-[var(--foreground)]">
         {activeTab === "allOrders" && (
           <div className="space-y-4">
             {orders.allOrders.map((order) => (
@@ -430,17 +430,17 @@ export default function orderList({ title }) {
                     className="w-20 h-20 object-cover rounded"
                   />
 
-                  <div className="flex-1 text-white">
+                  <div className="flex-1 text-[var(--foreground)]">
                     <div className="text-lg font-semibold">
                       {order.title}{" "}
-                      <span className="text-sm text-gray-400">
+                      <span className="text-sm text-[var(--text-gray)]">
                         | {order.code}
                       </span>
                     </div>
                     <div className="text-[var(--success)] text-sm mt-1">
                       {order.desc}
                     </div>
-                    <div className="text-gray-400 text-xs mt-1">
+                    <div className="text-[var(--text-gray)] text-xs mt-1">
                       {order.date}
                     </div>
                   </div>
@@ -465,15 +465,15 @@ export default function orderList({ title }) {
                       transition={{ duration: 0.3 }}
                       className="text-white text-sm px-4 py-3"
                     >
-                      <div className="text-white font-bold mb-2">
+                      <div className="text-[var(--foreground)] font-bold mb-2">
                         Sipariş Detayları
                       </div>
 
                       <div className="flex items-center justify-between bg-[var(--profile-input)] px-4 py-3 rounded-xl w-full mb-4">
                         {/* Sol: Total */}
-                        <span className="text-white whitespace-nowrap">
+                        <span className="text-[var(--foreground)] whitespace-nowrap">
                           Sipariş Tutarı:{" "}
-                          <span className="text-[var(--succes)] font-semibold text-lg">
+                          <span className="text-[var(--success)] font-semibold text-lg">
                             {order.total}
                           </span>
                         </span>
@@ -500,7 +500,7 @@ export default function orderList({ title }) {
                         {/* Header */}
                         <div className="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center mb-4">
                           {/* Başlık */}
-                          <div className="flex items-center gap-2 font-bold text-lg text-gray-200 tracking-wide">
+                          <div className="flex items-center gap-2 font-bold text-lg text-[var(--foreground)] tracking-wide">
                             E-PİN KODLARI
                             <span className="text-xs opacity-70 font-normal ml-2">
                               ({orders.ePin[0].epinData.length})
@@ -536,7 +536,7 @@ export default function orderList({ title }) {
                                   key={item.id}
                                   className={`flex items-center justify-between rounded-lg bg-[var(--profile-input)] shadow py-3 px-5 transition group`}
                                 >
-                                  <span className="flex items-center gap-3">
+                                  <span className="flex text-[var(--foreground)] items-center gap-3">
                                     <span className="font-bold text-base min-w-[22px]">
                                       {item.id}
                                     </span>
@@ -584,17 +584,17 @@ export default function orderList({ title }) {
                     className="w-20 h-20 object-cover rounded"
                   />
 
-                  <div className="flex-1 text-white">
+                  <div className="flex-1 text-[var(--foreground)]">
                     <div className="text-lg font-semibold">
                       {order.title}{" "}
-                      <span className="text-sm text-gray-400">
+                      <span className="text-sm text-[var(--text-gray)]">
                         | {order.code}
                       </span>
                     </div>
                     <div className="text-[var(--success)] text-sm mt-1">
                       {order.desc}
                     </div>
-                    <div className="text-gray-400 text-xs mt-1">
+                    <div className="text-[var(--text-gray)] text-xs mt-1">
                       {order.date}
                     </div>
                   </div>
@@ -619,15 +619,15 @@ export default function orderList({ title }) {
                       transition={{ duration: 0.3 }}
                       className="text-white text-sm px-4 py-3"
                     >
-                      <div className="text-white font-bold mb-2">
+                     <div className="text-[var(--foreground)] font-bold mb-2">
                         Sipariş Detayları
                       </div>
 
                       <div className="flex items-center justify-between bg-[var(--profile-input)] px-4 py-3 rounded-xl w-full mb-4">
                         {/* Sol: Total */}
-                        <span className="text-white whitespace-nowrap">
+                        <span className="text-[var(--foreground)] whitespace-nowrap">
                           Sipariş Tutarı:{" "}
-                          <span className="text-[var(--succes)] font-semibold text-lg">
+                          <span className="text-[var(--success)] font-semibold text-lg">
                             {order.total}
                           </span>
                         </span>
@@ -654,7 +654,7 @@ export default function orderList({ title }) {
                         {/* Header */}
                         <div className="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center mb-4">
                           {/* Başlık */}
-                          <div className="flex items-center gap-2 font-bold text-lg text-gray-200 tracking-wide">
+                          <div className="flex items-center gap-2 font-bold text-lg text-[var(--foreground)] tracking-wide">
                             E-PİN KODLARI
                             <span className="text-xs opacity-70 font-normal ml-2">
                               ({orders.ePin[0].epinData.length})
@@ -690,7 +690,7 @@ export default function orderList({ title }) {
                                   key={item.id}
                                   className={`flex items-center justify-between rounded-lg bg-[var(--profile-input)] shadow py-3 px-5 transition group`}
                                 >
-                                  <span className="flex items-center gap-3">
+                                  <span className="flex text-[var(--foreground)] items-center gap-3">
                                     <span className="font-bold text-base min-w-[22px]">
                                       {item.id}
                                     </span>
@@ -738,17 +738,17 @@ export default function orderList({ title }) {
                     className="w-20 h-20 object-cover rounded"
                   />
 
-                  <div className="flex-1 text-white">
+                  <div className="flex-1 text-[var(--foreground)]">
                     <div className="text-lg font-semibold">
                       {order.title}{" "}
-                      <span className="text-sm text-gray-400">
+                      <span className="text-sm text-[var(--text-gray)]">
                         | {order.code}
                       </span>
                     </div>
                     <div className="text-[var(--success)] text-sm mt-1">
                       {order.desc}
                     </div>
-                    <div className="text-gray-400 text-xs mt-1">
+                    <div className="text-[var(--text-gray)] text-xs mt-1">
                       {order.date}
                     </div>
                   </div>
@@ -773,15 +773,15 @@ export default function orderList({ title }) {
                       transition={{ duration: 0.3 }}
                       className="text-white text-sm px-4 py-3"
                     >
-                      <div className="text-white font-bold mb-2">
+                     <div className="text-[var(--foreground)] font-bold mb-2">
                         Sipariş Detayları
                       </div>
 
                       <div className="flex items-center justify-between bg-[var(--profile-input)] px-4 py-3 rounded-xl w-full mb-4">
                         {/* Sol: Total */}
-                        <span className="text-white whitespace-nowrap">
+                        <span className="text-[var(--foreground)] whitespace-nowrap">
                           Sipariş Tutarı:{" "}
-                          <span className="text-[var(--succes)] font-semibold text-lg">
+                          <span className="text-[var(--success)] font-semibold text-lg">
                             {order.total}
                           </span>
                         </span>
@@ -808,7 +808,7 @@ export default function orderList({ title }) {
                         {/* Header */}
                         <div className="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center mb-4">
                           {/* Başlık */}
-                          <div className="flex items-center gap-2 font-bold text-lg text-gray-200 tracking-wide">
+                          <div className="flex items-center gap-2 font-bold text-lg text-[var(--foreground)] tracking-wide">
                             E-PİN KODLARI
                             <span className="text-xs opacity-70 font-normal ml-2">
                               ({orders.ePin[0].epinData.length})
@@ -844,7 +844,7 @@ export default function orderList({ title }) {
                                   key={item.id}
                                   className={`flex items-center justify-between rounded-lg bg-[var(--profile-input)] shadow py-3 px-5 transition group`}
                                 >
-                                  <span className="flex items-center gap-3">
+                                  <span className="flex text-[var(--foreground)] items-center gap-3">
                                     <span className="font-bold text-base min-w-[22px]">
                                       {item.id}
                                     </span>
@@ -892,17 +892,17 @@ export default function orderList({ title }) {
                     className="w-20 h-20 object-cover rounded"
                   />
 
-                  <div className="flex-1 text-white">
+                  <div className="flex-1 text-[var(--foreground)]">
                     <div className="text-lg font-semibold">
                       {order.title}{" "}
-                      <span className="text-sm text-gray-400">
+                      <span className="text-sm text-[var(--text-gray)]">
                         | {order.code}
                       </span>
                     </div>
                     <div className="text-[var(--success)] text-sm mt-1">
                       {order.desc}
                     </div>
-                    <div className="text-gray-400 text-xs mt-1">
+                    <div className="text-[var(--text-gray)] text-xs mt-1">
                       {order.date}
                     </div>
                   </div>
@@ -927,15 +927,15 @@ export default function orderList({ title }) {
                       transition={{ duration: 0.3 }}
                       className="text-white text-sm px-4 py-3"
                     >
-                      <div className="text-white font-bold mb-2">
+                     <div className="text-[var(--foreground)] font-bold mb-2">
                         Sipariş Detayları
                       </div>
 
                       <div className="flex items-center justify-between bg-[var(--profile-input)] px-4 py-3 rounded-xl w-full mb-4">
                         {/* Sol: Total */}
-                        <span className="text-white whitespace-nowrap">
+                        <span className="text-[var(--foreground)] whitespace-nowrap">
                           Sipariş Tutarı:{" "}
-                          <span className="text-[var(--succes)] font-semibold text-lg">
+                          <span className="text-[var(--success)] font-semibold text-lg">
                             {order.total}
                           </span>
                         </span>
@@ -962,7 +962,7 @@ export default function orderList({ title }) {
                         {/* Header */}
                         <div className="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center mb-4">
                           {/* Başlık */}
-                          <div className="flex items-center gap-2 font-bold text-lg text-gray-200 tracking-wide">
+                          <div className="flex items-center gap-2 font-bold text-lg text-[var(--foreground)] tracking-wide">
                             E-PİN KODLARI
                             <span className="text-xs opacity-70 font-normal ml-2">
                               ({orders.ePin[0].epinData.length})
@@ -998,7 +998,7 @@ export default function orderList({ title }) {
                                   key={item.id}
                                   className={`flex items-center justify-between rounded-lg bg-[var(--profile-input)] shadow py-3 px-5 transition group`}
                                 >
-                                  <span className="flex items-center gap-3">
+                                  <span className="flex text-[var(--foreground)] items-center gap-3">
                                     <span className="font-bold text-base min-w-[22px]">
                                       {item.id}
                                     </span>

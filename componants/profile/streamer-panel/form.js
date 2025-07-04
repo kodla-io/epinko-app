@@ -2,9 +2,9 @@ import React, { useRef, useState } from "react";
 import { FaTwitch, FaTrashAlt, FaDonate } from "react-icons/fa";
 
 const inputBase =
-  "w-full p-3 rounded-md bg-[var(--profile-input)] text-white border-none focus:outline-none transition";
-const labelBase = "block text-sm mb-1 font-medium text-white";
-const labelInfo = "ml-2 text-xs font-normal text-gray-400";
+  "w-full p-3 rounded-md bg-[var(--background)] text-[var(--foreground)] border-none focus:outline-none transition";
+const labelBase = "block text-sm mb-1 font-medium text-[var(--foreground)]";
+const labelInfo = "ml-2 text-xs font-normal text-[var(--text-gray)]";
 
 import { FaCog } from "react-icons/fa"; // Üstteki ikon
 
@@ -61,15 +61,15 @@ const StreamerPanel = ({ title }) => {
       <div className="bg-[var(--profile-tab-bg)] border border-[var(--profile-tab-bg)]/10 rounded-xl p-2 md:p-4 mb-8">
         {/* Header */}
         <div className="flex items-center mb-3 gap-3">
-          <FaCog className="text-white text-3xl" />
-          <h2 className="text-[30px] font-bold text-white">Yayıncı Paneli</h2>
+          <FaCog className="text-[var(--foreground)] text-3xl" />
+          <h2 className="text-[30px] font-bold text-[var(--foreground)]">Yayıncı Paneli</h2>
         </div>
         {/* Açıklama */}
-        <div className="text-base text-gray-300 mb-6">
+        <div className="text-base text-[var(--text-gray)] mb-6">
           Youtube ve Twitch Yayın Yapmak isteyen oyuncularımız başvurunuzu bu
           alanda yapabilirsiniz
         </div>
-        <hr className="border-white/10 mb-6 opacity-60" />
+        <hr className="border-[var(--foreground)]/10 mb-6 opacity-60" />
 
         {/* Buton */}
         <div>
@@ -262,7 +262,7 @@ const StreamerPanel = ({ title }) => {
                   Hangi Platformlarda Yayın Yapıcaksın?
                 </label>
                 <div className="flex flex-wrap gap-3 items-center mt-2">
-                  <label className="inline-flex items-center gap-2 text-gray-300 cursor-pointer">
+                  <label className="inline-flex items-center gap-2 text-[var(--foreground)] cursor-pointer">
                     <input
                       type="checkbox"
                       className="w-5 h-5 accent-[var(--label6,#9147ff)]"
@@ -272,8 +272,6 @@ const StreamerPanel = ({ title }) => {
                     />
                     Twitch
                   </label>
-                  {/* Diğer platformlar için ek label'lar */}
-                  {/* ... */}
                 </div>
               </div>
             </div>

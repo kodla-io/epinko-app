@@ -51,7 +51,7 @@ const GameDetailTop = () => {
         <div className="flex flex-col flex-7 flex-column space-y-4 md:space-y-0">
           <div className="flex flex-col flex-7 md:flex-row justify-between space-y-4 md:space-y-0">
             <div className="flex-3 p-2">
-              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
+              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-card-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
                 <img
                   src="https://placehold.co/350x450"
                   alt="Game Picture"
@@ -62,9 +62,11 @@ const GameDetailTop = () => {
 
             {/* İkinci Kutu: Görsel */}
             <div className="flex-5 p-2">
-              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-list-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
-                <div className="w-full rounded-lg text-white">
-                  <p className="text-gray-400 mb-4">Oyuncu ID’nize yüklenir.</p>
+              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-card-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
+                <div className="w-full rounded-lg text-[var(--foreground)]">
+                  <p className="text-[var(--text-gray)] mb-4">
+                    Oyuncu ID’nize yüklenir.
+                  </p>
 
                   <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
@@ -111,12 +113,12 @@ const GameDetailTop = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between bg-[var(--advert-list-bg)] p-4 rounded-xl">
+                  <div className="flex items-center justify-between bg-[var(--advert-card-bg)] p-4 rounded-xl text-[var(--foreground)]">
                     <div className="flex items-center space-x-2 ">
                       <CiCoins1 className="w-12 h-12" />
                       <span className="text-xl font-bold">14,28 TL</span>
                     </div>
-                    <button className="bg-green-500 px-4 py-2 rounded-lg text-white font-semibold">
+                    <button className="bg-[var(--success)] px-4 py-2 rounded-lg text-white font-semibold">
                       SATIN AL
                     </button>
                   </div>
@@ -126,12 +128,12 @@ const GameDetailTop = () => {
           </div>
 
           <div className="w-full mt-2">
-            <div className="bg-[var(--advert-list-bg)] p-4 rounded-lg text-white">
-              <div className="flex border-b border-gray-700 mb-4 overflow-x-auto pb-2 md:pb-0">
+            <div className="bg-[var(--advert-list-bg)] p-4 rounded-lg text-[var(--foreground)]">
+              <div className="flex border-b border-[var(--text-gray)] mb-4 overflow-x-auto pb-2 md:pb-0">
                 <button
                   className={`px-4 py-2 min-w-[170px] ${
                     activeTab === "aciklama"
-                      ? "text-blue-500 border-b-2 border-blue-500"
+                      ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
                       : "text-gray-400"
                   }`}
                   onClick={() => setActiveTab("aciklama")}
@@ -141,7 +143,7 @@ const GameDetailTop = () => {
                 <button
                   className={`px-4 py-2 min-w-[170px] ${
                     activeTab === "degerlendirmeler"
-                      ? "text-blue-500 border-b-2 border-blue-500"
+                      ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
                       : "text-gray-400"
                   }`}
                   onClick={() => setActiveTab("degerlendirmeler")}
@@ -151,7 +153,7 @@ const GameDetailTop = () => {
                 <button
                   className={`px-4 py-2 min-w-[170px] ${
                     activeTab === "nasil"
-                      ? "text-blue-500 border-b-2 border-blue-500"
+                      ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
                       : "text-gray-400"
                   }`}
                   onClick={() => setActiveTab("nasil")}
@@ -212,9 +214,9 @@ const GameDetailTop = () => {
 
         {/* Üçüncü Kutu: Benzer Ürünler */}
         <div className="flex-2 p-2">
-          <div className="h-auto max-h-auto bg-[var(--advert-list-bg)] text-[var(--foreground)] p-2 relative rounded-lg">
+          <div className="h-auto max-h-auto bg-[var(--advert-card-bg)] text-[var(--foreground)] p-2 relative rounded-lg">
             <div className="max-w-sm p-2 rounded-lg">
-              <h2 className="text-xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold mb-4">
                 Benzer Ürünler
               </h2>
               <div className="space-y-4">
@@ -227,10 +229,10 @@ const GameDetailTop = () => {
                         className="max-w-[70px] max-h-[70px] rounded-md"
                       />
                       <div>
-                        <div className="text-white font-semibold">
+                        <div className="font-semibold">
                           {product.name}
                         </div>
-                        <div className="text-gray-400 text-sm">
+                        <div className="text-[var(--text-gray)] text-sm">
                           {product.price}
                         </div>
                       </div>

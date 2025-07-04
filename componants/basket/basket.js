@@ -94,7 +94,7 @@ const Basket = () => {
 
                   <div className="md:col-span-7 flex items-center md:justify-around justify-between lg:justify- flex-nowrap md:flex-wrap">
                     <div className="md:col-span-2 flex flex-wrap items-center justify-center text-center space-x-2">
-                      <p className="p-0 m-0 text-[12px] font-thin">
+                      <p className="p-0 m-0 text-[12px] font-normal">
                         BİRİM FİYAT
                       </p>
                       <div
@@ -138,7 +138,7 @@ const Basket = () => {
                       </div>
                     </div>
                     <div className="md:col-span-2 flex flex-wrap items-center justify-center text-center space-x-2">
-                      <p className="p-0 m-0 text-[12px] font-thin">
+                      <p className="p-0 m-0 text-[12px] font-normal">
                         TOPLAM FİYAT
                       </p>
                       <div
@@ -178,7 +178,7 @@ const Basket = () => {
               <div className="flex justify-between mt-2 border-t border-gray-600 pt-2">
                 <span>TOPLAM FİYAT</span>
                 <span>
-                  <span className="line-through text-xs font-thin">58.80 ₺</span>
+                  <span className="line-through text-xs font-normal">58.80 ₺</span>
                   <span className="font-bold text-green-400 ml-2">52.30 ₺</span>
                 </span>
               </div>

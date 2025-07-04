@@ -261,7 +261,7 @@ const AllAdvertsList = () => {
             <div
               key={index}
               className={`text-center w-full rounded-sm ${
-                activeTab === index && "bg-gray-700"
+                activeTab === index && "bg-[var(--advert-list-bg)]"
               }`}
               onClick={() => handleTabClick(index)}
             >
@@ -288,7 +288,7 @@ const AllAdvertsList = () => {
               ))}
             </div>
             <div className="flex justify-center items-center py-4">
-              <Link href="/all-games">
+              <Link href="/all-adverts">
                 <button
                   style={{
                     color: "var(--foreground)",

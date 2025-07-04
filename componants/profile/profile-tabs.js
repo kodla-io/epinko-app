@@ -106,7 +106,7 @@ const ProfileTabs = () => {
             <div className="flex flex-col rounded">
               <div className="flex justify-start items-center p-4 gap-2 w-full">
                 <div className="bg-gradient-to-b from-[color:var(--success)] to-transparent rounded-full p-[2px]">
-                  <div className="p-2 bg-[var(--bg-info-box)] rounded-full relative">
+                  <div className="p-2 bg-[var(--advert-card-bg)] rounded-full relative">
                     <div className="rounded-full relative">
                       <Link href="/">
                         <img
@@ -139,7 +139,7 @@ const ProfileTabs = () => {
               </div>
 
               <ul
-                className="w-full text-left mt-4 text-white space-y-0 px-4 pb-4"
+                className="w-full text-left mt-4 text-[var(--foreground)] space-y-0 px-4 pb-4"
                 ref={dropdownRef}
               >
                 {[
@@ -214,17 +214,6 @@ const ProfileTabs = () => {
                     icon: transactions,
                     label: "İşlemlerim",
                   },
-
-                  // {
-                  //   key: "advert-orders",
-                  //   icon: adverts,
-                  //   label: "İlan Siparişlerim",
-                  // },
-                  // {
-                  //   key: "incoming-orders",
-                  //   icon: adverts,
-                  //   label: "Gelen Siparişlerim",
-                  // },
                   {
                     key: "my-messages",
                     icon: message,
@@ -318,7 +307,7 @@ const ProfileTabs = () => {
                         </ul>
 
                         {/* Masaüstünde sağda göster */}
-                        <ul className="hidden lg:block absolute left-full mt-[-46px] w-56 bg-[#1e1e1e] shadow-lg rounded ml-2 py-2 z-50">
+                        <ul className="hidden lg:block absolute left-full mt-[-46px] w-56 bg-[var(--background)] shadow-lg rounded ml-2 py-2 z-50">
                           {item.subItems.map((sub) => (
                             <li
                               key={sub.key}
@@ -349,28 +338,28 @@ const ProfileTabs = () => {
         <div className="flex-1">
           {/* 4 KUTU */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 gap-[25px]">
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label2)] p-2 rounded flex items-center gap-4 justify-center">
+            <div className="bg-[var(--label2-light)] border-1 border-[var(--label2)] p-2 rounded flex items-center gap-4 justify-center">
               <GiWallet className="text-[var(--label2)] w-12 h-12" />
               <div>
                 <p>Hesap Bakiyesi</p>
                 <h3 className="text-md font-bold">1999,99₺</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--alert)] p-2 rounded flex items-center gap-4 justify-center">
+            <div className="bg-[var(--alert-light)] border-1 border-[var(--alert)] p-2 rounded flex items-center gap-4 justify-center">
               <HiPaperAirplane className="text-[var(--alert)] w-12 h-12" />
               <div>
                 <p>Yeni Mesaj</p>
                 <h3 className="text-md font-bold">2</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label7)] p-2 rounded flex items-center gap-4 justify-center">
+            <div className="bg-[var(--label7-light)] border-1 border-[var(--label7)] p-2 rounded flex items-center gap-4 justify-center">
               <AiFillCodeSandboxSquare className="text-[var(--label7)] w-12 h-12" />
               <div>
                 <p>Yeni Sipariş</p>
                 <h3 className="text-md font-bold">7</h3>
               </div>
             </div>
-            <div className="bg-[var(--bg-info-box)] border-1 border-[var(--label9)] p-2 rounded flex items-center gap-4 justify-center">
+            <div className="bg-[var(--label9-light)] border-1 border-[var(--label9)] p-2 rounded flex items-center gap-4 justify-center">
               <IoRocket className="text-[var(--label9)] w-12 h-12" />
               <div>
                 <p>Toplam Kazanç</p>
@@ -394,7 +383,7 @@ const ProfileTabs = () => {
             <WalletHistory title={"ÖDEME GEÇMİŞİM"} />
           )}
           {activeTab === "bank-accounts" && (
-            <BankAccounts title={"BANKA HESAPLARIM"} />
+            <BankAccounts title={"BANKA HESAPLARIM"} onTabChange={setActiveTab} />
           )}
           {activeTab === "help-requests" && <HelpRequests title={"Destek"} />}
           {activeTab === "transactions" && (
@@ -421,7 +410,7 @@ const ProfileTabs = () => {
           {activeTab === "top-up-balance" && (
             <TopUpBalance title={"Bakiye Yükle"} />
           )}
-          {activeTab === "check-cash" && <CheckCash title={"Nakit Çek"} />}
+          {activeTab === "check-cash" && <CheckCash title={"Nakit Çek"} onTabChange={setActiveTab} />}
           {activeTab === "advert-orders" && (
             <AdvertOrders title={"İLAN SİPARİŞLERİM"} />
           )}

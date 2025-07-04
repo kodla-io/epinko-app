@@ -177,7 +177,7 @@ const SimilarAdverts = () => {
         ))}
       </div>
       <div className="flex justify-center items-center py-4">
-        <Link href="/all-games">
+        <Link href="/all-adverts">
           <button
             style={{
               color: "var(--foreground)",

@@ -152,7 +152,7 @@ const RefundRequests = ({ title }) => {
         {activeTab !== "refunds" && (
           <button
             onClick={handleBackClick}
-            className="flex-1 py-2 text-center font-medium min-w-[200px] bg-[var(--label4)] rounded-md"
+            className="flex-1 py-2 text-center font-medium min-w-[200px] bg-[var(--label4)] rounded-md text-white"
           >
             İade Taleplerim
           </button>
@@ -160,7 +160,7 @@ const RefundRequests = ({ title }) => {
         {activeTab === "refunds" && (
           <button
             onClick={handleCreateClick}
-            className="flex-1 py-2 text-center font-medium min-w-[200px] bg-[var(--label4)] rounded-md"
+            className="flex-1 py-2 text-center font-medium min-w-[200px] bg-[var(--label4)] rounded-md text-white"
           >
             Talep Oluştur
           </button>
@@ -169,7 +169,7 @@ const RefundRequests = ({ title }) => {
       {activeTab === "refunds" && (
         <>
           <div className="">
-            <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
+            <table className="min-w-full text-left text-[var(--foreground)] bg-[var(--advert-card-bg)] rounded-lg">
               <thead>
                 <tr>
                   {headers.slice(0, visibleCols).map((header) => (
@@ -183,7 +183,7 @@ const RefundRequests = ({ title }) => {
               <tbody>
                 {AdvertData.map((item, index) => (
                   <React.Fragment key={index}>
-                    <tr className="hover:bg-[#3A3B51] cursor-pointer">
+                    <tr className="hover:bg-[var(--advert-list-bg)] cursor-pointer">
                       {headers.slice(0, visibleCols).map((header) => (
                         <td key={header.key} className="p-2">
                           {header.key === "resim" ? (
@@ -194,7 +194,7 @@ const RefundRequests = ({ title }) => {
                             />
                           ) : header.key === "durum" ? (
                             <div
-                              className={`px-2 py-1 rounded font-semibold min-w-[140px] text-center`}
+                              className={`px-2 py-1 rounded font-semibold min-w-[140px] text-center text-white`}
                               style={{ backgroundColor: item.statusColor }}
                             >
                               <span className="">{item.status}</span>
@@ -266,7 +266,7 @@ const RefundRequests = ({ title }) => {
                               ) : header.key === "durum" ? (
                                 <span
                                   style={{ backgroundColor: item.statusColor }}
-                                  className="px-2 py-1 rounded"
+                                  className="px-2 py-1 rounded text-white"
                                 >
                                   {item.status}
                                 </span>
@@ -325,7 +325,7 @@ const RefundRequests = ({ title }) => {
                       className={`px-2 py-1 rounded-md border border-[var(--idle)] ${
                         page === currentPage
                           ? "bg-[var(--label7)] text-white"
-                          : "text-white hover:bg-[var(--idle)]"
+                          : "text-[var(--foreground)] hover:bg-[var(--idle)]"
                       }`}
                     >
                       {page}
@@ -381,7 +381,7 @@ const RefundRequests = ({ title }) => {
                     }}
                   >
                     <div
-                      className={`p-4 rounded-md bg-[var(--profile-input)] text-white`}
+                      className={`p-4 rounded-md bg-[var(--profile-input)] text-[var(--foreground)]`}
                     >
                       <h4
                         className={`font-semibold text-${step.color}-400 text-sm`}
@@ -433,7 +433,7 @@ const RefundRequests = ({ title }) => {
             </div>
 
             <div className="flex w-full justify-end mt-2">
-              <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--primary)] rounded-md">
+              <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--success)] text-white hover:opacity-80 rounded-md">
                 İade Talebi Oluştur
               </button>
             </div>

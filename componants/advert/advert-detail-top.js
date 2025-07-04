@@ -165,7 +165,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
   }
 
   return (
-    <div className="container mx-auto text-white p-4">
+    <div className="container mx-auto text-[var(--foreground)] p-4">
       <div className="flex items-center space-x-4 mb-4">
         <h2
           style={{ color: "var(--foreground)" }}
@@ -201,15 +201,15 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                     <span>★</span>
                     <span>★</span>
                   </div>
-                  <span className="text-gray-400 text-sm">
+                  <span className="text-[var(--text-gray)] text-sm">
                     {product.reviews} Değerlendirme
                   </span>
-                  <span className="text-gray-400 text-sm">
+                  <span className="text-[var(--text-gray)] text-sm">
                     • {product.questions} Soru & Cevap
                   </span>
                 </div>
               </div>
-              <div className="text-sm text-gray-300 mt-1">
+              <div className="text-sm text-[var(--text-gray)] mt-1">
                 {product.description}
               </div>
               <div className="flex gap-2 flex-wrap mt-3 pt-3 border-t border-gray-600">
@@ -249,7 +249,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                   ))}
                 </ul>
               </div>
-              <div className="mt-2 text-xs text-gray-400">
+              <div className="mt-2 text-xs text-[var(--text-gray)]">
                 Kalan süre : {timeLeft.days} gün {timeLeft.hours} saat {timeLeft.minutes} dakika {timeLeft.seconds} saniye
               </div>
             </div>
@@ -313,8 +313,8 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                   </button>
                 </div>
                 </div>
-                <div className="text-xs text-gray-400 mt-1 text-right flex flex-col justify-between">
-                  <span className="font-bold text-white text-2xl">
+                <div className="text-xs text-[var(--text-gray)] mt-1 text-right flex flex-col justify-between">
+                  <span className="font-bold text-[var(--foreground)] text-2xl">
                     {seller.stats}
                   </span>
                   Başarılı İşlem:{" "}
@@ -340,13 +340,13 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                 <div className="text-2xl font-bold text-green-400 mb-1">
                   {product.price}
                 </div>
-                <div className="text-sm text-gray-400">İlan Ücreti</div>
+                <div className="text-sm text-[var(--text-gray)]">İlan Ücreti</div>
               </div>
               <div className="text-right">
-                <div className="text-lg font-bold text-white">
+                <div className="text-lg font-bold text-[var(--foreground)]">
                   {product.stock}
                 </div>
-                <div className="text-sm text-gray-400">Stok Sayısı</div>
+                <div className="text-sm text-[var(--text-gray)]">Stok Sayısı</div>
               </div>
             </div>
             <button className="bg-[var(--success)] text-white py-2 rounded font-bold mt-2 hover:opacity-80 transition-opacity">
@@ -357,7 +357,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
             </button>
             <div className="flex items-center justify-center my-2">
               <div className="flex-1 h-px bg-gray-600"></div>
-              <span className="px-3 text-sm text-gray-400">veya</span>
+              <span className="px-3 text-sm text-[var(--text-gray)]">veya</span>
               <div className="flex-1 h-px bg-gray-600"></div>
             </div>
             <div className="flex gap-2 mt-2">
@@ -383,7 +383,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
                 </div>
                 <div>
                   <div className="font-bold mb-1 ml-6">{box.title}</div>
-                  <div className="text-xs text-gray-300">{box.desc}</div>
+                  <div className="text-xs text-[var(--text-gray)]">{box.desc}</div>
                 </div>
               </div>
             ))}
@@ -398,41 +398,41 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
           onClick={() => setShowSmsModal(false)}
         >
           <div 
-            className="bg-[#4a5568] rounded-xl p-6 w-full max-w-lg mx-4 shadow-2xl relative"
+            className="bg-[var(--advert-card-bg)] rounded-xl p-6 w-full max-w-lg mx-4 shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
               onClick={() => setShowSmsModal(false)}
-              className="text-gray-300 hover:text-white absolute top-4 right-4 z-10"
+              className="text-[var(--text-gray)] hover:text-white absolute top-4 right-4 z-10"
             >
               <FaTimes className="w-5 h-5" />
             </button>
             <div className="mb-6">
-              <h3 className="text-white text-center font-medium">Satıcıya SMS Gönder</h3>
+              <h3 className="text-[var(--foreground)] text-center font-medium">Satıcıya SMS Gönder</h3>
             </div>
             
-            <p className="text-gray-300 text-sm mb-6 text-center leading-relaxed">
+            <p className="text-[var(--text-gray)] text-sm mb-6 text-center leading-relaxed">
               Bu panel üzerinden ilan sahibine SMS olarak mesaj gönderebilirsiniz. Gönderilen SMS mesajında telefon numaranız paylaşılmamaktadır.
             </p>
 
             <div className="mb-4">
-              <label className="block text-gray-300 text-sm mb-2 font-medium">Şablon Seçimi</label>
-              <select className="w-full bg-[#2d3748] text-white p-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500">
+              <label className="block text-[var(--text-gray)] text-sm mb-2 font-medium">Şablon Seçimi</label>
+              <select className="w-full bg-[var(--profile-input)] text-[var(--foreground)] p-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500">
                 <option>İlanınız ile ilgileniyorum. Teslimat süresini hızlandırma</option>
               </select>
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-300 text-sm mb-2 font-medium">Gönderilecek Mesaj</label>
+              <label className="block text-[var(--text-gray)] text-sm mb-2 font-medium">Gönderilecek Mesaj</label>
               <textarea 
-                className="w-full bg-[#2d3748] text-white p-3 rounded-lg border-0 h-28 resize-none focus:ring-2 focus:ring-blue-500 text-sm leading-relaxed"
+                className="w-full bg-[var(--profile-input)] text-[var(--foreground)] p-3 rounded-lg border-0 h-28 resize-none focus:ring-2 focus:ring-blue-500 text-sm leading-relaxed"
                 defaultValue="★ PUBG Mobile 50-60 SKIN Random Hesap | 7/24 Oto adlı ilanınız için kullanıcısından yeni bir mesajınız var! İlanınız ile ilgileniyorum. Teslimat süresini hızlandırma şansınız var mı? Lütfen benimle itemsatış.com üzerinden iletişime geçin."
               />
             </div>
 
             <div className="flex items-start mb-6 gap-3">
               <input type="checkbox" id="smsRules" className="mt-1 !w-4 !h-4" />
-              <label htmlFor="smsRules" className="text-gray-300 text-sm leading-relaxed">
+              <label htmlFor="smsRules" className="text-[var(--text-gray)] text-sm leading-relaxed">
                 SMS Gönderim Kurallarını okudum & kabul ediyorum.
               </label>
             </div>
@@ -456,7 +456,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
           >
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="text-gray-300 hover:text-white absolute top-4 right-4 z-10"
+              className="text-[var(--text-gray)] hover:text-[var(--foreground)] absolute top-4 right-4 z-10"
             >
               <FaTimes className="w-5 h-5" />
             </button>
@@ -466,7 +466,7 @@ Bildirimler ve mesajlar sayfasından teslim edilen ürüne erişebilirsiniz. Ür
               <h3 className="text-white font-medium text-lg">{modalContent.title}</h3>
             </div>
             
-            <div className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+            <div className="text-[var(--text-gray)] text-sm leading-relaxed whitespace-pre-line">
               {modalContent.content}
             </div>
           </div>

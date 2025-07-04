@@ -71,7 +71,7 @@ export default function Calendar({ onDateChange }) {
   };
 
   return (
-    <div className="mt-4 text-white">
+    <div className="mt-4 text-[var(--foreground)]">
       <h3 className="text-lg mb-2">Tarih Seçiniz</h3>
       <div className="flex justify-between items-center mb-2 bg-[var(--advert-list-bg)]">
         <button

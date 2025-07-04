@@ -206,7 +206,7 @@ const CategoryStep = () => {
   };
 
   return (
-    <div className="text-white space-y-6 bg-[#212630] p-4">
+    <div className="text-[var(--foreground)] space-y-6 bg-[var(--advert-list-bg)] p-4">
       {/* Üst Adım Göstergesi */}
       <div className="flex justify-center gap-4 my-4">
         {currentStep > 1 && (
@@ -221,8 +221,8 @@ const CategoryStep = () => {
           <React.Fragment key={step}>
             <div className="flex items-center gap-2">
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
-                  currentStep === step ? "bg-[var(--idle)]" : "bg-gray-600"
+                className={`w-8 h-8 rounded-full flex items-center text-white justify-center font-bold text-sm ${
+                  currentStep === step ? "bg-[var(--idle)]" : "bg-[var(--text-gray)]"
                 }`}
               >
                 {step}
@@ -241,7 +241,7 @@ const CategoryStep = () => {
             <input
               type="text"
               placeholder="Kategori ara..."
-              className="w-full px-4 py-2 rounded-md mb-3 bg-[var(--advert-list-bg)] text-white placeholder-gray-400 focus:outline-none transition"
+              className="w-full px-4 py-2 rounded-md mb-3 bg-[var(--background)] text-[var(--foreground)] placeholder-gray-400 focus:outline-none transition"
             />
 
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2">
@@ -252,7 +252,7 @@ const CategoryStep = () => {
                 ${
                   selectedCategoryId === category.id
                     ? "border-[var(--success)] bg-[var(--success)]/10"
-                    : "border-transparent hover:border-[var(--success)] bg-[var(--advert-list-bg)]"
+                    : "border-transparent hover:border-[var(--success)] bg-[var(--background)]"
                 }
               `}
                   onClick={() => setSelectedCategoryId(category.id)}
@@ -262,7 +262,7 @@ const CategoryStep = () => {
                     alt={category.name}
                     className="w-full h-[150px] object-cover rounded-md"
                   />
-                  <p className="text-center mt-2 text-white font-medium">
+                  <p className="text-center mt-2 text-[var(--foreground)] font-medium">
                     {category.name}
                   </p>
                 </li>
@@ -271,13 +271,13 @@ const CategoryStep = () => {
           </ul>
 
           {/* Alt Kategoriler */}
-          <div className="flex flex-col w-1/4 bg-[#20232a] rounded p-2 space-y-2 max-h-[600px] overflow-y-auto">
+          <div className="flex flex-col w-1/4 bg-[var(--advert-card-bg)] rounded p-2 space-y-2 max-h-[600px] overflow-y-auto">
             {selectedCategory?.subcategories?.length > 0 ? (
               selectedCategory.subcategories.map((sub) => (
                 <div
                   key={sub.id}
                   onClick={() => handleSubcategorySelect(sub)}
-                  className="flex items-center gap-2 p-2 bg-[#2c2f36] hover:bg-[var(--success)]/10 cursor-pointer rounded text-white"
+                  className="flex items-center gap-2 p-2 bg-[var(--advert-list-bg)] hover:bg-[var(--success)]/10 cursor-pointer rounded text-[var(--foreground)]"
                 >
                   <img
                     src={sub.image}
@@ -289,7 +289,7 @@ const CategoryStep = () => {
               ))
             ) : (
               <div className="w-full h-full flex items-center justify-center">
-                <p className="text-white text-sm">Lütfen bir kategori seçin</p>
+                <p className="text-[var(--foreground)] text-sm">Lütfen bir kategori seçin</p>
               </div>
             )}
           </div>
@@ -305,12 +305,12 @@ const CategoryStep = () => {
           {/* Select: Kategori */}
           <div className="flex items-center gap-2">
             <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-white font-semibold">
+            <h2 className="text-[var(--foreground)] font-semibold">
               İlan kategori Bilgileri
             </h2>
           </div>
           <div>
-            <select className="w-full p-2 rounded text-white">
+            <select className="w-full p-2 rounded text-[var(--foreground)]">
               <option value="">Kategori Seçin</option>
               <option value="1">Knight Online</option>
             </select>
@@ -321,7 +321,7 @@ const CategoryStep = () => {
             <span
               onClick={() => setSelected("PUBG Mobile")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "PUBG Mobile" ? "bg-green-500 text-white" : ""
+                selected === "PUBG Mobile" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
               }`}
               style={{
                 backgroundColor:
@@ -335,7 +335,7 @@ const CategoryStep = () => {
             <span
               onClick={() => setSelected("Hesap Satış")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "Hesap Satış" ? "bg-green-500 text-white" : ""
+                selected === "Hesap Satış" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
               }`}
               style={{
                 backgroundColor:
@@ -349,7 +349,7 @@ const CategoryStep = () => {
             <span
               onClick={() => setSelected("Lorem Ipsum 1")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "Lorem Ipsum 1" ? "bg-green-500 text-white" : ""
+                selected === "Lorem Ipsum 1" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
               }`}
               style={{
                 backgroundColor:
@@ -363,7 +363,7 @@ const CategoryStep = () => {
             <span
               onClick={() => setSelected("Lorem Ipsum 2")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
-                selected === "Lorem Ipsum 2" ? "bg-green-500 text-white" : ""
+                selected === "Lorem Ipsum 2" ? "bg-[var(--success)] text-white" : "text-[var(--foreground)]"
               }`}
               style={{
                 backgroundColor:
@@ -375,7 +375,7 @@ const CategoryStep = () => {
             </span>
           </div>
 
-          <div className="flex items-center bg-green-600 text-white text-sm rounded-md p-1 gap-2">
+          <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
             <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
             <span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -386,15 +386,15 @@ const CategoryStep = () => {
           {/* İlan Özellikleri Başlığı */}
           <div className="flex items-center gap-2">
             <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-white font-semibold">İlan Özellikleri</h2>
+            <h2 className="text-[var(--foreground)] font-semibold">İlan Özellikleri</h2>
           </div>
 
           {/* 8 Select (4-4) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {Array.from({ length: 8 }).map((_, index) => (
               <div key={index}>
-                <label className="text-white block mb-1">Lorem Ipsum</label>
-                <select className="w-full p-2 rounded text-white">
+                <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
+                <select className="w-full p-2 rounded text-[var(--foreground)]">
                   <option>Seçiniz</option>
                   <option>Option 1</option>
                 </select>
@@ -405,12 +405,12 @@ const CategoryStep = () => {
           {/* Başlık */}
           <div className="flex items-center gap-2">
             <TfiViewGrid className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-white font-semibold">
+            <h2 className="text-[var(--foreground)] font-semibold">
               İlan Başlık ve Açıklama Bilgileri
             </h2>
           </div>
 
-          <div className="flex items-center bg-green-600 text-white text-sm rounded-md p-1 gap-2">
+          <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
             <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
             <span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -424,7 +424,7 @@ const CategoryStep = () => {
               onClick={() => setSelectedLanguage("language1")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                 selectedLanguage === "language1"
-                  ? "bg-green-500 text-white"
+                  ? "bg-[var(--success)] text-white"
                   : ""
               }`}
               style={{
@@ -441,7 +441,7 @@ const CategoryStep = () => {
               onClick={() => setSelectedLanguage("language2")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                 selectedLanguage === "language2"
-                  ? "bg-green-500 text-white"
+                  ? "bg-[var(--success)] text-white"
                   : ""
               }`}
               style={{
@@ -458,7 +458,7 @@ const CategoryStep = () => {
               onClick={() => setSelectedLanguage("language3")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                 selectedLanguage === "language3"
-                  ? "bg-green-500 text-white"
+                  ? "bg-[var(--success)] text-white"
                   : ""
               }`}
               style={{
@@ -475,7 +475,7 @@ const CategoryStep = () => {
               onClick={() => setSelectedLanguage("language4")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                 selectedLanguage === "language4"
-                  ? "bg-green-500 text-white"
+                  ? "bg-[var(--success)] text-white"
                   : ""
               }`}
               style={{
@@ -492,7 +492,7 @@ const CategoryStep = () => {
               onClick={() => setSelectedLanguage("language5")}
               className={`px-4 py-1 rounded-md text-sm cursor-pointer transition-colors duration-200 w-full md:flex-1 flex items-center py-3 justify-center gap-3 ${
                 selectedLanguage === "language5"
-                  ? "bg-green-500 text-white"
+                  ? "bg-[var(--success)] text-white"
                   : ""
               }`}
               style={{
@@ -508,16 +508,16 @@ const CategoryStep = () => {
 
           {/* Başlık inputu */}
           <div>
-            <label className="text-white block mb-1">İlan Başlığı</label>
-            <input type="text" className="w-full p-2 rounded text-white" />
+            <label className="text-[var(--foreground)] block mb-1">İlan Başlığı</label>
+            <input type="text" className="w-full p-2 rounded text-[var(--foreground)]" />
           </div>
 
           {/* Açıklamalar */}
           <div>
-            <label className="text-white block mb-1">İlan Açıklaması</label>
+            <label className="text-[var(--foreground)] block mb-1">İlan Açıklaması</label>
             <textarea
               rows="4"
-              className="w-full p-2 rounded text-white resize-none"
+              className="w-full p-2 rounded text-[var(--foreground)] resize-none !h-[100px]"
             ></textarea>
           </div>
 
@@ -525,18 +525,18 @@ const CategoryStep = () => {
             {/* Stok Bilgileri Başlığı */}
             <div className="flex items-center gap-2 mb-2">
               <FaRegCircleDot className="w-6 h-6 text-[var(--success)]" />
-              <h2 className="text-white font-semibold">Stok Bilgileri</h2>
+              <h2 className="text-[var(--foreground)] font-semibold">Stok Bilgileri</h2>
             </div>
             <textarea
               rows="3"
-              className="w-full p-2 rounded text-white resize-none"
+              className="w-full p-2 rounded text-[var(--foreground)] resize-none !h-[100px]"
             ></textarea>
           </div>
 
           {/* Teslimat Süresi ve Fiyat Bilgileri */}
           <div className="flex items-center gap-2 mb-2">
             <IoTimeOutline className="w-6 h-6 text-[var(--success)]" />
-            <h2 className="text-white font-semibold">
+            <h2 className="text-[var(--foreground)] font-semibold">
               Teslimat Süresi ve Fiyat Bilgileri
             </h2>
           </div>
@@ -544,22 +544,22 @@ const CategoryStep = () => {
           {/* 1 Select + 3 Input / Responsive */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label className="text-white block mb-1">Teslim Süresi</label>
+              <label className="text-[var(--foreground)] block mb-1">Teslim Süresi</label>
               <select className="w-full p-2 rounded">
                 <option>0000dk</option>
                 <option>0010dk</option>
               </select>
             </div>
             <div>
-              <label className="text-white block mb-1">Lorem Ipsum</label>
+              <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
               <input type="text" className="w-full p-2 rounded" />
             </div>
             <div>
-              <label className="text-white block mb-1">Lorem Ipsum</label>
+              <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
               <input type="text" className="w-full p-2 rounded" />
             </div>
             <div>
-              <label className="text-white block mb-1">Lorem Ipsum</label>
+              <label className="text-[var(--foreground)] block mb-1">Lorem Ipsum</label>
               <input type="text" className="w-full p-2 rounded" />
             </div>
           </div>
@@ -578,7 +578,7 @@ const CategoryStep = () => {
                 <input
                   type="radio"
                   name="kategori"
-                  className="absolute top-2 left-2 z-10 w-4 h-4"
+                  className="absolute top-2 left-2 z-10 !w-4 !h-4"
                 />
                 <img
                   src="https:/placehold.co/500"
@@ -592,7 +592,7 @@ const CategoryStep = () => {
                 <input
                   type="radio"
                   name="kategori"
-                  className="absolute top-2 left-2 z-10 w-4 h-4"
+                  className="absolute top-2 left-2 z-10 !w-4 !h-4"
                 />
                 <img
                   src="https:/placehold.co/500"
@@ -609,7 +609,7 @@ const CategoryStep = () => {
             <h3 className="font-medium text-sm">İlan Resmi Yükle</h3>
           </div>
 
-          <div className="flex items-center bg-green-600 text-white text-sm rounded-md p-1 gap-2">
+          <div className="flex items-center bg-[var(--success)] text-white text-sm rounded-md p-1 gap-2">
             <FcAdvertising className="w-8 h-8 mr-2 hidden md:block" />
             <span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -627,7 +627,7 @@ const CategoryStep = () => {
           <div className="w-full flex justify-end">
             <button
               onClick={() => setStep(3)}
-              className="flex items-center gap-2 bg-[#3B5BFE] text-white text-sm px-4 py-2 rounded-md hover:bg-[#2646f2] transition"
+              className="flex items-center gap-2 bg-[var(--success)] text-white text-sm px-4 py-2 rounded-md hover:opacity-80 transition"
             >
               <FaPen className="w-3.5 h-3.5" />
               <span>Kaydet</span>
@@ -646,7 +646,7 @@ const CategoryStep = () => {
               <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="overflow-hidden">
                   <div className="relative">
-                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gray-700 rounded-md" />
+                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-[var(--text-gray)] rounded-md" />
                   </div>
                 </div>
               </div>
@@ -654,15 +654,15 @@ const CategoryStep = () => {
               {/* Başlık */}
               <div className="text-white p-2 w-full bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="space-y-2">
-                  <div className="h-4 w-[85%] bg-gray-700 rounded-md" />
-                  <div className="h-4 w-[50%] bg-gray-700 rounded-md" />
+                  <div className="h-4 w-[85%] bg-[var(--text-gray)] rounded-md" />
+                  <div className="h-4 w-[50%] bg-[var(--text-gray)] rounded-md" />
                 </div>
               </div>
 
               {/* Fiyat */}
               <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="text-md font-bold text-white p-2 w-[50%]">
-                  <div className="h-4 w-full bg-gray-700 rounded-md" />
+                  <div className="h-4 w-full bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="p-2 w-[50%]"></div>
               </div>
@@ -670,11 +670,11 @@ const CategoryStep = () => {
               {/* Satıcı ve Kategori */}
               <div className="relative bg-[var(--advert-card-bg)] rounded-b-md animate-pulse">
                 <div className="flex items-center w-full p-2 gap-2">
-                  <div className="w-6 h-6 rounded-md bg-gray-700" />
-                  <div className="h-4 w-[60px] bg-gray-700 rounded-md" />
+                  <div className="w-6 h-6 rounded-md bg-[var(--text-gray)]" />
+                  <div className="h-4 w-[60px] bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="absolute bottom-0 right-0 p-2">
-                  <div className="w-10 h-10 rounded-md bg-gray-700" />
+                  <div className="w-10 h-10 rounded-md bg-[var(--text-gray)]" />
                 </div>
               </div>
             </div>
@@ -685,7 +685,7 @@ const CategoryStep = () => {
               <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="overflow-hidden">
                   <div className="relative">
-                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gray-700 rounded-md" />
+                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-[var(--text-gray)] rounded-md" />
                   </div>
                 </div>
               </div>
@@ -693,15 +693,15 @@ const CategoryStep = () => {
               {/* Başlık */}
               <div className="text-white p-2 w-full bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="space-y-2">
-                  <div className="h-4 w-[85%] bg-gray-700 rounded-md" />
-                  <div className="h-4 w-[50%] bg-gray-700 rounded-md" />
+                  <div className="h-4 w-[85%] bg-[var(--text-gray)] rounded-md" />
+                  <div className="h-4 w-[50%] bg-[var(--text-gray)] rounded-md" />
                 </div>
               </div>
 
               {/* Fiyat */}
               <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="text-md font-bold text-white p-2 w-[50%]">
-                  <div className="h-4 w-full bg-gray-700 rounded-md" />
+                  <div className="h-4 w-full bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="p-2 w-[50%]"></div>
               </div>
@@ -709,11 +709,11 @@ const CategoryStep = () => {
               {/* Satıcı ve Kategori */}
               <div className="relative bg-[var(--advert-card-bg)] rounded-b-md animate-pulse">
                 <div className="flex items-center w-full p-2 gap-2">
-                  <div className="w-6 h-6 rounded-md bg-gray-700" />
-                  <div className="h-4 w-[60px] bg-gray-700 rounded-md" />
+                  <div className="w-6 h-6 rounded-md bg-[var(--text-gray)]" />
+                  <div className="h-4 w-[60px] bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="absolute bottom-0 right-0 p-2">
-                  <div className="w-10 h-10 rounded-md bg-gray-700" />
+                  <div className="w-10 h-10 rounded-md bg-[var(--text-gray)]" />
                 </div>
               </div>
             </div>
@@ -722,7 +722,7 @@ const CategoryStep = () => {
               <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="overflow-hidden">
                   <div className="relative">
-                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gray-700 rounded-md" />
+                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-[var(--text-gray)] rounded-md" />
                   </div>
                 </div>
               </div>
@@ -730,15 +730,15 @@ const CategoryStep = () => {
               {/* Başlık */}
               <div className="text-white p-2 w-full bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="space-y-2">
-                  <div className="h-4 w-[85%] bg-gray-700 rounded-md" />
-                  <div className="h-4 w-[50%] bg-gray-700 rounded-md" />
+                  <div className="h-4 w-[85%] bg-[var(--text-gray)] rounded-md" />
+                  <div className="h-4 w-[50%] bg-[var(--text-gray)] rounded-md" />
                 </div>
               </div>
 
               {/* Fiyat */}
               <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="text-md font-bold text-white p-2 w-[50%]">
-                  <div className="h-4 w-full bg-gray-700 rounded-md" />
+                  <div className="h-4 w-full bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="p-2 w-[50%]"></div>
               </div>
@@ -746,11 +746,11 @@ const CategoryStep = () => {
               {/* Satıcı ve Kategori */}
               <div className="relative bg-[var(--advert-card-bg)] rounded-b-md animate-pulse">
                 <div className="flex items-center w-full p-2 gap-2">
-                  <div className="w-6 h-6 rounded-md bg-gray-700" />
-                  <div className="h-4 w-[60px] bg-gray-700 rounded-md" />
+                  <div className="w-6 h-6 rounded-md bg-[var(--text-gray)]" />
+                  <div className="h-4 w-[60px] bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="absolute bottom-0 right-0 p-2">
-                  <div className="w-10 h-10 rounded-md bg-gray-700" />
+                  <div className="w-10 h-10 rounded-md bg-[var(--text-gray)]" />
                 </div>
               </div>
             </div>
@@ -759,7 +759,7 @@ const CategoryStep = () => {
               <div className="p-2 rounded-t-md bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="overflow-hidden">
                   <div className="relative">
-                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gray-700 rounded-md" />
+                    <div className="w-full h-full min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-[var(--text-gray)] rounded-md" />
                   </div>
                 </div>
               </div>
@@ -767,15 +767,15 @@ const CategoryStep = () => {
               {/* Başlık */}
               <div className="text-white p-2 w-full bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="space-y-2">
-                  <div className="h-4 w-[85%] bg-gray-700 rounded-md" />
-                  <div className="h-4 w-[50%] bg-gray-700 rounded-md" />
+                  <div className="h-4 w-[85%] bg-[var(--text-gray)] rounded-md" />
+                  <div className="h-4 w-[50%] bg-[var(--text-gray)] rounded-md" />
                 </div>
               </div>
 
               {/* Fiyat */}
               <div className="flex justify-between items-center border-t border-t-[var(--advert-card-border)] bg-[var(--advert-card-bg)] animate-pulse">
                 <div className="text-md font-bold text-white p-2 w-[50%]">
-                  <div className="h-4 w-full bg-gray-700 rounded-md" />
+                  <div className="h-4 w-full bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="p-2 w-[50%]"></div>
               </div>
@@ -783,11 +783,11 @@ const CategoryStep = () => {
               {/* Satıcı ve Kategori */}
               <div className="relative bg-[var(--advert-card-bg)] rounded-b-md animate-pulse">
                 <div className="flex items-center w-full p-2 gap-2">
-                  <div className="w-6 h-6 rounded-md bg-gray-700" />
-                  <div className="h-4 w-[60px] bg-gray-700 rounded-md" />
+                  <div className="w-6 h-6 rounded-md bg-[var(--text-gray)]" />
+                  <div className="h-4 w-[60px] bg-[var(--text-gray)] rounded-md" />
                 </div>
                 <div className="absolute bottom-0 right-0 p-2">
-                  <div className="w-10 h-10 rounded-md bg-gray-700" />
+                  <div className="w-10 h-10 rounded-md bg-[var(--text-gray)]" />
                 </div>
               </div>
             </div>
@@ -795,7 +795,7 @@ const CategoryStep = () => {
 
           <div className="w-full p-4 space-y-4 mx-auto">
             {/* Açıklama */}
-            <div className="bg-[var(--advert-list-bg)] p-4 rounded-md text-white relative">
+            <div className="bg-[var(--advert-card-bg)] p-4 rounded-md text-[var(--foreground)] relative">
               <p className="text-sm">
                 Doping bakiyeniz varsa, ilan doping tutarının gerekli kısmı
                 doping bakiyenizden, geri kalan kısmı hesap bakiyenizden
@@ -840,7 +840,7 @@ const CategoryStep = () => {
               ].map((section) => (
                 <div
                   key={section.key}
-                  className="bg-[var(--advert-list-bg)] text-white p-4 rounded-md"
+                  className="bg-[var(--advert-card-bg)] text-[var(--foreground)] p-4 rounded-md"
                 >
                   <div className="flex items-center space-x-2 mb-3">
                     <span className={`text-[${section.color}]`}>
@@ -868,7 +868,7 @@ const CategoryStep = () => {
                   ${
                     selected3[section.key] === index
                       ? `bg-[${section.color}] text-white`
-                      : "bg-zinc-800 text-gray-300"
+                      : "bg-[var(--advert-list-bg)] text-[var(--foreground)]"
                   }`}
                       >
                         <div>{option.duration}</div>
@@ -898,7 +898,7 @@ const CategoryStep = () => {
 
       {/* Adım 4 */}
       {currentStep === 4 && (
-        <div className="bg-[#2c2f36] p-6 rounded">
+        <div className="bg-[var(--advert-card-bg)] text-[var(--foreground)] p-6 rounded">
           <h2 className="text-xl font-bold mb-4">4. Aşama</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>

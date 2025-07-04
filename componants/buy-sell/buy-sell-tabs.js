@@ -3,12 +3,29 @@
 import React, { useState } from "react";
 import Comments from "../texts/comments";
 import BuySell from "./buy-sell";
+import { useRouter } from "next/navigation";
 
 const AlSat = () => {
   const [activeTab, setActiveTab] = useState("alsat");
+  const [showPopup, setShowPopup] = useState(false);
+  const router = useRouter();
+
+  const handleCompleteSale = () => {
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+      router.push("/basket");
+    }, 1200);
+  };
 
   return (
     <div id="buy-sell" className="container m-auto">
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-bounce">
+          Ürün sepete eklendi!
+        </div>
+      )}
       <div className="text-[var(--foreground)] p-4 rounded-xl">
         {/* Tabs */}
         <div className="flex items-center space-x-2 mb-6 text-[14px] md:text-md overflow-x-auto scrollbar-hide pb-[10px]">
@@ -23,8 +40,8 @@ const AlSat = () => {
             onClick={() => setActiveTab("alsat")}
             className={`min-w-[180px] px-4 py-2 rounded-md font-semibold transition-all duration-300 ${
               activeTab === "alsat"
-                ? "bg-[var(--primary)] text-white"
-                : "bg-[var(--bg-soft)] text-gray-300 hover:text-white cursor-pointer"
+                ? "bg-[var(--success)] text-white"
+                : "bg-[var(--advert-list-bg)] text-var(--foreground) cursor-pointer"
             }`}
           >
             Bize Goldbar Sat
@@ -33,8 +50,8 @@ const AlSat = () => {
             onClick={() => setActiveTab("hakkinda")}
             className={`min-w-[180px] px-4 py-2 rounded-md font-semibold transition-all duration-300 ${
               activeTab === "hakkinda"
-                ? "bg-[var(--primary)] text-white"
-                : "bg-[var(--bg-soft)] text-gray-300 hover:text-white cursor-pointer"
+                ? "bg-[var(--success)] text-white"
+                : "bg-[var(--advert-list-bg)] text-var(--foreground) cursor-pointer"
             }`}
           >
             Oyun Hakkında
@@ -43,8 +60,8 @@ const AlSat = () => {
             onClick={() => setActiveTab("degerlendirme")}
             className={`min-w-[180px] px-4 py-2 rounded-md font-semibold transition-all duration-300 ${
               activeTab === "degerlendirme"
-                ? "bg-[var(--primary)] text-white"
-                : "bg-[var(--bg-soft)] text-gray-300 hover:text-white cursor-pointer"
+                ? "bg-[var(--success)] text-white"
+                : "bg-[var(--advert-list-bg)] text-var(--foreground) cursor-pointer"
             }`}
           >
             Değerlendirmeler
@@ -54,7 +71,7 @@ const AlSat = () => {
         {/* Tab Content */}
         {activeTab === "alsat" && (
           <div className="">
-            <BuySell />
+            <BuySell onSellToUs={() => setActiveTab("hakkinda")} />
           </div>
         )}
 
@@ -73,7 +90,7 @@ const AlSat = () => {
 
               {/* Right Side */}
               <div className="w-full md:w-2/3 p-4 flex flex-col justify-between">
-                <div className="flex h-full flex-wrap flex-col justify-around">
+                <div className="flex h-full flex-wrap flex-col text-[var(--foreground)] justify-around">
                   <h2 className="text-xl font-bold mb-2">
                     KNIGHT ONLINE 1M GOLDBAR
                   </h2>
@@ -83,9 +100,7 @@ const AlSat = () => {
                   </p>
                   <div className="flex space-x-4 mb-4">
                     <div className="flex flex-col w-1/2">
-                      <label className="text-sm text-white mb-1">
-                        Karakter Adı
-                      </label>
+                      <label className="text-sm mb-1">Karakter Adı</label>
                       <input
                         type="text"
                         placeholder="Karakter Adı Giriniz"
@@ -93,38 +108,46 @@ const AlSat = () => {
                       />
                     </div>
                     <div className="flex flex-col w-1/2">
-                      <label className="text-sm text-white mb-1">Adet</label>
+                      <label className="text-sm mb-1">Adet</label>
                       <input
                         type="text"
                         placeholder="Adet Giriniz"
-                        className="bg-[#262636] text-white p-2 rounded-md outline-none"
+                        className="bg-[#262636] p-2 rounded-md outline-none"
                       />
                     </div>
                   </div>
-                  <div className="flex justify-start items-center text-sm mb-2">
-                    <div className="mr-4">
-                      <p className="text-[var(--success)] mb-2">Alış Fiyatı</p>
-                      <p className="text-white font-semibold py-2 px-4 bg-[var(--advert-list-bg)] rounded-md">
-                        3,40₺
-                      </p>
+                  <div className="flex w-full flex-col md:flex-row justify-between items-center mb-2 gap-2">
+                    <div className="flex items-center gap-4 flex-col flex-wrap md:flex-row w-full md:w-auto justify-end">
+                      <div className="flex flex-row gap-2 justify-around w-full md:w-auto">
+                        <div className="mr-4">
+                          <p className="text-[var(--success)] mb-2">
+                            Alış Fiyatı
+                          </p>
+                          <p className="font-semibold py-2 px-4 bg-[var(--advert-list-bg)] rounded-md">
+                            3,40₺
+                          </p>
+                        </div>
+                        <div className="mr-4">
+                          <p className="text-[var(--success)] mb-2">
+                            Kazancınız
+                          </p>
+                          <p className="font-semibold py-2 px-4 bg-[var(--advert-list-bg)] rounded-md">
+                            3,40₺
+                          </p>
+                        </div>
+                      </div>
+                      <div className="w-full md:w-auto">
+                        <div className="flex items-center md:mb-0 my-2 md:my-0 w-full md:w-auto justify-start">
+                          <input type="checkbox" className="mr-2 !w-4 !h-4" />
+                          <p className="text-xs">
+                            Ürün Satış Kurallarını okudum ve kabul ediyorum.
+                          </p>
+                        </div>
+                        <button className="bg-[var(--success)] text-white px-4 py-2 mt-2 rounded-md self-end" onClick={handleCompleteSale}>
+                          Satışı Tamamla
+                        </button>
+                      </div>
                     </div>
-                    <div className="mr-4">
-                      <p className="text-[var(--success)] mb-2">Kazancınız</p>
-                      <p className="text-white font-semibold py-2 px-4 bg-[var(--advert-list-bg)] rounded-md">
-                        3,40₺
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex w-full justify-between items-center md:flex-nowrap flex-wrap mb-2">
-                    <div className="flex md:mb-0 my-2 md:my-0">
-                      <input type="checkbox" className="mr-2" />
-                      <p className="text-xs">
-                        Ürün Satış Kurallarını okudum ve kabul ediyorum.
-                      </p>
-                    </div>
-                    <button className="bg-blue-500 px-4 py-2 rounded-md self-end">
-                      Satışı Tamamla
-                    </button>
                   </div>
                 </div>
               </div>
@@ -133,7 +156,7 @@ const AlSat = () => {
             {/* Right Side */}
             <div className="w-full md:w-1/3 bg-[var(--advert-list-bg)] p-4 rounded-xl">
               <h3 className="text-lg font-semibold mb-2">LOREM IPSUM</h3>
-              <p className="text-sm text-gray-400 text-justify max-h-[260px] min-h-[260px] overflow-y-scroll custom-scrollbar pr-2">
+              <p className="text-sm text-[var(--text-gray)] text-justify max-h-[260px] min-h-[260px] overflow-y-scroll custom-scrollbar pr-2">
                 Cursus mattis molestie a iaculis. Amet commodo nulla facilisi
                 nullam vehicula ipsum a arcu cursus. Vitae turpis massa sed
                 elementum tempus egestas sed. Ac tincidunt vitae semper quis

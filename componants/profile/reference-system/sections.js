@@ -30,7 +30,7 @@ export default function ReferenceSystem({ title }) {
   };
 
   return (
-    <div className="w-full p-1 md:p-4 max-w-6xl mx-auto text-white">
+    <div className="w-full p-1 md:p-4 max-w-6xl mx-auto text-[var(--foreground)]">
       {/* HEADER */}
       <div className="flex items-center space-x-4 py-2">
         <h2
@@ -45,14 +45,14 @@ export default function ReferenceSystem({ title }) {
       {/* ÜST INFO KUTULARI */}
       <div className="flex md:flex-row flex-col gap-4 mb-5 items-stretch">
         {/* SOL TARAF: Toplam kazanç + Bakiye Çek */}
-        <div className="flex-1 bg-[#262737] rounded-xl p-5 flex flex-col justify-between min-h-[110px]">
+        <div className="flex-1 bg-[var(--advert-card-bg)] rounded-xl p-5 flex flex-col justify-between min-h-[110px]">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
             <div>
               <div className="text-lg font-bold">~ {totalEarning}₺</div>
-              <div className="text-sm text-gray-400">Toplam Kazancın</div>
+              <div className="text-sm text-[var(--text-gray)]">Toplam Kazancın</div>
             </div>
           </div>
-          <button className="mt-2 py-2 bg-[#303199] rounded-lg hover:bg-[#3c40b4] font-semibold transition">
+          <button className="mt-2 py-2 bg-[var(--success)] text-white rounded-lg hover:bg-opacity-80 font-semibold transition">
             BAKİYE ÇEK
           </button>
         </div>
@@ -60,13 +60,13 @@ export default function ReferenceSystem({ title }) {
         {/* SAĞ TARAF: Referans Linki + Kodu */}
         <div className="flex-2 flex flex-col gap-2">
           {/* Link */}
-          <div className="flex items-center bg-[#262737] rounded-xl px-4 py-2">
-            <span className="text-[13px] text-[#33ff99] font-semibold min-w-auto md:min-w-[130px]">
+          <div className="flex items-center bg-[var(--advert-card-bg)] rounded-xl px-4 py-2">
+            <span className="text-[13px] text-[var(--success)] font-semibold min-w-auto md:min-w-[130px]">
               Referans Linki
             </span>
             <input
               type="text"
-              className="flex-1 bg-transparent text-white font-medium ml-2 outline-none select-all"
+              className="flex-1 bg-transparent text-[var(--foreground)] font-medium ml-2 outline-none select-all"
               value={referralLink}
               readOnly
               onClick={(e) => e.target.select()}
@@ -82,13 +82,13 @@ export default function ReferenceSystem({ title }) {
             )}
           </div>
           {/* Kod */}
-          <div className="flex items-center bg-[#262737] rounded-xl px-4 py-2">
-            <span className="text-[13px] text-[#fabe32] font-semibold min-w-auto md:min-w-[130px]">
+          <div className="flex items-center bg-[var(--advert-card-bg)] rounded-xl px-4 py-2">
+            <span className="text-[13px] text-[var(--label7)] font-semibold min-w-auto md:min-w-[130px]">
               Size Ait Referans Kodu
             </span>
             <input
               type="text"
-              className="flex-1 bg-transparent text-white font-medium ml-2 outline-none select-all"
+              className="flex-1 bg-transparent text-[var(--foreground)] font-medium ml-2 outline-none select-all"
               value={myReferralCode}
               readOnly
               onClick={(e) => e.target.select()}
@@ -112,43 +112,43 @@ export default function ReferenceSystem({ title }) {
       </div>
       <div className="flex flex-col md:flex-row gap-6">
         {/* SOL LİSTE - Referanslar */}
-        <div className="flex-1 bg-[#262737] rounded-xl p-3">
+        <div className="flex-1 bg-[var(--advert-card-bg)] rounded-xl p-3">
           <div className="flex w-full justify-between items-center mb-2">
-            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+            <div className="mb-2 font-bold text-[var(--primary)] text-[15px]">
               Ad Soyad
             </div>
-            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+            <div className="mb-2 font-bold text-[var(--primary)] text-[15px]">
               Kayıt Tarihi
             </div>
           </div>
-          <ul className="divide-y divide-[#35354b]">
+          <ul className="divide-y divide-[var(--advert-list-bg)]">
             {refUserList.map((item, idx) => (
               <li
                 key={idx}
-                className="py-2 flex justify-between items-center text-white/90"
+                className="py-2 flex justify-between items-center text-[var(--foreground)]"
               >
                 <span className="font-medium">{item.name}</span>
-                <span className="text-sm text-gray-400">{item.date}</span>
+                <span className="text-sm text-[var(--text-gray)]">{item.date}</span>
               </li>
             ))}
           </ul>
         </div>
         {/* SAĞ LİSTE - Aylar/Kazanç */}
-        <div className="flex-1 bg-[#262737] rounded-xl p-3">
+        <div className="flex-1 bg-[var(--advert-card-bg)] rounded-xl p-3">
           <div className="flex w-full justify-between items-center mb-2">
-            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+            <div className="mb-2 font-bold text-[var(--primary)] text-[15px]">
               Aylar
             </div>
-            <div className="mb-2 font-bold text-[#7f83ec] text-[15px]">
+            <div className="mb-2 font-bold text-[var(--primary)] text-[15px]">
               Kazanç
             </div>
           </div>
 
-          <ul className="divide-y divide-[#35354b]">
+          <ul className="divide-y divide-[var(--advert-list-bg)]">
             {earningList.map((item, idx) => (
               <li
                 key={idx}
-                className="py-2 flex justify-between items-center text-white/90"
+                className="py-2 flex justify-between items-center text-[var(--foreground)]"
               >
                 <span className="font-medium">{item.month}</span>
                 <span className="text-lg text-[var(--success)] font-semibold">

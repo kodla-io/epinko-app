@@ -38,8 +38,8 @@ const HowToCreateAd = () => {
       {content.map((item) => (
         <div key={item.id} className="mb-8">
           <div className="flex items-center mb-2">
-            <h3 className="text-green-500 md:text-[35px] text-xl font-bold mr-2">{item.id}</h3>
-            <h3 className="text-white md:text-[35px] text-xl font-bold">
+            <h3 className="text-[var(--success)] md:text-[35px] text-xl font-bold mr-2">{item.id}</h3>
+            <h3 className="text-[var(--foreground)] md:text-[35px] text-xl font-bold">
               {item.title.toUpperCase()}
             </h3>
           </div>
@@ -53,13 +53,13 @@ const HowToCreateAd = () => {
                   className="w-full h-[400px] object-cover rounded-lg"
                 />
               </div>
-              <div className="flex-1 text-white max-h-[400px] md:overflow-y-hidden overflow-y-scroll">
+              <div className="flex-1 text-[var(--foreground)] max-h-[400px] md:overflow-y-hidden overflow-y-scroll">
                 <p>{item.text}</p>
               </div>
             </div>
           ) : (
             <>
-              <p className="text-white mb-4">{item.text}</p>
+              <p className="text-[var(--foreground)] mb-4">{item.text}</p>
               <div className="mb-4">
                 {item.images.length === 1 ? (
                   <img

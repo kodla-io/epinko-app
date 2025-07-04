@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FaPlusCircle, FaMinusCircle, FaEdit, FaTrash } from "react-icons/fa";
+import { FaPlusCircle, FaMinusCircle, FaEdit, FaTrash, FaTimes } from "react-icons/fa";
 
 const AdvertData = [
   {
@@ -42,9 +42,124 @@ const headers = [
   { key: "actions", label: "Düzenle" },
 ];
 
-const BankAccounts = ({ title }) => {
+const EditBankAccountModal = ({ isOpen, onClose, data }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    fullName: "",
+    iban: "",
+    status: "Aktif"
+  });
+
+  useEffect(() => {
+    if (data) {
+      setFormData({
+        name: data.name || "",
+        fullName: data.fullName || "",
+        iban: data.iban || "",
+        status: data.status || "Aktif"
+      });
+    }
+  }, [data]);
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleSubmit = () => {
+    console.log("Güncellenecek veri:", formData);
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+      <div className="relative bg-[var(--profile-tab-bg)] text-[var(--foreground)] rounded-2xl p-6 w-full max-w-lg shadow-lg">
+        {/* Başlık ve Kapat */}
+        <div className="text-2xl font-semibold mb-4">Banka Hesabı Düzenle</div>
+        <button
+          onClick={onClose}
+          className="absolute top-5 right-6 text-2xl text-[var(--text-gray)] bg-[var(--alert)]/90 hover:bg-red-800 w-7 h-7 flex items-center justify-center rounded"
+        >
+          <FaTimes />
+        </button>
+
+        {/* Form */}
+        <div className="space-y-4">
+          <div>
+            <label className="text-sm text-[var(--text-gray)] mb-1 block">Kayıt Adı</label>
+            <input
+              type="text"
+              value={formData.name}
+              onChange={(e) => handleInputChange("name", e.target.value)}
+              className="w-full p-3 rounded-lg text-[var(--foreground)] bg-[var(--advert-card-bg)] border border-[var(--text-gray)] focus:outline-none focus:border-[var(--success)]"
+              placeholder="Kayıt Adı"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm text-[var(--text-gray)] mb-1 block">Hesap Sahibi</label>
+            <input
+              type="text"
+              value={formData.fullName}
+              onChange={(e) => handleInputChange("fullName", e.target.value)}
+              className="w-full p-3 rounded-lg text-[var(--foreground)] bg-[var(--advert-card-bg)] border border-[var(--text-gray)] focus:outline-none focus:border-[var(--success)]"
+              placeholder="Hesap Sahibi"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm text-[var(--text-gray)] mb-1 block">IBAN</label>
+            <input
+              type="text"
+              value={formData.iban}
+              onChange={(e) => handleInputChange("iban", e.target.value)}
+              className="w-full p-3 rounded-lg text-[var(--foreground)] bg-[var(--advert-card-bg)] border border-[var(--text-gray)] focus:outline-none focus:border-[var(--success)]"
+              placeholder="IBAN"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm text-[var(--text-gray)] mb-1 block">Durum</label>
+            <select
+              value={formData.status}
+              onChange={(e) => handleInputChange("status", e.target.value)}
+              className="w-full p-3 rounded-lg text-[var(--foreground)] bg-[var(--advert-card-bg)] border border-[var(--text-gray)] focus:outline-none focus:border-[var(--success)]"
+            >
+              <option value="Aktif">Aktif</option>
+              <option value="Pasif">Pasif</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Butonlar */}
+        <div className="flex gap-3 mt-6">
+          <button
+            onClick={onClose}
+            className="flex-1 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition"
+          >
+            İptal
+          </button>
+          <button
+            onClick={handleSubmit}
+            className="flex-1 py-2 px-4 bg-[var(--success)] hover:bg-[var(--label3)] text-white rounded-md transition"
+          >
+            Güncelle
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const BankAccounts = ({ title, onTabChange }) => {
   const [expandedRow, setExpandedRow] = useState(null);
   const [visibleCols, setVisibleCols] = useState(7);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editData, setEditData] = useState(null);
 
   const handleResize = () => {
     const width = window.innerWidth;
@@ -66,10 +181,24 @@ const BankAccounts = ({ title }) => {
     setExpandedRow(expandedRow === index ? null : index);
   };
 
+  const handleEdit = (item) => {
+    setEditData(item);
+    setEditModalOpen(true);
+  };
+
   const [activeTab, setActiveTab] = useState("tab1");
 
   return (
     <div className="container mx-auto p-4">
+      <EditBankAccountModal 
+        isOpen={editModalOpen}
+        onClose={() => {
+          setEditModalOpen(false);
+          setEditData(null);
+        }}
+        data={editData}
+      />
+      
       <div className="flex md:flex-nowrap flex-wrap items-center space-x-4 py-2">
         <h2
           style={{ color: "var(--foreground)" }}
@@ -81,7 +210,8 @@ const BankAccounts = ({ title }) => {
         <div className="flex md:flex-nowrap flex-wrap items-center w-full md:w-auto gap-2">
           {activeTab !== "tab2" && (
             <button
-              className={`flex-1 py-2 text-center font-medium min-w-[200px] bg-[var(--label2)] rounded-md`}
+              onClick={() => onTabChange && onTabChange("wallet-history")}
+              className={`flex-1 py-2 text-center text-white font-medium min-w-[200px] bg-[var(--label2)] rounded-md hover:opacity-80 transition`}
             >
               Bakiye Çekim Taleplerim
             </button>
@@ -89,7 +219,7 @@ const BankAccounts = ({ title }) => {
           {activeTab !== "tab2" && (
             <button
               onClick={() => setActiveTab("tab2")}
-              className="flex-1 py-2 text-center font-medium min-w-[200px] bg-[var(--label4)] rounded-md"
+              className="flex-1 py-2 text-center text-white font-medium min-w-[200px] bg-[var(--label4)] rounded-md"
             >
               Banka Hesabı Ekle
             </button>
@@ -97,7 +227,7 @@ const BankAccounts = ({ title }) => {
           {activeTab !== "tab1" && (
             <button
               onClick={() => setActiveTab("tab1")}
-              className="flex-1 py-2 text-center font-medium min-w-[200px] bg-[var(--label4)] rounded-md"
+              className="flex-1 py-2 text-center text-white font-medium min-w-[200px] bg-[var(--label4)] rounded-md"
             >
               Banka Hesaplarım
             </button>
@@ -107,7 +237,7 @@ const BankAccounts = ({ title }) => {
 
       {activeTab === "tab1" && (
         <div className="">
-          <table className="min-w-full text-left text-white bg-[var(--profile-tab-bg)] rounded-lg">
+          <table className="min-w-full text-left text-[var(--foreground)] bg-[var(--advert-card-bg)] rounded-lg">
             <thead>
               <tr>
                 {headers.slice(0, visibleCols).map((header) => (
@@ -121,7 +251,7 @@ const BankAccounts = ({ title }) => {
             <tbody>
               {AdvertData.map((item, index) => (
                 <React.Fragment key={index}>
-                  <tr className="hover:bg-[#3A3B51] cursor-pointer">
+                  <tr className="hover:bg-[var(--advert-list-bg)] cursor-pointer">
                     {headers.slice(0, visibleCols).map((header) => (
                       <td key={header.key} className="p-4">
                         {header.key === "durum" ? (
@@ -137,12 +267,15 @@ const BankAccounts = ({ title }) => {
                         ) : header.key === "actions" ? (
                           <div className="flex items-center gap-2">
                             <button
-                              onClick={() => alert(`Düzenle: ${item.no}`)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleEdit(item);
+                              }}
                             >
-                              <FaEdit />
+                              <FaEdit className="text-[var(--success)]" />
                             </button>
                             <button onClick={() => alert(`Sil: ${item.no}`)}>
-                              <FaTrash />
+                              <FaTrash className="text-[var(--alert)]" />
                             </button>
                           </div>
                         ) : (
@@ -196,14 +329,17 @@ const BankAccounts = ({ title }) => {
                             ) : header.key === "actions" ? (
                               <div className="flex items-center gap-2">
                                 <button
-                                  onClick={() => alert(`Düzenle: ${item.no}`)}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleEdit(item);
+                                  }}
                                 >
-                                  <FaEdit />
+                                  <FaEdit className="text-[var(--success)]" />
                                 </button>
                                 <button
                                   onClick={() => alert(`Sil: ${item.no}`)}
                                 >
-                                  <FaTrash />
+                                  <FaTrash className="text-[var(--alert)]" />
                                 </button>
                               </div>
                             ) : (
@@ -265,8 +401,8 @@ const BankAccounts = ({ title }) => {
           </div>
 
           <div className="flex w-full justify-end">
-            <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--primary)] rounded-md">
-              GÜNCELLE
+            <button className="py-2 text-center text-white font-medium min-w-[200px] bg-[var(--primary)] rounded-md">
+                EKLE
             </button>
           </div>
         </div>

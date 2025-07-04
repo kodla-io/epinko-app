@@ -84,18 +84,18 @@ const PhoneVerifyModal = ({ open, onClose }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4">
-      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-md shadow-xl relative text-white">
+      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-md shadow-xl relative text-[var(--foreground)]">
         <h3 className="text-2xl font-bold text-center mb-3">
           Telefon Doğrulama
         </h3>
         {step === 1 && (
           <>
-            <div className="mb-3 text-center text-gray-300">
+            <div className="mb-3 text-center text-[var(--text-gray)]">
               Telefon numaranızı giriniz.
             </div>
             <input
               type="text"
-              className="w-full p-3 rounded-lg bg-[#22232b] text-white mb-2 border-none focus:outline-none text-center"
+              className="w-full p-3 rounded-lg bg-[var(--background)] text-[var(--foreground)] mb-2 border-none focus:outline-none text-center"
               placeholder="5xxxxxxxxx"
               value={phone}
               maxLength={10}
@@ -138,16 +138,16 @@ const PhoneVerifyModal = ({ open, onClose }) => {
         )}
         {step === 2 && (
           <>
-            <div className="text-sm text-[#54f7af] text-center mb-2">
+            <div className="text-sm text-[var(--success)] text-center mb-2">
               Numara:{" "}
               {phone.replace(/^(\d{3})(\d{3})(\d{2})(\d{2})$/, "5$1 $2 $3 $4")}
             </div>
-            <div className="w-full bg-blue-100 py-2 text-center rounded text-blue-800 font-semibold mb-4">
+            <div className="w-full bg-[var(--label2-light)] py-2 text-center rounded text-[var(--label2)] font-semibold mb-4">
               Kalan Süre: 0 dakika {seconds.toString().padStart(2, "0")} saniye
             </div>
             <input
               type="text"
-              className="w-full p-3 rounded-lg bg-[#22232b] text-white mb-4 border-none focus:outline-none text-center"
+              className="w-full p-3 rounded-lg bg-[var(--background)] text-[var(--foreground)] mb-4 border-none focus:outline-none text-center"
               placeholder="Kodu Giriniz"
               value={code}
               maxLength={6}
@@ -161,7 +161,7 @@ const PhoneVerifyModal = ({ open, onClose }) => {
                 Kapat
               </button>
               <button
-                className="flex-1 py-2 rounded bg-[#263965] font-semibold text-white hover:opacity-80 flex items-center justify-center gap-2"
+                className="flex-1 py-2 rounded bg-[var(--success)] font-semibold text-white hover:opacity-80 flex items-center justify-center gap-2"
                 // onClick={() => ... kod kontrol fonksiyonu}
               >
                 <FaCheck /> Kontrol Et
@@ -193,36 +193,36 @@ const IdentityVerifyModal = ({ open, onClose }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#000000b3] bg-opacity-60 px-4">
-      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-xl shadow-xl relative text-white">
+      <div className="bg-[var(--profile-tab-bg)] rounded-xl p-6 w-full max-w-xl shadow-xl relative text-[var(--foreground)]">
         <h3 className="text-2xl font-bold text-center mb-1">TC Doğrulama</h3>
-        <div className="text-sm text-gray-200 text-center mb-3">
+        <div className="text-sm text-[var(--text-gray)] text-center mb-3">
           Lütfen doğum yılınızı ve TC Kimlik Numaranızı Giriniz.
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
           <input
             type="text"
-            className="p-3 rounded-lg bg-[#22232b] text-white border-none focus:outline-none"
+            className="p-3 rounded-lg bg-[var(--background)] text-[var(--foreground)] border-none focus:outline-none"
             placeholder="Adınız"
             value={ad}
             onChange={(e) => setAd(e.target.value)}
           />
           <input
             type="text"
-            className="p-3 rounded-lg bg-[#22232b] text-white border-none focus:outline-none"
+            className="p-3 rounded-lg bg-[var(--background)] text-[var(--foreground)] border-none focus:outline-none"
             placeholder="Soyadınız"
             value={soyad}
             onChange={(e) => setSoyad(e.target.value)}
           />
           <input
             type="text"
-            className="p-3 rounded-lg bg-[#22232b] text-white border-none focus:outline-none"
+            className="p-3 rounded-lg bg-[var(--background)] text-[var(--foreground)] border-none focus:outline-none"
             placeholder="Doğum Yılı"
             value={dogumYili}
             onChange={(e) => setDogumYili(e.target.value)}
           />
           <input
             type="text"
-            className="p-3 rounded-lg bg-[#22232b] text-white border-none focus:outline-none"
+            className="p-3 rounded-lg bg-[var(--background)] text-[var(--foreground)] border-none focus:outline-none"
             placeholder="TC Kimlik No"
             value={tc}
             onChange={(e) => setTc(e.target.value)}
@@ -235,7 +235,7 @@ const IdentityVerifyModal = ({ open, onClose }) => {
           >
             Kapat
           </button>
-          <button className="flex-1 py-2 rounded bg-[#2196F3] font-semibold text-white hover:opacity-80 flex items-center justify-center gap-2">
+          <button className="flex-1 py-2 rounded bg-[var(--success)] font-semibold text-white hover:opacity-80 flex items-center justify-center gap-2">
             <FaCheck /> Kontrol Et
           </button>
         </div>

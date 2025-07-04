@@ -39,7 +39,7 @@ const PasswordChange = ({ title }) => {
           </div>
 
           <div className="flex w-full justify-end">
-            <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--success)] rounded-md">
+            <button className="py-2 text-center font-medium min-w-[200px] bg-[var(--success)] text-white rounded-md">
               GÜNCELLE
             </button>
           </div>

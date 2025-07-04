@@ -33,7 +33,7 @@ const DealOfTheDayUnknown = ({ items }) => {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-between p-4 text-[var(--advert-list-bg)]">
+                <div className="flex flex-col justify-between p-4 text-[var(--invisible-text)]">
                   <h2 className="font-bold text-lg">{item.title}</h2>
                   <p className="text-sm mb-2">{item.description}</p>
                   <div className="flex items-center gap-3">
