@@ -50,7 +50,7 @@ const NewsDetail = () => {
   ];
 
   return (
-    <div className="container m-auto flex flex-wrap md:flex-nowrap w-full min-h-screen text-white p-4 gap-4">
+    <div className="container m-auto flex flex-wrap md:flex-nowrap w-full min-h-screen text-[var(--foreground)] p-4 gap-4">
       <div className="md:w-5/7 w-full ">
         {/* Ana görsel */}
         <div className="flex flex-col gap-4 bg-[var(--advert-list-bg)] p-4 rounded-md">
@@ -61,7 +61,7 @@ const NewsDetail = () => {
           />
 
           {/* Tarih ve Görüntüleme */}
-          <div className="flex items-center text-sm gap-4 text-gray-400">
+          <div className="flex items-center text-sm gap-4 text-[var(--text-gray)]">
             <span className="flex items-center">
               <SlCalender className="mr-2" />
               25-10-2022
@@ -78,7 +78,7 @@ const NewsDetail = () => {
           </h1>
 
           {/* Paragraflar */}
-          <div className="flex flex-col gap-4 text-gray-200 text-sm leading-relaxed">
+          <div className="flex flex-col gap-4 text-[var(--text-gray)] text-sm leading-relaxed">
             <p className="text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam
@@ -161,7 +161,7 @@ const NewsDetail = () => {
                   alt="Benzer Haber"
                   className="object-cover w-full h-auto rounded"
                 />
-                <div className="text-xs text-gray-400 flex justify-between">
+                <div className="text-xs text-[var(--text-gray)] flex justify-between">
                   <span className="flex items-center">
                     <SlCalender className="mr-2" />
                     25-10-2022
@@ -175,9 +175,6 @@ const NewsDetail = () => {
                   Pellentesque Elit Ullamcorper Dignissim Cras Tincidunt
                   Lobortis
                 </p>
-                {/* <button className="bg-red-500 text-white text-xs px-3 py-1 rounded hover:bg-red-600 w-fit">
-                  Devamını Oku
-                </button> */}
               </Link>
             ))}
           </div>
@@ -200,7 +197,7 @@ const NewsDetail = () => {
                   alt="haber görseli"
                   className="w-20 h-20 object-cover rounded-md"
                 />
-                <div className="flex flex-col text-sm text-white">
+                <div className="flex flex-col text-sm text-[var(--foreground)]">
                   <div className="flex items-center gap-4 text-xs mb-1">
                     <span className="flex items-center gap-1">
                       <SlCalender className="mr-1" />
@@ -211,7 +208,7 @@ const NewsDetail = () => {
                       {item.views} Görüntüleme
                     </span>
                   </div>
-                  <p className="text-white font-semibold leading-snug clamp-2 min-h-[40px]">
+                  <p className="text-[var(--foreground)] font-semibold leading-snug clamp-2 min-h-[40px]">
                     {item.title}
                   </p>
                 </div>

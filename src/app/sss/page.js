@@ -80,7 +80,7 @@ const SSS = () => {
       <div className="container m-auto">
         <div className="flex flex-wrap md:flex-nowrap">
           {/* Sol kısım: Tablar */}
-          <div className="bg-[var(--advert-list-bg)] p-4 min-w-[100%] mb-3 md:min-w-[200px]">
+          <div className="bg-[var(--advert-card-bg)] p-4 min-w-[100%] mb-3 md:min-w-[200px]">
             <h2 className="text-xl mb-4 text-[var(--success)]">
               SIKÇA SORULAN SORULAR
             </h2>
@@ -90,7 +90,7 @@ const SSS = () => {
                   key={index}
                   className={`flex items-center p-2 my-2 cursor-pointer rounded ${
                     activeTab === tab.name
-                      ? "text-[var(--success)] bg-gray-700"
+                      ? "text-[var(--foreground)] bg-[var(--advert-list-bg)]"
                       : ""
                   }`}
                   onClick={() => setActiveTab(tab.name)}
@@ -106,7 +106,7 @@ const SSS = () => {
             {(contentData[activeTab] || []).map((content, index) => (
               <div
                 key={index}
-                className="mb-4 rounded-lg overflow-hidden transition-all duration-300 bg-[var(--advert-list-bg)]"
+                className="mb-4 rounded-lg overflow-hidden transition-all duration-300 bg-[var(--advert-card-bg)]"
               >
                 <div
                   className="flex justify-between items-center p-4 cursor-pointer border-b border-gray-300"

@@ -12,14 +12,14 @@ const NewsTop = () => {
             alt="Main"
             className="w-full h-full object-cover"
           />
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-            <span className="bg-blue-500 text-white px-2 py-1 rounded">
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[var(--background)] to-transparent">
+            <span className="bg-[var(--primary)] text-white px-2 py-1 rounded">
               Rise Online
             </span>
-            <h2 className="text-white mt-2">
+            <h2 className="text-[var(--foreground)] mt-2">
               Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit,
             </h2>
-            <div className="text-gray-300 flex gap-4 mt-1">
+            <div className="text-[var(--text-gray)] flex gap-4 mt-1">
               <span className="flex items-center">
                 <SlCalender className="mr-2" /> 25-10-2022
               </span>
@@ -36,14 +36,14 @@ const NewsTop = () => {
               alt="Top"
               className="w-full h-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-              <span className="bg-green-500 text-white px-2 py-1 rounded">
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[var(--background)] to-transparent">
+              <span className="bg-[var(--success)] text-white px-2 py-1 rounded">
                 PUBG
               </span>
-              <h2 className="text-white mt-2">
+              <h2 className="text-[var(--foreground)] mt-2">
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit,
               </h2>
-              <div className="text-gray-300 flex gap-4 mt-1">
+              <div className="text-[var(--text-gray)] flex gap-4 mt-1">
                 <span className="flex items-center">
                   <SlCalender className="mr-2" /> 25-10-2022
                 </span>
@@ -59,15 +59,15 @@ const NewsTop = () => {
               alt="Bottom"
               className="w-full h-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-              <span className="bg-orange-500 text-white px-2 py-1 rounded">
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[var(--background)] to-transparent">
+              <span className="bg-[var(--alert)] text-white px-2 py-1 rounded">
                 Valorant
               </span>
-              <h2 className="text-white mt-2">
+              <h2 className="text-[var(--foreground)] mt-2">
                 Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit,
               </h2>
-              <div className="text-gray-300 flex gap-4 mt-1">
-                <div className="text-gray-300 flex gap-4 mt-1">
+              <div className="text-[var(--text-gray)] flex gap-4 mt-1">
+                <div className="text-[var(--text-gray)] flex gap-4 mt-1">
                   <span className="flex items-center">
                     <SlCalender className="mr-2" /> 25-10-2022
                   </span>

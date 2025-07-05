@@ -87,7 +87,7 @@ const Announcements = () => {
                   alt={announcements[0].category}
                   className="w-full h-auto object-cover max-h-[300px] min-h-[300px]"
                 />
-                <div className="p-4 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent">
+                <div className="p-4 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--background)] to-transparent">
                   <span
                     style={{
                       backgroundColor: `var(${announcements[0].color})`,
@@ -99,7 +99,7 @@ const Announcements = () => {
                   <h3 className="text-lg font-bold mt-2">
                     {announcements[0].title}
                   </h3>
-                  <div className="text-gray-300 flex gap-4 mt-1 text-sm">
+                  <div className="text-[var(--text-gray)] flex gap-4 mt-1 text-sm">
                     <span className="flex items-center">
                       <SlCalender className="mr-2" />
                       {announcements[0].date}
@@ -129,7 +129,7 @@ const Announcements = () => {
                       </span>
                     </div>
                     <h3 className="text-md font-bold mt-2">{item.title}</h3>
-                    <div className="text-gray-300 flex gap-4 mt-1 text-sm">
+                    <div className="text-[var(--text-gray)] flex gap-4 mt-1 text-sm">
                       <span className="flex items-center">
                         <SlCalender className="mr-2" />
                         {item.date}

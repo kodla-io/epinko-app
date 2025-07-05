@@ -86,14 +86,14 @@ const Register = () => {
             </div>
           </div>
 
-          <button className="w-full mb-2 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+          <button className="w-full mb-2 bg-[var(--primary)] hover:opacity-80 transition-colors py-3 rounded-lg text-white font-semibold">
             Üye Ol
           </button>
 
           <div className="flex w-full flex-wrap md:flex-nowrap gap-2">
             {/* Google Login */}
             <Link href="#" className="w-full md:w-1/2">
-              <button className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition text-black font-semibold flex items-center gap-2 justify-center">
+              <button className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition text-black font-semibold flex items-center gap-2 justify-center shadow-md">
                 <FcGoogle className="w-8 h-8" />
                 <span>Google ile Kayıt Ol</span>
               </button>
@@ -116,7 +116,7 @@ const Register = () => {
           {/* Yazı */}
           <div className="max-w-md text-center lg:text-left">
             <h2 className="text-3xl font-bold mb-4">Lorem Ipsum</h2>
-            <p className="text-sm text-gray-300">
+            <p className="text-sm text-[var(--text-gray)]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s. It has survived not only five centuries, but
@@ -134,103 +134,82 @@ const Register = () => {
 
         {/* 2x2 ikon + yazılar */}
         <div
-          style={{
-            color: "var(--btn-color)",
-          }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 w-full"
+          className="text-[var(--foreground)] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 w-full"
         >
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
+            className=" p-4 rounded-lg flex items-center gap-3 bg-[var(--advert-card-bg)]"
           >
             <div className="bg-white text-black p-2 rounded">
               🛍️ {/* örnek emoji / ikon */}
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
           </div>
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
+            className=" p-4 rounded-lg flex items-center gap-3 bg-[var(--advert-card-bg)]"
           >
             <div className="bg-white text-black p-2 rounded">
               🛍️ {/* örnek emoji / ikon */}
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
           </div>
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
+            className=" p-4 rounded-lg flex items-center gap-3 bg-[var(--advert-card-bg)]"
           >
             <div className="bg-white text-black p-2 rounded">
               🛍️ {/* örnek emoji / ikon */}
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
           </div>
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
+            className=" p-4 rounded-lg flex items-center gap-3 bg-[var(--advert-card-bg)]"
           >
             <div className="bg-white text-black p-2 rounded">
               🛍️ {/* örnek emoji / ikon */}
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
           </div>
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
+            className=" p-4 rounded-lg flex items-center gap-3 bg-[var(--advert-card-bg)]"
           >
             <div className="bg-white text-black p-2 rounded">
               🛍️ {/* örnek emoji / ikon */}
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>
           </div>
           <div
-            style={{
-              backgroundColor: "var(--advert-list-bg)",
-            }}
-            className=" p-4 rounded-lg flex items-center gap-3"
+            className=" p-4 rounded-lg flex items-center gap-3 bg-[var(--advert-card-bg)]"
           >
             <div className="bg-white text-black p-2 rounded">
               🛍️ {/* örnek emoji / ikon */}
             </div>
             <div>
               <h3 className="font-semibold text-sm">Lorem Ipsum</h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[var(--text-gray)]">
                 Elit lorem ipsum dummy info.
               </p>
             </div>

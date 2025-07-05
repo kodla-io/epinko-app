@@ -14,7 +14,7 @@ import { FcGoogle } from "react-icons/fc";
 import { IoLogoTwitch } from "react-icons/io5";
 import { X } from "lucide-react";
 import FloatingSidebar from "./all-pages";
-import MobileNav from "./mobile-nav"
+import MobileNav from "./mobile-nav";
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 import dynamic from "next/dynamic";
@@ -197,7 +197,7 @@ const Header = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('tr');
+  const [selectedLanguage, setSelectedLanguage] = useState("tr");
 
   const toggleTheme = useTheme();
   const [isDark, setIsDark] = useState(false);
@@ -208,14 +208,14 @@ const Header = () => {
 
     // Dil dropdown menüsü için click-outside handler
     const handleClickOutside = (event) => {
-      if (!event.target.closest('.language-dropdown')) {
+      if (!event.target.closest(".language-dropdown")) {
         setIsLanguageDropdownOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -291,7 +291,7 @@ const Header = () => {
             <h1 className="text-4xl font-bold mb-4">Giriş Yap</h1>
             <div className="text-sm text-[var(--text-gray)]">
               Yeni Misin?{" "}
-              <button 
+              <button
                 onClick={openRegisterModal}
                 className="text-blue-400 hover:underline"
               >
@@ -318,7 +318,8 @@ const Header = () => {
               placeholder="Şifre"
               className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none"
             />
-            <div className="text-right text-sm text-[var(--primary)] mt-2 hover:underline cursor-pointer"
+            <div
+              className="text-right text-sm text-[var(--primary)] mt-2 hover:underline cursor-pointer"
               onClick={() => {
                 setIsLoginModalOpen(false);
                 setIsForgotModalOpen(true);
@@ -363,10 +364,12 @@ const Header = () => {
         <div className="p-6">
           <div className="mb-6">
             <h2 className="text-2xl text-[var(--foreground)] mb-2">Merhaba</h2>
-            <h1 className="text-4xl font-bold text-[var(--foreground)] mb-4">Kayıt Ol</h1>
+            <h1 className="text-4xl font-bold text-[var(--foreground)] mb-4">
+              Kayıt Ol
+            </h1>
             <div className="text-sm text-[var(--text-gray)]">
               Üye Misin?{" "}
-              <button 
+              <button
                 onClick={openLoginModal}
                 className="text-blue-400 hover:underline"
               >
@@ -377,7 +380,9 @@ const Header = () => {
 
           <div className="flex gap-2 mb-4">
             <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">Ad</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">
+                Ad
+              </label>
               <input
                 type="text"
                 placeholder="Adınız"
@@ -385,7 +390,9 @@ const Header = () => {
               />
             </div>
             <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">Soyad</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">
+                Soyad
+              </label>
               <input
                 type="text"
                 placeholder="Soyadınız"
@@ -396,7 +403,9 @@ const Header = () => {
 
           <div className="flex gap-2 mb-4">
             <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">Kullanıcı adı</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">
+                Kullanıcı adı
+              </label>
               <input
                 type="text"
                 placeholder="Kullanıcı adı"
@@ -404,7 +413,9 @@ const Header = () => {
               />
             </div>
             <div className="flex-1">
-                <label className="block text-[var(--foreground)] text-sm mb-2">Email Adresi</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">
+                Email Adresi
+              </label>
               <input
                 type="email"
                 placeholder="Email Adresi"
@@ -415,7 +426,9 @@ const Header = () => {
 
           <div className="flex gap-2 mb-4">
             <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">Şifre</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">
+                Şifre
+              </label>
               <input
                 type="password"
                 placeholder="Şifre"
@@ -423,7 +436,9 @@ const Header = () => {
               />
             </div>
             <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">Şifre Tekrar</label>
+              <label className="block text-[var(--foreground)] text-sm mb-2">
+                Şifre Tekrar
+              </label>
               <input
                 type="password"
                 placeholder="Şifre Tekrar"
@@ -454,13 +469,13 @@ const Header = () => {
 
   const languages = {
     tr: {
-      name: 'Türkçe',
-      flag: '/media/tr.png'
+      name: "Türkçe",
+      flag: "/media/tr.png",
     },
     en: {
-      name: 'English',
-      flag: '/media/en.png'
-    }
+      name: "English",
+      flag: "/media/en.png",
+    },
   };
 
   const handleLanguageChange = (lang) => {
@@ -503,7 +518,8 @@ const Header = () => {
               <h2 className="text-2xl mb-2">Şifremi Unuttum</h2>
               <h1 className="text-4xl font-bold mb-4">Şifre Sıfırlama</h1>
               <div className="text-sm text-[var(--text-gray)]">
-                Kayıtlı e-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.
+                Kayıtlı e-posta adresinizi girin, size şifre sıfırlama
+                bağlantısı gönderelim.
               </div>
             </div>
             <div className="mb-4">
@@ -514,7 +530,7 @@ const Header = () => {
                 placeholder="E-posta adresi"
                 className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none text-[var(--foreground)]"
                 value={forgotEmail}
-                onChange={e => setForgotEmail(e.target.value)}
+                onChange={(e) => setForgotEmail(e.target.value)}
                 autoComplete="off"
               />
               <div
@@ -553,8 +569,8 @@ const Header = () => {
 
   useEffect(() => {
     const handler = () => setIsForgotModalOpen(true);
-    window.addEventListener('openForgotPasswordModal', handler);
-    return () => window.removeEventListener('openForgotPasswordModal', handler);
+    window.addEventListener("openForgotPasswordModal", handler);
+    return () => window.removeEventListener("openForgotPasswordModal", handler);
   }, []);
 
   return (
@@ -592,10 +608,12 @@ const Header = () => {
                       alt={languages[selectedLanguage].name}
                       fill
                       className="object-contain"
-                      style={{ backgroundColor: 'transparent' }}
+                      style={{ backgroundColor: "transparent" }}
                     />
                   </div>
-                  <span className="text-sm">{selectedLanguage.toUpperCase()}</span>
+                  <span className="text-sm">
+                    {selectedLanguage.toUpperCase()}
+                  </span>
                 </button>
 
                 {isLanguageDropdownOpen && (
@@ -605,7 +623,9 @@ const Header = () => {
                         key={code}
                         onClick={() => handleLanguageChange(code)}
                         className={`flex items-center space-x-3 w-full px-3 py-2 hover:bg-[var(--background)] transition-colors ${
-                          selectedLanguage === code ? 'bg-[var(--advert-list-bg)]' : ''
+                          selectedLanguage === code
+                            ? "bg-[var(--advert-list-bg)]"
+                            : ""
                         }`}
                       >
                         <div className="w-7 h-5 relative overflow-hidden rounded-sm">
@@ -614,10 +634,12 @@ const Header = () => {
                             alt={lang.name}
                             fill
                             className="object-contain"
-                            style={{ backgroundColor: 'transparent' }}
+                            style={{ backgroundColor: "transparent" }}
                           />
                         </div>
-                        <span className="text-sm text-[var(--foreground)]">{lang.name}</span>
+                        <span className="text-sm text-[var(--foreground)]">
+                          {lang.name}
+                        </span>
                       </button>
                     ))}
                   </div>
@@ -646,18 +668,12 @@ const Header = () => {
               {/* Arama Çubuğu */}
               <div className="relative flex">
                 <SearchInput />
-                <button
-                  style={{
-                    backgroundColor: "#41c85f",
-                    color: "white",
-                  }}
-                  className="flex items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button"
-                >
+                <Link href="/create-advert" className="flex text-white bg-[var(--success)] items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button">
                   <span className="mr-2 text-[25px]">
                     <CiCirclePlus />
                   </span>
                   İlan Ekle
-                </button>
+                </Link>
               </div>
             </nav>
 
@@ -681,13 +697,13 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={openLoginModal}
                 className="px-4 py-2 text-white rounded-md transition border-glow-header"
               >
                 Giriş Yap
               </button>
-              <button 
+              <button
                 onClick={openRegisterModal}
                 className="px-4 py-2 text-white rounded-md transition border-glow-header"
               >
@@ -708,8 +724,12 @@ const Header = () => {
                 </button>
                 {/* Dropdown */}
                 <div
-                  className={`absolute right-0 mt-2 min-w-[220px] bg-[var(--background)] rounded-xl shadow-lg border border-[var(--border-color)] overflow-hidden z-50 transition-all duration-200 ${isProfileDropdownOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-95 opacity-0 pointer-events-none'}`}
-                  style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.15)' }}
+                  className={`absolute right-0 mt-2 min-w-[220px] bg-[var(--background)] rounded-xl shadow-lg border border-[var(--border-color)] overflow-hidden z-50 transition-all duration-200 ${
+                    isProfileDropdownOpen
+                      ? "scale-100 opacity-100 pointer-events-auto"
+                      : "scale-95 opacity-0 pointer-events-none"
+                  }`}
+                  style={{ boxShadow: "0 8px 32px 0 rgba(0,0,0,0.15)" }}
                 >
                   {/* Kullanıcı kutusu */}
                   <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--advert-list-bg)] bg-[var(--advert-list-bg)]">
@@ -719,8 +739,12 @@ const Header = () => {
                       className="w-12 h-12 rounded-full border-2 border-[var(--success)]"
                     />
                     <div className="flex flex-col">
-                      <span className="font-bold text-[var(--foreground)] text-base">onurtasdeler</span>
-                      <span className="text-xs text-[var(--text-gray)]">0.00 ₺</span>
+                      <span className="font-bold text-[var(--foreground)] text-base">
+                        onurtasdeler
+                      </span>
+                      <span className="text-xs text-[var(--text-gray)]">
+                        0.00 ₺
+                      </span>
                     </div>
                   </div>
                   <ul className="flex flex-col py-2">
@@ -741,7 +765,9 @@ const Header = () => {
                             size={28}
                             trigger="manual"
                           />
-                          <span className="text-[var(--foreground)]">{item.label}</span>
+                          <span className="text-[var(--foreground)]">
+                            {item.label}
+                          </span>
                         </Link>
                       </li>
                     ))}
@@ -751,7 +777,7 @@ const Header = () => {
             </div>
 
             {/* Mobil Menü Butonu */}
-            <MobileNav 
+            <MobileNav
               onLoginClick={openLoginModal}
               onRegisterClick={openRegisterModal}
             />
@@ -849,7 +875,7 @@ const Header = () => {
         )}
       </header>
       <FloatingSidebar />
-      
+
       {/* Modals */}
       {isLoginModalOpen && <LoginModal />}
       {isRegisterModalOpen && <RegisterModal />}

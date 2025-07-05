@@ -20,12 +20,12 @@ const Contact = () => {
         <div className="flex flex-wrap md:flex-nowrap p-4">
           {/* Sol Kısım: Manuel Tablar */}
           <div className="min-w-[100%] mb-3 md:min-w-[250px]">
-            <div className="bg-[var(--advert-list-bg)] p-4 roulded-lg mt-3">
+            <div className="bg-[var(--advert-card-bg)] p-4 roulded-lg mt-3">
               <ul>
                 <li
                   className={`flex items-center p-2 my-2 cursor-pointer rounded ${
                     activeTab === "Contact"
-                      ? "text-[var(--success)] bg-gray-700"
+                      ? "text-[var(--foreground)] bg-[var(--advert-list-bg)]"
                       : ""
                   }`}
                   onClick={() => setActiveTab("Contact")}
@@ -38,7 +38,7 @@ const Contact = () => {
                 <li
                   className={`flex items-center p-2 my-2 cursor-pointer rounded ${
                     activeTab === "KVKK"
-                      ? "text-[var(--success)] bg-gray-700"
+                      ? "text-[var(--foreground)] bg-[var(--advert-list-bg)]"
                       : ""
                   }`}
                   onClick={() => setActiveTab("KVKK")}
@@ -51,7 +51,7 @@ const Contact = () => {
                 <li
                   className={`flex items-center p-2 my-2 cursor-pointer rounded ${
                     activeTab === "About"
-                      ? "text-[var(--success)] bg-gray-700"
+                      ? "text-[var(--foreground)] bg-[var(--advert-list-bg)]"
                       : ""
                   }`}
                   onClick={() => setActiveTab("About")}
@@ -65,17 +65,17 @@ const Contact = () => {
             </div>
 
             <div className="text-white flex flex-col items-center py-3 space-y-2">
-              <button className="bg-[var(--alert)] flex items-center justify-center w-full p-3 rounded shadow-lg">
+              <button className="bg-[var(--alert)] flex items-center justify-center w-full p-3 rounded shadow-lg hover:opacity-80 transition-colors">
                 <FaEnvelope className="mr-2" />
                 Mail Gönder
               </button>
 
-              <button className="bg-[var(--label2)] flex items-center justify-center w-full p-3 rounded shadow-lg">
+              <button className="bg-[var(--label2)] flex items-center justify-center w-full p-3 rounded shadow-lg hover:opacity-80 transition-colors">
                 <FaPhone className="mr-2" />
                 Sabit Telefondan Ara
               </button>
 
-              <button className="bg-[var(--success)] flex items-center justify-center w-full p-3 rounded shadow-lg">
+              <button className="bg-[var(--success)] flex items-center justify-center w-full p-3 rounded shadow-lg hover:opacity-80 transition-colors">
                 <FaWhatsapp className="mr-2" />
                 Whatsapp Destek Hattı
               </button>
@@ -125,8 +125,8 @@ const Contact = () => {
                   congue. Tortor dignissim convallis aenean et tortor at risus.
                   Tortor vitae purus faucibus ornare suspendisse sed.
                 </p>
-                <div className="text-white flex flex-wrap md:flex-nowrap justify-center p-4">
-                  <Link className="border border-[var(--alert)] p-4 m-2 rounded shadow-lg w-full" href="/">
+                <div className="text-[var(--foreground)] flex flex-wrap md:flex-nowrap justify-center p-4">
+                  <Link className="border border-[var(--alert)] bg-[var(--alert-light)] p-4 m-2 rounded shadow-lg w-full" href="/">
                     <div className="flex flex-col items-center">
                       <FaEnvelope className="text-2xl mb-2" />
                       <h3 className="text-lg font-bold">Mail Gönder</h3>
@@ -134,7 +134,7 @@ const Contact = () => {
                     </div>
                   </Link>
 
-                  <Link className="border border-[var(--label2)] p-4 m-2 rounded shadow-lg w-full" href="/">
+                  <Link className="border border-[var(--label2)] bg-[var(--label2-light)] p-4 m-2 rounded shadow-lg w-full" href="/">
                     <div className="flex flex-col items-center">
                       <FaPhone className="text-2xl mb-2" />
                       <h3 className="text-lg font-bold">
@@ -144,7 +144,7 @@ const Contact = () => {
                     </div>
                   </Link>
 
-                  <Link className="border border-[var(--success)] p-4 m-2 rounded shadow-lg w-full" href="/">
+                  <Link className="border border-[var(--success)] bg-[var(--success-light)] p-4 m-2 rounded shadow-lg w-full" href="/">
                     <div className="flex flex-col items-center">
                       <FaWhatsapp className="text-2xl mb-2" />
                       <h3 className="text-lg font-bold">
@@ -251,7 +251,7 @@ const Contact = () => {
             id="contact"
             className="w-full flex items-center justify-center p-4 order-1 md:order-2  rounded-lg"
           >
-            <div className="w-full bg-[var(--advert-list-bg)] p-4">
+            <div className="w-full bg-[var(--advert-card-bg)] p-4">
               <div className="flex justify-between mb-1 md:mb-8">
                 <div>
                   <h1 className="text-3xl font-bold mb-6">İletişim Formu</h1>
@@ -304,11 +304,11 @@ const Contact = () => {
                   rows="10"
                   cols="30"
                   placeholder="Mesajınızı Giriniz"
-                  className="w-full px-4 py-6 rounded-lg  text-white border-none focus:outline-none resize-none"
+                  className="w-full !h-30 px-4 py-6 rounded-lg  text-white border-none focus:outline-none resize-none"
                 />
               </div>
 
-              <button className="w-full md:w-[200px] bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+              <button className="w-full md:w-[200px] bg-[var(--success)] hover:opacity-80 transition-colors py-3 rounded-lg text-white font-semibold">
                 Üye Ol
               </button>
             </div>

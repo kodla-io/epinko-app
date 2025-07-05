@@ -134,7 +134,7 @@ const AllNews = () => {
           ))}
         </div>
         <div className="flex justify-center mt-6">
-          <ul className="flex items-center space-x-1 bg-[#0f0f1a] p-2 rounded-lg">
+          <ul className="flex items-center space-x-1 p-2 rounded-lg">
             {/* Sol ikon */}
             <li>
               <button
@@ -153,7 +153,7 @@ const AllNews = () => {
                   className={`px-3 py-2 rounded-md border border-[var(--label7)] ${
                     page === currentPage
                       ? "bg-[var(--label7)] text-white"
-                      : "text-white hover:bg-[var(--label7)]"
+                      : "text-[var(--foreground)] hover:bg-[var(--label7)]"
                   }`}
                 >
                   {page}
