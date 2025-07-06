@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "../../componants/layout/Header";
 import Footer from "../../componants/layout/Fotter";
 import BottomText from "../../componants/texts/bottom-text";
-import Preloader from "../../componants/layout/Preloader";
+import PreloaderWrapper from '../../componants/layout/PreloaderWrapper';
 
 import { Inter } from "next/font/google";
 
@@ -28,14 +28,68 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <style>{`
+          #preloader-init {
+            position: fixed;
+            z-index: 99999;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #23242a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #preloader-init .logo {
+            width: 100px;
+            height: 100px;
+            background: #ff4655;
+            border-radius: 12px;
+          }
+        `}</style>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
-        <Preloader />
-        <Header />
-        {children}
-        {/* <BottomText /> */}
-        <Footer />
+        <PreloaderWrapper>
+          <Header />
+          {children}
+          {/* <BottomText /> */}
+          <Footer />
+        </PreloaderWrapper>
+        {/* Basit glass efektli dönen kutu */}
+        <div id="layout-fake-loader" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: 10000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          pointerEvents: 'none',
+          background: '#23242a',
+        }}>
+          <div style={{
+            width: 100,
+            height: 100,
+            background: 'rgba(255,255,255,0.10)',
+            border: '2px solid #fff2',
+            borderRadius: 12,
+            boxShadow: '0 4px 24px 0 rgba(31,38,135,0.13)',
+            animation: 'layout-glass-spin 1.2s linear infinite',
+            position: 'relative',
+            backdropFilter: 'blur(8px)',
+          }} />
+          <style>{`
+            @keyframes layout-glass-spin {
+              0% { transform: rotateY(0deg); }
+              100% { transform: rotateY(360deg); }
+            }
+          `}</style>
+        </div>
       </body>
     </html>
   );

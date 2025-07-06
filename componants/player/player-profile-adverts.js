@@ -16,6 +16,7 @@ import { IoMdMail } from "react-icons/io";
 import { AiOutlineSafety } from "react-icons/ai";
 import Link from "next/link";
 import Comments from "../texts/comments";
+import AdvertCard from "../advert/advert-card";
 
 const tabs = [
   "Mağaza Aktif İlanlar",
@@ -24,18 +25,116 @@ const tabs = [
 ];
 
 const AllAdverts = [
-  { title: "PUBG Mobile", isVitrin: true, vitrinColor: "var(--label1)" },
-  { title: "Fortnite", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Minecraft", isVitrin: false, vitrinColor: "var(--label2)" },
-  { title: "Call of Duty", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Apex Legends", isVitrin: true, vitrinColor: "var(--label3)" },
-  { title: "Valorant", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Among Us", isVitrin: true, vitrinColor: "var(--label4)" },
-  { title: "Genshin Impact", isVitrin: false, vitrinColor: "var(--label1)" },
-  { title: "Dota 2", isVitrin: false, vitrinColor: "var(--label4)" },
-  { title: "CS:GO", isVitrin: true, vitrinColor: "var(--label6)" },
-  { title: "Rocket League", isVitrin: true, vitrinColor: "var(--label1)" },
-  { title: "Overwatch", isVitrin: false, vitrinColor: "var(--label7)" },
+  {
+    title: "PUBG Mobile UC",
+    price: 149.0,
+    viewCount: 300,
+    isVitrin: true,
+    vitrinText: "POPÜLER",
+    vitrinColor: "var(--label1)",
+    image: "https://placehold.co/300x300",
+    sellerName: "UCMarket",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Fortnite V-Bucks",
+    price: 99.0,
+    viewCount: 120,
+    isVitrin: false,
+    vitrinText: "İNDİRİM",
+    vitrinColor: "var(--label2)",
+    image: "https://placehold.co/300x300",
+    sellerName: "FortShop",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Minecraft Premium",
+    price: 59.0,
+    viewCount: 210,
+    isVitrin: false,
+    vitrinText: "YENİ ÜRÜN",
+    vitrinColor: "var(--label3)",
+    image: "https://placehold.co/300x300",
+    sellerName: "BlockStore",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Call of Duty CP",
+    price: 129.0,
+    viewCount: 180,
+    isVitrin: false,
+    vitrinText: "TAVSİYE",
+    vitrinColor: "var(--label4)",
+    image: "https://placehold.co/300x300",
+    sellerName: "CODMarket",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Apex Legends Coins",
+    price: 89.0,
+    viewCount: 95,
+    isVitrin: true,
+    vitrinText: "ÇOK SATAN",
+    vitrinColor: "var(--label5)",
+    image: "https://placehold.co/300x300",
+    sellerName: "ApexShop",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Valorant VP",
+    price: 79.0,
+    viewCount: 160,
+    isVitrin: false,
+    vitrinText: "EN UCUZ",
+    vitrinColor: "var(--label6)",
+    image: "https://placehold.co/300x300",
+    sellerName: "ValoStore",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Among Us Skin Paketi",
+    price: 19.0,
+    viewCount: 75,
+    isVitrin: true,
+    vitrinText: "HEDİYE",
+    vitrinColor: "var(--label7)",
+    image: "https://placehold.co/300x300",
+    sellerName: "AmongShop",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Genshin Impact Primogem",
+    price: 49.0,
+    viewCount: 110,
+    isVitrin: false,
+    vitrinText: "İNDİRİM",
+    vitrinColor: "var(--label8)",
+    image: "https://placehold.co/300x300",
+    sellerName: "GenshinStore",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "Dota 2 Battle Pass",
+    price: 39.0,
+    viewCount: 140,
+    isVitrin: false,
+    vitrinText: "YENİ ÜRÜN",
+    vitrinColor: "var(--label9)",
+    image: "https://placehold.co/300x300",
+    sellerName: "DotaShop",
+    sellerImage: "https://placehold.co/50x50",
+  },
+  {
+    title: "CS:GO Prime",
+    price: 119.0,
+    viewCount: 200,
+    isVitrin: true,
+    vitrinText: "ÇOK SATAN",
+    vitrinColor: "var(--label10)",
+    image: "https://placehold.co/300x300",
+    sellerName: "CSGOStore",
+    sellerImage: "https://placehold.co/50x50",
+  },
 ];
 
 const ProfileTabs = () => {
@@ -214,54 +313,8 @@ const ProfileTabs = () => {
                     <div key={index} className="p-0 md:p-2">
                       <Link href="#">
                         <div className="p-1">
-                          <div className="relative min-h-[300px] max-h-[300px] overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                            {game.isVitrin && (
-                              <span
-                                className="absolute top-[75px] left-[-21px] text-white py-[2px] px-[30px] text-xs font-bold transform -rotate-45 origin-top-left"
-                                style={{ backgroundColor: game.vitrinColor }}
-                              >
-                                VİTRİN İLANI
-                              </span>
-                            )}
-                            <div className="absolute top-2 right-2">
-                              <AiOutlineSafety className="w-8 h-8" />
-                            </div>
-                            <img
-                              src="https://placehold.co/200x300"
-                              alt={`Card ${index}`}
-                              className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
-                            />
-                            <div
-                              className="text-white absolute bottom-0 p-2 w-full"
-                              style={{
-                                backdropFilter: "blur(4px)",
-                              }}
-                            >
-                              <img
-                                src="https://placehold.co/200x70/000000/FFFFFF"
-                                className="relative bottom-[5px] left-1/2 transform -translate-x-1/2 w-[70%] md:w-[80%]"
-                              />
-                              <h3 className="text-md font-bold clamp-1">
-                                {game.title}
-                              </h3>
-                              <div className="flex justify-between items-center mt-2">
-                                <div className="flex items-center">
-                                  <img
-                                    src="https://placehold.co/50x50"
-                                    alt="Seller"
-                                    className="!w-10 !h-10 rounded-full"
-                                  />
-                                  <div className="ml-2">
-                                    <p className="text-[8px] text-gray-400">
-                                      GÜVENİLİR SATICI
-                                    </p>
-                                  </div>
-                                </div>
-                                <div className="text-md font-bold text-yellow-400">
-                                  199.90₺
-                                </div>
-                              </div>
-                            </div>
+                          <div className="relative overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                            <AdvertCard data={game} link="/advert-detail" />
                           </div>
                         </div>
                       </Link>
@@ -277,57 +330,14 @@ const ProfileTabs = () => {
                     <div key={index} className="p-0 md:p-2">
                       <Link href="#">
                         <div className="p-1">
-                          <div className="relative min-h-[300px] max-h-[300px] overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                          <div className="relative overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                             <div className="w-full h-full absolute rounded-xl top-0 left-0 bg-[#ff000087] z-50 flex items-center justify-center font-bold text-4xl">
                               SATILDI
                             </div>
-                            {game.isVitrin && (
-                              <span
-                                className="absolute top-[75px] left-[-21px] text-white py-[2px] px-[30px] text-xs font-bold transform -rotate-45 origin-top-left"
-                                style={{ backgroundColor: game.vitrinColor }}
-                              >
-                                VİTRİN İLANI
-                              </span>
-                            )}
                             <div className="absolute top-2 right-2">
                               <AiOutlineSafety className="w-8 h-8" />
                             </div>
-                            <img
-                              src="https://placehold.co/200x300"
-                              alt={`Card ${index}`}
-                              className="w-full h-full object-cover min-h-[300px] max-h-[300px] bg-gradient-to-tl"
-                            />
-                            <div
-                              className="text-white absolute bottom-0 p-2 w-full"
-                              style={{
-                                backdropFilter: "blur(4px)",
-                              }}
-                            >
-                              <img
-                                src="https://placehold.co/200x70/000000/FFFFFF"
-                                className="relative bottom-[5px] left-1/2 transform -translate-x-1/2 w-[70%] md:w-[80%]"
-                              />
-                              <h3 className="text-md font-bold clamp-1">
-                                {game.title}
-                              </h3>
-                              <div className="flex justify-between items-center mt-2">
-                                <div className="flex items-center">
-                                  <img
-                                    src="https://placehold.co/50x50"
-                                    alt="Seller"
-                                    className="w-8 h-8 rounded-full"
-                                  />
-                                  <div className="ml-2">
-                                    <p className="text-[8px] text-gray-400">
-                                      GÜVENİLİR SATICI
-                                    </p>
-                                  </div>
-                                </div>
-                                <div className="text-md font-bold text-yellow-400">
-                                  199.90₺
-                                </div>
-                              </div>
-                            </div>
+                            <AdvertCard data={game} link="/advert-detail" />
                           </div>
                         </div>
                       </Link>

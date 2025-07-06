@@ -113,10 +113,40 @@ const GameTabs = () => {
     }
   }, [activeIndex]);
 
+  // Tick sesi için audio nesnesi (sadece tik.mp3)
+  const tikAudioRef = useRef(null);
+  useEffect(() => {
+    if (!tikAudioRef.current) {
+      tikAudioRef.current = typeof Audio !== 'undefined' ? new Audio('/tik.mp3') : null;
+    }
+  }, []);
+
+  // Ses çalma fonksiyonu
+  const playTikSound = () => {
+    if (tikAudioRef.current) {
+      tikAudioRef.current.currentTime = 0;
+      tikAudioRef.current.play();
+    }
+  };
+
+  // Tab tıklama fonksiyonu (slider hariç)
+  const handleTabClick = (newIndex) => {
+    if (isAnimating || newIndex === activeIndex) return;
+    setSlideDirection(newIndex > activeIndex ? 'left' : 'right');
+    setPrevActiveIndex(activeIndex);
+    setIsSliding(true);
+    playTikSound(); // Kullanıcı tıklamasında ses çal
+    setTimeout(() => {
+      setActiveIndex(newIndex);
+      setIsSliding(false);
+    }, 350); // animasyon süresi
+  };
+
   // Animasyonu başlatan fonksiyon
   const startAnimation = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    playTikSound(); // Kullanıcı tıklamasında ses çal
     // Rastgele bir hedef index seç (ortadaki hariç)
     let randomTarget = Math.floor(Math.random() * games.length);
     setTargetIndex(randomTarget);
@@ -161,18 +191,6 @@ const GameTabs = () => {
       if (animationRef.current) clearTimeout(animationRef.current);
     };
   }, []);
-
-  // Tab tıklama fonksiyonu (slider hariç)
-  const handleTabClick = (newIndex) => {
-    if (isAnimating || newIndex === activeIndex) return;
-    setSlideDirection(newIndex > activeIndex ? 'left' : 'right');
-    setPrevActiveIndex(activeIndex);
-    setIsSliding(true);
-    setTimeout(() => {
-      setActiveIndex(newIndex);
-      setIsSliding(false);
-    }, 350); // animasyon süresi
-  };
 
   // Ekran boyutuna göre görünür kart sayısı ve offset
   const [visibleCount, setVisibleCount] = useState(9);

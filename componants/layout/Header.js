@@ -41,89 +41,100 @@ import addBalance from "../../src/assets/animations/balanceHistory.json";
 import checkCash from "../../src/assets/animations/CheckCash.json";
 import stream from "../../src/assets/animations/stream.json";
 import giveaway from "../../src/assets/animations/giveaway.json";
+import { FaUserAlt } from "react-icons/fa";
+
+import Logo from "./Logo";
 
 const Player = dynamic(
   () => import("@lordicon/react").then((mod) => mod.Player),
   { ssr: false }
 );
 
+const lightColors = [
+  "var(--label2-light)",
+  "var(--label7-light)",
+  "var(--label9-light)",
+  "var(--success-light)",
+  "var(--alert-light)",
+];
+
 const items = [
   {
     title: "Item 1",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[0],
     link: "https://example.com/item1",
   },
   {
     title: "Item 2",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[1],
     link: "https://example.com/item2",
   },
   {
     title: "Item 3",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[2],
     link: "https://example.com/item3",
   },
   {
     title: "Item 4",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[3],
     link: "https://example.com/item4",
   },
   {
     title: "Item 5",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[4],
     link: "https://example.com/item5",
   },
   {
     title: "Item 6",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[1],
     link: "https://example.com/item6",
   },
   {
     title: "Item 7",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[2],
     link: "https://example.com/item7",
   },
   {
     title: "Item 8",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[3],
     link: "https://example.com/item8",
   },
   {
     title: "Item 9",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[0],
     link: "https://example.com/item9",
   },
   {
     title: "Item 10",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[4],
     link: "https://example.com/item10",
   },
   {
     title: "Item 11",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[2],
     link: "https://example.com/item11",
   },
   {
     title: "Item 12",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[3],
     link: "https://example.com/item12",
   },
   {
     title: "Item 13",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[1],
     link: "https://example.com/item13",
   },
 ];
@@ -132,49 +143,49 @@ const items2 = [
   {
     title: "Item 1",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[2],
     link: "https://example.com/item1",
   },
   {
     title: "Item 2",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[3],
     link: "https://example.com/item2",
   },
   {
     title: "Item 3",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[0],
     link: "https://example.com/item3",
   },
   {
     title: "Item 4",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[4],
     link: "https://example.com/item4",
   },
   {
     title: "Item 5",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[1],
     link: "https://example.com/item5",
   },
   {
     title: "Item 6",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[3],
     link: "https://example.com/item6",
   },
   {
     title: "Item 7",
     imageUrl: "https://placehold.co/30",
-    bgColor: "#1e2939",
+    bgColor: lightColors[0],
     link: "https://example.com/item7",
   },
 ];
 
 const profileTabs = [
-  { key: "my-account", icon: user, label: "Hesabım" },
+  { key: "personal-details", icon: user, label: "Hesabım" },
   { key: "my-orders", icon: order, label: "Siparişlerim" },
   { key: "my-adverts", icon: adverts, label: "İlanlarım" },
   { key: "notifications", icon: notifications, label: "Bildirimler" },
@@ -575,9 +586,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full text-white">
+      <header className="w-full text-[var(--foreground)]">
         {/* Üst Kısım */}
-        <div className="header-top w-full">
+        <div className="header-top w-full border-b border-[var(--input-border)]">
           <div className="flex justify-between items-center px-4 container py-1 m-auto text-xsm">
             <div className="flex space-x-4">
               <a href="#" className="text-[13px] hover:text-green-400">
@@ -650,16 +661,13 @@ const Header = () => {
         </div>
 
         {/* Ana Menü */}
-        <div className="header-middle">
+        <div className="header-middle border-b border-[var(--input-border)]">
           <div className="container m-auto flex justify-between items-center px-2 md:px-6 py-3">
             {/* Logo */}
             <div className="text-2xl font-bold text-green-500">
               {/* epin<span className="text-white">KO</span> */}
               <Link href="/">
-                <img
-                  className="max-w-[90px] md:max-w-[130px]"
-                  src="/media/logo.png"
-                />
+                <Logo className="max-w-[90px] md:max-w-[130px]" />
               </Link>
             </div>
 
@@ -668,7 +676,10 @@ const Header = () => {
               {/* Arama Çubuğu */}
               <div className="relative flex">
                 <SearchInput />
-                <Link href="/create-advert" className="flex text-white bg-[var(--success)] items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button">
+                <Link
+                  href="/create-advert"
+                  className="flex text-[var(--foreground)] bg-[var(--success)] items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button"
+                >
                   <span className="mr-2 text-[25px]">
                     <CiCirclePlus />
                   </span>
@@ -697,29 +708,57 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-              <button
-                onClick={openLoginModal}
-                className="px-4 py-2 text-white rounded-md transition border-glow-header"
-              >
-                Giriş Yap
-              </button>
-              <button
-                onClick={openRegisterModal}
-                className="px-4 py-2 text-white rounded-md transition border-glow-header"
-              >
-                Kayıt Ol
-              </button>
+              {/* DARK MODE BUTTONS */}
+              <div className="hidden dark:flex gap-2">
+                <button
+                  onClick={openLoginModal}
+                  className="px-4 py-2 text-[var(--text-gray)] rounded-md transition border-glow-header"
+                >
+                  Giriş Yap
+                </button>
+                <button
+                  onClick={openRegisterModal}
+                  className="px-4 py-2 text-[var(--text-gray)] rounded-md transition border-glow-header"
+                >
+                  Kayıt Ol
+                </button>
+              </div>
+              {/* LIGHT MODE BUTTONS */}
+              <div className="flex dark:hidden gap-2">
+                <button
+                  onClick={openLoginModal}
+                  className="px-2 py-1 text-xs rounded font-bold text-white"
+                  style={{
+                    background: "var(--success)",
+                    backgroundImage: "none",
+                    border: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  Giriş Yap
+                </button>
+                <button
+                  onClick={openRegisterModal}
+                  className="px-2 py-1 text-xs rounded font-bold text-white"
+                  style={{
+                    background: "var(--success)",
+                    backgroundImage: "none",
+                    border: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  Kayıt Ol
+                </button>
+              </div>
               {/* Profile (Kişi) ikonu ve dropdown */}
               <div className="relative">
                 <button
                   className="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--advert-list-bg)] hover:bg-[var(--label2)] transition"
                   onClick={() => setIsProfileDropdownOpen((v) => !v)}
                 >
-                  <Player
-                    ref={profileIconRef}
-                    icon={user}
-                    size={32}
-                    trigger="manual"
+                  <FaUserAlt
+                    style={{ color: "var(--foreground)" }}
+                    className="w-6 h-6"
                   />
                 </button>
                 {/* Dropdown */}
@@ -791,15 +830,15 @@ const Header = () => {
               <div className="relative">
                 <button
                   onClick={(event) => toggleMenu(items, event)}
-                  className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
+                  className="text-[var(--foreground)] flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
                 >
                   <div
                     style={{ backgroundColor: "rgba(88, 243, 249, 0.3)" }}
                     className="rounded-md p-[6px] mr-2"
                   >
-                    <GiConsoleController className="w-6 h-6" />
+                    <GiConsoleController className="w-4 h-4" />
                   </div>
-                  <span className="text-lg font-bold">Tüm Oyunlar</span>
+                  <span className="text-md font-bold">Tüm Oyunlar</span>
                   <img
                     src="/media/icons/down.png"
                     className="max-w-[22px] min-w-[22px]"
@@ -809,15 +848,15 @@ const Header = () => {
               <div className="relative">
                 <button
                   onClick={(event) => toggleMenu(items2, event)}
-                  className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
+                  className="text-[var(--foreground)] flex items-center space-x-1 hover:text-green-400 p-1 rounded mage-menu-button"
                 >
                   <div
                     style={{ backgroundColor: "rgba(88, 249, 115, 0.3)" }}
                     className="rounded-md p-[6px] mr-2"
                   >
-                    <HiSpeakerphone className="w-6 h-6" />
+                    <HiSpeakerphone className="w-4 h-4" />
                   </div>
-                  <span className="text-lg font-bold">Tüm İlanlar</span>
+                  <span className="text-md font-bold">Tüm İlanlar</span>
                   <img
                     src="/media/icons/down.png"
                     className="max-w-[22px] min-w-[22px]"
@@ -825,25 +864,22 @@ const Header = () => {
                 </button>
               </div>
               <Link href="/">
-                <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
+                <button className="text-[var(--foreground)] flex items-center space-x-1 hover:text-green-400 p-1 rounded">
                   <div
                     style={{ backgroundColor: "rgba(249, 88, 104, 0.3)" }}
                     className="rounded-md p-[6px] mr-2"
                   >
-                    <MdOutlineFavorite className="w-6 h-6" />
+                    <MdOutlineFavorite className="w-4 h-4" />
                   </div>
-                  <span className="text-lg font-bold">Favoriler</span>
+                  <span className="text-md font-bold">Favoriler</span>
                 </button>
               </Link>
-              <Link href="/">
-                <button className="text-white flex items-center space-x-1 hover:text-green-400 p-1 rounded">
-                  <div
-                    style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-                    className="rounded-md p-[6px] mr-2"
-                  >
-                    <FaSteamSquare className="w-6 h-6 text-[#112752]" />
+              <Link href="/steam-games">
+                <button className="text-[var(--foreground)] flex items-center space-x-1 hover:text-green-400 p-1 rounded">
+                  <div className="rounded-lg mr-2">
+                    <FaSteamSquare className="w-7 h-7 text-[#112752]" />
                   </div>
-                  <span className="text-lg font-bold">Steam Oyunlar</span>
+                  <span className="text-md font-bold">Steam Oyunlar</span>
                 </button>
               </Link>
             </nav>
@@ -855,20 +891,29 @@ const Header = () => {
 
         {/* Mobil Menü */}
         {isMenuOpen && (
-          <div className="md:hidden bg-gray-800 py-4 px-6 space-y-4 text-sm uppercase">
-            <a href="#" className="block text-white hover:text-green-400">
+          <div className="md:hidden bg-[var(--background)] py-4 px-6 space-y-4 text-sm uppercase">
+            <a
+              href="#"
+              className="block text-[var(--foreground)] hover:text-green-400"
+            >
               🏠 Anasayfa
             </a>
-            <a href="#" className="block text-white hover:text-green-400">
+            <a
+              href="#"
+              className="block text-[var(--foreground)] hover:text-green-400"
+            >
               🎮 Tüm Oyunlar
             </a>
-            <a href="#" className="block text-white hover:text-green-400">
+            <a
+              href="#"
+              className="block text-[var(--foreground)] hover:text-green-400"
+            >
               🟢 Steam Oyunlar
             </a>
-            <a href="#" className="block text-white hover:text-green-400">
-              📢 İlanlar
-            </a>
-            <a href="#" className="block text-white hover:text-green-400">
+            <a
+              href="#"
+              className="block text-[var(--foreground)] hover:text-green-400"
+            >
               📩 İletişim
             </a>
           </div>

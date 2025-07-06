@@ -27,8 +27,8 @@
   --color: black;
   --background: #ffffff;
   --background-secondary: #d4d4d4;
-  --bg-header: #070707;
-  --bg-footer: #070707;
+  --bg-header: #ffffff;
+  --bg-footer: #ffffff;
   --bg-soft: #1d1f20;
   --bg-soft2: #1d1f20;
   --bg-info-box: #e2e2e2;
@@ -50,12 +50,13 @@
   --advert-tab: #dadada;
   --text-gray: #484e57;
   --invisible-text: #c7c7c7;
+  --input-border: #dbdbdb;
   /* --profile-navbar: #cecece; */
-  
+
   /* Açık renkler */
-  --label2-light: rgba(142, 156, 240, 0.1);  /* Yeşil tonunun açık hali */
-  --alert-light: rgba(244, 67, 54, 0.1);   /* Kırmızı tonunun açık hali */
-  --label7-light: rgba(255, 152, 0, 0.1);  /* Turuncu tonunun açık hali */
+  --label2-light: rgba(142, 156, 240, 0.1); /* Yeşil tonunun açık hali */
+  --alert-light: rgba(244, 67, 54, 0.1); /* Kırmızı tonunun açık hali */
+  --label7-light: rgba(255, 152, 0, 0.1); /* Turuncu tonunun açık hali */
   --label9-light: rgba(209, 201, 0, 0.1); /* Mavi tonunun açık hali */
   --success-light: rgba(65, 200, 95, 0.1);
   --alert-light: rgba(193, 61, 84, 0.1);
@@ -65,8 +66,6 @@
   --messages-other-bg: rgba(42, 45, 65, 0.15);
   --messages-my-bg: rgba(31, 33, 51, 0.15);
   --messages-border: rgba(42, 45, 65, 0.3);
-
-  
 }
 
 [data-theme="dark"] {
@@ -111,15 +110,16 @@
   --advert-tab: #2a2a2e;
   --text-gray: #99a1af;
   --invisible-text: #ffffff0d;
-
+  --input-border: #ffffff2e;
+  
   /* Açık renkler */
-  --label2-light: rgba(142, 156, 240, 0.1);  /* Yeşil tonunun açık hali */
-  --alert-light: rgba(244, 67, 54, 0.1);   /* Kırmızı tonunun açık hali */
-  --label7-light: rgba(255, 152, 0, 0.1);  /* Turuncu tonunun açık hali */
+  --label2-light: rgba(142, 156, 240, 0.1); /* Yeşil tonunun açık hali */
+  --alert-light: rgba(244, 67, 54, 0.1); /* Kırmızı tonunun açık hali */
+  --label7-light: rgba(255, 152, 0, 0.1); /* Turuncu tonunun açık hali */
   --label9-light: rgba(209, 201, 0, 0.1); /* Mavi tonunun açık hali */
   --success-light: rgba(65, 200, 95, 0.1);
   --alert-light: rgba(193, 61, 84, 0.1);
-  
+
   /* Messages - Dark Mode */
   --messages-main-bg: #23273a;
   --messages-other-bg: #2a2d41;
@@ -163,6 +163,7 @@ body {
 
 .header-bottom {
   background-color: var(--bg-header);
+  border-bottom: 1px solid var(--input-border);
 }
 
 .header-bottom button span {
@@ -171,12 +172,12 @@ body {
 
 .header-middle {
   background-color: var(--bg-header);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.123);
+  border-bottom: 1px solid var(--input-border);
 }
 
 .header-top {
   background-color: var(--bg-header);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.123);
+  border-bottom: 1px solid var(--input-border);
 }
 
 footer {
@@ -563,7 +564,7 @@ nav img {
 }
 
 .megaMenu {
-  background-color: var(--megaMenu-bg);
+  background-color: var(--bg-header);
   color: var(--foreground);
   max-height: 0;
   overflow: hidden;
@@ -910,13 +911,13 @@ nav img {
     #ff0000
   );
   position: absolute;
-  top: -2px;
-  left: -2px;
+  top: 10px;
+  left: 10px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  width: calc(100% + -20px);
+  height: calc(100% + -20px);
   animation: glowing 20s linear infinite;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -1015,13 +1016,13 @@ nav img {
   overflow: hidden;
   position: relative;
   width: 100px;
-  height: 50px;
+  height: 40px;
   aspect-ratio: 1;
   border-radius: 0.5em;
   place-self: center;
   place-content: center;
   padding: 0.5em;
-  color: #ededed;
+  color: var(--text-gray);
   text-align: center;
   text-transform: uppercase;
   text-wrap: balance;

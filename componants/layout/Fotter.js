@@ -8,20 +8,23 @@ import {
   FaTiktok,
   FaDiscord,
 } from "react-icons/fa";
+import Logo from "./Logo";
 
 const Footer = () => {
   const linkClass =
-    "relative inline-block text-gray-400 transition-transform duration-300 hover:-translate-y-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full";
+    "relative inline-block text-[var(--text-gray)] transition-transform duration-300 hover:-translate-y-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full";
 
   return (
-    <footer className="text-white">
+    <footer className="text-[var(--foreground)]">
       <div className="h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
       <div className="container mx-auto py-8 px-4">
         <div className="flex flex-wrap justify-between">
           {/* Logo ve Açıklama */}
           <div className="w-full md:w-4/14 mb-4 p-4">
-            <div className="text-2xl font-bold text-green-500 mb-2">epinKO</div>
-            <p className="text-sm text-gray-400">
+            <div className="mb-2">
+              <Logo className="max-w-[90px] md:max-w-[130px]" />
+            </div>
+            <p className="text-sm text-[var(--text-gray)]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
@@ -63,7 +66,9 @@ const Footer = () => {
 
           {/* Link Grupları */}
           <div className="w-6/12 md:w-2/12 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Kurumsal</h4>
+            <h4 className="font-semibold text-[var(--foreground)] mb-2">
+              Kurumsal
+            </h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
                 <Link href="/gizlilik-politikasi" className={linkClass}>
@@ -104,7 +109,9 @@ const Footer = () => {
           </div>
 
           <div className="w-6/12 md:w-2/12 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Kategoriler</h4>
+            <h4 className="font-semibold text-[var(--foreground)] mb-2">
+              Kategoriler
+            </h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
                 <Link href="/metin2-pvp-serverlar" className={linkClass}>
@@ -145,7 +152,9 @@ const Footer = () => {
           </div>
 
           <div className="w-6/12 md:w-2/12 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Ürünler</h4>
+            <h4 className="font-semibold text-[var(--foreground)] mb-2">
+              Ürünler
+            </h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
                 <Link href="/knight-online-proxy" className={linkClass}>
@@ -186,7 +195,9 @@ const Footer = () => {
           </div>
 
           <div className="w-6/12 md:w-2/12 mb-4 p-4">
-            <h4 className="font-semibold text-white mb-2">Sayfalarımız</h4>
+            <h4 className="font-semibold text-[var(--foreground)] mb-2">
+              Sayfalarımız
+            </h4>
             <ul className="space-y-1 text-sm text-gray-400">
               <li>
                 <Link href="/" className={linkClass}>
@@ -228,7 +239,7 @@ const Footer = () => {
         </div>
 
         {/* Alt Kısım */}
-        <div className="text-gray-400 mt-2 text-sm">
+        <div className="text-[var(--text-gray)] mt-2 text-sm">
           Copyright © {new Date().getFullYear()} kodla.io | All Rights Reserved.
         </div>
       </div>

@@ -37,7 +37,7 @@ const StorySlider = () => {
   return (
     <div className="py-2">
       <div className="container mx-auto px-4">
-        <div className="py-4 space-x-4">
+        <div className="py-1 space-x-1">
           <>
             <Swiper
               slidesPerView={12}
@@ -76,10 +76,10 @@ const StorySlider = () => {
                 delay: 20000, // Otomatik kaydırma süresi (ms)
                 disableOnInteraction: false, // Kullanıcı etkileşimi sonrasında durmaması için
               }}
-              className="mySwiper !py-4"
+              className="mySwiper !py-1"
             >
               {items.map((src, index) => (
-                <SwiperSlide key={index} className="glow-on-hover-circle">
+                <SwiperSlide key={index} className="glow-on-hover-circle p-2">
                   <Link href="/category-detail">
                     <img
                       src={src}

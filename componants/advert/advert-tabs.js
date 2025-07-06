@@ -12,7 +12,7 @@ const Advert = () => {
       title: "Spotify Aile Planı",
       price: 29.9,
       viewCount: 300,
-      isVitrin: false,
+      is: false,
       vitrinText: "POPÜLER",
       vitrinColor: "var(--label4)",
       isAnimated: false,
@@ -167,9 +167,9 @@ const Advert = () => {
   ];
 
   const rightTabs = [
-    { id: "tab4", label: "Rise Online", items: sampleArray.slice(1, 8) },
-    { id: "tab5", label: "Pubg Mobile", items: sampleArray.slice(3, 8) },
-    { id: "tab6", label: "Valorant", items: sampleArray.slice(5, 7) },
+    { id: "tab4", label: "Rise Online", items: sampleArray.slice(0,6) },
+    { id: "tab5", label: "Pubg Mobile", items: sampleArray.slice(2, 4) },
+    { id: "tab6", label: "Valorant", items: sampleArray.slice(4, 10) },
   ];
 
   return (
@@ -226,11 +226,13 @@ const Advert = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5">
-        {activeTab && leftTabs.find((tab) => tab.id === activeTab)?.items.map((item, index) => (
-          <div key={index} className="p-2 md:p-2">
-            <AdvertCard data={item} link="/advert-detail" />
-          </div>
-        ))}
+        {activeTab && 
+          [...leftTabs, ...rightTabs].find((tab) => tab.id === activeTab)?.items.map((item, index) => (
+            <div key={index} className="p-2 md:p-2">
+              <AdvertCard data={item} link="/advert-detail" />
+            </div>
+          ))
+        }
       </div>
 
       <div className="flex justify-center items-center py-4">
