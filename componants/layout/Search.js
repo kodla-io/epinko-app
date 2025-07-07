@@ -37,8 +37,7 @@ const SearchInput = () => {
   return (
     <input
       type="text"
-      style={{backgroundColor: "#ffffff14", padding: "15px", border: "1px solid var(--input-border)", color: "var(--foreground)"}}
-      className="pl-3 pr-10 py-2 px-4 w-128 rounded-md focus:outline-none "
+      className="pl-3 pr-10 px-4 w-128 rounded-md focus:outline-none bg-[#ffffff14] border border-[var(--input-border)] text-foreground"
       placeholder={displayText}
     />
   );

@@ -2,9 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, Home, Mail, Gamepad, Megaphone, LogIn, UserPlus } from "lucide-react";
+import {
+  X,
+  Menu,
+  Home,
+  Mail,
+  Gamepad,
+  Megaphone,
+  LogIn,
+  UserPlus,
+} from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "./Theme";
+import Logo from "./Logo";
 
 export default function MobileNav({ onLoginClick, onRegisterClick }) {
   const toggleTheme = useTheme();
@@ -79,7 +89,7 @@ export default function MobileNav({ onLoginClick, onRegisterClick }) {
               <div className="bg-[var(--bg-header)] p-3 ">
                 <button
                   onClick={toggleMenu}
-                  className="self-end mb-6 text-white w-full flex justify-end"
+                  className="self-end mb-6 text-[var(--foreground)] w-full flex justify-end"
                 >
                   <X className="mr-1" size={26} />
                 </button>
@@ -88,10 +98,7 @@ export default function MobileNav({ onLoginClick, onRegisterClick }) {
                   <div className="text-2xl font-bold text-green-500">
                     {/* epin<span className="text-white">KO</span> */}
                     <Link href="/">
-                      <img
-                        className="max-w-[90px] md:max-w-[130px]"
-                        src="/media/logo.png"
-                      />
+                      <Logo className="max-w-[90px] md:max-w-[130px]" />
                     </Link>
                   </div>
                   <div className="d-l-mode">
@@ -135,7 +142,7 @@ export default function MobileNav({ onLoginClick, onRegisterClick }) {
                     </Link>
                   </li>
                 ))}
-                
+
                 {/* Login/Register Buttons */}
                 <li className="pt-4 border-t border-gray-600">
                   <button

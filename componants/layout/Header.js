@@ -16,12 +16,7 @@ import { X } from "lucide-react";
 import FloatingSidebar from "./all-pages";
 import MobileNav from "./mobile-nav";
 import Image from "next/image";
-import { FaShoppingCart } from "react-icons/fa";
 import dynamic from "next/dynamic";
-import accountAnim from "../../src/assets/animations/account.json";
-import EarningsAnim from "../../src/assets/animations/Earnings.json";
-import NotificationsAnim from "../../src/assets/animations/Notifications.json";
-import LogInHistoryAnim from "../../src/assets/animations/LogInHistory.json";
 import user from "../../src/assets/animations/account.json";
 import message from "../../src/assets/animations/message.json";
 import adverts from "../../src/assets/animations/Adverts.json";
@@ -30,8 +25,6 @@ import bank from "../../src/assets/animations/Bank.json";
 import help from "../../src/assets/animations/Help.json";
 import transactions from "../../src/assets/animations/Transactions.json";
 import passwordChange from "../../src/assets/animations/PasswordChange.json";
-import verification from "../../src/assets/animations/Verification.json";
-import logInHistory from "../../src/assets/animations/LogInHistory.json";
 import earnings from "../../src/assets/animations/Earnings.json";
 import refunds from "../../src/assets/animations/Refunds.json";
 import notifications from "../../src/assets/animations/Notifications.json";
@@ -44,6 +37,7 @@ import giveaway from "../../src/assets/animations/giveaway.json";
 import { FaUserAlt } from "react-icons/fa";
 
 import Logo from "./Logo";
+import StarBorder from "./StarBorder";
 
 const Player = dynamic(
   () => import("@lordicon/react").then((mod) => mod.Player),
@@ -678,9 +672,9 @@ const Header = () => {
                 <SearchInput />
                 <Link
                   href="/create-advert"
-                  className="flex text-[var(--foreground)] bg-[var(--success)] items-center font-bold py-2 px-4 rounded transition ml-3 ilan-ekle-button"
+                  className="flex text-[var(--foreground)] bg-[var(--success)] items-center font-bold px-4 rounded transition ml-3 ilan-ekle-button"
                 >
-                  <span className="mr-2 text-[25px]">
+                  <span className="mr-2 text-[20px]">
                     <CiCirclePlus />
                   </span>
                   İlan Ekle
@@ -708,47 +702,28 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-              {/* DARK MODE BUTTONS */}
-              <div className="hidden dark:flex gap-2">
-                <button
+
+              <div className="flex gap-2">
+                <StarBorder
+                  as="button"
                   onClick={openLoginModal}
-                  className="px-4 py-2 text-[var(--text-gray)] rounded-md transition border-glow-header"
+                  color="var(--success)"
+                  speed="3s"
+                  thickness={2}
+                  className="text-xs font-bold"
                 >
                   Giriş Yap
-                </button>
-                <button
+                </StarBorder>
+                <StarBorder
+                  as="button"
                   onClick={openRegisterModal}
-                  className="px-4 py-2 text-[var(--text-gray)] rounded-md transition border-glow-header"
+                  color="var(--success)"
+                  speed="3s"
+                  thickness={2}
+                  className="text-xs font-bold"
                 >
                   Kayıt Ol
-                </button>
-              </div>
-              {/* LIGHT MODE BUTTONS */}
-              <div className="flex dark:hidden gap-2">
-                <button
-                  onClick={openLoginModal}
-                  className="px-2 py-1 text-xs rounded font-bold text-white"
-                  style={{
-                    background: "var(--success)",
-                    backgroundImage: "none",
-                    border: "none",
-                    boxShadow: "none",
-                  }}
-                >
-                  Giriş Yap
-                </button>
-                <button
-                  onClick={openRegisterModal}
-                  className="px-2 py-1 text-xs rounded font-bold text-white"
-                  style={{
-                    background: "var(--success)",
-                    backgroundImage: "none",
-                    border: "none",
-                    boxShadow: "none",
-                  }}
-                >
-                  Kayıt Ol
-                </button>
+                </StarBorder>
               </div>
               {/* Profile (Kişi) ikonu ve dropdown */}
               <div className="relative">
@@ -889,35 +864,6 @@ const Header = () => {
           {isMegaMenuOpen && <MegaMenu items={menuItems} isImage={false} />}
         </div>
 
-        {/* Mobil Menü */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-[var(--background)] py-4 px-6 space-y-4 text-sm uppercase">
-            <a
-              href="#"
-              className="block text-[var(--foreground)] hover:text-green-400"
-            >
-              🏠 Anasayfa
-            </a>
-            <a
-              href="#"
-              className="block text-[var(--foreground)] hover:text-green-400"
-            >
-              🎮 Tüm Oyunlar
-            </a>
-            <a
-              href="#"
-              className="block text-[var(--foreground)] hover:text-green-400"
-            >
-              🟢 Steam Oyunlar
-            </a>
-            <a
-              href="#"
-              className="block text-[var(--foreground)] hover:text-green-400"
-            >
-              📩 İletişim
-            </a>
-          </div>
-        )}
       </header>
       <FloatingSidebar />
 

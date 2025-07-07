@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
+import Magnet from "./Magnet";
 
 const PopularGames = () => {
   const cardRef = useRef();
@@ -51,7 +52,6 @@ const PopularGames = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-14 gap-4 p-4">
         {/* 1. Kutu: Oran 3 */}
-
         <Link
           href="/game-detail"
           className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg"
@@ -82,7 +82,7 @@ const PopularGames = () => {
         {/* 2. Kutu: Oran 6 */}
         <div className="col-span-1 md:col-span-1 lg:col-span-6 flex flex-col justify-between min-h-[420px] max-h-[420px]">
           <div className="flex gap-4 flex-1 min-h-[200px] max-h-[200px]">
-            <div className="rounded-lg flex-1">
+            <Magnet padding={30} magnetStrength={30} className="rounded-lg flex-1">
               <Link href="/game-detail">
                 <img
                   src="../media/roblox.jpg"
@@ -90,8 +90,8 @@ const PopularGames = () => {
                   className="object-cover w-full h-full rounded-lg"
                 />
               </Link>
-            </div>
-            <div className="rounded-lg flex-2">
+            </Magnet>
+            <Magnet padding={30} magnetStrength={30} className="rounded-lg flex-2">
               <Link href="/game-detail">
                 <img
                   src="../media/valorant.png"
@@ -99,10 +99,10 @@ const PopularGames = () => {
                   className="object-cover w-full h-full rounded-lg"
                 />
               </Link>
-            </div>
+            </Magnet>
           </div>
           <div className="flex gap-4 flex-1 min-h-[200px] max-h-[200px]">
-            <div className="rounded-lg flex-2">
+            <Magnet padding={30} magnetStrength={30} className="rounded-lg flex-2">
               <Link href="/game-detail">
                 <img
                   src="../media/pubg.jpeg"
@@ -110,8 +110,8 @@ const PopularGames = () => {
                   className="object-cover w-full h-full rounded-lg"
                 />
               </Link>
-            </div>
-            <div className="rounded-lg flex-1">
+            </Magnet>
+            <Magnet padding={30} magnetStrength={30} className="rounded-lg flex-1">
               <Link href="/game-detail">
                 <img
                   src="../media/rise-online.jpg"
@@ -119,25 +119,24 @@ const PopularGames = () => {
                   className="object-cover w-full h-full rounded-lg"
                 />
               </Link>
-            </div>
+            </Magnet>
           </div>
         </div>
 
         {/* 3. Kutu: Oran 3 */}
-        <Link
-          href="/game-detail"
-          className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center min-h-[420px] max-h-[420px]"
-        >
-          <img
-            src="../media/rust.png"
-            alt="League of Legends"
-            className="object-cover w-full h-full rounded-lg"
-          />
-        </Link>
+        <Magnet padding={50} magnetStrength={40} className="col-span-1 md:col-span-1 lg:col-span-3 rounded-lg flex flex-col justify-center items-center min-h-[420px] max-h-[420px]">
+          <Link href="/game-detail">
+            <img
+              src="../media/rust.png"
+              alt="League of Legends"
+              className="object-cover w-full h-full rounded-lg"
+            />
+          </Link>
+        </Magnet>
 
         {/* 4. Kutu: Oran 2 */}
         <div className="col-span-1 md:col-span-1 lg:col-span-2 flex flex-col justify-between">
-          <div className="rounded-lg min-h-[200px] max-h-[200px]">
+          <Magnet padding={30} magnetStrength={30} className="rounded-lg min-h-[200px] max-h-[200px]">
             <Link href="/game-detail">
               <img
                 src="../media/metin-2.png"
@@ -145,8 +144,8 @@ const PopularGames = () => {
                 className="object-cover w-full h-full rounded-lg"
               />
             </Link>
-          </div>
-          <div className="rounded-lg mt-4 min-h-[200px] max-h-[200px]">
+          </Magnet>
+          <Magnet padding={30} magnetStrength={30} className="rounded-lg mt-4 min-h-[200px] max-h-[200px]">
             <Link href="/game-detail">
               <img
                 src="../media/lol.jpg"
@@ -154,7 +153,7 @@ const PopularGames = () => {
                 className="object-cover w-full h-full rounded-lg"
               />
             </Link>
-          </div>
+          </Magnet>
         </div>
       </div>
 

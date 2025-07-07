@@ -1,6 +1,7 @@
 import React from "react";
 import SingleAdvert from "./single-tab-advert";
 import Link from "next/link";
+import AnimatedList from "./AnimatedList";
 
 const items = [
   {
@@ -119,14 +120,25 @@ const NewAdver = () => {
               />
             </div>
             <div className="rounded-lg p-2">
-              <ul className="overflow-y-scroll overflow-x-hidden min-h-[630px] max-h-[630px] pr-2">
-                {items.map((item, index) => (
+              <AnimatedList
+                items={items}
+                showGradients={false}
+                enableArrowNavigation={true}
+                displayScrollbar={true}
+                className="overflow-y-scroll overflow-x-hidden min-h-[630px] max-h-[630px] pr-2"
+                itemClassName=""
+                onItemSelect={(item, index) => {
+                  // İstenirse burada bir işlem yapılabilir
+                }}
+                // Custom render for each item to preserve visuals
+                renderItem={(item, index, selectedIndex) => (
                   <Link href="/advert-detail" key={index}>
                     <li
                       style={{
                         backgroundColor: "var(--advert-card-bg)",
                         color: "var(--foreground)",
-                        boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.3), 0 8px 20px -4px rgba(0, 0, 0, 0.15), 0 4px 8px -2px rgba(0, 0, 0, 0.1)",
+                        boxShadow:
+                          "0 20px 40px -12px rgba(0, 0, 0, 0.3), 0 8px 20px -4px rgba(0, 0, 0, 0.15), 0 4px 8px -2px rgba(0, 0, 0, 0.1)",
                       }}
                       className="flex items-start mb-4 rounded-lg cursor-pointer hover:transform hover:scale-[1.02] transition-all duration-200"
                     >
@@ -161,8 +173,8 @@ const NewAdver = () => {
                       </div>
                     </li>
                   </Link>
-                ))}
-              </ul>
+                )}
+              />
             </div>
           </div>
 
