@@ -305,19 +305,19 @@ export default function SingleCategoryCards() {
             .find((tab) => tab.id === activeTab)
             ?.cards.map((data, index) => (
               <SwiperSlide key={index}>
-                <Link href="/category-detail">
+                <Link href="/category-detail" className="block hover:animate-card-float pt-2">
                   <div 
                     className="p-2 rounded-t-md bg-[var(--advert-card-bg)] text-[var(--foreground)]"
                     style={{
                       boxShadow: "0 4px 12px -3px rgba(0, 0, 0, 0.2), 0 2px 6px -2px rgba(0, 0, 0, 0.1)"
                     }}
                   >
-                    <div className="overflow-hidden">
-                      <div className="relative">
+                    <div className="">
+                      <div className="relative group">
                         <img
                           src={data.image}
                           alt={`Card ${data.title}`}
-                          className="w-full h-full object-cover min-h-[200px] max-h-[200px] md:min-h-[250px] md:max-h-[250px] bg-gradient-to-tl rounded-md"
+                          className="w-full h-full object-cover min-h-[200px] max-h-[200px] md:min-h-[250px] md:max-h-[250px] bg-gradient-to-tl rounded-md transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:rotate-2"
                         />
                         <div className="absolute top-2 right-2">
                           <img

@@ -5,19 +5,19 @@ import { AiOutlineSafety } from "react-icons/ai";
 
 const ProductCard = ({ data, link = "/advert-detail" }) => {
   return (
-    <Link href={link}>
+    <Link href={link} className="block hover:animate-card-float">
       <div 
         className="p-2 rounded-t-md bg-[var(--advert-card-bg)] text-[var(--foreground)]"
         style={{
           boxShadow: "0 4px 12px -3px rgba(0, 0, 0, 0.2), 0 2px 6px -2px rgba(0, 0, 0, 0.1)"
         }}
       >
-        <div className="overflow-hidden">
-          <div className="relative">
+        <div className={data.isVitrin ? "overflow-hidden" : ""}>
+          <div className="relative group">
             <img
               src={data.image}
               alt={`Card ${data.title}`}
-              className="w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gradient-to-tl rounded-md"
+              className={`w-full h-full object-cover min-h-[155px] max-h-[155px] md:min-h-[202px] md:max-h-[202px] bg-gradient-to-tl rounded-md ${!data.isVitrin ? "transition-all duration-300 ease-in-out group-hover:scale-105 group-hover:rotate-2" : ""}`}
             />
             {data.isVitrin && (
               <span

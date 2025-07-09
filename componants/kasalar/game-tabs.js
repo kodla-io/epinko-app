@@ -89,9 +89,14 @@ const GameTabs = () => {
 
   // Tik sound effect
   const tikAudioRef = useRef(null);
+  const caseOpenAudioRef = useRef(null);
+  
   useEffect(() => {
     if (!tikAudioRef.current) {
       tikAudioRef.current = typeof Audio !== 'undefined' ? new Audio('/tik.mp3') : null;
+    }
+    if (!caseOpenAudioRef.current) {
+      caseOpenAudioRef.current = typeof Audio !== 'undefined' ? new Audio('/case-open.mp3') : null;
     }
   }, []);
 
@@ -147,6 +152,11 @@ const GameTabs = () => {
         setIsAnimating(false);
         setTargetIndex(null);
         setActiveIndex(finalIndex);
+        // Kasa açma animasyonu bittiğinde case-open.mp3 sesini çal
+        if (caseOpenAudioRef.current) {
+          caseOpenAudioRef.current.currentTime = 0;
+          caseOpenAudioRef.current.play();
+        }
         return;
       }
       animationRef.current = setTimeout(step, speed);

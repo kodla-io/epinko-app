@@ -71,6 +71,7 @@ const StorySlider = () => {
               pagination={{
                 clickable: true,
               }}
+              loop={true}
               modules={[Autoplay]}
               autoplay={{
                 delay: 20000, // Otomatik kaydırma süresi (ms)

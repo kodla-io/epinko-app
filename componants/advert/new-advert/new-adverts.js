@@ -88,10 +88,7 @@ const items = [
 
 const NewAdver = () => {
   return (
-    <section
-      style={{ backgroundColor: "var(--background)" }}
-      className="p-4"
-    >
+    <section className="p-4">
       <div className="container mx-auto">
         <div className="flex items-center space-x-4">
           <h2
@@ -115,7 +112,7 @@ const NewAdver = () => {
               <input
                 type="text"
                 placeholder="Kategori Ara"
-                style={{backgroundColor: "var(--active-advert-tab)"}}
+                style={{ backgroundColor: "var(--active-advert-tab)" }}
                 className="w-full p-2 rounded border-2 border-[#ffffff17] focus:border-blue-500 text-sm"
               />
             </div>

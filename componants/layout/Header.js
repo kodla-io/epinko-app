@@ -580,7 +580,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full text-[var(--foreground)]">
+      <header className="w-full text-[var(--foreground)] relative z-50">
         {/* Üst Kısım */}
         <div className="header-top w-full border-b border-[var(--input-border)]">
           <div className="flex justify-between items-center px-4 container py-1 m-auto text-xsm">

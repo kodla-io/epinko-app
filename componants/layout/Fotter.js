@@ -27,7 +27,7 @@ const Footer = () => {
           hoverFillColor="#00000014"
         />
       </div>
-      <div className="relative z-10">
+      <div style={{ backdropFilter: "blur(2px)" }} className="relative z-10">
         <div className="h-[2px] bg-gradient-to-r from-orange-500 to-green-500" />
         <div className="container mx-auto py-8 px-4">
           <div className="flex flex-wrap justify-between">
