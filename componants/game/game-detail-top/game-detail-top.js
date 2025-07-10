@@ -51,18 +51,18 @@ const GameDetailTop = () => {
         <div className="flex flex-col flex-7 flex-column space-y-4 md:space-y-0">
           <div className="flex flex-col flex-7 md:flex-row justify-between space-y-4 md:space-y-0">
             <div className="flex-3 p-2">
-              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-card-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
+              <div className="h-auto max-h-auto md:max-h-[390px] min-h-auto md:min-h-[390px] bg-[var(--advert-card-bg)] text-[var(--foreground)] p-4 relative rounded-lg">
                 <img
                   src="https://placehold.co/350x450"
                   alt="Game Picture"
-                  className="rounded-lg w-full h-full object-cover min-h-auto max-h-auto md:min-h-[420px] md:max-h-[420px]"
+                  className="rounded-lg w-full h-full object-cover min-h-auto max-h-auto md:min-h-[354px] md:max-h-[354px]"
                 />
               </div>
             </div>
 
             {/* İkinci Kutu: Görsel */}
             <div className="flex-5 p-2">
-              <div className="h-auto max-h-auto md:max-h-[456px] min-h-auto md:min-h-[456px] bg-[var(--advert-card-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
+              <div className="h-auto max-h-auto md:max-h-[390px] min-h-auto md:min-h-[390px] bg-[var(--advert-card-bg)] text-[var(--foreground)] p-6 relative rounded-lg">
                 <div className="w-full rounded-lg text-[var(--foreground)]">
                   <p className="text-[var(--text-gray)] mb-4">
                     Oyuncu ID’nize yüklenir.
@@ -71,42 +71,42 @@ const GameDetailTop = () => {
                   <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mb-4">
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
                       <TbBrandValorant className="w-8 h-8 mr-2" />
-                      <div>
+                      <div className="block md:flex gap-2 flex-wrap">
                         <span className="mobil-top-title">Satıcı:</span>
                         <span className="mt-2 md:mt-0">epinko</span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
                       <FaFlag className="w-8 h-8 mr-2" />
-                      <div>
+                      <div className="block md:flex gap-2 flex-wrap">
                         <span className="mobil-top-title">Bölge:</span>
                         <span className="mt-2 md:mt-0">Türkiye</span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
                       <FaApple className="w-8 h-8 mr-2" />
-                      <div>
+                      <div className="block md:flex gap-2 flex-wrap">
                         <span className="mobil-top-title">Platform:</span>
                         <span className="mt-2 md:mt-0">Apple</span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
                       <DiAndroid className="w-8 h-8 mr-2" />
-                      <div>
+                      <div className="block md:flex gap-2 flex-wrap">
                         <span className="mobil-top-title">Platform:</span>
                         <span className="mt-2 md:mt-0"> Android</span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
                       <BsPatchQuestionFill className="w-8 h-8 mr-2" />
-                      <div>
+                      <div className="block md:flex gap-2 flex-wrap">
                         <span className="mobil-top-title">Ürün Tipi:</span>
                         <span className="mt-2 md:mt-0">Top-Up</span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 bg-[var(--advert-list-bg)] p-4 rounded relative">
                       <IoIosTime className="w-8 h-8 mr-2" />
-                      <div>
+                      <div className="block md:flex gap-2 flex-wrap">
                         <span className="mobil-top-title">Yükleme Süresi:</span>
                         <span className="mt-2 md:mt-0"> 0-60 sn</span>
                       </div>

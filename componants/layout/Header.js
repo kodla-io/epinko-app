@@ -13,6 +13,7 @@ import { HiSpeakerphone } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoTwitch } from "react-icons/io5";
 import { X } from "lucide-react";
+import { MdAccountBalanceWallet } from "react-icons/md";
 import FloatingSidebar from "./all-pages";
 import MobileNav from "./mobile-nav";
 import Image from "next/image";
@@ -38,6 +39,7 @@ import { FaUserAlt } from "react-icons/fa";
 
 import Logo from "./Logo";
 import StarBorder from "./StarBorder";
+import GlareHover from "./GlareHover";
 
 const Player = dynamic(
   () => import("@lordicon/react").then((mod) => mod.Player),
@@ -203,6 +205,7 @@ const Header = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("tr");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleTheme = useTheme();
   const [isDark, setIsDark] = useState(false);
@@ -334,17 +337,35 @@ const Header = () => {
             </div>
           </div>
 
-          <button className="w-full mb-4 bg-[var(--success)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
+          <button 
+            onClick={() => {
+              setIsLoggedIn(true);
+              closeModals();
+            }}
+            className="w-full mb-4 bg-[var(--success)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold"
+          >
             Giriş Yap
           </button>
 
           <div className="flex flex-col gap-2">
-            <button className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+            <button 
+              onClick={() => {
+                setIsLoggedIn(true);
+                closeModals();
+              }}
+              className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
+            >
               <FcGoogle className="w-6 h-6" />
               <span>Google ile Giriş Yap</span>
             </button>
 
-            <button className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+            <button 
+              onClick={() => {
+                setIsLoggedIn(true);
+                closeModals();
+              }}
+              className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
+            >
               <IoLogoTwitch className="w-6 h-6" />
               <span>Twitch ile Giriş Yap</span>
             </button>
@@ -670,15 +691,60 @@ const Header = () => {
               {/* Arama Çubuğu */}
               <div className="relative flex">
                 <SearchInput />
-                <Link
-                  href="/create-advert"
-                  className="flex text-[var(--foreground)] bg-[var(--success)] items-center font-bold px-4 rounded transition ml-3 ilan-ekle-button"
+                <GlareHover
+                  width="auto"
+                  height="auto"
+                  background="var(--success)"
+                  borderRadius="6px"
+                  borderColor="transparent"
+                  glareColor="#ffffff"
+                  glareOpacity={0.3}
+                  glareAngle={-30}
+                  glareSize={300}
+                  transitionDuration={800}
+                  playOnce={false}
+                  className="ml-3 overflow-hidden border-none"
+                  style={{ padding: 0 }}
                 >
-                  <span className="mr-2 text-[20px]">
-                    <CiCirclePlus />
-                  </span>
-                  İlan Ekle
-                </Link>
+                  <Link
+                    href="/create-advert"
+                    className="flex text-white items-center font-bold px-4 py-2 rounded transition"
+                    style={{ background: 'transparent' }}
+                  >
+                    <span className="mr-2 text-[20px]">
+                      <CiCirclePlus />
+                    </span>
+                    İlan Ekle
+                  </Link>
+                </GlareHover>
+                {isLoggedIn && (
+                  <GlareHover
+                    width="auto"
+                    height="auto"
+                    background="var(--primary)"
+                    borderRadius="6px"
+                    borderColor="transparent"
+                    glareColor="#ffffff"
+                    glareOpacity={0.3}
+                    glareAngle={-30}
+                    glareSize={300}
+                    transitionDuration={800}
+                    playOnce={false}
+                    className="ml-3 overflow-hidden border-none"
+                    style={{ padding: 0 }}
+                  >
+                    <Link
+                      href="/profile?tab=top-up-balance"
+                      className="flex text-white items-center font-bold px-4 py-2 rounded transition bakiye-yukle-button"
+                      style={{ background: 'transparent' }}
+                    >
+                      <span className="mr-2 text-[20px]">
+                        <MdAccountBalanceWallet />
+                      </span>
+                      Bakiye Yükle
+                    </Link>
+                  </GlareHover>
+                )}
               </div>
             </nav>
 
@@ -703,28 +769,31 @@ const Header = () => {
                 </div>
               </div>
 
-              <div className="flex gap-2">
-                <StarBorder
-                  as="button"
-                  onClick={openLoginModal}
-                  color="var(--success)"
-                  speed="3s"
-                  thickness={2}
-                  className="text-xs font-bold"
-                >
-                  Giriş Yap
-                </StarBorder>
-                <StarBorder
-                  as="button"
-                  onClick={openRegisterModal}
-                  color="var(--success)"
-                  speed="3s"
-                  thickness={2}
-                  className="text-xs font-bold"
-                >
-                  Kayıt Ol
-                </StarBorder>
-              </div>
+              {!isLoggedIn && (
+                <div className="flex gap-2">
+                  <StarBorder
+                    as="button"
+                    onClick={openLoginModal}
+                    color="var(--success)"
+                    speed="3s"
+                    thickness={2}
+                    className="text-xs font-bold"
+                  >
+                    Giriş Yap
+                  </StarBorder>
+                  <StarBorder
+                    as="button"
+                    onClick={openRegisterModal}
+                    color="var(--success)"
+                    speed="3s"
+                    thickness={2}
+                    className="text-xs font-bold"
+                  >
+                    Kayıt Ol
+                  </StarBorder>
+                </div>
+              )}
+
               {/* Profile (Kişi) ikonu ve dropdown */}
               <div className="relative">
                 <button
