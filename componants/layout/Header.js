@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTheme } from "./Theme";
 import SearchInput from "./Search";
 import MegaMenu from "./MegaMenu";
@@ -18,6 +18,8 @@ import FloatingSidebar from "./all-pages";
 import MobileNav from "./mobile-nav";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { apiService } from "../../services/api";
+import { toastUtils } from "../../utils/toast";
 import user from "../../src/assets/animations/account.json";
 import message from "../../src/assets/animations/message.json";
 import adverts from "../../src/assets/animations/Adverts.json";
@@ -36,10 +38,14 @@ import checkCash from "../../src/assets/animations/CheckCash.json";
 import stream from "../../src/assets/animations/stream.json";
 import giveaway from "../../src/assets/animations/giveaway.json";
 import { FaUserAlt } from "react-icons/fa";
+import { useRouter } from "next/navigation"; // Added useRouter import
 
 import Logo from "./Logo";
 import StarBorder from "./StarBorder";
 import GlareHover from "./GlareHover";
+import { useGlobalContext } from "../../contexts/GlobalProvider";
+import { authUtils } from "../../utils/auth";
+import { setCookie } from "../../utils/cookies";
 
 const Player = dynamic(
   () => import("@lordicon/react").then((mod) => mod.Player),
@@ -200,12 +206,32 @@ const profileTabs = [
 ];
 
 const Header = () => {
+  const { isUserLogin, globalUserData } = useGlobalContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("tr");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Register form state
+  const [registerFormData, setRegisterFormData] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    nickname: "",
+    password: "",
+    password_confirm: ""
+  });
+  const [registerErrors, setRegisterErrors] = useState({});
+  const [isRegisterSubmitting, setIsRegisterSubmitting] = useState(false);
+
+  // Input refs for maintaining focus
+  const nameInputRef = useRef(null);
+  const surnameInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const nicknameInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+  const passwordConfirmInputRef = useRef(null);
 
   const toggleTheme = useTheme();
   const [isDark, setIsDark] = useState(false);
@@ -281,99 +307,447 @@ const Header = () => {
     setIsRegisterModalOpen(false);
   };
 
-  // Login Modal Component
-  const LoginModal = () => (
-    <div className="fixed inset-0 bg-black/20 text-[var(--foreground)] backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-[var(--advert-card-bg)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
-        {/* Kapatma butonu */}
-        <button
-          onClick={closeModals}
-          className="absolute right-4 top-4 text-[var(--text-gray)] hover:text-white z-10"
-        >
-          <X size={24} />
-        </button>
+  // Register form handlers
+  const handleRegisterInputChange = useCallback((e) => {
+    const { name, value } = e.target;
+    
+    // State'i güncelle
+    setRegisterFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Hata mesajını temizle
+    if (registerErrors[name]) {
+      setRegisterErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
+  }, [registerErrors]);
 
-        <div className="p-6">
-          <div className="mb-6">
-            <h2 className="text-2xl mb-2">Merhaba</h2>
-            <h1 className="text-4xl font-bold mb-4">Giriş Yap</h1>
-            <div className="text-sm text-[var(--text-gray)]">
-              Yeni Misin?{" "}
-              <button
-                onClick={openRegisterModal}
-                className="text-blue-400 hover:underline"
+  const validateRegisterForm = () => {
+    const newErrors = {};
+
+    if (!registerFormData.name) {
+      newErrors.name = "Ad gerekli";
+    } else if (registerFormData.name.length < 2) {
+      newErrors.name = "Ad en az 2 karakter olmalı";
+    }
+
+    if (!registerFormData.surname) {
+      newErrors.surname = "Soyad gerekli";
+    } else if (registerFormData.surname.length < 2) {
+      newErrors.surname = "Soyad en az 2 karakter olmalı";
+    }
+
+    if (!registerFormData.email) {
+      newErrors.email = "Email adresi gerekli";
+    } else if (!/\S+@\S+\.\S+/.test(registerFormData.email)) {
+      newErrors.email = "Geçerli bir email adresi girin";
+    }
+
+    if (!registerFormData.nickname) {
+      newErrors.nickname = "Kullanıcı adı gerekli";
+    } else if (registerFormData.nickname.length < 3) {
+      newErrors.nickname = "Kullanıcı adı en az 3 karakter olmalı";
+    }
+
+    if (!registerFormData.password) {
+      newErrors.password = "Şifre gerekli";
+    } else if (registerFormData.password.length < 6) {
+      newErrors.password = "Şifre en az 6 karakter olmalı";
+    }
+
+    if (!registerFormData.password_confirm) {
+      newErrors.password_confirm = "Şifre tekrarı gerekli";
+    } else if (registerFormData.password !== registerFormData.password_confirm) {
+      newErrors.password_confirm = "Şifreler eşleşmiyor";
+    }
+
+    setRegisterErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Form data'yı form elementlerinden al
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      surname: formData.get('surname'),
+      email: formData.get('email'),
+      nickname: formData.get('nickname'),
+      password: formData.get('password'),
+      password_confirm: formData.get('password_confirm')
+    };
+
+    // Validation
+    if (!data.name || !data.surname || !data.email || !data.nickname || !data.password || !data.password_confirm) {
+      toastUtils.apiError("Lütfen tüm alanları doldurun");
+      return;
+    }
+
+    if (data.password !== data.password_confirm) {
+      toastUtils.apiError("Şifreler eşleşmiyor");
+      return;
+    }
+
+    setIsRegisterSubmitting(true);
+
+    try {
+      console.log("Register isteği gönderiliyor:", data);
+      const response = await apiService.register(data);
+      console.log("Register response:", response.data);
+      
+      if (response.data.success) {
+        console.log("Kayıt başarılı:", response.data);
+        toastUtils.apiSuccess(response.data.message || "Kayıt işlemi başarıyla tamamlandı!");
+        
+        // Eğer token ve kullanıcı bilgisi varsa global state'i güncelle
+        if (response.data.data?.token && response.data.data?.user) {
+          setIsUserLogin(true);
+          setGlobalUserData(response.data.data.user);
+          
+          // Token ve login durumunu kaydet
+          if (response.data.data?.token) {
+            // Tokeni hem authUtils ile hem de doğrudan cookie'ye kaydet
+            authUtils.setToken(response.data.data.token);
+            setCookie('auth_token', response.data.data.token, { 
+              path: '/', 
+              maxAge: 30 * 24 * 60 * 60 // 30 gün
+            });
+            authUtils.setLoginState(true);
+          }
+        }
+        
+        closeModals();
+        // Form'u temizle
+        e.target.reset();
+      } else {
+        toastUtils.apiError(response.data.message || "Kayıt işlemi başarısız");
+      }
+    } catch (error) {
+      console.error("Kayıt hatası detayı:", error);
+      
+      const errorMessage = error.response?.data?.message || error.message;
+      toastUtils.apiError(`Kayıt hatası: ${errorMessage}`);
+    } finally {
+      setIsRegisterSubmitting(false);
+    }
+  };
+
+  // Google OAuth ile kayıt
+  const handleGoogleRegister = async () => {
+    try {
+      setIsRegisterSubmitting(true);
+      
+      // Google OAuth init isteği gönder
+      const response = await apiService.googleOAuthInit();
+      console.log("Google OAuth init response:", response.data);
+      
+      if (response.data.success && response.data.data?.auth_url) {
+        // Popup aç ve Google OAuth URL'ine yönlendir
+        const popup = window.open(
+          response.data.data.auth_url,
+          'googleOAuth',
+          'width=500,height=600,scrollbars=yes,resizable=yes'
+        );
+        
+        // Popup'dan gelen mesajları dinle
+        const handleMessage = (event) => {
+          if (event.origin !== window.location.origin) return;
+          
+          if (event.data.type === 'GOOGLE_OAUTH_SUCCESS') {
+            // Başarılı OAuth sonrası işlemler
+            console.log("Google OAuth başarılı:", event.data);
+            popup.close();
+            window.removeEventListener('message', handleMessage);
+            
+            // Kullanıcıyı giriş yapmış olarak işaretle
+            if (event.data.token) {
+              authUtils.setToken(event.data.token);
+            }
+            if (event.data.user) {
+              authUtils.setUserData(event.data.user);
+              setGlobalUserData(event.data.user);
+            }
+            setIsUserLogin(true);
+            closeModals();
+            
+          } else if (event.data.type === 'GOOGLE_OAUTH_ERROR') {
+            // OAuth hatası
+            console.error("Google OAuth hatası:", event.data);
+            popup.close();
+            window.removeEventListener('message', handleMessage);
+            toastUtils.apiError("Google ile giriş yapılamadı");
+          }
+        };
+        
+        window.addEventListener('message', handleMessage);
+        
+        // Popup kapandığında event listener'ı temizle
+        const checkClosed = setInterval(() => {
+          if (popup.closed) {
+            clearInterval(checkClosed);
+            window.removeEventListener('message', handleMessage);
+          }
+        }, 1000);
+        
+      } else {
+        toastUtils.apiError("Google OAuth başlatılamadı");
+      }
+      
+    } catch (error) {
+      console.error("Google OAuth hatası:", error);
+      toastUtils.apiError("Google ile giriş yapılamadı");
+    } finally {
+      setIsRegisterSubmitting(false);
+    }
+  };
+
+  // Twitch OAuth ile kayıt
+  const handleTwitchRegister = async () => {
+    try {
+      setIsRegisterSubmitting(true);
+      
+      // Twitch OAuth init isteği gönder
+      const response = await apiService.twitchOAuthInit();
+      console.log("Twitch OAuth init response:", response.data);
+      
+      if (response.data.success && response.data.data?.auth_url) {
+        // Popup aç ve Twitch OAuth URL'ine yönlendir
+        const popup = window.open(
+          response.data.data.auth_url,
+          'twitchOAuth',
+          'width=500,height=600,scrollbars=yes,resizable=yes'
+        );
+        
+        // Popup'dan gelen mesajları dinle
+        const handleMessage = (event) => {
+          if (event.origin !== window.location.origin) return;
+          
+          if (event.data.type === 'TWITCH_OAUTH_SUCCESS') {
+            // Başarılı OAuth sonrası işlemler
+            console.log("Twitch OAuth başarılı:", event.data);
+            popup.close();
+            window.removeEventListener('message', handleMessage);
+            
+            // Kullanıcıyı giriş yapmış olarak işaretle
+            if (event.data.token) {
+              authUtils.setToken(event.data.token);
+            }
+            if (event.data.user) {
+              authUtils.setUserData(event.data.user);
+              setGlobalUserData(event.data.user);
+            }
+            setIsUserLogin(true);
+            closeModals();
+            
+          } else if (event.data.type === 'TWITCH_OAUTH_ERROR') {
+            // OAuth hatası
+            console.error("Twitch OAuth hatası:", event.data);
+            popup.close();
+            window.removeEventListener('message', handleMessage);
+            toastUtils.apiError("Twitch ile giriş yapılamadı");
+          }
+        };
+        
+        window.addEventListener('message', handleMessage);
+        
+        // Popup kapandığında event listener'ı temizle
+        const checkClosed = setInterval(() => {
+          if (popup.closed) {
+            clearInterval(checkClosed);
+            window.removeEventListener('message', handleMessage);
+          }
+        }, 1000);
+        
+      } else {
+        toastUtils.apiError("Twitch OAuth başlatılamadı");
+      }
+      
+    } catch (error) {
+      console.error("Twitch OAuth hatası:", error);
+      toastUtils.apiError("Twitch ile giriş yapılamadı");
+    } finally {
+      setIsRegisterSubmitting(false);
+    }
+  };
+
+  // Login Modal Component
+  const LoginModal = () => {
+    const { setIsUserLogin, setGlobalUserData } = useGlobalContext();
+    const [loginData, setLoginData] = useState({
+      email: '',
+      password: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter(); // Add router for navigation
+
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setLoginData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      
+      // Validation
+      if (!loginData.email || !loginData.password) {
+        toastUtils.apiError("Lütfen tüm alanları doldurun");
+        return;
+      }
+
+      setIsSubmitting(true);
+
+      try {
+        console.log("Login isteği gönderiliyor:", loginData);
+        const response = await apiService.login(loginData);
+        console.log("Login response:", response.data);
+        
+        // Tek bir success kontrolü
+        if (response.data && response.data.success) {
+          console.log("Giriş başarılı:", response.data);
+          toastUtils.apiSuccess(response.data.message || "Giriş başarıyla tamamlandı!");
+          
+          // Global state'i güncelle
+          setIsUserLogin(true);
+          setGlobalUserData(response.data.data?.user || {});
+          
+          // Token'ı ve login durumunu kaydet
+          if (response.data.api_token) {
+            // Tokeni hem authUtils ile hem de doğrudan cookie'ye kaydet
+            const token = response.data.api_token;
+            console.log('Login Token:', {
+              token,
+              tokenLength: token.length,
+              fullTokenValue: token
+            });
+            
+            authUtils.setToken(token);
+            setCookie('auth_token', token, { 
+              path: '/', 
+              maxAge: 30 * 24 * 60 * 60 // 30 gün
+            });
+            authUtils.setLoginState(true);
+          }
+          
+          // Modalı kapat ve anasayfaya yönlendir
+          closeModals();
+          router.push('/'); // Anasayfaya yönlendir
+        } else {
+          // Sunucudan gelen hata mesajını göster
+          throw new Error(response.data.message || "Giriş işlemi başarısız");
+        }
+      } catch (error) {
+        console.error("Giriş hatası detayı:", error);
+        
+        // Tek bir hata mesajı
+        const errorMessage = error.response?.data?.message || error.message || "Giriş sırasında bir hata oluştu";
+        toastUtils.apiError(errorMessage);
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
+
+    return (
+      <div className="fixed inset-0 bg-black/20 text-[var(--foreground)] backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-[var(--advert-card-bg)] rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
+          {/* Kapatma butonu */}
+          <button
+            onClick={closeModals}
+            className="absolute right-4 top-4 text-[var(--text-gray)] hover:text-white z-10"
+          >
+            <X size={24} />
+          </button>
+
+          <div className="p-6">
+            <div className="mb-6">
+              <h2 className="text-2xl mb-2">Merhaba</h2>
+              <h1 className="text-4xl font-bold mb-4">Giriş Yap</h1>
+              <div className="text-sm text-[var(--text-gray)]">
+                Yeni Misin?{" "}
+                <button
+                  onClick={openRegisterModal}
+                  className="text-blue-400 hover:underline"
+                >
+                  Kayıt Ol
+                </button>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="mb-4">
+                <label className="block text-sm mb-2">
+                  Kullanıcı adınızı veya e-posta adresinizi giriniz
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Kullanıcı adı ya da Eposta adresi"
+                  value={loginData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm mb-2">Şifrenizi Giriniz</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Şifre"
+                  value={loginData.password}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none"
+                />
+                <div
+                  className="text-right text-sm text-[var(--primary)] mt-2 hover:underline cursor-pointer"
+                  onClick={() => {
+                    setIsLoginModalOpen(false);
+                    setIsForgotModalOpen(true);
+                  }}
+                >
+                  Şifremi Unuttum
+                </div>
+              </div>
+
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full mb-4 bg-[var(--success)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Kayıt Ol
+                {isSubmitting ? "Giriş Yapılıyor..." : "Giriş Yap"}
+              </button>
+            </form>
+
+            <div className="flex flex-col gap-2">
+              <button 
+                onClick={handleGoogleRegister}
+                className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
+              >
+                <FcGoogle className="w-6 h-6" />
+                <span>Google ile Giriş Yap</span>
+              </button>
+
+              <button 
+                onClick={handleTwitchRegister}
+                className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
+              >
+                <IoLogoTwitch className="w-6 h-6" />
+                <span>Twitch ile Giriş Yap</span>
               </button>
             </div>
           </div>
-
-          <div className="mb-4">
-            <label className="block text-sm mb-2">
-              Kullanıcı adınızı veya e-posta adresinizi giriniz
-            </label>
-            <input
-              type="text"
-              placeholder="Kullanıcı adı ya da Eposta adresi"
-              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm mb-2">Şifrenizi Giriniz</label>
-            <input
-              type="password"
-              placeholder="Şifre"
-              className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] border-none focus:outline-none"
-            />
-            <div
-              className="text-right text-sm text-[var(--primary)] mt-2 hover:underline cursor-pointer"
-              onClick={() => {
-                setIsLoginModalOpen(false);
-                setIsForgotModalOpen(true);
-              }}
-            >
-              Şifremi Unuttum
-            </div>
-          </div>
-
-          <button 
-            onClick={() => {
-              setIsLoggedIn(true);
-              closeModals();
-            }}
-            className="w-full mb-4 bg-[var(--success)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold"
-          >
-            Giriş Yap
-          </button>
-
-          <div className="flex flex-col gap-2">
-            <button 
-              onClick={() => {
-                setIsLoggedIn(true);
-                closeModals();
-              }}
-              className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
-            >
-              <FcGoogle className="w-6 h-6" />
-              <span>Google ile Giriş Yap</span>
-            </button>
-
-            <button 
-              onClick={() => {
-                setIsLoggedIn(true);
-                closeModals();
-              }}
-              className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
-            >
-              <IoLogoTwitch className="w-6 h-6" />
-              <span>Twitch ile Giriş Yap</span>
-            </button>
-          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Register Modal Component
   const RegisterModal = () => (
@@ -404,86 +778,104 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="flex gap-2 mb-4">
-            <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">
-                Ad
-              </label>
-              <input
-                type="text"
-                placeholder="Adınız"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
-              />
+          <form onSubmit={handleRegisterSubmit} className="space-y-4">
+            <div className="flex gap-2">
+              <div className="flex-1">
+                <label className="block text-[var(--foreground)] text-sm mb-2">
+                  Ad
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Adınız"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
+                />
+              </div>
+              <div className="flex-1">
+                <label className="block text-[var(--foreground)] text-sm mb-2">
+                  Soyad
+                </label>
+                <input
+                  type="text"
+                  name="surname"
+                  placeholder="Soyadınız"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
+                />
+              </div>
             </div>
-            <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">
-                Soyad
-              </label>
-              <input
-                type="text"
-                placeholder="Soyadınız"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
-              />
-            </div>
-          </div>
 
-          <div className="flex gap-2 mb-4">
-            <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">
-                Kullanıcı adı
-              </label>
-              <input
-                type="text"
-                placeholder="Kullanıcı adı"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
-              />
+            <div className="flex gap-2">
+              <div className="flex-1">
+                <label className="block text-[var(--foreground)] text-sm mb-2">
+                  Kullanıcı adı
+                </label>
+                <input
+                  type="text"
+                  name="nickname"
+                  placeholder="Kullanıcı adı"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
+                />
+              </div>
+              <div className="flex-1">
+                <label className="block text-[var(--foreground)] text-sm mb-2">
+                  Email Adresi
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Adresi"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
+                />
+              </div>
             </div>
-            <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">
-                Email Adresi
-              </label>
-              <input
-                type="email"
-                placeholder="Email Adresi"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
-              />
-            </div>
-          </div>
 
-          <div className="flex gap-2 mb-4">
-            <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">
-                Şifre
-              </label>
-              <input
-                type="password"
-                placeholder="Şifre"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
-              />
+            <div className="flex gap-2">
+              <div className="flex-1">
+                <label className="block text-[var(--foreground)] text-sm mb-2">
+                  Şifre
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Şifre"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
+                />
+              </div>
+              <div className="flex-1">
+                <label className="block text-[var(--foreground)] text-sm mb-2">
+                  Şifre Tekrar
+                </label>
+                <input
+                  type="password"
+                  name="password_confirm"
+                  placeholder="Şifre Tekrar"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
+                />
+              </div>
             </div>
-            <div className="flex-1">
-              <label className="block text-[var(--foreground)] text-sm mb-2">
-                Şifre Tekrar
-              </label>
-              <input
-                type="password"
-                placeholder="Şifre Tekrar"
-                className="w-full px-4 py-3 rounded-lg bg-[var(--profile-input)] text-[var(--foreground)] border-none focus:outline-none"
-              />
-            </div>
-          </div>
 
-          <button className="w-full mb-4 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold">
-            Kayıt Ol
-          </button>
+            <button 
+              type="submit"
+              disabled={isRegisterSubmitting}
+              className="w-full mb-4 bg-[var(--primary)] hover:bg-[var(--label2)] transition-colors py-3 rounded-lg text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isRegisterSubmitting ? "Kayıt Olunuyor..." : "Kayıt Ol"}
+            </button>
+          </form>
 
           <div className="flex flex-col gap-2">
-            <button className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+            <button 
+              onClick={handleGoogleRegister}
+              className="w-full bg-white text-black py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
+            >
               <FcGoogle className="w-6 h-6" />
               <span>Google ile Kayıt Ol</span>
             </button>
 
-            <button className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center">
+            <button 
+              onClick={handleTwitchRegister}
+              className="w-full bg-[var(--label4)] text-white py-3 rounded-lg hover:opacity-80 transition font-semibold flex items-center gap-2 justify-center"
+            >
               <IoLogoTwitch className="w-6 h-6" />
               <span>Twitch ile Kayıt Ol</span>
             </button>
@@ -717,7 +1109,7 @@ const Header = () => {
                     İlan Ekle
                   </Link>
                 </GlareHover>
-                {isLoggedIn && (
+                {isUserLogin && (
                   <GlareHover
                     width="auto"
                     height="auto"
@@ -769,7 +1161,7 @@ const Header = () => {
                 </div>
               </div>
 
-              {!isLoggedIn && (
+              {!isUserLogin && (
                 <div className="flex gap-2">
                   <StarBorder
                     as="button"
@@ -823,10 +1215,10 @@ const Header = () => {
                     />
                     <div className="flex flex-col">
                       <span className="font-bold text-[var(--foreground)] text-base">
-                        onurtasdeler
+                        {globalUserData?.nickname || 'Kullanıcı'}
                       </span>
                       <span className="text-xs text-[var(--text-gray)]">
-                        0.00 ₺
+                        {globalUserData?.balance || '0.00'} ₺
                       </span>
                     </div>
                   </div>

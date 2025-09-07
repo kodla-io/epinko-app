@@ -6,7 +6,7 @@ export default function Logo({ className = "", style = {}, ...props }) {
       className={className}
       style={{ color: "var(--foreground)", ...style }}
       width="468"
-      height="auto"
+      height="38"
       viewBox="0 0 468 136"
       xmlns="http://www.w3.org/2000/svg"
       {...props}

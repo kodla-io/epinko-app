@@ -3,23 +3,19 @@ import { FaCheckSquare } from "react-icons/fa";
 import { IoIosAlert } from "react-icons/io";
 import Billing from "../billing/form";
 
-export default function MyAccount() {
+export default function MyAccount({ data }) {
   const [billingModalOpen, setBillingModalOpen] = useState(false);
   const [billingModalData, setBillingModalData] = useState({});
 
   const handleBillingCheckbox = (e) => {
     if (e.target.checked) {
       setBillingModalData({
-        companyName: name + " " + surname,
-        phone1: telNo,
+        companyName: data?.user_info?.name + " " + data?.user_info?.surname,
+        phone1: data?.user_info?.phone,
       });
       setBillingModalOpen(true);
     }
   };
-
-  const [name, setName] = useState("Epinko"); // default değerleri istersen özelleştirirsin
-  const [surname, setsurname] = useState("Epinko");
-  const [telNo, setTelNo] = useState("90555 555 5555");
 
   return (
     <div id="my-account">
@@ -39,8 +35,7 @@ export default function MyAccount() {
             <input
               type="text"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={data?.user_info?.name || ""}
               disabled
             />
           </div>
@@ -49,8 +44,7 @@ export default function MyAccount() {
             <input
               type="text"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
-              value={surname}
-              onChange={(e) => setsurname(e.target.value)}
+              value={data?.user_info?.surname || ""}
               disabled
             />
           </div>
@@ -63,22 +57,29 @@ export default function MyAccount() {
               type="text"
               placeholder="@epinko"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
+              value={data?.user_info?.nickname ? `@${data.user_info.nickname}` : ""}
               disabled
             />
           </div>
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
               <label className="block text-sm">Telefon</label>
-              <div className="flex items-center text-sm text-[var(--success)]">
-                <FaCheckSquare className="w-4 h-4 mr-1" />
-                <span>Doğrulandı</span>
-              </div>
+              {data?.verification?.phone_verified ? (
+                <div className="flex items-center text-sm text-[var(--success)]">
+                  <FaCheckSquare className="w-4 h-4 mr-1" />
+                  <span>Doğrulandı</span>
+                </div>
+              ) : (
+                <div className="flex items-center text-sm text-[var(--alert)]">
+                  <IoIosAlert className="w-4 h-4 mr-1" />
+                  <span>Doğrula</span>
+                </div>
+              )}
             </div>
             <input
               type="text"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
-              value={telNo}
-              onChange={(e) => setTelNo(e.target.value)}
+              value={data?.user_info?.phone || ""}
               disabled
             />
           </div>
@@ -88,29 +89,45 @@ export default function MyAccount() {
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
               <label className="block text-sm ">TC Kimlik Numarası</label>
-              <div className="flex items-center text-sm text-[var(--alert)]">
-                <IoIosAlert className="w-4 h-4 mr-1" />
-                <span>Doğrula</span>
-              </div>
+              {data?.verification?.tc_verified ? (
+                <div className="flex items-center text-sm text-[var(--success)]">
+                  <FaCheckSquare className="w-4 h-4 mr-1" />
+                  <span>Doğrulandı</span>
+                </div>
+              ) : (
+                <div className="flex items-center text-sm text-[var(--alert)]">
+                  <IoIosAlert className="w-4 h-4 mr-1" />
+                  <span>Doğrula</span>
+                </div>
+              )}
             </div>
             <input
               type="text"
               placeholder="Kimlik Bilgilerinizi Doğrulayınız"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
+              value=""
             />
           </div>
           <div className="flex-1">
             <div className="flex items-center mb-3 justify-between w-full">
               <label className="block text-sm ">E-Mail Adresi</label>
-              <div className="flex items-center text-sm text-[var(--success)]">
-                <FaCheckSquare className="w-4 h-4 mr-1" />
-                <span>Doğrulandı</span>
-              </div>
+              {data?.verification?.email_verified ? (
+                <div className="flex items-center text-sm text-[var(--success)]">
+                  <FaCheckSquare className="w-4 h-4 mr-1" />
+                  <span>Doğrulandı</span>
+                </div>
+              ) : (
+                <div className="flex items-center text-sm text-[var(--alert)]">
+                  <IoIosAlert className="w-4 h-4 mr-1" />
+                  <span>Doğrula</span>
+                </div>
+              )}
             </div>
             <input
               type="text"
               placeholder="epinko@epinko.com.tr"
               className="w-full p-3 rounded-lg text-white border-none focus:outline-none"
+              value={data?.user_info?.email || ""}
               disabled
             />
           </div>

@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Epinko App - API Bağlantısı
 
-## Getting Started
+Bu proje, e-pin satış platformu için API bağlantısı zemini hazırlanmıştır.
 
-First, run the development server:
+## Kurulum
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API Yapısı
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Services
+- `services/index.js` - Temel fetch fonksiyonları
+- `services/api.js` - Axios tabanlı API servisleri (Auth odaklı)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Utils
+- `utils/cookies.js` - Cookie yönetimi
+- `utils/auth.js` - Kimlik doğrulama yardımcıları
+- `utils/apiConfig.js` - API konfigürasyon yönetimi
 
-## Learn More
+### Hooks
+- `hooks/useApi.js` - Genel API çağrıları için hook
 
-To learn more about Next.js, take a look at the following resources:
+### Contexts
+- `contexts/GlobalProvider.js` - Global state yönetimi (Auth odaklı)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Versiyonlama
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Proje API versiyonlama desteği ile gelir. Environment variables ile kontrol edilir:
 
-## Deploy on Vercel
+### Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+# API Base URL
+NEXT_PUBLIC_API_BASE_URL=https://api.epinko.com/api
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# API Version (v1, v2, v3)
+NEXT_PUBLIC_API_VERSION=v1
+```
+
+### Desteklenen Versiyonlar
+
+- **v1**: Temel auth ve user işlemleri
+- **v2**: Auth, user + games işlemleri  
+- **v3**: Auth, user, games + adverts, cart işlemleri
+
+### Versiyon Kontrolü
+
+```javascript
+import { API_CONFIG, checkVersionCompatibility } from '../utils/apiConfig';
+
+// Mevcut versiyon
+console.log(API_CONFIG.VERSION); // 'v1'
+
+// Versiyon kontrolü
+if (API_CONFIG.isVersion('v2')) {
+  // v2 özellikleri
+}
+
+// Uyumluluk kontrolü
+if (checkVersionCompatibility('v2')) {
+  // v2+ özellikleri kullanılabilir
+}
+```
+
+## API Endpoints (Mevcut)
+
+### Auth
+- `POST /auth/login` - Giriş
+- `POST /auth/register` - Kayıt
+- `POST /auth/logout` - Çıkış
+
+### User
+- `GET /user/profile` - Kullanıcı profili
+- `PUT /user/profile` - Profil güncelleme
+
+## Kullanım Örnekleri
+
+### API Service Kullanımı
+```javascript
+import { apiService, apiConfig } from '../services/api';
+
+// API bilgilerini görüntüle
+console.log('API Version:', apiConfig.version);
+console.log('API URL:', apiConfig.fullUrl);
+
+// Login
+const login = async (credentials) => {
+  try {
+    const response = await apiService.login(credentials);
+    return response.data;
+  } catch (error) {
+    console.error('Login hatası:', error);
+  }
+};
+
+// Register
+const register = async (userData) => {
+  try {
+    const response = await apiService.register(userData);
+    return response.data;
+  } catch (error) {
+    console.error('Kayıt hatası:', error);
+  }
+};
+```
+
+### Auth Utils Kullanımı
+```javascript
+import { authUtils } from '../utils/auth';
+
+// Token kaydet
+authUtils.setToken('your-token-here');
+
+// Token al
+const token = authUtils.getToken();
+
+// Kullanıcı giriş yapmış mı kontrol et
+const isLoggedIn = authUtils.isAuthenticated();
+
+// Çıkış yap
+authUtils.logout();
+```
+
+### Global Context Kullanımı
+```javascript
+import { useGlobalContext } from '../contexts/GlobalProvider';
+
+const MyComponent = () => {
+  const { 
+    isUserLogin, 
+    setIsUserLogin, 
+    globalUserData, 
+    setGlobalUserData,
+    isLoadingState,
+    setIsLoadingState 
+  } = useGlobalContext();
+
+  // Kullanım...
+};
+```
+
+### API Durumu Kontrolü
+```javascript
+import { checkApiStatus } from '../utils/apiConfig';
+
+const checkApi = async () => {
+  const isOnline = await checkApiStatus();
+  if (isOnline) {
+    console.log('API çalışıyor');
+  } else {
+    console.log('API erişilemiyor');
+  }
+};
+```
+
+## Notlar
+
+- API URL'sini environment variables ile ayarlayın
+- Token yönetimi otomatik olarak yapılır
+- Hata yönetimi merkezi olarak yapılır
+- Loading state'leri otomatik olarak yönetilir
+- Şu an sadece Auth işlemleri hazır, diğer endpoint'ler ihtiyaç duyuldukça eklenecek
+- API versiyonlama ile farklı API versiyonları arasında geçiş yapabilirsiniz

@@ -68,13 +68,15 @@ import giveaway from "../../src/assets/animations/giveaway.json";
 // import advertOrders from "../../src/assets/animations/Adverts.json";
 // import incomingOrders from "../../src/assets/animations/Adverts.json";
 
-const ProfileTabs = () => {
+const ProfileTabs = ({ data }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   // İlk açılışta URL'den tab parametresini oku
   const initialTab = searchParams.get("tab") || "personal-details";
   const [activeTab, setActiveTab] = useState(initialTab);
   const [openDropdown, setOpenDropdown] = useState(null);
+
+  const UserData = JSON.stringify(data);
 
   // player ref'leri array olarak tutuyoruz
   const playerRefs = useRef([]);
@@ -138,7 +140,7 @@ const ProfileTabs = () => {
                     <div className="rounded-full relative">
                       <Link href="/">
                         <img
-                          src="https://placehold.co/100"
+                          src={data?.profile?.image || "https://placehold.co/100"}
                           alt="User Avatar"
                           className="rounded-full w-16 h-16"
                         />
@@ -158,10 +160,10 @@ const ProfileTabs = () => {
 
                 <div className="text-start">
                   <h2 className="font-bold text-md w-full flex justify-between">
-                    User Name <AiTwotoneSafetyCertificate className="w-6 h-6" />
+                    {data?.user_info?.nickname} <AiTwotoneSafetyCertificate className="w-6 h-6" />
                   </h2>
                   <p className="max-w-[180px] truncate whitespace-nowrap overflow-hidden">
-                    usernameepinko@gmail.com
+                    {data?.user_info?.email}
                   </p>
                 </div>
               </div>
@@ -375,34 +377,34 @@ const ProfileTabs = () => {
               <GiWallet className="text-[var(--label2)] w-12 h-12" />
               <div>
                 <p>Hesap Bakiyesi</p>
-                <h3 className="text-md font-bold">1999,99₺</h3>
+                <h3 className="text-md font-bold">{data?.statistics?.balance || 0}₺</h3>
               </div>
             </div>
             <div className="bg-[var(--alert-light)] border-1 border-[var(--alert)] p-2 rounded flex items-center gap-4 justify-center">
               <HiPaperAirplane className="text-[var(--alert)] w-12 h-12" />
               <div>
                 <p>Yeni Mesaj</p>
-                <h3 className="text-md font-bold">2</h3>
+                <h3 className="text-md font-bold">0</h3>
               </div>
             </div>
             <div className="bg-[var(--label7-light)] border-1 border-[var(--label7)] p-2 rounded flex items-center gap-4 justify-center">
               <AiFillCodeSandboxSquare className="text-[var(--label7)] w-12 h-12" />
               <div>
                 <p>Yeni Sipariş</p>
-                <h3 className="text-md font-bold">7</h3>
+                <h3 className="text-md font-bold">{data?.statistics?.completed_orders || 0}</h3>
               </div>
             </div>
             <div className="bg-[var(--label9-light)] border-1 border-[var(--label9)] p-2 rounded flex items-center gap-4 justify-center">
               <IoRocket className="text-[var(--label9)] w-12 h-12" />
               <div>
                 <p>Toplam Kazanç</p>
-                <h3 className="text-md font-bold">999,99₺</h3>
+                <h3 className="text-md font-bold">0₺</h3>
               </div>
             </div>
           </div>
 
           {/* TAB CONTENTS */}
-          {activeTab === "personal-details" && <MyAccount />}
+          {activeTab === "personal-details" && <MyAccount data={data} />}
           {activeTab === "security" && (
             <Security title={"Güvenlik Tercihleri"} />
           )}

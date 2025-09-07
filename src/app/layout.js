@@ -4,6 +4,9 @@ import Header from "../../componants/layout/Header";
 import Footer from "../../componants/layout/Fotter";
 import BottomText from "../../componants/texts/bottom-text";
 import PreloaderWrapper from '../../componants/layout/PreloaderWrapper';
+import { GlobalProvider } from '../../contexts/GlobalProvider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Inter } from "next/font/google";
 
@@ -28,7 +31,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <style>{`
           #preloader-init {
             position: fixed;
@@ -48,16 +51,30 @@ export default function RootLayout({ children }) {
             border-radius: 12px;
           }
         `}</style>
-      </head>
+      </head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
-        <PreloaderWrapper>
-          <Header />
-          {children}
-          {/* <BottomText /> */}
-          <Footer />
-        </PreloaderWrapper>
+        <GlobalProvider>
+          <PreloaderWrapper>
+            <Header />
+            {children}
+            {/* <BottomText /> */}
+            <Footer />
+          </PreloaderWrapper>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+        </GlobalProvider>
         {/* Basit glass efektli dönen kutu */}
         <div id="layout-fake-loader" style={{
           position: 'fixed',

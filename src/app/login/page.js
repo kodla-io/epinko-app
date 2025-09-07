@@ -1,12 +1,119 @@
 
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoTwitch } from "react-icons/io5";
+import { apiService } from "../../../services/api";
+import { authUtils } from "../../../utils/auth";
+import { useGlobalContext } from "../../../contexts/GlobalProvider";
+import { useRouter } from "next/navigation";
+import { toastUtils } from "../../../utils/toast";
 
 const Login = () => {
+  const router = useRouter();
+  const { setIsLoadingState, setGlobalUserData, setIsUserLogin } = useGlobalContext();
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Hata mesajını temizle
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!loginData.email) {
+      newErrors.email = "Email adresi gerekli";
+    } else if (!/\S+@\S+\.\S+/.test(loginData.email)) {
+      newErrors.email = "Geçerli bir email adresi girin";
+    }
+
+    if (!loginData.password) {
+      newErrors.password = "Şifre gerekli";
+    } else if (loginData.password.length < 6) {
+      newErrors.password = "Şifre en az 6 karakter olmalı";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    setIsLoadingState(true);
+
+    try {
+      console.log("Login isteği gönderiliyor:", loginData);
+      const response = await apiService.login(loginData);
+      console.log("Login response:", response.data);
+      
+      if (response.data.success) {
+        console.log("Giriş başarılı:", response.data);
+        toastUtils.apiSuccess(response.data.message || "Giriş işlemi başarıyla tamamlandı!");
+        
+        // API token'ı kullan
+        if (response.data.api_token) {
+          console.log('Login Token:', {
+            token: response.data.api_token,
+            tokenLength: response.data.api_token.length
+          });
+          
+          authUtils.setToken(response.data.api_token);
+        }
+        
+        // Kullanıcı verilerini ayarla
+        if (response.data.data) {
+          authUtils.setUserData(response.data.data);
+          setGlobalUserData(response.data.data);
+        }
+        
+        setIsUserLogin(true);
+        router.push("/");
+      } else {
+        toastUtils.apiError(response.data.message || "Giriş işlemi başarısız");
+      }
+    } catch (error) {
+      console.error("Giriş hatası detayı:", error);
+      
+      const errorMessage = error.response?.data?.message || error.message;
+      toastUtils.apiError(error, `Giriş hatası: ${errorMessage}`);
+      
+      // API'den gelen validation errors
+      if (error.response?.data?.errors) {
+        const apiErrors = {};
+        Object.keys(error.response.data.errors).forEach(key => {
+          apiErrors[key] = error.response.data.errors[key][0];
+        });
+        setErrors(apiErrors);
+      }
+    } finally {
+      setIsSubmitting(false);
+      setIsLoadingState(false);
+    }
+  };
+
   return (
     <div
       id="login"
@@ -29,38 +136,61 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="mb-6 md:mb-12">
-            <label className="block text-lg mb-3">
-              Kullanıcı adınızı veya e-posta adresinizi giriniz
-            </label>
-            <input
-              type="text"
-              placeholder="Kullanıcı adı ya da Eposta adresi"
-              className="w-full px-4 py-6 rounded-lg border-none focus:outline-none"
-            />
-          </div>
-
-          <div className="mb-4 md:mb-4">
-            <label className="block text-lg mb-3">Şifrenizi Giriniz</label>
-            <input
-              type="password"
-              placeholder="Şifre"
-              className="w-full px-4 py-6 rounded-lg border-none focus:outline-none"
-            />
-            <div className="text-right text-sm text-blue-400 mt-1 hover:underline cursor-pointer mt-2"
-              onClick={() => {
-                if (typeof window !== 'undefined') {
-                  window.dispatchEvent(new CustomEvent('openForgotPasswordModal'));
-                }
-              }}
-            >
-              Şifremi Unuttum
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="mb-6 md:mb-12">
+              <label className="block text-lg mb-3">
+                Kullanıcı adınızı veya e-posta adresinizi giriniz
+              </label>
+              <input
+                type="text"
+                name="email"
+                value={loginData.email}
+                onChange={handleInputChange}
+                placeholder="Kullanıcı adı ya da Eposta adresi"
+                className={`w-full px-4 py-6 rounded-lg border-none focus:outline-none ${
+                  errors.email ? 'border-red-500 border' : ''
+                }`}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
             </div>
-          </div>
 
-          <button className="w-full mb-2 bg-[var(--primary)] hover:opacity-80 transition-colors py-3 rounded-lg text-white font-semibold">
-            Giriş Yap
-          </button>
+            <div className="mb-4 md:mb-4">
+              <label className="block text-lg mb-3">Şifrenizi Giriniz</label>
+              <input
+                type="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleInputChange}
+                placeholder="Şifre"
+                className={`w-full px-4 py-6 rounded-lg border-none focus:outline-none ${
+                  errors.password ? 'border-red-500 border' : ''
+                }`}
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+              )}
+              <div 
+                className="text-right text-sm text-blue-400 mt-1 hover:underline cursor-pointer mt-2"
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new CustomEvent('openForgotPasswordModal'));
+                  }
+                }}
+              >
+                Şifremi Unuttum
+              </div>
+            </div>
+
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full mb-2 bg-[var(--primary)] hover:opacity-80 transition-colors py-3 rounded-lg text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Giriş Yapılıyor..." : "Giriş Yap"}
+            </button>
+          </form>
 
           <div className="flex w-full flex-wrap md:flex-nowrap gap-2">
             {/* Google Login */}
